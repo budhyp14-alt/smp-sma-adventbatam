@@ -24,6 +24,52 @@ export default function RootLayout({ children }) {
   return (
     <html lang="id">
       <body className="bg-slate-100 text-slate-900 font-sans antialiased min-h-screen flex flex-col">
+        
+        {/* Top Bar: Tombol Media Sosial & Kontak */}
+        <div className="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
+          <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+            
+            {/* Tombol Media Sosial */}
+            <div className="flex items-center space-x-3">
+              <span className="text-slate-400 font-medium hidden sm:inline">Ikuti Kami:</span>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-amber-400 transition-colors flex items-center space-x-1"
+                title="Facebook"
+              >
+                <span>📘 Facebook</span>
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-amber-400 transition-colors flex items-center space-x-1"
+                title="Instagram"
+              >
+                <span>📸 Instagram</span>
+              </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-amber-400 transition-colors flex items-center space-x-1"
+                title="YouTube"
+              >
+                <span>▶️ YouTube</span>
+              </a>
+            </div>
+
+            {/* Status / Informasi */}
+            <div className="flex items-center space-x-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="text-slate-300 font-semibold">Tahun Ajaran 2026/2027</span>
+            </div>
+
+          </div>
+        </div>
+
         {/* Header Identitas Sekolah */}
         <header className="bg-white border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -40,17 +86,12 @@ export default function RootLayout({ children }) {
                 </p>
               </div>
             </div>
-
-            <div className="flex items-center space-x-2 text-xs font-semibold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-full border border-slate-200">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>Tahun Ajaran 2026/2027</span>
-            </div>
           </div>
 
           {/* Menu Navigasi Mendatar (Merah Marun) */}
           <nav className="bg-red-900 text-white shadow-md">
             <div className="max-w-7xl mx-auto px-2 sm:px-4">
-              <div className="flex items-center justify-start lg:justify-center overflow-x-auto no-scrollbar py-1">
+              <div className="flex items-center justify-start lg:justify-center overflow-x-auto py-1">
                 <div className="flex items-center space-x-1 sm:space-x-2 min-w-max py-1">
                   {navItems.map((item) => (
                     <Link
@@ -65,6 +106,16 @@ export default function RootLayout({ children }) {
               </div>
             </div>
           </nav>
+
+          {/* Teks Berjalan (Running Text Kuning) */}
+          <div className="bg-amber-400 text-slate-900 font-bold text-xs sm:text-sm py-2 px-4 shadow-inner flex items-center border-b border-amber-500">
+            <span className="bg-red-900 text-white text-[11px] font-extrabold px-2.5 py-0.5 rounded mr-3 whitespace-nowrap tracking-wide">
+              INFO TERKINI
+            </span>
+            <marquee className="w-full tracking-wide">
+              Selamat Datang di Website Resmi SMP - SMA Advent Batam | Penerimaan Peserta Didik Baru (PPDB) Tahun Pelajaran 2026/2027 Telah Dibuka | Terwujudnya Pendidikan Berkarakter, Unggul, dan Berlandaskan Nilai-Nilai Kristiani.
+            </marquee>
+          </div>
         </header>
 
         {/* Konten Halaman */}
