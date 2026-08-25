@@ -33,21 +33,21 @@ export default function Home() {
       role: "Ketua YPAB",
       heading: "Web yang Professional",
       text: "An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem quaedam non melius quam veteres, quaedam omnino relicta. Quia...",
-      img: "/slider-1.jpg" // Placeholder foto
+      img: "/slider-1.jpg"
     },
     {
       name: "Bapak Samuel Simatupang",
       role: "Manager Operasional",
       heading: "Web yang Professional",
       text: "An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem quaedam non melius quam veteres, quaedam omnino relicta. Quia...",
-      img: "/slider-2.jpg" // Placeholder foto
+      img: "/slider-2.jpg"
     },
     {
       name: "Tona Leon F. Situmorang, S.Pd., M.A.Ed.",
       role: "Kepala Sekolah",
       heading: "Web yang Professional",
       text: "An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem quaedam non melius quam veteres, quaedam omnino relicta. Quia...",
-      img: "/slider-3.jpg" // Placeholder foto
+      img: "/slider-3.jpg"
     }
   ];
 
@@ -95,9 +95,9 @@ export default function Home() {
           {/* KOLOM KIRI (2/3): EDITORIAL */}
           <div className="lg:col-span-2 space-y-8">
             {editorials.map((item, index) => (
-              <div key={index} className="flex flex-col md:flex-row gap-5">
+              <div key={index} className="flex flex-col md:flex-row gap-5 items-start">
                 
-                {/* Bagian Foto & Nama (Kiri) - Tinggi dikurangi jadi 75% menggunakan aspect-square */}
+                {/* Bagian Foto & Nama (Kiri) - Tinggi Dikurangi 75% */}
                 <div className="w-full md:w-[35%] lg:w-[40%] aspect-square relative rounded-xl overflow-hidden shadow-sm border border-slate-200">
                   <img src={item.img} alt={item.name} className="w-full h-full object-cover" />
                   {/* Gradasi hitam di bawah untuk teks */}
@@ -112,8 +112,8 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Bagian Teks & Tombol (Kanan) */}
-                <div className="w-full md:w-[65%] lg:w-[60%] flex flex-col justify-start space-y-4">
+                {/* Bagian Teks (Kanan) - Dikembalikan ke Tinggi Semula (min-h) */}
+                <div className="w-full md:w-[65%] lg:w-[60%] flex flex-col space-y-4 md:min-h-[320px] lg:min-h-[380px]">
                   
                   {/* Kotak Judul */}
                   <div className="bg-[#E3DCc3] p-4 rounded-xl shadow-sm">
@@ -122,13 +122,13 @@ export default function Home() {
                     </h3>
                   </div>
                   
-                  {/* Kotak Lead Teks & Tombol (Digabung) */}
+                  {/* Kotak Lead Teks & Tombol */}
                   <div className="bg-[#E3DCc3] p-4 sm:p-5 rounded-xl shadow-sm flex-1 flex flex-col justify-between items-start">
                     <p className="text-slate-700 text-sm leading-relaxed text-justify mb-4">
                       {item.text}
                     </p>
                     
-                    {/* Tombol View All di dalam kotak teks */}
+                    {/* Tombol View All menyatu di dalam kotak */}
                     <button className="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-6 rounded-lg transition-colors text-sm shadow-sm">
                       View All
                     </button>
@@ -168,7 +168,7 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Kotak Info PPDB (Memanjang mengisi sisa ruang bawah) */}
+            {/* Kotak Info PPDB (Memanjang mengisi sisa ruang bawah sejajar dengan 3 Editorial) */}
             <div className="flex-1 w-full border border-slate-300 bg-[#E3DCc3] rounded-xl flex flex-col items-center justify-center p-6 shadow-sm min-h-[300px]">
               <h3 className="font-bold text-lg text-slate-800 uppercase tracking-widest mb-2">INFO PPDB</h3>
               <p className="text-sm text-slate-600 text-center">Area informasi Pendaftaran Peserta Didik Baru</p>
