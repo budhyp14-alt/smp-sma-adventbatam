@@ -97,26 +97,26 @@ export default function Home() {
             {editorials.map((item, index) => (
               <div key={index} className="flex flex-col md:flex-row gap-5 items-start">
                 
-                {/* Bagian Foto & Nama (Kiri) - Tinggi Dikurangi 75% */}
-                <div className="w-full md:w-[35%] lg:w-[40%] aspect-square relative rounded-xl overflow-hidden shadow-sm border border-slate-200">
+                {/* Bagian Foto & Nama (Kiri) - Diperkecil menjadi 75% dari semula */}
+                <div className="w-full md:w-[26%] lg:w-[30%] aspect-square relative rounded-xl overflow-hidden shadow-sm border border-slate-200 shrink-0">
                   <img src={item.img} alt={item.name} className="w-full h-full object-cover" />
                   {/* Gradasi hitam di bawah untuk teks */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 right-4 text-left">
-                    <p className="text-amber-400 font-bold text-sm sm:text-base leading-tight mb-1">
+                  <div className="absolute bottom-3 left-3 right-3 text-left">
+                    <p className="text-amber-400 font-bold text-xs sm:text-sm leading-tight mb-1">
                       {item.name}
                     </p>
-                    <p className="text-white text-xs sm:text-sm">
+                    <p className="text-white text-[10px] sm:text-xs">
                       {item.role}
                     </p>
                   </div>
                 </div>
 
-                {/* Bagian Teks (Kanan) - Dikembalikan ke Tinggi Semula (min-h) */}
-                <div className="w-full md:w-[65%] lg:w-[60%] flex flex-col space-y-4 md:min-h-[320px] lg:min-h-[380px]">
+                {/* Bagian Teks (Kanan) - Ketinggian disesuaikan agar sejajar dengan Latest News */}
+                <div className="w-full md:w-[74%] lg:w-[70%] flex flex-col space-y-3 md:h-[320px] lg:h-[368px]">
                   
                   {/* Kotak Judul */}
-                  <div className="bg-[#E3DCc3] p-4 rounded-xl shadow-sm">
+                  <div className="bg-[#E3DCc3] p-4 rounded-xl shadow-sm shrink-0">
                     <h3 className="text-red-950 font-bold text-lg sm:text-xl">
                       {item.heading}
                     </h3>
@@ -144,7 +144,7 @@ export default function Home() {
           <div className="lg:col-span-1 flex flex-col h-full">
             
             {/* Header Berita Terbaru */}
-            <div className="flex items-center gap-2 mb-5">
+            <div className="flex items-center gap-2 mb-5 h-7">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-xs">
                 💬
               </span>
