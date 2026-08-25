@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link"; // Pastikan Link di-import untuk tombol PPDB
 
 export default function Home() {
   const images = [
@@ -58,6 +59,13 @@ export default function Home() {
     { date: "Monday, 11 August 2025", title: "BAB 1 INFORMATIKA & PEMBELAJARANNYA", img: "/slider-3.jpg" }
   ];
 
+  // Data Blog Guru (Sesuai Referensi Gambar)
+  const blogGuru = [
+    { date: "Tuesday, 11 July 2017", title: "Seinima Sapientia Proficiscitur Aconti Copassuni", img: "/slider-1.jpg" },
+    { date: "Tuesday, 11 July 2017", title: "Quicquid Enima Sapientia Proficiscitur, Idconti", img: "/slider-2.jpg" },
+    { date: "Tuesday, 11 July 2017", title: "Adeas Enimres Abrpicuro Praecepta Dantur. Quicquid Enim", img: "/slider-3.jpg" }
+  ];
+
   return (
     <main className="min-h-screen bg-[#F3EFE4] text-slate-900 font-sans pb-0">
       
@@ -98,7 +106,7 @@ export default function Home() {
               {/* === KIRI (2/3): EDITORIAL === */}
               <div className="lg:col-span-2 flex flex-col md:flex-row gap-5 items-start">
                 
-                {/* Foto Profil (Diperkecil 75%) */}
+                {/* Foto Profil */}
                 <div className="w-full md:w-[26%] lg:w-[30%] aspect-square relative rounded-xl overflow-hidden shadow-sm border border-slate-200 shrink-0">
                   <img src={item.img} alt={item.name} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
@@ -161,19 +169,49 @@ export default function Home() {
                   </div>
                 )}
 
-                {/* Baris 2: Menampilkan INFO PPDB (Sejajar presisi) */}
+                {/* Baris 2: Menampilkan INFO PPDB (Desain Lama dengan Gradien) */}
                 {index === 1 && (
-                  <div className="flex-1 w-full border border-slate-300 bg-[#E3DCc3] rounded-xl flex flex-col items-center justify-center p-6 shadow-sm">
-                    <h3 className="font-bold text-lg text-slate-800 uppercase tracking-widest mb-2">INFO PPDB</h3>
-                    <p className="text-sm text-slate-600 text-center">Area informasi Pendaftaran Peserta Didik Baru</p>
+                  <div className="flex-1 w-full bg-gradient-to-br from-red-900 to-red-950 text-white rounded-xl flex flex-col justify-center p-6 sm:p-8 shadow-md">
+                    <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-amber-400 text-slate-900 px-3 py-1 rounded w-max mb-3">
+                      Info Pendaftaran
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-bold mb-3 leading-tight">
+                      PPDB Tahun Pelajaran 2026/2027
+                    </h3>
+                    <p className="text-red-100 text-xs sm:text-sm leading-relaxed mb-6">
+                      Pendaftaran siswa baru tingkat SMP dan SMA telah dibuka. Bergabunglah bersama keluarga besar Advent Batam.
+                    </p>
+                    <Link
+                      href="/ppdb"
+                      className="inline-block w-full text-center bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold py-3 px-4 rounded-xl text-sm transition-colors shadow"
+                    >
+                      Informasi & Pendaftaran
+                    </Link>
                   </div>
                 )}
 
-                {/* Baris 3: Menampilkan BLOG GURU (Sejajar presisi) */}
+                {/* Baris 3: Menampilkan BLOG GURU (Desain List Berita Baru) */}
                 {index === 2 && (
-                  <div className="flex-1 w-full border border-slate-300 bg-[#E3DCc3] rounded-xl flex flex-col items-center justify-center p-6 shadow-sm">
-                    <h3 className="font-bold text-lg text-slate-800 uppercase tracking-widest mb-2">BLOG GURU</h3>
-                    <p className="text-sm text-slate-600 text-center">Kumpulan artikel, opini, dan karya inspiratif tenaga pendidik</p>
+                  <div className="flex flex-col h-full">
+                    <div className="flex items-center gap-2 mb-5 h-7 shrink-0">
+                      <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-xs">💬</span>
+                      <h2 className="font-bold text-xl text-red-900">Blog Guru</h2>
+                    </div>
+                    <div className="space-y-4 flex-1 flex flex-col justify-between">
+                      {blogGuru.map((blog, idx) => (
+                        <div key={idx} className="flex gap-4 items-center">
+                          <div className="w-24 h-20 sm:w-28 sm:h-24 shrink-0 rounded-xl overflow-hidden border border-slate-300 shadow-sm">
+                            <img src={blog.img} alt="Thumb" className="w-full h-full object-cover" />
+                          </div>
+                          <div className="flex flex-col justify-center">
+                            <p className="text-xs text-slate-600 mb-1">{blog.date}</p>
+                            <p className="text-sm font-bold text-red-900 leading-tight line-clamp-2">
+                              {blog.title}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
 
