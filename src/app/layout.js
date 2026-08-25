@@ -33,18 +33,26 @@ export default function RootLayout({ children }) {
           }
         `}} />
 
-        {/* Top Bar: Status Tahun Ajaran (Medsos sudah dipindah ke bawah) */}
-        <div className="bg-slate-900 text-slate-300 text-xs py-1.5 px-4 border-b border-slate-800">
-          <div className="max-w-7xl mx-auto flex justify-end">
-            {/* Status Tahun Ajaran */}
-            <div className="flex items-center space-x-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span className="text-slate-300 font-semibold">Tahun Ajaran 2026/2027</span>
+        {/* 1. Menu Navigasi Mendatar (Merah Marun) - Dipindah Paling Atas */}
+        <nav className="bg-red-900 text-white shadow-md">
+          <div className="max-w-7xl mx-auto px-2 sm:px-4">
+            <div className="flex items-center justify-start lg:justify-center overflow-x-auto py-1.5">
+              <div className="flex items-center space-x-1 sm:space-x-2 min-w-max py-1">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="px-3 py-2 rounded-lg text-xs sm:text-[13px] font-bold tracking-wider hover:bg-red-800 hover:text-amber-300 transition-colors duration-200 whitespace-nowrap"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        </nav>
 
-        {/* Header Identitas Sekolah */}
+        {/* 2. Header Identitas Sekolah */}
         <header className="bg-white border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 py-2 flex flex-col lg:flex-row items-center justify-between gap-4">
             
@@ -114,30 +122,20 @@ export default function RootLayout({ children }) {
             </div>
           </div>
 
-          {/* Menu Navigasi Mendatar (Merah Marun) */}
-          <nav className="bg-red-900 text-white shadow-md">
-            <div className="max-w-7xl mx-auto px-2 sm:px-4">
-              <div className="flex items-center justify-start lg:justify-center overflow-x-auto py-1">
-                <div className="flex items-center space-x-1 sm:space-x-2 min-w-max py-1">
-                  {navItems.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="px-3 py-2 rounded-lg text-xs sm:text-[13px] font-bold tracking-wider hover:bg-red-800 hover:text-amber-300 transition-colors duration-200 whitespace-nowrap"
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </nav>
-
-          {/* Teks Berjalan (Running Text Kuning) */}
+          {/* 3. Teks Berjalan (Running Text Kuning) & Tanggal */}
           <div className="bg-amber-400 text-slate-900 font-bold text-xs sm:text-sm py-2 px-4 shadow-inner flex items-center border-b border-amber-500">
+            
+            {/* Tanggal Hari Ini (Paling Kiri) */}
+            <span className="bg-slate-800 text-amber-400 text-[11px] font-bold px-2.5 py-0.5 rounded mr-2 whitespace-nowrap">
+              Selasa, 25 Agustus 2026
+            </span>
+
+            {/* Label Info Terkini */}
             <span className="bg-red-900 text-white text-[11px] font-extrabold px-2.5 py-0.5 rounded mr-3 whitespace-nowrap tracking-wide">
               INFO TERKINI
             </span>
+
+            {/* Marquee Text */}
             <marquee className="w-full tracking-wide">
               Selamat Datang di Website Resmi SMP - SMA Advent Batam | Penerimaan Peserta Didik Baru (PPDB) Tahun Pelajaran 2026/2027 Telah Dibuka | Terwujudnya Pendidikan Berkarakter, Unggul, dan Berlandaskan Nilai-Nilai Kristiani.
             </marquee>
