@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
     <html lang="id">
       <body className="bg-slate-100 text-slate-900 font-sans antialiased min-h-screen flex flex-col">
         
-        {/* Top Bar: Tombol Media Sosial & Kontak */}
+        {/* Top Bar: Tombol Media Sosial & Status */}
         <div className="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
           <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
             
@@ -61,7 +61,7 @@ export default function RootLayout({ children }) {
               </a>
             </div>
 
-            {/* Status / Informasi */}
+            {/* Status Tahun Ajaran */}
             <div className="flex items-center space-x-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               <span className="text-slate-300 font-semibold">Tahun Ajaran 2026/2027</span>
@@ -72,11 +72,14 @@ export default function RootLayout({ children }) {
 
         {/* Header Identitas Sekolah */}
         <header className="bg-white border-b border-slate-200">
-          <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-red-900 text-amber-400 font-extrabold flex items-center justify-center rounded-xl text-xl shadow-sm">
-                AB
-              </div>
+              {/* Logo Resmi Sekolah */}
+              <img
+                src="/logo.png"
+                alt="Logo Adventist Education"
+                className="h-14 sm:h-16 w-auto object-contain"
+              />
               <div>
                 <h1 className="text-xl sm:text-2xl font-black text-red-950 tracking-tight leading-none">
                   SMP - SMA ADVENT BATAM
