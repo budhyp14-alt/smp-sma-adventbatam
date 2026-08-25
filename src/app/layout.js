@@ -25,11 +25,11 @@ export default function RootLayout({ children }) {
     <html lang="id">
       <body className="bg-slate-100 text-slate-900 font-sans antialiased min-h-screen flex flex-col">
         
-        {/* Animasi Putar Horizontal Khusus */}
+        {/* Animasi Putar Horizontal Khusus (Arah Dibalik / -360deg) */}
         <style dangerouslySetInnerHTML={{ __html: `
           @keyframes spin-horizontal {
             from { transform: perspective(1000px) rotateY(0deg); }
-            to { transform: perspective(1000px) rotateY(360deg); }
+            to { transform: perspective(1000px) rotateY(-360deg); }
           }
         `}} />
 
