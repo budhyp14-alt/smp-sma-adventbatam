@@ -74,11 +74,11 @@ export default function RootLayout({ children }) {
         <header className="bg-white border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 py-1.5 flex flex-col sm:flex-row items-center justify-between">
             <div className="flex items-center space-x-3">
-              {/* Logo Baru Adventist Berputar Searah Jarum Jam */}
+              {/* Logo Baru Adventist Berputar Searah Jarum Jam - Ukuran Diperkecil 75% */}
               <img
                 src="/logo-OKE.png"
                 alt="Logo Adventist Education"
-                className="h-16 sm:h-20 w-auto object-contain shrink-0"
+                className="h-12 sm:h-16 w-auto object-contain shrink-0"
                 style={{ animation: "spin 12s linear infinite" }}
               />
               <div className="flex flex-col justify-center">
