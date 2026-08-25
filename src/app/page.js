@@ -97,8 +97,8 @@ export default function Home() {
             {editorials.map((item, index) => (
               <div key={index} className="flex flex-col md:flex-row gap-5">
                 
-                {/* Bagian Foto & Nama (Kiri) */}
-                <div className="w-full md:w-[35%] lg:w-[40%] aspect-[3/4] relative rounded-xl overflow-hidden shadow-sm border border-slate-200">
+                {/* Bagian Foto & Nama (Kiri) - Tinggi dikurangi jadi 75% menggunakan aspect-square */}
+                <div className="w-full md:w-[35%] lg:w-[40%] aspect-square relative rounded-xl overflow-hidden shadow-sm border border-slate-200">
                   <img src={item.img} alt={item.name} className="w-full h-full object-cover" />
                   {/* Gradasi hitam di bawah untuk teks */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
@@ -113,7 +113,8 @@ export default function Home() {
                 </div>
 
                 {/* Bagian Teks & Tombol (Kanan) */}
-                <div className="w-full md:w-[65%] lg:w-[60%] flex flex-col justify-between space-y-4">
+                <div className="w-full md:w-[65%] lg:w-[60%] flex flex-col justify-start space-y-4">
+                  
                   {/* Kotak Judul */}
                   <div className="bg-[#E3DCc3] p-4 rounded-xl shadow-sm">
                     <h3 className="text-red-950 font-bold text-lg sm:text-xl">
@@ -121,19 +122,18 @@ export default function Home() {
                     </h3>
                   </div>
                   
-                  {/* Kotak Lead Teks */}
-                  <div className="bg-[#E3DCc3] p-4 rounded-xl shadow-sm flex-1">
-                    <p className="text-slate-700 text-sm leading-relaxed text-justify">
+                  {/* Kotak Lead Teks & Tombol (Digabung) */}
+                  <div className="bg-[#E3DCc3] p-4 sm:p-5 rounded-xl shadow-sm flex-1 flex flex-col justify-between items-start">
+                    <p className="text-slate-700 text-sm leading-relaxed text-justify mb-4">
                       {item.text}
                     </p>
-                  </div>
-                  
-                  {/* Tombol View All */}
-                  <div>
-                    <button className="bg-red-900 hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded-lg transition-colors text-sm shadow-sm">
+                    
+                    {/* Tombol View All di dalam kotak teks */}
+                    <button className="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-6 rounded-lg transition-colors text-sm shadow-sm">
                       View All
                     </button>
                   </div>
+
                 </div>
 
               </div>
