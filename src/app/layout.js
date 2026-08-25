@@ -70,22 +70,22 @@ export default function RootLayout({ children }) {
           </div>
         </div>
 
-        {/* Header Identitas Sekolah */}
+        {/* Header Identitas Sekolah (Padding Vertikal Dipadatkan) */}
         <header className="bg-white border-b border-slate-200">
-          <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center space-x-5">
-              {/* Logo 2x Lebih Besar & Berputar Perlahan Searah Jarum Jam */}
+          <div className="max-w-7xl mx-auto px-4 py-0.5 flex flex-col sm:flex-row items-center justify-between">
+            <div className="flex items-center space-x-4 my-0">
+              {/* Logo Tetap Berukuran Besar & Berputar */}
               <img
                 src="/logo.png"
                 alt="Logo Adventist Education"
                 className="h-28 sm:h-32 w-auto object-contain shrink-0"
                 style={{ animation: "spin 12s linear infinite" }}
               />
-              <div>
-                <h1 className="text-xl sm:text-2xl font-black text-red-950 tracking-tight leading-none">
+              <div className="py-1">
+                <h1 className="text-xl sm:text-2xl font-black text-red-950 tracking-tight leading-tight">
                   SMP - SMA ADVENT BATAM
                 </h1>
-                <p className="text-xs text-slate-500 font-medium tracking-wide mt-1">
+                <p className="text-xs text-slate-500 font-medium tracking-wide">
                   Membentuk Generasi Berkarakter, Cerdas, dan Berintegritas
                 </p>
               </div>
