@@ -90,14 +90,15 @@ export default function Home() {
       {/* 2. EDITORIAL, BERITA TERBARU, PPDB & BLOG */}
       {/* ========================================= */}
       <section className="max-w-7xl mx-auto px-4 mb-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        <div className="flex flex-col space-y-8">
           
-          {/* KOLOM KIRI (2/3): EDITORIAL */}
-          <div className="lg:col-span-2 space-y-8">
-            {editorials.map((item, index) => (
-              <div key={index} className="flex flex-col md:flex-row gap-5 items-start">
+          {editorials.map((item, index) => (
+            <div key={index} className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+              
+              {/* === KIRI (2/3): EDITORIAL === */}
+              <div className="lg:col-span-2 flex flex-col md:flex-row gap-5 items-start">
                 
-                {/* Bagian Foto & Nama (Kiri) - Diperkecil menjadi 75% */}
+                {/* Foto Profil (Diperkecil 75%) */}
                 <div className="w-full md:w-[26%] lg:w-[30%] aspect-square relative rounded-xl overflow-hidden shadow-sm border border-slate-200 shrink-0">
                   <img src={item.img} alt={item.name} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
@@ -111,7 +112,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Bagian Teks (Kanan) */}
+                {/* Teks Judul & Lead Berita */}
                 <div className="w-full md:w-[74%] lg:w-[70%] flex flex-col space-y-3 md:h-[320px] lg:h-[368px]">
                   {/* Kotak Judul */}
                   <div className="bg-[#E3DCc3] p-4 rounded-xl shadow-sm shrink-0">
@@ -130,57 +131,56 @@ export default function Home() {
                     </button>
                   </div>
                 </div>
-
               </div>
-            ))}
-          </div>
 
-          {/* KOLOM KANAN (1/3): LATEST NEWS, PPDB, & BLOG GURU */}
-          <div className="lg:col-span-1 flex flex-col h-full">
-            
-            {/* Header Berita Terbaru */}
-            <div className="flex items-center gap-2 mb-5 h-7">
-              <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-xs">
-                💬
-              </span>
-              <h2 className="font-bold text-xl text-slate-800">Berita Terbaru</h2>
-            </div>
-            
-            {/* Daftar Berita */}
-            <div className="space-y-4 mb-6 shrink-0">
-              {latestNews.map((news, idx) => (
-                <div key={idx} className="flex gap-4 items-center">
-                  <div className="w-24 h-20 sm:w-28 sm:h-24 shrink-0 rounded-xl overflow-hidden border border-slate-300 shadow-sm">
-                    <img src={news.img} alt="Thumb" className="w-full h-full object-cover" />
+              {/* === KANAN (1/3): KONTEN DINAMIS === */}
+              <div className="lg:col-span-1 flex flex-col h-full">
+                
+                {/* Baris 1: Menampilkan Berita Terbaru */}
+                {index === 0 && (
+                  <div className="flex flex-col h-full">
+                    <div className="flex items-center gap-2 mb-5 h-7 shrink-0">
+                      <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-xs">💬</span>
+                      <h2 className="font-bold text-xl text-slate-800">Berita Terbaru</h2>
+                    </div>
+                    <div className="space-y-4 flex-1 flex flex-col justify-between">
+                      {latestNews.map((news, idx) => (
+                        <div key={idx} className="flex gap-4 items-center">
+                          <div className="w-24 h-20 sm:w-28 sm:h-24 shrink-0 rounded-xl overflow-hidden border border-slate-300 shadow-sm">
+                            <img src={news.img} alt="Thumb" className="w-full h-full object-cover" />
+                          </div>
+                          <div className="flex flex-col justify-center">
+                            <p className="text-xs text-slate-600 mb-1">{news.date}</p>
+                            <p className="text-sm font-bold text-red-950 leading-tight line-clamp-2">
+                              {news.title}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div className="flex flex-col justify-center">
-                    <p className="text-xs text-slate-600 mb-1">{news.date}</p>
-                    <p className="text-sm font-bold text-red-950 leading-tight line-clamp-2">
-                      {news.title}
-                    </p>
+                )}
+
+                {/* Baris 2: Menampilkan INFO PPDB (Sejajar presisi) */}
+                {index === 1 && (
+                  <div className="flex-1 w-full border border-slate-300 bg-[#E3DCc3] rounded-xl flex flex-col items-center justify-center p-6 shadow-sm">
+                    <h3 className="font-bold text-lg text-slate-800 uppercase tracking-widest mb-2">INFO PPDB</h3>
+                    <p className="text-sm text-slate-600 text-center">Area informasi Pendaftaran Peserta Didik Baru</p>
                   </div>
-                </div>
-              ))}
-            </div>
+                )}
 
-            {/* Area Sisa: Kotak INFO PPDB & BLOG GURU (Sejajar bawah dengan kotak Editorial ketiga) */}
-            <div className="flex-1 flex flex-col gap-5 w-full">
-              
-              {/* Kotak Info PPDB (Atas) */}
-              <div className="flex-1 w-full border border-slate-300 bg-[#E3DCc3] rounded-xl flex flex-col items-center justify-center p-5 shadow-sm min-h-[120px]">
-                <h3 className="font-bold text-base lg:text-lg text-slate-800 uppercase tracking-widest mb-2">INFO PPDB</h3>
-                <p className="text-xs lg:text-sm text-slate-600 text-center">Area informasi Pendaftaran Peserta Didik Baru</p>
+                {/* Baris 3: Menampilkan BLOG GURU (Sejajar presisi) */}
+                {index === 2 && (
+                  <div className="flex-1 w-full border border-slate-300 bg-[#E3DCc3] rounded-xl flex flex-col items-center justify-center p-6 shadow-sm">
+                    <h3 className="font-bold text-lg text-slate-800 uppercase tracking-widest mb-2">BLOG GURU</h3>
+                    <p className="text-sm text-slate-600 text-center">Kumpulan artikel, opini, dan karya inspiratif tenaga pendidik</p>
+                  </div>
+                )}
+
               </div>
-
-              {/* Kotak Blog Guru (Bawah) */}
-              <div className="flex-1 w-full border border-slate-300 bg-[#E3DCc3] rounded-xl flex flex-col items-center justify-center p-5 shadow-sm min-h-[120px]">
-                <h3 className="font-bold text-base lg:text-lg text-slate-800 uppercase tracking-widest mb-2">BLOG GURU</h3>
-                <p className="text-xs lg:text-sm text-slate-600 text-center">Kumpulan artikel, opini, dan karya inspiratif tenaga pendidik</p>
-              </div>
-
             </div>
-
-          </div>
+          ))}
+          
         </div>
       </section>
 
