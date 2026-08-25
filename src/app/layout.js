@@ -33,54 +33,22 @@ export default function RootLayout({ children }) {
           }
         `}} />
 
-        {/* Top Bar: Tombol Media Sosial & Status */}
+        {/* Top Bar: Status Tahun Ajaran (Medsos sudah dipindah ke bawah) */}
         <div className="bg-slate-900 text-slate-300 text-xs py-1.5 px-4 border-b border-slate-800">
-          <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-            
-            {/* Tombol Media Sosial */}
-            <div className="flex items-center space-x-3">
-              <span className="text-slate-400 font-medium hidden sm:inline">Ikuti Kami:</span>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-amber-400 transition-colors flex items-center space-x-1"
-                title="Facebook"
-              >
-                <span>📘 Facebook</span>
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-amber-400 transition-colors flex items-center space-x-1"
-                title="Instagram"
-              >
-                <span>📸 Instagram</span>
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-amber-400 transition-colors flex items-center space-x-1"
-                title="YouTube"
-              >
-                <span>▶️ YouTube</span>
-              </a>
-            </div>
-
+          <div className="max-w-7xl mx-auto flex justify-end">
             {/* Status Tahun Ajaran */}
             <div className="flex items-center space-x-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               <span className="text-slate-300 font-semibold">Tahun Ajaran 2026/2027</span>
             </div>
-
           </div>
         </div>
 
         {/* Header Identitas Sekolah */}
         <header className="bg-white border-b border-slate-200">
-          <div className="max-w-7xl mx-auto px-4 py-1.5 flex flex-col sm:flex-row items-center justify-between">
+          <div className="max-w-7xl mx-auto px-4 py-2 flex flex-col lg:flex-row items-center justify-between gap-4">
+            
+            {/* Kiri: Logo & Nama Sekolah */}
             <div className="flex items-center space-x-3">
               {/* Logo Adventist Berputar Horizontal 3D */}
               <img
@@ -97,6 +65,52 @@ export default function RootLayout({ children }) {
                   Membentuk Generasi Berkarakter, Cerdas, dan Berintegritas
                 </p>
               </div>
+            </div>
+
+            {/* Kanan: Media Sosial & Nomor Telepon */}
+            <div className="flex items-center space-x-4 sm:space-x-6">
+              
+              {/* Tombol Media Sosial */}
+              <div className="flex items-center space-x-3 text-xs sm:text-sm font-semibold text-slate-600">
+                <span className="hidden sm:inline text-slate-400 mr-1">Ikuti Kami:</span>
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-600 transition-colors flex items-center space-x-1"
+                  title="Facebook"
+                >
+                  <span>📘 Facebook</span>
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-pink-600 transition-colors flex items-center space-x-1"
+                  title="Instagram"
+                >
+                  <span>📸 Instagram</span>
+                </a>
+                <a
+                  href="https://youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-red-600 transition-colors flex items-center space-x-1"
+                  title="YouTube"
+                >
+                  <span>▶️ YouTube</span>
+                </a>
+              </div>
+
+              {/* Garis Pemisah Visual */}
+              <div className="hidden sm:block h-8 border-l border-slate-200"></div>
+
+              {/* Nomor Telepon (Di letakkan paling kanan) */}
+              <div className="flex items-center space-x-2 bg-red-50 text-red-950 px-4 py-1.5 rounded-full border border-red-100 shadow-sm">
+                <span className="text-sm">📞</span>
+                <span className="text-sm sm:text-base font-extrabold tracking-wide">0778-363082</span>
+              </div>
+
             </div>
           </div>
 
