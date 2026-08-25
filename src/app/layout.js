@@ -25,6 +25,14 @@ export default function RootLayout({ children }) {
     <html lang="id">
       <body className="bg-slate-100 text-slate-900 font-sans antialiased min-h-screen flex flex-col">
         
+        {/* Animasi Putar Horizontal Khusus */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          @keyframes spin-horizontal {
+            from { transform: perspective(1000px) rotateY(0deg); }
+            to { transform: perspective(1000px) rotateY(360deg); }
+          }
+        `}} />
+
         {/* Top Bar: Tombol Media Sosial & Status */}
         <div className="bg-slate-900 text-slate-300 text-xs py-1.5 px-4 border-b border-slate-800">
           <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
@@ -70,16 +78,16 @@ export default function RootLayout({ children }) {
           </div>
         </div>
 
-        {/* Header Identitas Sekolah (Tinggi Ramping & Padat) */}
+        {/* Header Identitas Sekolah */}
         <header className="bg-white border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 py-1.5 flex flex-col sm:flex-row items-center justify-between">
             <div className="flex items-center space-x-3">
-              {/* Logo Baru Adventist Berputar Searah Jarum Jam - Ukuran Diperkecil 75% */}
+              {/* Logo Adventist Berputar Horizontal 3D */}
               <img
                 src="/logo-OKE.png"
                 alt="Logo Adventist Education"
                 className="h-12 sm:h-16 w-auto object-contain shrink-0"
-                style={{ animation: "spin 12s linear infinite" }}
+                style={{ animation: "spin-horizontal 12s linear infinite" }}
               />
               <div className="flex flex-col justify-center">
                 <h1 className="text-xl sm:text-2xl font-black text-red-950 tracking-tight leading-none mb-1">
