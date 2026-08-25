@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
       <body className="bg-slate-100 text-slate-900 font-sans antialiased min-h-screen flex flex-col">
         
         {/* Top Bar: Tombol Media Sosial & Status */}
-        <div className="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
+        <div className="bg-slate-900 text-slate-300 text-xs py-1.5 px-4 border-b border-slate-800">
           <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
             
             {/* Tombol Media Sosial */}
@@ -70,22 +70,22 @@ export default function RootLayout({ children }) {
           </div>
         </div>
 
-        {/* Header Identitas Sekolah (Padding Vertikal Dipadatkan) */}
+        {/* Header Identitas Sekolah (Tinggi Ramping & Padat) */}
         <header className="bg-white border-b border-slate-200">
-          <div className="max-w-7xl mx-auto px-4 py-0.5 flex flex-col sm:flex-row items-center justify-between">
-            <div className="flex items-center space-x-4 my-0">
-              {/* Logo Tetap Berukuran Besar & Berputar */}
+          <div className="max-w-7xl mx-auto px-4 py-1.5 flex flex-col sm:flex-row items-center justify-between">
+            <div className="flex items-center space-x-3">
+              {/* Logo Adventist Berputar Searah Jarum Jam */}
               <img
                 src="/logo.png"
                 alt="Logo Adventist Education"
-                className="h-28 sm:h-32 w-auto object-contain shrink-0"
+                className="h-16 sm:h-20 w-auto object-contain shrink-0"
                 style={{ animation: "spin 12s linear infinite" }}
               />
-              <div className="py-1">
-                <h1 className="text-xl sm:text-2xl font-black text-red-950 tracking-tight leading-tight">
+              <div className="flex flex-col justify-center">
+                <h1 className="text-xl sm:text-2xl font-black text-red-950 tracking-tight leading-none mb-1">
                   SMP - SMA ADVENT BATAM
                 </h1>
-                <p className="text-xs text-slate-500 font-medium tracking-wide">
+                <p className="text-xs text-slate-500 font-medium tracking-wide leading-none">
                   Membentuk Generasi Berkarakter, Cerdas, dan Berintegritas
                 </p>
               </div>
