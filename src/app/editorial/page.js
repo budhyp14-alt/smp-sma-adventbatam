@@ -10,25 +10,29 @@ export default function EditorialPage() {
       title: "Pelajaran Serta Keteladanan Dari Para Pahlawan",
       date: "Tuesday, 11 Jul 2017",
       excerpt: "An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem...",
-      img: "/slider-1.jpg"
+      img: "/slider-1.jpg",
+      link: "/editorial/detail"
     },
     {
       title: "Tugas Kepala Sekolah Sebagai Pembina Siswa Siswa",
       date: "Tuesday, 11 Jul 2017",
       excerpt: "An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem...",
-      img: "/slider-2.jpg"
+      img: "/slider-2.jpg",
+      link: "#"
     },
     {
       title: "Editorial Oleh Kepala Sekolah",
       date: "Tuesday, 11 Jul 2017",
       excerpt: "An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem...",
-      img: "/slider-3.jpg"
+      img: "/slider-3.jpg",
+      link: "#"
     },
     {
       title: "Membentuk Karakter Siswa Di Sekolah",
       date: "Tuesday, 11 Jul 2017",
       excerpt: "An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem...",
-      img: "/slider-1.jpg"
+      img: "/slider-1.jpg",
+      link: "#"
     }
   ];
 
@@ -39,7 +43,7 @@ export default function EditorialPage() {
           
           <div className="text-xs text-slate-700 font-semibold mb-8 flex items-center gap-1">
             <span>Anda ada di :</span>
-            <Link href="/" className="text-emerald-800 hover:underline ml-1">🏠 Beranda</Link>
+            <Link href="/" className="text-[#047857] hover:underline ml-1">🏠 Beranda</Link>
             <span>-</span>
             <span className="text-slate-500">Editorial</span>
           </div>
@@ -55,7 +59,7 @@ export default function EditorialPage() {
                 {editorialList.map((item, index) => (
                   <div key={index} className="flex flex-col sm:flex-row gap-5 items-start group">
                     <div className="w-full sm:w-48 aspect-[4/3] shrink-0 bg-slate-300 shadow-sm overflow-hidden rounded">
-                      <Link href="/editorial/detail">
+                      <Link href={item.link}>
                         <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                       </Link>
                     </div>
@@ -63,10 +67,10 @@ export default function EditorialPage() {
                       <p className="text-[11px] sm:text-xs text-slate-600 font-semibold mb-1">
                         Terbit : {item.date}
                       </p>
-                      <Link href="/editorial/detail" className="text-[#047857] hover:text-emerald-900 font-bold text-lg leading-tight mb-2 transition-colors">
+                      <Link href={item.link} className="text-[#047857] hover:text-emerald-900 font-bold text-lg leading-tight mb-2 transition-colors">
                         {item.title}
                       </Link>
-                      <Link href="/editorial/detail" className="text-sm text-slate-800 leading-relaxed text-justify hover:text-slate-600 transition-colors">
+                      <Link href={item.link} className="text-sm text-slate-800 leading-relaxed text-justify hover:text-slate-600 transition-colors">
                         {item.excerpt}
                       </Link>
                     </div>
@@ -75,7 +79,6 @@ export default function EditorialPage() {
               </div>
             </div>
 
-            {/* SIDEBAR SEKOLAH (Hanya FB, IG, YT) */}
             <div className="lg:col-span-4 lg:border-l border-dashed border-slate-500 lg:pl-8 flex flex-col pt-2">
               <h2 className="text-center font-black text-slate-800 text-base mb-1 tracking-wide">SMAS ADVENT BATAM</h2>
               <p className="text-center text-xs text-slate-800 font-medium mb-8 px-4">
@@ -100,15 +103,15 @@ export default function EditorialPage() {
                   <span className="text-emerald-700 text-right hover:underline cursor-pointer">info@adventbatam.sch.id</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-slate-400/30 pb-2">
-                  <span className="text-slate-700">f</span>
+                  <span className="text-slate-700 font-bold">f</span>
                   <Link href="#" className="text-emerald-700 text-right hover:underline">Facebook</Link>
                 </div>
                 <div className="flex justify-between items-center border-b border-slate-400/30 pb-2">
-                  <span className="text-slate-700">📷</span>
+                  <span className="text-slate-700 font-bold">📷</span>
                   <Link href="#" className="text-emerald-700 text-right hover:underline">Instagram</Link>
                 </div>
                 <div className="flex justify-between items-center pb-2">
-                  <span className="text-slate-700">▶</span>
+                  <span className="text-slate-700 font-bold">▶</span>
                   <Link href="#" className="text-emerald-700 text-right hover:underline">YouTube</Link>
                 </div>
               </div>
@@ -118,7 +121,6 @@ export default function EditorialPage() {
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer className="w-full shrink-0">
         <div className="bg-[#D97706] py-12 px-4 text-white">
           <div className="max-w-7xl mx-auto flex flex-col items-start space-y-6">
@@ -144,6 +146,8 @@ export default function EditorialPage() {
               <ul className="text-xs space-y-2 font-semibold max-w-md">
                 <li className="hover:underline cursor-pointer">A WordPress Commenter on Hello world!</li>
                 <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Seinima Sapientia Proficiscitur Aconti Copassuni</li>
+                <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Seinima Sapientia Proficiscitur Aconti Copassuni</li>
+                <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Seinima Sapientia Proficiscitur Aconti Copassuni</li>
               </ul>
             </div>
             <div className="flex gap-16 mt-2">
@@ -153,6 +157,7 @@ export default function EditorialPage() {
                   <li className="hover:underline cursor-pointer">August 2025</li>
                   <li className="hover:underline cursor-pointer">June 2025</li>
                   <li className="hover:underline cursor-pointer">July 2021</li>
+                  <li className="hover:underline cursor-pointer">May 2021</li>
                 </ul>
               </div>
               <div>
