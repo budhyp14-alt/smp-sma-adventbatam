@@ -5,7 +5,6 @@ export const metadata = {
 };
 
 export default function EditorialPage() {
-  // Data Daftar Editorial Kepala Sekolah (Tersusun dari yang terbaru di atas)
   const editorialList = [
     {
       title: "Pelajaran Serta Keteladanan Dari Para Pahlawan",
@@ -35,14 +34,9 @@ export default function EditorialPage() {
 
   return (
     <main className="min-h-screen flex flex-col font-sans">
-      
-      {/* ========================================= */}
-      {/* AREA KONTEN UTAMA (Background Beige)      */}
-      {/* ========================================= */}
       <section className="w-full bg-[#DCC690] text-slate-900 flex-1 pt-6 pb-16 px-4">
         <div className="max-w-7xl mx-auto">
           
-          {/* Breadcrumb */}
           <div className="text-xs text-slate-700 font-semibold mb-8 flex items-center gap-1">
             <span>Anda ada di :</span>
             <Link href="/" className="text-emerald-800 hover:underline ml-1">🏠 Beranda</Link>
@@ -52,7 +46,6 @@ export default function EditorialPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             
-            {/* === KOLOM KIRI (Daftar Editorial) === */}
             <div className="lg:col-span-8 flex flex-col">
               <h1 className="text-2xl font-black text-slate-800 mb-8 border-b border-slate-400/30 pb-4">
                 Editorial Kepala Sekolah
@@ -61,22 +54,18 @@ export default function EditorialPage() {
               <div className="space-y-8">
                 {editorialList.map((item, index) => (
                   <div key={index} className="flex flex-col sm:flex-row gap-5 items-start group">
-                    {/* Thumbnail Foto (Bisa Diklik) */}
                     <div className="w-full sm:w-48 aspect-[4/3] shrink-0 bg-slate-300 shadow-sm overflow-hidden rounded">
                       <Link href="/editorial/detail">
                         <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                       </Link>
                     </div>
-                    {/* Teks Berita */}
                     <div className="flex flex-col">
                       <p className="text-[11px] sm:text-xs text-slate-600 font-semibold mb-1">
                         Terbit : {item.date}
                       </p>
-                      {/* Judul (Bisa Diklik) */}
                       <Link href="/editorial/detail" className="text-[#047857] hover:text-emerald-900 font-bold text-lg leading-tight mb-2 transition-colors">
                         {item.title}
                       </Link>
-                      {/* Lead / Excerpt (Bisa Diklik) */}
                       <Link href="/editorial/detail" className="text-sm text-slate-800 leading-relaxed text-justify hover:text-slate-600 transition-colors">
                         {item.excerpt}
                       </Link>
@@ -86,11 +75,9 @@ export default function EditorialPage() {
               </div>
             </div>
 
-            {/* === KOLOM KANAN (Sidebar Info Sekolah) === */}
+            {/* SIDEBAR SEKOLAH (Hanya FB, IG, YT) */}
             <div className="lg:col-span-4 lg:border-l border-dashed border-slate-500 lg:pl-8 flex flex-col pt-2">
-              <h2 className="text-center font-black text-slate-800 text-base mb-1 tracking-wide">
-                SMAS ADVENT BATAM
-              </h2>
+              <h2 className="text-center font-black text-slate-800 text-base mb-1 tracking-wide">SMAS ADVENT BATAM</h2>
               <p className="text-center text-xs text-slate-800 font-medium mb-8 px-4">
                 Jl. Prof. DR. Hamka, Kav 4, Kel. Kibing, Kec. Batu Aji
               </p>
@@ -102,9 +89,7 @@ export default function EditorialPage() {
                 </div>
                 <div className="flex justify-between items-start border-b border-slate-400/30 pb-2">
                   <span>Kepala Sekolah</span>
-                  <span className="text-right max-w-[150px]">
-                    Tona Leon Ferdinan<br/>Situmorang,<br/>S.Pd.,MA.,ED.
-                  </span>
+                  <span className="text-right max-w-[150px]">Tona Leon Ferdinan<br/>Situmorang,<br/>S.Pd.,MA.,ED.</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-slate-400/30 pb-2">
                   <span>Telepon</span>
@@ -119,16 +104,12 @@ export default function EditorialPage() {
                   <Link href="#" className="text-emerald-700 text-right hover:underline">Facebook</Link>
                 </div>
                 <div className="flex justify-between items-center border-b border-slate-400/30 pb-2">
-                  <span className="text-slate-700">🐦</span>
-                  <Link href="#" className="text-emerald-700 text-right hover:underline">Twitter</Link>
-                </div>
-                <div className="flex justify-between items-center border-b border-slate-400/30 pb-2">
                   <span className="text-slate-700">📷</span>
                   <Link href="#" className="text-emerald-700 text-right hover:underline">Instagram</Link>
                 </div>
                 <div className="flex justify-between items-center pb-2">
                   <span className="text-slate-700">▶</span>
-                  <Link href="#" className="text-emerald-700 text-right hover:underline">Youtube</Link>
+                  <Link href="#" className="text-emerald-700 text-right hover:underline">YouTube</Link>
                 </div>
               </div>
             </div>
@@ -137,9 +118,7 @@ export default function EditorialPage() {
         </div>
       </section>
 
-      {/* ========================================= */}
-      {/* WIDGET FOOTER ORANYE & KREDIT MERAH       */}
-      {/* ========================================= */}
+      {/* FOOTER */}
       <footer className="w-full shrink-0">
         <div className="bg-[#D97706] py-12 px-4 text-white">
           <div className="max-w-7xl mx-auto flex flex-col items-start space-y-6">
