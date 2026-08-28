@@ -5,7 +5,7 @@ export const metadata = {
 };
 
 export default function EditorialPage() {
-  // Data Daftar Editorial Kepala Sekolah
+  // Data Daftar Editorial Kepala Sekolah (Tersusun dari yang terbaru di atas)
   const editorialList = [
     {
       title: "Pelajaran Serta Keteladanan Dari Para Pahlawan",
@@ -45,35 +45,41 @@ export default function EditorialPage() {
           {/* Breadcrumb */}
           <div className="text-xs text-slate-700 font-semibold mb-8 flex items-center gap-1">
             <span>Anda ada di :</span>
-            <Link href="/" className="text-teal-700 hover:underline ml-1">🏠 Beranda</Link>
+            <Link href="/" className="text-emerald-800 hover:underline ml-1">🏠 Beranda</Link>
             <span>-</span>
-            <span>Editorial</span>
+            <span className="text-slate-500">Editorial</span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             
             {/* === KOLOM KIRI (Daftar Editorial) === */}
             <div className="lg:col-span-8 flex flex-col">
-              <h1 className="text-2xl font-black text-slate-800 mb-8">Editorial Kepala Sekolah</h1>
+              <h1 className="text-2xl font-black text-slate-800 mb-8 border-b border-slate-400/30 pb-4">
+                Editorial Kepala Sekolah
+              </h1>
               
-              <div className="space-y-6">
+              <div className="space-y-8">
                 {editorialList.map((item, index) => (
-                  <div key={index} className="flex flex-col sm:flex-row gap-5 items-start">
-                    {/* Thumbnail Foto */}
-                    <div className="w-full sm:w-48 aspect-[4/3] shrink-0 bg-slate-300 shadow-sm">
-                      <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
+                  <div key={index} className="flex flex-col sm:flex-row gap-5 items-start group">
+                    {/* Thumbnail Foto (Bisa Diklik) */}
+                    <div className="w-full sm:w-48 aspect-[4/3] shrink-0 bg-slate-300 shadow-sm overflow-hidden rounded">
+                      <Link href="/editorial/detail">
+                        <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                      </Link>
                     </div>
                     {/* Teks Berita */}
                     <div className="flex flex-col">
-                      <p className="text-[11px] sm:text-xs text-slate-700 mb-1">
+                      <p className="text-[11px] sm:text-xs text-slate-600 font-semibold mb-1">
                         Terbit : {item.date}
                       </p>
-                      <Link href="#" className="text-[#047857] hover:text-emerald-800 font-bold text-lg leading-tight mb-2 transition-colors">
+                      {/* Judul (Bisa Diklik) */}
+                      <Link href="/editorial/detail" className="text-[#047857] hover:text-emerald-900 font-bold text-lg leading-tight mb-2 transition-colors">
                         {item.title}
                       </Link>
-                      <p className="text-sm text-slate-800 leading-relaxed text-justify">
+                      {/* Lead / Excerpt (Bisa Diklik) */}
+                      <Link href="/editorial/detail" className="text-sm text-slate-800 leading-relaxed text-justify hover:text-slate-600 transition-colors">
                         {item.excerpt}
-                      </p>
+                      </Link>
                     </div>
                   </div>
                 ))}
@@ -102,11 +108,11 @@ export default function EditorialPage() {
                 </div>
                 <div className="flex justify-between items-center border-b border-slate-400/30 pb-2">
                   <span>Telepon</span>
-                  <span className="text-emerald-700 text-right hover:underline cursor-pointer">0099877776666</span>
+                  <span className="text-emerald-700 text-right hover:underline cursor-pointer">0778-363082</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-slate-400/30 pb-2">
                   <span>Email</span>
-                  <span className="text-emerald-700 text-right hover:underline cursor-pointer">drovptas@gmail.com</span>
+                  <span className="text-emerald-700 text-right hover:underline cursor-pointer">info@adventbatam.sch.id</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-slate-400/30 pb-2">
                   <span className="text-slate-700">f</span>
@@ -159,7 +165,6 @@ export default function EditorialPage() {
               <ul className="text-xs space-y-2 font-semibold max-w-md">
                 <li className="hover:underline cursor-pointer">A WordPress Commenter on Hello world!</li>
                 <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Seinima Sapientia Proficiscitur Aconti Copassuni</li>
-                <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Seinima Sapientia Proficiscitur Aconti Copassuni</li>
               </ul>
             </div>
             <div className="flex gap-16 mt-2">
@@ -169,7 +174,6 @@ export default function EditorialPage() {
                   <li className="hover:underline cursor-pointer">August 2025</li>
                   <li className="hover:underline cursor-pointer">June 2025</li>
                   <li className="hover:underline cursor-pointer">July 2021</li>
-                  <li className="hover:underline cursor-pointer">May 2021</li>
                 </ul>
               </div>
               <div>
@@ -186,7 +190,6 @@ export default function EditorialPage() {
           Developed by Ir. Budhy Prasetyo
         </div>
       </footer>
-
     </main>
   );
 }
