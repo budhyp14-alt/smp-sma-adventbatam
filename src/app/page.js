@@ -137,7 +137,7 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 mb-12 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           
-          {/* KIRI (2/3): Editorial Kepala Sekolah */}
+          {/* KIRI (2/3): Editorial Kepala Sekolah (SEKARANG BISA DIKLIK MENUJU /editorial) */}
           <div className="lg:col-span-2 flex flex-col md:flex-row gap-5 items-start">
             <div className="w-full md:w-[35%] lg:w-[30%] aspect-square relative rounded-xl overflow-hidden shadow-sm shrink-0">
               <img src="/slider-3.jpg" alt="Tona Leon F. Situmorang" className="w-full h-full object-cover" />
@@ -152,14 +152,22 @@ export default function Home() {
                 <span className="bg-[#4D524F] text-white rounded-full w-7 h-7 flex items-center justify-center text-[10px] tracking-widest">•••</span>
                 <h2 className="font-bold text-lg text-[#4D524F]">Editorial Kepala Sekolah</h2>
               </div>
-              <div className="bg-[#E2DECA] p-4 rounded-t-xl shadow-sm mb-2">
+              
+              {/* Judul Bisa Diklik */}
+              <Link href="/editorial" className="bg-[#E2DECA] p-4 rounded-t-xl shadow-sm mb-2 hover:bg-[#d6d1bc] transition-colors cursor-pointer block">
                 <h3 className="text-red-900 font-bold text-base sm:text-lg">Pelajaran Serta Keteladanan Dari Para Pahlawan</h3>
-              </div>
-              <div className="bg-[#E2DECA] p-4 rounded-b-xl shadow-sm mb-4 flex-1">
+              </Link>
+
+              {/* Lead Berita Bisa Diklik */}
+              <Link href="/editorial" className="bg-[#E2DECA] p-4 rounded-b-xl shadow-sm mb-4 flex-1 hover:bg-[#d6d1bc] transition-colors cursor-pointer block">
                 <p className="text-slate-600 text-[13px] sm:text-sm leading-relaxed text-justify">An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem quaedam non melius quam veteres, quaedam omnino relicta. Quia...</p>
-              </div>
+              </Link>
+              
+              {/* Tombol Lihat Semua Bisa Diklik */}
               <div>
-                <button className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2 px-6 rounded shadow-sm text-sm">Lihat Semua</button>
+                <Link href="/editorial" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2 px-6 rounded shadow-sm text-sm inline-block">
+                  Lihat Semua
+                </Link>
               </div>
             </div>
           </div>
