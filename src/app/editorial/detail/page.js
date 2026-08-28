@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Tugas Kepala Sekolah Sebagai Pembina Siswa Siswa - SMP SMA Advent Batam",
+  title: "Pelajaran Serta Keteladanan Dari Para Pahlawan - SMP SMA Advent Batam",
 };
 
 export default function EditorialDetailPage() {
@@ -17,24 +17,23 @@ export default function EditorialDetailPage() {
             <span>-</span>
             <Link href="/editorial" className="text-[#047857] hover:underline">Editorial</Link>
             <span>-</span>
-            <span className="text-slate-600">Tugas Kepala Sekolah Sebagai Pembina Siswa Siswa</span>
+            <span className="text-slate-600 line-clamp-1 max-w-[200px] sm:max-w-none">Pelajaran Serta Keteladanan Dari Para Pahlawan</span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             
             <div className="lg:col-span-8 flex flex-col">
               <h1 className="text-2xl sm:text-3xl font-black text-slate-800 mb-3 leading-tight">
-                Tugas Kepala Sekolah Sebagai Pembina Siswa Siswa
+                Pelajaran Serta Keteladanan Dari Para Pahlawan
               </h1>
               <p className="text-xs sm:text-sm text-slate-700 mb-4">
                 Diterbitkan : Tuesday, 11 July 2017
               </p>
 
-              {/* Ikon Media Sosial Share (Hanya FB, IG, YT) */}
               <div className="flex gap-1.5 mb-6">
-                <span className="w-6 h-6 bg-blue-600 text-white flex items-center justify-center rounded text-xs cursor-pointer hover:bg-blue-700">f</span>
-                <span className="w-6 h-6 bg-pink-600 text-white flex items-center justify-center rounded text-xs cursor-pointer hover:bg-pink-700">📷</span>
-                <span className="w-6 h-6 bg-red-600 text-white flex items-center justify-center rounded text-xs cursor-pointer hover:bg-red-700">▶</span>
+                <span className="w-6 h-6 bg-blue-600 text-white flex items-center justify-center rounded text-xs cursor-pointer hover:bg-blue-700 font-bold">f</span>
+                <span className="w-6 h-6 bg-pink-600 text-white flex items-center justify-center rounded text-xs cursor-pointer hover:bg-pink-700 font-bold">📷</span>
+                <span className="w-6 h-6 bg-red-600 text-white flex items-center justify-center rounded text-xs cursor-pointer hover:bg-red-700 font-bold">▶</span>
               </div>
 
               <div className="space-y-4 text-[13px] sm:text-sm text-slate-800 leading-relaxed text-justify">
@@ -44,69 +43,27 @@ export default function EditorialDetailPage() {
               </div>
             </div>
 
-            {/* SIDEBAR KANAN */}
             <div className="lg:col-span-4 flex flex-col">
-              
               <div className="w-full aspect-[4/3] bg-slate-300 shadow-sm mb-3 rounded overflow-hidden">
                 <img src="/slider-2.jpg" alt="Ilustrasi Penulis" className="w-full h-full object-cover" />
               </div>
               <p className="text-xs text-slate-700 font-medium mb-1">Penulis : Cluss Creative</p>
-              <p className="text-xs text-slate-700 font-medium mb-8">Dibaca 57 kali</p>
+              <p className="text-xs text-slate-700 font-medium mb-8">Dibaca 235 kali</p>
 
-              <div className="border-t border-slate-400/30 pt-6">
-                <h2 className="text-center font-black text-slate-800 text-base mb-1 tracking-wide">SMAS ADVENT BATAM</h2>
-                <p className="text-center text-xs text-slate-800 font-medium mb-6 px-4">
-                  Jl. Prof. DR. Hamka, Kav 4, Kel. Kibing, Kec. Batu Aji
-                </p>
-
-                {/* Info Sekolah & Media Sosial (Hanya FB, IG, YT) */}
-                <div className="space-y-4 text-xs font-semibold text-slate-800">
-                  <div className="flex justify-between items-center border-b border-slate-400/30 pb-2">
-                    <span>NSPN</span>
-                    <span className="text-right">20404yyy</span>
-                  </div>
-                  <div className="flex justify-between items-start border-b border-slate-400/30 pb-2">
-                    <span>Kepala Sekolah</span>
-                    <span className="text-right max-w-[150px]">Tona Leon Ferdinan<br/>Situmorang,<br/>S.Pd.,MA.,ED.</span>
-                  </div>
-                  <div className="flex justify-between items-center border-b border-slate-400/30 pb-2">
-                    <span>Telepon</span>
-                    <span className="text-emerald-700 text-right hover:underline cursor-pointer">0778-363082</span>
-                  </div>
-                  <div className="flex justify-between items-center border-b border-slate-400/30 pb-2">
-                    <span>Email</span>
-                    <span className="text-emerald-700 text-right hover:underline cursor-pointer">info@adventbatam.sch.id</span>
-                  </div>
-                  <div className="flex justify-between items-center border-b border-slate-400/30 pb-2">
-                    <span className="text-slate-700">f</span>
-                    <Link href="#" className="text-emerald-700 text-right hover:underline">Facebook</Link>
-                  </div>
-                  <div className="flex justify-between items-center border-b border-slate-400/30 pb-2">
-                    <span className="text-slate-700">📷</span>
-                    <Link href="#" className="text-emerald-700 text-right hover:underline">Instagram</Link>
-                  </div>
-                  <div className="flex justify-between items-center pb-2 border-b border-slate-400/30">
-                    <span className="text-slate-700">▶</span>
-                    <Link href="#" className="text-emerald-700 text-right hover:underline">YouTube</Link>
-                  </div>
-                </div>
-              </div>
-
-              {/* TULISAN LAINNYA */}
-              <div className="mt-8">
+              <div className="mt-2">
                 <h3 className="font-bold text-lg text-slate-800 mb-5">Tulisan Lainnya</h3>
                 <div className="space-y-5">
                   <div>
-                    <Link href="#" className="text-[#047857] font-bold hover:underline text-[13px] leading-snug block">Membentuk Karakter Siswa Di Sekolah</Link>
-                    <p className="text-[11px] text-slate-600 italic mt-1">Dibaca : 62 kali</p>
-                  </div>
-                  <div>
-                    <Link href="#" className="text-[#047857] font-bold hover:underline text-[13px] leading-snug block">Pelajaran Serta Keteladanan Dari Para Pahlawan</Link>
-                    <p className="text-[11px] text-slate-600 italic mt-1">Dibaca : 235 kali</p>
+                    <Link href="#" className="text-[#047857] font-bold hover:underline text-[13px] leading-snug block">Tugas Kepala Sekolah Sebagai Pembina Siswa Siswa</Link>
+                    <p className="text-[11px] text-slate-600 italic mt-1">Dibaca : 57 kali</p>
                   </div>
                   <div>
                     <Link href="#" className="text-[#047857] font-bold hover:underline text-[13px] leading-snug block">Editorial Oleh Kepala Sekolah</Link>
                     <p className="text-[11px] text-slate-600 italic mt-1">Dibaca : 59 kali</p>
+                  </div>
+                  <div>
+                    <Link href="#" className="text-[#047857] font-bold hover:underline text-[13px] leading-snug block">Membentuk Karakter Siswa Di Sekolah</Link>
+                    <p className="text-[11px] text-slate-600 italic mt-1">Dibaca : 62 kali</p>
                   </div>
                 </div>
               </div>
@@ -116,7 +73,6 @@ export default function EditorialDetailPage() {
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer className="w-full shrink-0">
         <div className="bg-[#D97706] py-12 px-4 text-white">
           <div className="max-w-7xl mx-auto flex flex-col items-start space-y-6">
@@ -134,13 +90,36 @@ export default function EditorialDetailPage() {
                 <li className="hover:underline cursor-pointer">BAB 1 Badan Usaha dalam Perekonomian</li>
                 <li className="hover:underline cursor-pointer">BAB 1 INFORMATIKA & PEMBELAJARANNYA</li>
                 <li className="hover:underline cursor-pointer">TIK</li>
+                <li className="hover:underline cursor-pointer">Hello world!</li>
               </ul>
             </div>
             <div>
               <p className="font-bold text-base mb-3 mt-2">Recent Comments</p>
               <ul className="text-xs space-y-2 font-semibold max-w-md">
+                <li className="hover:underline cursor-pointer">A WordPress Commenter on Hello world!</li>
+                <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Seinima Sapientia Proficiscitur Aconti Copassuni</li>
+                <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Seinima Sapientia Proficiscitur Aconti Copassuni</li>
+                <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Seinima Sapientia Proficiscitur Aconti Copassuni</li>
                 <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Seinima Sapientia Proficiscitur Aconti Copassuni</li>
               </ul>
+            </div>
+            <div className="flex gap-16 mt-2">
+              <div>
+                <p className="font-bold text-base mb-3">Archives</p>
+                <ul className="text-xs space-y-1.5 font-semibold">
+                  <li className="hover:underline cursor-pointer">August 2025</li>
+                  <li className="hover:underline cursor-pointer">June 2025</li>
+                  <li className="hover:underline cursor-pointer">July 2021</li>
+                  <li className="hover:underline cursor-pointer">May 2021</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-bold text-base mb-3">Categories</p>
+                <ul className="text-xs space-y-1.5 font-semibold">
+                  <li className="hover:underline cursor-pointer">Grade-07</li>
+                  <li className="hover:underline cursor-pointer">Uncategorized</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -148,6 +127,7 @@ export default function EditorialDetailPage() {
           Developed by Ir. Budhy Prasetyo
         </div>
       </footer>
+
     </main>
   );
 }
