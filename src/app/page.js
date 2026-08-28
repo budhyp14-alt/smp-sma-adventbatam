@@ -27,31 +27,6 @@ export default function Home() {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
-  // Data Editorial & Berita
-  const editorials = [
-    {
-      name: "Ibu Rima Melati Hutagalung",
-      role: "Ketua YPAB",
-      heading: "Web yang Professional",
-      text: "An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem quaedam non melius quam veteres, quaedam omnino relicta. Quia...",
-      img: "/slider-1.jpg"
-    },
-    {
-      name: "Bapak Samuel Simatupang",
-      role: "Manager Operasional",
-      heading: "Web yang Professional",
-      text: "An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem quaedam non melius quam veteres, quaedam omnino relicta. Quia...",
-      img: "/slider-2.jpg"
-    },
-    {
-      name: "Tona Leon F. Situmorang, S.Pd., M.A.Ed.",
-      role: "Kepala Sekolah",
-      heading: "Web yang Professional",
-      text: "An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem quaedam non melius quam veteres, quaedam omnino relicta. Quia...",
-      img: "/slider-3.jpg"
-    }
-  ];
-
   const latestNews = [
     { date: "Tuesday, 12 August 2025", title: "KTT G20 Bali", img: "/slider-1.jpg" },
     { date: "Tuesday, 12 August 2025", title: "BAB 1 Badan Usaha dalam Perekonomian", img: "/slider-2.jpg" },
@@ -94,93 +69,155 @@ export default function Home() {
       </section>
 
       {/* ========================================= */}
-      {/* 2. EDITORIAL, BERITA TERBARU, PPDB & BLOG */}
+      {/* 2. DUA BLOK EDITORIAL BERSEBELAHAN        */}
       {/* ========================================= */}
       <section className="max-w-7xl mx-auto px-4 mb-12 shrink-0">
-        <div className="flex flex-col space-y-8">
-          {editorials.map((item, index) => (
-            <div key={index} className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-              {/* KIRI: EDITORIAL */}
-              <div className="lg:col-span-2 flex flex-col md:flex-row gap-5 items-start">
-                <div className="w-full md:w-[26%] lg:w-[30%] aspect-square relative rounded-xl overflow-hidden shadow-sm border border-slate-200 shrink-0">
-                  <img src={item.img} alt={item.name} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                  <div className="absolute bottom-3 left-3 right-3 text-left">
-                    <p className="text-amber-400 font-bold text-xs sm:text-sm leading-tight mb-1">{item.name}</p>
-                    <p className="text-white text-[10px] sm:text-xs">{item.role}</p>
-                  </div>
-                </div>
-                <div className="w-full md:w-[74%] lg:w-[70%] flex flex-col space-y-3 md:h-[320px] lg:h-[368px]">
-                  <div className="bg-[#E3DCc3] p-4 rounded-xl shadow-sm shrink-0">
-                    <h3 className="text-red-950 font-bold text-lg sm:text-xl">{item.heading}</h3>
-                  </div>
-                  <div className="bg-[#E3DCc3] p-4 sm:p-5 rounded-xl shadow-sm flex-1 flex flex-col justify-between items-start">
-                    <p className="text-slate-700 text-sm leading-relaxed text-justify mb-4">{item.text}</p>
-                    <button className="bg-red-900 hover:bg-red-800 text-white font-bold py-2 px-6 rounded-lg transition-colors text-sm shadow-sm">View All</button>
-                  </div>
-                </div>
-              </div>
-
-              {/* KANAN: LATEST NEWS, PPDB, BLOG GURU */}
-              <div className="lg:col-span-1 flex flex-col h-full">
-                {index === 0 && (
-                  <div className="flex flex-col h-full">
-                    <div className="flex items-center gap-2 mb-5 h-7 shrink-0">
-                      <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-xs">💬</span>
-                      <h2 className="font-bold text-xl text-slate-800">Berita Terbaru</h2>
-                    </div>
-                    <div className="space-y-4 flex-1 flex flex-col justify-between">
-                      {latestNews.map((news, idx) => (
-                        <div key={idx} className="flex gap-4 items-center">
-                          <div className="w-24 h-20 sm:w-28 sm:h-24 shrink-0 rounded-xl overflow-hidden border border-slate-300 shadow-sm">
-                            <img src={news.img} alt="Thumb" className="w-full h-full object-cover" />
-                          </div>
-                          <div className="flex flex-col justify-center">
-                            <p className="text-xs text-slate-600 mb-1">{news.date}</p>
-                            <p className="text-sm font-bold text-red-950 leading-tight line-clamp-2">{news.title}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {index === 1 && (
-                  <div className="flex-1 w-full bg-gradient-to-br from-red-900 to-red-950 text-white rounded-xl flex flex-col justify-center p-6 sm:p-8 shadow-md">
-                    <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-amber-400 text-slate-900 px-3 py-1 rounded w-max mb-3">Info Pendaftaran</span>
-                    <h3 className="text-lg sm:text-xl font-bold mb-3 leading-tight">PPDB Tahun Pelajaran 2026/2027</h3>
-                    <p className="text-red-100 text-xs sm:text-sm leading-relaxed mb-6">Pendaftaran siswa baru tingkat SMP dan SMA telah dibuka. Bergabunglah bersama keluarga besar Advent Batam.</p>
-                    <Link href="/ppdb" className="inline-block w-full text-center bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold py-3 px-4 rounded-xl text-sm transition-colors shadow">Informasi & Pendaftaran</Link>
-                  </div>
-                )}
-                {index === 2 && (
-                  <div className="flex flex-col h-full">
-                    <div className="flex items-center gap-2 mb-5 h-7 shrink-0">
-                      <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-xs">💬</span>
-                      <h2 className="font-bold text-xl text-red-900">Blog Guru</h2>
-                    </div>
-                    <div className="space-y-4 flex-1 flex flex-col justify-between">
-                      {blogGuru.map((blog, idx) => (
-                        <div key={idx} className="flex gap-4 items-center">
-                          <div className="w-24 h-20 sm:w-28 sm:h-24 shrink-0 rounded-xl overflow-hidden border border-slate-300 shadow-sm">
-                            <img src={blog.img} alt="Thumb" className="w-full h-full object-cover" />
-                          </div>
-                          <div className="flex flex-col justify-center">
-                            <p className="text-xs text-slate-600 mb-1">{blog.date}</p>
-                            <p className="text-sm font-bold text-red-900 leading-tight line-clamp-2">{blog.title}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          {/* KOLOM KIRI: Ketua Yayasan */}
+          <div className="flex flex-col sm:flex-row gap-5">
+            {/* Foto Kiri */}
+            <div className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0">
+              <img src="/slider-1.jpg" alt="Rima Melati Hutagalung" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-left">
+                <p className="text-[#E5B55C] font-bold text-sm sm:text-base leading-tight mb-1">
+                  Rima Melati Hutagalung
+                </p>
+                <p className="text-[#E5B55C] text-xs sm:text-sm">
+                  Ketua Yayasan
+                </p>
               </div>
             </div>
-          ))}
+            
+            {/* Teks Kiri */}
+            <div className="w-full sm:w-[60%] flex flex-col">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="bg-[#4D524F] text-white rounded-full w-7 h-7 flex items-center justify-center text-[10px] tracking-widest">•••</span>
+                <h2 className="font-bold text-lg text-[#4D524F]">Editorial Ketua Yayasan</h2>
+              </div>
+              <div className="bg-[#E2DECA] p-4 rounded-t-xl shadow-sm mb-2">
+                <h3 className="text-red-900 font-bold text-base sm:text-lg leading-snug">
+                  Pelajaran Serta Keteladanan Dari Para Pahlawan
+                </h3>
+              </div>
+              <div className="bg-[#E2DECA] p-4 rounded-b-xl shadow-sm mb-4 flex-1">
+                <p className="text-slate-600 text-[13px] sm:text-sm leading-relaxed text-justify line-clamp-6">
+                  An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem quaedam non melius quam veteres, quaedam omnino relicta. Quia...
+                </p>
+              </div>
+              <div>
+                <button className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm">
+                  Lihat Semua
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* KOLOM KANAN: Manajer Operasional */}
+          <div className="flex flex-col sm:flex-row gap-5">
+            {/* Foto Kanan */}
+            <div className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0">
+              <img src="/slider-2.jpg" alt="Samuel Simatupang" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-left">
+                <p className="text-[#E5B55C] font-bold text-sm sm:text-base leading-tight mb-1">
+                  Samuel Simatupang
+                </p>
+                <p className="text-[#E5B55C] text-xs sm:text-sm">
+                  Manajer Operasional
+                </p>
+              </div>
+            </div>
+            
+            {/* Teks Kanan */}
+            <div className="w-full sm:w-[60%] flex flex-col">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="bg-[#4D524F] text-white rounded-full w-7 h-7 flex items-center justify-center text-[10px] tracking-widest">•••</span>
+                <h2 className="font-bold text-lg text-[#4D524F]">Manajer Operasional</h2>
+              </div>
+              <div className="bg-[#E2DECA] p-4 rounded-t-xl shadow-sm mb-2">
+                <h3 className="text-red-900 font-bold text-base sm:text-lg leading-snug">
+                  Pelajaran Serta Keteladanan Dari Para Pahlawan
+                </h3>
+              </div>
+              <div className="bg-[#E2DECA] p-4 rounded-b-xl shadow-sm mb-4 flex-1">
+                <p className="text-slate-600 text-[13px] sm:text-sm leading-relaxed text-justify line-clamp-6">
+                  An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem quaedam non melius quam veteres, quaedam omnino relicta. Quia...
+                </p>
+              </div>
+              <div>
+                <button className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm">
+                  Lihat Semua
+                </button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
       {/* ========================================= */}
-      {/* 3. BAGIAN PETUAH BIJAKSANA (Oranye)       */}
+      {/* 3. WIDGET: BERITA, PPDB, BLOG GURU        */}
+      {/* ========================================= */}
+      <section className="max-w-7xl mx-auto px-4 mb-12 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          {/* Berita Terbaru */}
+          <div>
+            <div className="flex items-center gap-2 mb-5 h-7">
+              <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-xs">💬</span>
+              <h2 className="font-bold text-xl text-slate-800">Berita Terbaru</h2>
+            </div>
+            <div className="space-y-4">
+              {latestNews.map((news, idx) => (
+                <div key={idx} className="flex gap-4 items-center">
+                  <div className="w-24 h-20 shrink-0 rounded-xl overflow-hidden shadow-sm">
+                    <img src={news.img} alt="Thumb" className="w-full h-full object-cover" />
+                  </div>
+                  <div className="flex flex-col justify-center">
+                    <p className="text-xs text-slate-600 mb-1">{news.date}</p>
+                    <p className="text-sm font-bold text-red-950 leading-tight line-clamp-2">{news.title}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Info PPDB */}
+          <div className="w-full bg-gradient-to-br from-red-900 to-red-950 text-white rounded-xl flex flex-col justify-center p-6 shadow-md">
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-amber-400 text-slate-900 px-3 py-1 rounded w-max mb-3">Info Pendaftaran</span>
+            <h3 className="text-lg font-bold mb-3 leading-tight">PPDB Tahun Pelajaran 2026/2027</h3>
+            <p className="text-red-100 text-xs sm:text-sm leading-relaxed mb-6">Pendaftaran siswa baru tingkat SMP dan SMA telah dibuka. Bergabunglah bersama keluarga besar Advent Batam.</p>
+            <Link href="/ppdb" className="inline-block w-full text-center bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold py-3 px-4 rounded-xl text-sm transition-colors shadow">Informasi & Pendaftaran</Link>
+          </div>
+
+          {/* Blog Guru */}
+          <div>
+            <div className="flex items-center gap-2 mb-5 h-7">
+              <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-xs">💬</span>
+              <h2 className="font-bold text-xl text-red-900">Blog Guru</h2>
+            </div>
+            <div className="space-y-4">
+              {blogGuru.map((blog, idx) => (
+                <div key={idx} className="flex gap-4 items-center">
+                  <div className="w-24 h-20 shrink-0 rounded-xl overflow-hidden shadow-sm">
+                    <img src={blog.img} alt="Thumb" className="w-full h-full object-cover" />
+                  </div>
+                  <div className="flex flex-col justify-center">
+                    <p className="text-xs text-slate-600 mb-1">{blog.date}</p>
+                    <p className="text-sm font-bold text-red-900 leading-tight line-clamp-2">{blog.title}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ========================================= */}
+      {/* 4. BAGIAN PETUAH BIJAKSANA (Oranye)       */}
       {/* ========================================= */}
       <section className="w-full bg-[#D97706] text-white py-10 px-4 text-center shrink-0">
         <h2 className="font-bold text-lg sm:text-xl mb-6 tracking-wide">Petuah Bijaksana</h2>
@@ -191,12 +228,11 @@ export default function Home() {
       </section>
 
       {/* ========================================= */}
-      {/* 4. BLOK KONTEN BAWAH (Beige/Krem)         */}
+      {/* 5. BLOK KONTEN BAWAH (Beige/Krem)         */}
       {/* ========================================= */}
       <section className="w-full bg-[#E5DCC3] py-10 px-4 flex-1">
         <div className="max-w-7xl mx-auto space-y-12">
           
-          {/* --- BARIS 1: Guru Kreatif, Pengumuman, Agenda, Blog Guru --- */}
           <div className="mb-10">
             <h2 className="font-bold text-sm sm:text-base mb-6 flex items-center gap-2 text-slate-800 uppercase">
               <span className="bg-slate-800 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">👨‍🏫</span>
@@ -225,7 +261,6 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Pengumuman */}
             <div>
               <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">📢</span> Pengumuman</h3>
               <p className="text-[11px] text-slate-500 uppercase font-semibold mb-1">TERBIT : Tuesday, 11 July 2017</p>
@@ -235,8 +270,6 @@ export default function Home() {
               </div>
               <button className="bg-red-900 hover:bg-red-800 text-white text-xs font-bold px-4 py-2 rounded shadow-sm">Lihat Semua</button>
             </div>
-
-            {/* Agenda Terbaru */}
             <div>
               <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">📅</span> Agenda Terbaru</h3>
               <div className="flex gap-4 items-start">
@@ -249,8 +282,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
-            {/* Blog Guru Bawah */}
             <div>
               <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">💬</span> Blog Guru</h3>
               <div className="space-y-4">
@@ -269,9 +300,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* --- BARIS 2: Kegiatan, Fasilitas, Galeri --- */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-6 border-t border-[#D5CCB3]">
-            {/* Kegiatan */}
             <div>
               <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">⭐</span> Kegiatan</h3>
               <div className="w-full aspect-[4/3] rounded-lg overflow-hidden shadow-sm relative">
@@ -284,8 +313,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
-            {/* Fasilitas */}
             <div>
               <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">➕</span> Fasilitas</h3>
               <div className="space-y-4">
@@ -302,8 +329,6 @@ export default function Home() {
                 ))}
               </div>
             </div>
-
-            {/* Galeri */}
             <div>
               <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">🖼️</span> Galeri</h3>
               <div className="grid grid-cols-3 gap-2">
@@ -316,7 +341,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* --- BARIS 3: Video --- */}
           <div className="pt-6 border-t border-[#D5CCB3]">
             <h3 className="text-red-950 font-bold mb-4 text-lg">Video</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -324,16 +348,10 @@ export default function Home() {
                 <div key={vid} className="aspect-video relative rounded-lg overflow-hidden shadow-md group cursor-pointer">
                   <img src={`/slider-${vid}.jpg`} alt="Video" className="w-full h-full object-cover brightness-75 group-hover:brightness-50 transition-all" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-red-600 text-white w-12 h-8 rounded-lg flex items-center justify-center group-hover:bg-red-700 transition-colors">
-                      ▶
-                    </div>
+                    <div className="bg-red-600 text-white w-12 h-8 rounded-lg flex items-center justify-center group-hover:bg-red-700 transition-colors">▶</div>
                   </div>
-                  <div className="absolute top-2 left-2 right-2 text-white text-xs font-bold truncate drop-shadow-md">
-                    Video Dokumentasi {vid}
-                  </div>
-                  <div className="absolute bottom-2 right-2 text-white text-[10px] bg-black/60 px-2 py-0.5 rounded">
-                    Tonton di YouTube
-                  </div>
+                  <div className="absolute top-2 left-2 right-2 text-white text-xs font-bold truncate drop-shadow-md">Video Dokumentasi {vid}</div>
+                  <div className="absolute bottom-2 right-2 text-white text-[10px] bg-black/60 px-2 py-0.5 rounded">Tonton di YouTube</div>
                 </div>
               ))}
             </div>
@@ -343,15 +361,11 @@ export default function Home() {
       </section>
 
       {/* ========================================= */}
-      {/* 5. FOOTER ORANYE & KREDIT BAWAH MERAH     */}
+      {/* 6. FOOTER ORANYE & KREDIT BAWAH MERAH     */}
       {/* ========================================= */}
       <footer className="w-full shrink-0">
-        
-        {/* Area Widget Oranye */}
         <div className="bg-[#D97706] py-12 px-4 text-white">
           <div className="max-w-7xl mx-auto flex flex-col items-start space-y-6">
-            
-            {/* Search */}
             <div className="w-full max-w-sm">
               <p className="font-bold text-sm italic mb-2">Search</p>
               <div className="flex">
@@ -359,8 +373,6 @@ export default function Home() {
                 <button className="bg-white text-slate-800 text-xs font-bold px-4 ml-1">Search</button>
               </div>
             </div>
-
-            {/* Recent Posts */}
             <div>
               <p className="font-bold text-base mb-3">Recent Posts</p>
               <ul className="text-xs space-y-1.5 font-semibold">
@@ -371,8 +383,6 @@ export default function Home() {
                 <li className="hover:underline cursor-pointer">Hello world!</li>
               </ul>
             </div>
-
-            {/* Recent Comments */}
             <div>
               <p className="font-bold text-base mb-3 mt-2">Recent Comments</p>
               <ul className="text-xs space-y-2 font-semibold max-w-md">
@@ -382,8 +392,6 @@ export default function Home() {
                 <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Seinima Sapientia Proficiscitur Aconti Copassuni</li>
               </ul>
             </div>
-
-            {/* Archives & Categories */}
             <div className="flex gap-16 mt-2">
               <div>
                 <p className="font-bold text-base mb-3">Archives</p>
@@ -402,15 +410,11 @@ export default function Home() {
                 </ul>
               </div>
             </div>
-            
           </div>
         </div>
-
-        {/* Baris Kredit Merah Marun (Sesuai Konteks User) */}
         <div className="bg-[#8B0000] text-white text-[10px] sm:text-xs text-center py-4 font-semibold tracking-wider">
           Developed by Ir. Budhy Prasetyo
         </div>
-
       </footer>
 
     </main>
