@@ -76,31 +76,27 @@ export default function Home() {
           
           {/* KIRI: Chairman of the Foundation */}
           <div className="flex flex-col sm:flex-row gap-5">
-            <div className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0">
-              <img src="/slider-1.jpg" alt="Rima Melati Hutagalung" className="w-full h-full object-cover" />
+            {/* KLIK FOTO YAYASAN */}
+            <Link href="/editorial-yayasan/detail" className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer">
+              <img src="/slider-1.jpg" alt="Rima Melati Hutagalung" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4 text-left">
-                <p className="text-[#E5B55C] font-bold text-sm sm:text-base leading-tight mb-1">Rima Melati Hutagalung</p>
+                <p className="text-[#E5B55C] font-bold text-sm sm:text-base leading-tight mb-1 group-hover:text-amber-300 transition-colors">Rima Melati Hutagalung</p>
                 <p className="text-[#E5B55C] text-xs sm:text-sm">Chairman of the Foundation</p>
               </div>
-            </div>
+            </Link>
+            
             <div className="w-full sm:w-[60%] flex flex-col">
               <div className="flex items-center gap-2 mb-3">
                 <span className="bg-[#4D524F] text-white rounded-full w-7 h-7 flex items-center justify-center text-[10px] tracking-widest">•••</span>
                 <h2 className="font-bold text-lg text-[#4D524F]">Foundation Chairman's Editorial</h2>
               </div>
-              
-              {/* KLIK JUDUL YAYASAN */}
               <Link href="/editorial-yayasan/detail" className="bg-[#E2DECA] p-4 rounded-t-xl shadow-sm mb-2 hover:bg-[#d6d1bc] transition-colors cursor-pointer block">
                 <h3 className="text-red-900 font-bold text-base sm:text-lg leading-snug">Visi Jangka Panjang YPAB</h3>
               </Link>
-              
-              {/* KLIK LEAD YAYASAN */}
               <Link href="/editorial-yayasan/detail" className="bg-[#E2DECA] p-4 rounded-b-xl shadow-sm mb-4 flex-1 hover:bg-[#d6d1bc] transition-colors cursor-pointer block">
                 <p className="text-slate-600 text-[13px] sm:text-sm leading-relaxed text-justify line-clamp-6">Yayasan Pendidikan Advent Batam terus berkomitmen untuk memberikan standar pendidikan terbaik yang selaras dengan nilai-nilai moral dan spiritual bagi generasi masa depan...</p>
               </Link>
-              
-              {/* KLIK VIEW ALL YAYASAN */}
               <div>
                 <Link href="/editorial-yayasan" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm inline-block">
                   View All
@@ -111,31 +107,27 @@ export default function Home() {
 
           {/* KANAN: Operations Manager */}
           <div className="flex flex-col sm:flex-row gap-5">
-            <div className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0">
-              <img src="/slider-2.jpg" alt="Samuel Simatupang" className="w-full h-full object-cover" />
+            {/* KLIK FOTO MANAJER */}
+            <Link href="/editorial-manajer/detail" className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer">
+              <img src="/slider-2.jpg" alt="Samuel Simatupang" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4 text-left">
-                <p className="text-[#E5B55C] font-bold text-sm sm:text-base leading-tight mb-1">Samuel Simatupang</p>
+                <p className="text-[#E5B55C] font-bold text-sm sm:text-base leading-tight mb-1 group-hover:text-amber-300 transition-colors">Samuel Simatupang</p>
                 <p className="text-[#E5B55C] text-xs sm:text-sm">Operations Manager</p>
               </div>
-            </div>
+            </Link>
+
             <div className="w-full sm:w-[60%] flex flex-col">
               <div className="flex items-center gap-2 mb-3">
                 <span className="bg-[#4D524F] text-white rounded-full w-7 h-7 flex items-center justify-center text-[10px] tracking-widest">•••</span>
                 <h2 className="font-bold text-lg text-[#4D524F]">Operations Manager's Editorial</h2>
               </div>
-              
-              {/* KLIK JUDUL MANAJER */}
               <Link href="/editorial-manajer/detail" className="bg-[#E2DECA] p-4 rounded-t-xl shadow-sm mb-2 hover:bg-[#d6d1bc] transition-colors cursor-pointer block">
                 <h3 className="text-red-900 font-bold text-base sm:text-lg leading-snug">Peningkatan Fasilitas Berkelanjutan</h3>
               </Link>
-              
-              {/* KLIK LEAD MANAJER */}
               <Link href="/editorial-manajer/detail" className="bg-[#E2DECA] p-4 rounded-b-xl shadow-sm mb-4 flex-1 hover:bg-[#d6d1bc] transition-colors cursor-pointer block">
                 <p className="text-slate-600 text-[13px] sm:text-sm leading-relaxed text-justify line-clamp-6">Pengembangan infrastruktur sekolah menjadi fokus utama kami tahun ini, untuk memastikan kegiatan belajar mengajar berjalan optimal dan nyaman bagi seluruh siswa...</p>
               </Link>
-              
-              {/* KLIK VIEW ALL MANAJER */}
               <div>
                 <Link href="/editorial-manajer" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm inline-block">
                   View All
@@ -153,15 +145,18 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 mb-12 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           
+          {/* KIRI (2/3): Principal's Editorial */}
           <div className="lg:col-span-2 flex flex-col md:flex-row gap-5 items-start">
-            <div className="w-full md:w-[35%] lg:w-[30%] aspect-square relative rounded-xl overflow-hidden shadow-sm shrink-0">
-              <img src="/slider-3.jpg" alt="Tona Leon F. Situmorang" className="w-full h-full object-cover" />
+            {/* KLIK FOTO KEPALA SEKOLAH */}
+            <Link href="/editorial/detail" className="w-full md:w-[35%] lg:w-[30%] aspect-square relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer">
+              <img src="/slider-3.jpg" alt="Tona Leon F. Situmorang" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
               <div className="absolute bottom-3 left-3 right-3 text-left">
-                <p className="text-[#E5B55C] font-bold text-xs sm:text-sm leading-tight mb-1">Tona Leon F. Situmorang, S.Pd.,MA.,ED.</p>
+                <p className="text-[#E5B55C] font-bold text-xs sm:text-sm leading-tight mb-1 group-hover:text-amber-300 transition-colors">Tona Leon F. Situmorang, S.Pd.,MA.,ED.</p>
                 <p className="text-[#E5B55C] text-[10px] sm:text-xs">Principal</p>
               </div>
-            </div>
+            </Link>
+
             <div className="w-full md:w-[65%] lg:w-[70%] flex flex-col h-full">
               <div className="flex items-center gap-2 mb-3">
                 <span className="bg-[#4D524F] text-white rounded-full w-7 h-7 flex items-center justify-center text-[10px] tracking-widest">•••</span>
@@ -184,6 +179,7 @@ export default function Home() {
             </div>
           </div>
 
+          {/* KANAN (1/3): Latest News */}
           <div className="lg:col-span-1 flex flex-col h-full">
             <div className="flex items-center gap-2 mb-3 h-7 shrink-0">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-xs">💬</span>
