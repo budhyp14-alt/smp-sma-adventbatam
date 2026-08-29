@@ -74,20 +74,20 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 mb-8 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
-          {/* KIRI: Ketua Yayasan */}
+          {/* KIRI: Chairman of the Foundation */}
           <div className="flex flex-col sm:flex-row gap-5">
             <div className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0">
               <img src="/slider-1.jpg" alt="Rima Melati Hutagalung" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4 text-left">
                 <p className="text-[#E5B55C] font-bold text-sm sm:text-base leading-tight mb-1">Rima Melati Hutagalung</p>
-                <p className="text-[#E5B55C] text-xs sm:text-sm">Ketua Yayasan</p>
+                <p className="text-[#E5B55C] text-xs sm:text-sm">Chairman of the Foundation</p>
               </div>
             </div>
             <div className="w-full sm:w-[60%] flex flex-col">
               <div className="flex items-center gap-2 mb-3">
                 <span className="bg-[#4D524F] text-white rounded-full w-7 h-7 flex items-center justify-center text-[10px] tracking-widest">•••</span>
-                <h2 className="font-bold text-lg text-[#4D524F]">Editorial Ketua Yayasan</h2>
+                <h2 className="font-bold text-lg text-[#4D524F]">Foundation Chairman's Editorial</h2>
               </div>
               <div className="bg-[#E2DECA] p-4 rounded-t-xl shadow-sm mb-2">
                 <h3 className="text-red-900 font-bold text-base sm:text-lg leading-snug">Pelajaran Serta Keteladanan Dari Para Pahlawan</h3>
@@ -96,25 +96,25 @@ export default function Home() {
                 <p className="text-slate-600 text-[13px] sm:text-sm leading-relaxed text-justify line-clamp-6">An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem quaedam non melius quam veteres, quaedam omnino relicta. Quia...</p>
               </div>
               <div>
-                <button className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm">Lihat Semua</button>
+                <button className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm">View All</button>
               </div>
             </div>
           </div>
 
-          {/* KANAN: Manajer Operasional */}
+          {/* KANAN: Operations Manager */}
           <div className="flex flex-col sm:flex-row gap-5">
             <div className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0">
               <img src="/slider-2.jpg" alt="Samuel Simatupang" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4 text-left">
                 <p className="text-[#E5B55C] font-bold text-sm sm:text-base leading-tight mb-1">Samuel Simatupang</p>
-                <p className="text-[#E5B55C] text-xs sm:text-sm">Manajer Operasional</p>
+                <p className="text-[#E5B55C] text-xs sm:text-sm">Operations Manager</p>
               </div>
             </div>
             <div className="w-full sm:w-[60%] flex flex-col">
               <div className="flex items-center gap-2 mb-3">
                 <span className="bg-[#4D524F] text-white rounded-full w-7 h-7 flex items-center justify-center text-[10px] tracking-widest">•••</span>
-                <h2 className="font-bold text-lg text-[#4D524F]">Manajer Operasional</h2>
+                <h2 className="font-bold text-lg text-[#4D524F]">Operations Manager's Editorial</h2>
               </div>
               <div className="bg-[#E2DECA] p-4 rounded-t-xl shadow-sm mb-2">
                 <h3 className="text-red-900 font-bold text-base sm:text-lg leading-snug">Pelajaran Serta Keteladanan Dari Para Pahlawan</h3>
@@ -123,7 +123,7 @@ export default function Home() {
                 <p className="text-slate-600 text-[13px] sm:text-sm leading-relaxed text-justify line-clamp-6">An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem quaedam non melius quam veteres, quaedam omnino relicta. Quia...</p>
               </div>
               <div>
-                <button className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm">Lihat Semua</button>
+                <button className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm">View All</button>
               </div>
             </div>
           </div>
@@ -137,46 +137,43 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 mb-12 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           
-          {/* KIRI (2/3): Editorial Kepala Sekolah */}
+          {/* KIRI (2/3): Principal's Editorial */}
           <div className="lg:col-span-2 flex flex-col md:flex-row gap-5 items-start">
             <div className="w-full md:w-[35%] lg:w-[30%] aspect-square relative rounded-xl overflow-hidden shadow-sm shrink-0">
               <img src="/slider-3.jpg" alt="Tona Leon F. Situmorang" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
               <div className="absolute bottom-3 left-3 right-3 text-left">
                 <p className="text-[#E5B55C] font-bold text-xs sm:text-sm leading-tight mb-1">Tona Leon Ferdinan Situmorang, S.Pd.,MA.,ED.</p>
-                <p className="text-[#E5B55C] text-[10px] sm:text-xs">Kepala Sekolah</p>
+                <p className="text-[#E5B55C] text-[10px] sm:text-xs">Principal</p>
               </div>
             </div>
             <div className="w-full md:w-[65%] lg:w-[70%] flex flex-col h-full">
               <div className="flex items-center gap-2 mb-3">
                 <span className="bg-[#4D524F] text-white rounded-full w-7 h-7 flex items-center justify-center text-[10px] tracking-widest">•••</span>
-                <h2 className="font-bold text-lg text-[#4D524F]">Editorial Kepala Sekolah</h2>
+                <h2 className="font-bold text-lg text-[#4D524F]">Principal's Editorial</h2>
               </div>
               
-              {/* JUDUL KLIK KE BERITA UTUH (/editorial/detail) */}
               <Link href="/editorial/detail" className="bg-[#E2DECA] p-4 rounded-t-xl shadow-sm mb-2 hover:bg-[#d6d1bc] transition-colors cursor-pointer block">
                 <h3 className="text-red-900 font-bold text-base sm:text-lg">Pelajaran Serta Keteladanan Dari Para Pahlawan</h3>
               </Link>
               
-              {/* LEAD KLIK KE BERITA UTUH (/editorial/detail) */}
               <Link href="/editorial/detail" className="bg-[#E2DECA] p-4 rounded-b-xl shadow-sm mb-4 flex-1 hover:bg-[#d6d1bc] transition-colors cursor-pointer block">
                 <p className="text-slate-600 text-[13px] sm:text-sm leading-relaxed text-justify">An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem quaedam non melius quam veteres, quaedam omnino relicta. Quia...</p>
               </Link>
               
-              {/* TOMBOL "Lihat Semua" KLIK KE DAFTAR EDITORIAL (/editorial) */}
               <div>
                 <Link href="/editorial" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2 px-6 rounded shadow-sm text-sm inline-block">
-                  Lihat Semua
+                  View All
                 </Link>
               </div>
             </div>
           </div>
 
-          {/* KANAN (1/3): Berita Terbaru */}
+          {/* KANAN (1/3): Latest News */}
           <div className="lg:col-span-1 flex flex-col h-full">
             <div className="flex items-center gap-2 mb-3 h-7 shrink-0">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-xs">💬</span>
-              <h2 className="font-bold text-xl text-slate-800">Berita Terbaru</h2>
+              <h2 className="font-bold text-xl text-slate-800">Latest News</h2>
             </div>
             <div className="space-y-4 flex-1 flex flex-col justify-between">
               {latestNews.map((news, idx) => (
@@ -201,7 +198,7 @@ export default function Home() {
       {/* ========================================= */}
       <section className="w-full bg-[#D97706] text-white py-12 px-4 shrink-0">
         <div className="max-w-5xl mx-auto flex flex-col items-center">
-          <h2 className="font-bold text-lg sm:text-xl mb-6">Petuah Bijaksana</h2>
+          <h2 className="font-bold text-lg sm:text-xl mb-6">Words of Wisdom</h2>
           <div className="flex flex-col sm:flex-row w-full justify-between gap-8 mb-6">
             <div className="flex-1 text-left sm:pr-8 border-b sm:border-b-0 sm:border-r border-white/30 pb-4 sm:pb-0">
               <p className="font-bold text-base sm:text-lg leading-relaxed italic">
@@ -231,11 +228,11 @@ export default function Home() {
       <section className="w-full bg-[#E5DCC3] py-10 px-4 flex-1">
         <div className="max-w-7xl mx-auto space-y-12">
           
-          {/* Guru Kreatif */}
+          {/* Creative Teachers */}
           <div className="mb-10">
             <h2 className="font-bold text-sm sm:text-base mb-6 flex items-center gap-2 text-slate-800 uppercase">
               <span className="bg-slate-800 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">👨‍🏫</span>
-              GURU GURU KREATIF - INOVATIF
+              CREATIVE - INNOVATIVE TEACHERS
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
               {[
@@ -258,19 +255,19 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Pengumuman, Agenda, Blog Guru */}
+          {/* Announcements, Agenda, Blog */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">📢</span> Pengumuman</h3>
+              <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">📢</span> Announcements</h3>
               <p className="text-[11px] text-slate-500 uppercase font-semibold mb-1">TERBIT : Tuesday, 11 July 2017</p>
               <p className="font-bold text-red-900 text-sm mb-3 leading-tight">Pengumuman Daftar Siswa Baru Tahun 2017/2018</p>
               <div className="bg-[#DCE1C6] p-4 rounded-lg text-xs text-slate-700 text-justify mb-4 shadow-sm border border-[#C5CCAA]">
                 Quia dolori non voluptas contraria est, sed doloris privatio. Omnia contraria, quos etiam insanos esse vultis. Quid Zeno? An vero displicuit ea, quae tributa est animi virtutibus tanta praestantia? Primum cur ista res digna odio est, nisi quod est turpis?..
               </div>
-              <button className="bg-red-900 hover:bg-red-800 text-white text-xs font-bold px-4 py-2 rounded shadow-sm">Lihat Semua</button>
+              <button className="bg-red-900 hover:bg-red-800 text-white text-xs font-bold px-4 py-2 rounded shadow-sm">View All</button>
             </div>
             <div>
-              <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">📅</span> Agenda Terbaru</h3>
+              <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">📅</span> Latest Agenda</h3>
               <div className="flex gap-4 items-start">
                 <div className="bg-red-900 text-white w-10 h-10 flex items-center justify-center rounded text-2xl font-bold shrink-0">+</div>
                 <div>
@@ -282,7 +279,7 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">💬</span> Blog Guru</h3>
+              <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">💬</span> Teachers' Blog</h3>
               <div className="space-y-4">
                 {blogGuru.map((blog, idx) => (
                   <div key={idx} className="flex gap-3 items-center">
@@ -299,10 +296,10 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Kegiatan, Fasilitas, Galeri */}
+          {/* Activities, Facilities, Gallery */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-6 border-t border-[#D5CCB3]">
             <div>
-              <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">⭐</span> Kegiatan</h3>
+              <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">⭐</span> Activities</h3>
               <div className="w-full aspect-[4/3] rounded-lg overflow-hidden shadow-sm relative">
                 <img src="/slider-1.jpg" alt="Kegiatan" className="w-full h-full object-cover" />
                 <div className="absolute bottom-3 left-4 flex space-x-1.5">
@@ -314,7 +311,7 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">➕</span> Fasilitas</h3>
+              <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">➕</span> Facilities</h3>
               <div className="space-y-4">
                 {fasilitas.map((fas, idx) => (
                   <div key={idx} className="flex gap-3">
@@ -330,7 +327,7 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">🖼️</span> Galeri</h3>
+              <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">🖼️</span> Gallery</h3>
               <div className="grid grid-cols-3 gap-2">
                 {[1, 2, 3, 4, 5, 6].map((num) => (
                   <div key={num} className="aspect-square rounded overflow-hidden shadow-sm">
@@ -389,7 +386,6 @@ export default function Home() {
               <ul className="text-xs space-y-2 font-semibold max-w-md">
                 <li className="hover:underline cursor-pointer">A WordPress Commenter on Hello world!</li>
                 <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Seinima Sapientia Proficiscitur Aconti Copassuni</li>
-                <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Seinima Sapientia Proficiscitur Aconti Copassuni</li>
               </ul>
             </div>
             <div className="flex gap-16 mt-2">
@@ -399,7 +395,6 @@ export default function Home() {
                   <li className="hover:underline cursor-pointer">August 2025</li>
                   <li className="hover:underline cursor-pointer">June 2025</li>
                   <li className="hover:underline cursor-pointer">July 2021</li>
-                  <li className="hover:underline cursor-pointer">May 2021</li>
                 </ul>
               </div>
               <div>
