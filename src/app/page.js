@@ -415,13 +415,13 @@ export default function Home() {
       <section className="w-full bg-[#DCC690] py-10 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           
-          {/* ACTIVITIES SLIDER (Single Full Image) */}
+          {/* ACTIVITIES SLIDER (Single Full Image with SQUARE Corners) */}
           <div className="flex flex-col h-full">
             <h3 className="flex items-center text-slate-800 font-bold mb-5 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">★</span> 
-              Kegiatan
+              Activities
             </h3>
-            <div className="w-full flex-1 rounded-lg overflow-hidden shadow-sm relative bg-slate-800 min-h-[260px]">
+            <div className="w-full flex-1 rounded-none overflow-hidden shadow-sm relative bg-slate-800 min-h-[260px]">
               {activityImages.map((src, idx) => (
                 <div key={idx} className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === activityIndex ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
                   <img src={src} className="w-full h-full object-cover" alt={`Kegiatan ${idx + 1}`} />
@@ -445,13 +445,11 @@ export default function Home() {
           <div className="flex flex-col h-full">
             <h3 className="flex items-center text-slate-800 font-bold mb-5 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-lg font-bold pb-0.5 mr-2">+</span> 
-              Fasilitas
+              Facilities
             </h3>
-            {/* Menggunakan flex dan justify-between agar rata atas bawah */}
             <div className="flex flex-col justify-between flex-1">
               {fasilitas.map((fas, idx) => (
                 <div key={idx} className="flex gap-4 items-center">
-                  {/* Foto Thumbnail Fasilitas - diperkecil (w-[28%]) agar jaraknya lega */}
                   <div className="w-[28%] lg:w-[30%] aspect-[4/3] shrink-0 rounded-md overflow-hidden shadow-sm">
                     <img src={fas.img} alt={fas.title} className="w-full h-full object-cover" />
                   </div>
@@ -470,9 +468,8 @@ export default function Home() {
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center p-1.5 mr-2">
                 <svg className="w-full h-full fill-current" viewBox="0 0 24 24"><path d="M4 4h6v6H4zm8 0h8v6h-8zm-8 8h6v8H4zm8 0h8v8h-8z"/></svg>
               </span> 
-              Galeri
+              Gallery
             </h3>
-            {/* Gap diperbesar (gap-4 lg:gap-5) agar thumbnail mengecil proporsional */}
             <div className="grid grid-cols-3 gap-4 lg:gap-5 flex-1 content-between">
               {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
                 <div key={num} className="w-full aspect-[4/3] rounded-md overflow-hidden shadow-sm">
@@ -491,12 +488,13 @@ export default function Home() {
       <section className="w-full bg-[#E5DCC3] py-10 px-4 flex-1">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-red-950 font-bold mb-4 text-lg">Video</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* Perbesar gap (jarak antar kotak video) menjadi gap-8 atau gap-12 supaya ukurannya mengecil */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
             {[1, 2, 3].map((vid) => (
-              <div key={vid} className="aspect-video relative rounded-lg overflow-hidden shadow-md group cursor-pointer">
+              <div key={vid} className="aspect-video relative rounded-none overflow-hidden shadow-md group cursor-pointer">
                 <img src={`/slider-${vid}.jpg`} alt="Video" className="w-full h-full object-cover brightness-75 group-hover:brightness-50 transition-all" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="bg-red-600 text-white w-12 h-8 rounded-lg flex items-center justify-center group-hover:bg-red-700 transition-colors">▶</div>
+                  <div className="bg-red-600 text-white w-12 h-8 rounded-md flex items-center justify-center group-hover:bg-red-700 transition-colors">▶</div>
                 </div>
                 <div className="absolute top-2 left-2 right-2 text-white text-xs font-bold truncate drop-shadow-md">Video Dokumentasi {vid}</div>
                 <div className="absolute bottom-2 right-2 text-white text-[10px] bg-black/60 px-2 py-0.5 rounded">Tonton di YouTube</div>
