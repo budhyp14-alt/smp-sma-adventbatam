@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Editorial Kepala Sekolah - SMP SMA Advent Batam",
+  title: "Principal's Editorial - SMP SMA Advent Batam",
 };
 
 export default function EditorialPage() {
@@ -42,8 +42,8 @@ export default function EditorialPage() {
         <div className="max-w-7xl mx-auto">
           
           <div className="text-xs text-slate-700 font-semibold mb-8 flex items-center gap-1">
-            <span>Anda ada di :</span>
-            <Link href="/" className="text-[#047857] hover:underline ml-1">🏠 Beranda</Link>
+            <span>You are here :</span>
+            <Link href="/" className="text-[#047857] hover:underline ml-1">🏠 Home</Link>
             <span>-</span>
             <span className="text-slate-500">Editorial</span>
           </div>
@@ -52,7 +52,7 @@ export default function EditorialPage() {
             
             <div className="lg:col-span-8 flex flex-col">
               <h1 className="text-2xl font-black text-slate-800 mb-8 border-b border-slate-400/30 pb-4">
-                Editorial Kepala Sekolah
+                Principal's Editorial
               </h1>
               
               <div className="space-y-8">
@@ -65,7 +65,7 @@ export default function EditorialPage() {
                     </div>
                     <div className="flex flex-col">
                       <p className="text-[11px] sm:text-xs text-slate-600 font-semibold mb-1">
-                        Terbit : {item.date}
+                        Published : {item.date}
                       </p>
                       <Link href={item.link} className="text-[#047857] hover:text-emerald-900 font-bold text-lg leading-tight mb-2 transition-colors">
                         {item.title}
@@ -82,7 +82,7 @@ export default function EditorialPage() {
             <div className="lg:col-span-4 lg:border-l border-dashed border-slate-500 lg:pl-8 flex flex-col pt-2">
               <h2 className="text-center font-black text-slate-800 text-base mb-1 tracking-wide">SMAS ADVENT BATAM</h2>
               <p className="text-center text-xs text-slate-800 font-medium mb-8 px-4">
-                Jl. Prof. DR. Hamka, Kav 4, Kel. Kibing, Kec. Batu Aji
+                Prof. DR. Hamka St., Kav 4, Kibing Village, Batu Aji District
               </p>
 
               <div className="space-y-4 text-xs font-semibold text-slate-800">
@@ -91,11 +91,11 @@ export default function EditorialPage() {
                   <span className="text-right">20404yyy</span>
                 </div>
                 <div className="flex justify-between items-start border-b border-slate-400/30 pb-2">
-                  <span>Kepala Sekolah</span>
+                  <span>Principal</span>
                   <span className="text-right max-w-[150px]">Tona Leon Ferdinan<br/>Situmorang,<br/>S.Pd.,MA.,ED.</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-slate-400/30 pb-2">
-                  <span>Telepon</span>
+                  <span>Phone</span>
                   <span className="text-emerald-700 text-right hover:underline cursor-pointer">0778-363082</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-slate-400/30 pb-2">
