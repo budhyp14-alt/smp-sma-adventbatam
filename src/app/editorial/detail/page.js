@@ -28,7 +28,7 @@ export default function EditorialDetailPage() {
               </h1>
               
               <p className="text-xs sm:text-sm text-slate-700 mb-4">
-                Published : Tuesday, 11 Jul 2017, 08:00 WIB
+                Published : Tuesday, 11 Jul 2017, 13:45 WIB
               </p>
 
               <div className="flex gap-1.5 mb-6">
