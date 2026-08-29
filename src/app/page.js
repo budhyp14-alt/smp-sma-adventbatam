@@ -133,9 +133,9 @@ export default function Home() {
   ];
 
   const fasilitas = [
-    { title: "Ruang Laboratorium Bahasa", text: "Dilengkapi perangkat audio visual modern...", img: "/slider-1.jpg" },
-    { title: "Karate, Judo, Silat", text: "Fasilitas olahraga beladiri untuk melatih fisik...", img: "/slider-2.jpg" },
-    { title: "Masjid At-Taqwa", text: "Sarana ibadah yang nyaman bagi siswa...", img: "/slider-3.jpg" }
+    { title: "Ruang Laboratorium Bahasa", text: "An potest, inquit ille, quicquam esse suavius quam..", img: "/slider-1.jpg" },
+    { title: "Karate, Judo, Silat", text: "An potest, inquit ille, quicquam esse suavius quam..", img: "/slider-2.jpg" },
+    { title: "Masjid At-Taqwa", text: "An potest, inquit ille, quicquam esse suavius quam..", img: "/slider-3.jpg" }
   ];
 
   return (
@@ -361,7 +361,10 @@ export default function Home() {
       <section className="w-full bg-[#E5DCC3] py-10 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">📢</span> Announcements</h3>
+            <h3 className="flex items-center text-slate-800 font-bold mb-4 text-xl">
+              <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">📢</span> 
+              Announcements
+            </h3>
             <p className="text-[11px] text-slate-500 uppercase font-semibold mb-1">TERBIT : Tuesday, 11 July 2017</p>
             <p className="font-bold text-red-900 text-sm mb-3 leading-tight">Pengumuman Daftar Siswa Baru Tahun 2017/2018</p>
             <div className="bg-[#DCE1C6] p-4 rounded-lg text-xs text-slate-700 text-justify mb-4 shadow-sm border border-[#C5CCAA]">
@@ -370,7 +373,10 @@ export default function Home() {
             <button className="bg-red-900 hover:bg-red-800 text-white text-xs font-bold px-4 py-2 rounded shadow-sm">View All</button>
           </div>
           <div>
-            <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">📅</span> Latest Agenda</h3>
+            <h3 className="flex items-center text-slate-800 font-bold mb-4 text-xl">
+              <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">📅</span> 
+              Latest Agenda
+            </h3>
             <div className="flex gap-4 items-start">
               <div className="bg-red-900 text-white w-10 h-10 flex items-center justify-center rounded text-2xl font-bold shrink-0">+</div>
               <div>
@@ -382,7 +388,10 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">💬</span> Teachers' Blog</h3>
+            <h3 className="flex items-center text-slate-800 font-bold mb-4 text-xl">
+              <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">💬</span> 
+              Teachers' Blog
+            </h3>
             <div className="space-y-4">
               {blogGuru.map((blog, idx) => (
                 <div key={idx} className="flex gap-3 items-center">
@@ -406,22 +415,26 @@ export default function Home() {
       <section className="w-full bg-[#DCC690] py-10 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           
-          {/* ACTIVITIES SLIDER (5 FOTO) */}
-          <div>
-            <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">⭐</span> Activities</h3>
+          {/* ACTIVITIES SLIDER (Single Image Full) */}
+          <div className="flex flex-col">
+            <h3 className="flex items-center text-slate-800 font-bold mb-4 text-xl">
+              <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">★</span> 
+              Activities
+            </h3>
             <div className="w-full aspect-[4/3] rounded-lg overflow-hidden shadow-sm relative bg-slate-800">
               {activityImages.map((src, idx) => (
                 <div key={idx} className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === activityIndex ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-                  <img src={src} alt={`Kegiatan ${idx + 1}`} className="w-full h-full object-cover" />
+                  <img src={src} className="w-full h-full object-cover" alt={`Kegiatan ${idx + 1}`} />
                 </div>
               ))}
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-1.5 z-10">
+              {/* Dots Indicator di Tengah Bawah */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-1.5 z-10">
                 {activityImages.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setActivityIndex(idx)}
-                    className={`h-2 rounded-full shadow transition-all ${idx === activityIndex ? "w-4 bg-white" : "w-2 bg-white/50 hover:bg-white/80"}`}
-                    aria-label={`Go to slide ${idx + 1}`}
+                    className={`h-2.5 rounded-full shadow transition-all ${idx === activityIndex ? "w-2.5 bg-white" : "w-2.5 bg-white/50 hover:bg-white/80"}`}
+                    aria-label={`Go to activity ${idx + 1}`}
                   />
                 ))}
               </div>
@@ -429,34 +442,43 @@ export default function Home() {
           </div>
 
           {/* FACILITIES */}
-          <div>
-            <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">➕</span> Facilities</h3>
+          <div className="flex flex-col">
+            <h3 className="flex items-center text-slate-800 font-bold mb-4 text-xl">
+              <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-lg font-bold pb-0.5 mr-2">+</span> 
+              Facilities
+            </h3>
             <div className="space-y-4">
               {fasilitas.map((fas, idx) => (
-                <div key={idx} className="flex gap-3">
-                  <div className="w-20 h-14 shrink-0 rounded overflow-hidden shadow-sm">
+                <div key={idx} className="flex gap-4">
+                  <div className="w-24 h-16 sm:w-28 sm:h-20 shrink-0 rounded-lg overflow-hidden shadow-sm">
                     <img src={fas.img} alt={fas.title} className="w-full h-full object-cover" />
                   </div>
-                  <div>
-                    <p className="text-sm font-bold text-red-950 leading-tight">{fas.title}</p>
-                    <p className="text-[10px] text-slate-600 leading-tight mt-1">{fas.text}</p>
+                  <div className="flex flex-col justify-center">
+                    <p className="text-sm font-bold text-red-900 leading-tight mb-1">{fas.title}</p>
+                    <p className="text-[11px] sm:text-xs text-slate-700 leading-tight">{fas.text}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* GALLERY (9 FOTO) */}
-          <div>
-            <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">🖼️</span> Gallery</h3>
+          {/* GALLERY (9 FOTO GRID 3x3) */}
+          <div className="flex flex-col">
+            <h3 className="flex items-center text-slate-800 font-bold mb-4 text-xl">
+              <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center p-1.5 mr-2">
+                <svg className="w-full h-full fill-current" viewBox="0 0 24 24"><path d="M4 4h6v6H4zm8 0h8v6h-8zm-8 8h6v8H4zm8 0h8v8h-8z"/></svg>
+              </span> 
+              Gallery
+            </h3>
             <div className="grid grid-cols-3 gap-2">
               {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
-                <div key={num} className="aspect-[4/3] sm:aspect-square rounded-md overflow-hidden shadow-sm">
+                <div key={num} className="aspect-[4/3] rounded-md overflow-hidden shadow-sm">
                   <img src={`/slider-${(num % 3) + 1}.jpg`} alt={`Galeri ${num}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer" />
                 </div>
               ))}
             </div>
           </div>
+          
         </div>
       </section>
 
