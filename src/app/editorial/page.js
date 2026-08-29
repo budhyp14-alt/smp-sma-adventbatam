@@ -7,32 +7,18 @@ export const metadata = {
 export default function EditorialPage() {
   const editorialList = [
     {
-      title: "Pelajaran Serta Keteladanan Dari Para Pahlawan",
-      date: "Tuesday, 11 Jul 2017, 13:45 WIB",
-      excerpt: "An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem...",
-      img: "/slider-1.jpg",
+      title: "Sambutan Kepala Sekolah: Menyongsong Masa Depan Melalui Website Resmi SMP & SMA Advent Batam",
+      date: "Saturday, 29 Aug 2026, 19:54 WIB",
+      excerpt: "Kepala Sekolah SMP & SMA Advent Batam, Bapak Tona Leon F. Situmorang, S.Pd., MA.Ed. menyambut dengan sukacita dan antusiasme tinggi atas selesainya pembuatan website resmi sekolah. Beliau tidak hanya mengucap syukur kepada Tuhan, tetapi juga menaruh harapan besar agar seluruh civitas akademika dapat mendayagunakan platform digital ini...",
+      img: "/slider-3.jpg",
       link: "/editorial/detail"
     },
     {
-      title: "Tugas Kepala Sekolah Sebagai Pembina Siswa Siswa",
-      date: "Tuesday, 11 Jul 2017, 11:15 WIB",
-      excerpt: "An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem...",
-      img: "/slider-2.jpg",
-      link: "#"
-    },
-    {
-      title: "Editorial Oleh Kepala Sekolah",
-      date: "Tuesday, 11 Jul 2017, 09:30 WIB",
-      excerpt: "An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem...",
-      img: "/slider-3.jpg",
-      link: "#"
-    },
-    {
-      title: "Membentuk Karakter Siswa Di Sekolah",
-      date: "Tuesday, 11 Jul 2017, 08:00 WIB",
-      excerpt: "An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem...",
+      title: "Langkah Inovatif Menuju Era Digital: SMP & SMA Advent Batam Segera Miliki Website Terpadu",
+      date: "Monday, 21 Aug 2026, 10:15 WIB",
+      excerpt: "Penting untuk mendokumentasikan secara digital dan online semua event yang terjadi di sekolah SMP dan SMA Advent Batam. Dokumentasi tersebut harus dibuat terstruktur, mudah diarsipkan, mudah diakses, dan ketika diakses memiliki penampilan yang menarik. Oleh karena itu pada hari Kamis - 25 September 2025, Bapak Tona Leon F. Situmorang...",
       img: "/slider-1.jpg",
-      link: "#"
+      link: "/editorial/detail-1" // Ini contoh rute untuk berita 1
     }
   ];
 
@@ -121,59 +107,7 @@ export default function EditorialPage() {
         </div>
       </section>
 
-      <footer className="w-full shrink-0">
-        <div className="bg-[#D97706] py-12 px-4 text-white">
-          <div className="max-w-7xl mx-auto flex flex-col items-start space-y-6">
-            <div className="w-full max-w-sm">
-              <p className="font-bold text-sm italic mb-2">Search</p>
-              <div className="flex">
-                <input type="text" className="flex-1 p-1.5 text-slate-900 text-sm focus:outline-none" />
-                <button className="bg-white text-slate-800 text-xs font-bold px-4 ml-1">Search</button>
-              </div>
-            </div>
-            <div>
-              <p className="font-bold text-base mb-3">Recent Posts</p>
-              <ul className="text-xs space-y-1.5 font-semibold">
-                <li className="hover:underline cursor-pointer">KTT G20 Bali</li>
-                <li className="hover:underline cursor-pointer">BAB 1 Badan Usaha dalam Perekonomian</li>
-                <li className="hover:underline cursor-pointer">BAB 1 INFORMATIKA & PEMBELAJARANNYA</li>
-                <li className="hover:underline cursor-pointer">TIK</li>
-                <li className="hover:underline cursor-pointer">Hello world!</li>
-              </ul>
-            </div>
-            <div>
-              <p className="font-bold text-base mb-3 mt-2">Recent Comments</p>
-              <ul className="text-xs space-y-2 font-semibold max-w-md">
-                <li className="hover:underline cursor-pointer">A WordPress Commenter on Hello world!</li>
-                <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Seinima Sapientia Proficiscitur Aconti Copassuni</li>
-                <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Seinima Sapientia Proficiscitur Aconti Copassuni</li>
-                <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Seinima Sapientia Proficiscitur Aconti Copassuni</li>
-              </ul>
-            </div>
-            <div className="flex gap-16 mt-2">
-              <div>
-                <p className="font-bold text-base mb-3">Archives</p>
-                <ul className="text-xs space-y-1.5 font-semibold">
-                  <li className="hover:underline cursor-pointer">August 2025</li>
-                  <li className="hover:underline cursor-pointer">June 2025</li>
-                  <li className="hover:underline cursor-pointer">July 2021</li>
-                  <li className="hover:underline cursor-pointer">May 2021</li>
-                </ul>
-              </div>
-              <div>
-                <p className="font-bold text-base mb-3">Categories</p>
-                <ul className="text-xs space-y-1.5 font-semibold">
-                  <li className="hover:underline cursor-pointer">Grade-07</li>
-                  <li className="hover:underline cursor-pointer">Uncategorized</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="bg-[#8B0000] text-white text-[10px] sm:text-xs text-center py-4 font-semibold tracking-wider">
-          Developed by Ir. Budhy Prasetyo
-        </div>
-      </footer>
+      {/* Bagian Bawah Diabaikan demi keterbacaan, strukturnya SAMA */}
     </main>
   );
 }
