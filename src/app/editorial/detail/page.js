@@ -27,7 +27,6 @@ export default function EditorialDetailPage() {
                 Pelajaran Serta Keteladanan Dari Para Pahlawan
               </h1>
               
-              {/* === WAKTU PUBLISHED DITAMBAHKAN JAM === */}
               <p className="text-xs sm:text-sm text-slate-700 mb-4">
                 Published : Tuesday, 11 Jul 2017, 08:00 WIB
               </p>
@@ -49,23 +48,23 @@ export default function EditorialDetailPage() {
               <div className="w-full aspect-[4/3] bg-slate-300 shadow-sm mb-3 rounded overflow-hidden">
                 <img src="/slider-2.jpg" alt="Ilustrasi Penulis" className="w-full h-full object-cover" />
               </div>
-              <p className="text-xs text-slate-700 font-medium mb-1">Penulis : Cluss Creative</p>
-              <p className="text-xs text-slate-700 font-medium mb-8">Dibaca 235 kali</p>
+              <p className="text-xs text-slate-700 font-medium mb-1">Author : Cluss Creative</p>
+              <p className="text-xs text-slate-700 font-medium mb-8">Read 235 times</p>
 
               <div className="mt-2">
-                <h3 className="font-bold text-lg text-slate-800 mb-5">Tulisan Lainnya</h3>
+                <h3 className="font-bold text-lg text-slate-800 mb-5">Other Articles</h3>
                 <div className="space-y-5">
                   <div>
                     <Link href="#" className="text-[#047857] font-bold hover:underline text-[13px] leading-snug block">Tugas Kepala Sekolah Sebagai Pembina Siswa Siswa</Link>
-                    <p className="text-[11px] text-slate-600 italic mt-1">Dibaca : 57 kali</p>
+                    <p className="text-[11px] text-slate-600 italic mt-1">Read : 57 times</p>
                   </div>
                   <div>
                     <Link href="#" className="text-[#047857] font-bold hover:underline text-[13px] leading-snug block">Editorial Oleh Kepala Sekolah</Link>
-                    <p className="text-[11px] text-slate-600 italic mt-1">Dibaca : 59 kali</p>
+                    <p className="text-[11px] text-slate-600 italic mt-1">Read : 59 times</p>
                   </div>
                   <div>
                     <Link href="#" className="text-[#047857] font-bold hover:underline text-[13px] leading-snug block">Membentuk Karakter Siswa Di Sekolah</Link>
-                    <p className="text-[11px] text-slate-600 italic mt-1">Dibaca : 62 kali</p>
+                    <p className="text-[11px] text-slate-600 italic mt-1">Read : 62 times</p>
                   </div>
                 </div>
               </div>
