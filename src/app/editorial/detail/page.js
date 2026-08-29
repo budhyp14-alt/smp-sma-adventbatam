@@ -12,8 +12,8 @@ export default function EditorialDetailPage() {
         <div className="max-w-7xl mx-auto">
           
           <div className="text-xs text-slate-700 font-semibold mb-8 flex items-center gap-1 flex-wrap">
-            <span>Anda ada di :</span>
-            <Link href="/" className="text-[#047857] hover:underline ml-1">🏠 Beranda</Link>
+            <span>You are here :</span>
+            <Link href="/" className="text-[#047857] hover:underline ml-1">🏠 Home</Link>
             <span>-</span>
             <Link href="/editorial" className="text-[#047857] hover:underline">Editorial</Link>
             <span>-</span>
@@ -26,8 +26,10 @@ export default function EditorialDetailPage() {
               <h1 className="text-2xl sm:text-3xl font-black text-slate-800 mb-3 leading-tight">
                 Pelajaran Serta Keteladanan Dari Para Pahlawan
               </h1>
+              
+              {/* === WAKTU PUBLISHED DITAMBAHKAN JAM === */}
               <p className="text-xs sm:text-sm text-slate-700 mb-4">
-                Diterbitkan : Tuesday, 11 July 2017
+                Published : Tuesday, 11 Jul 2017, 08:00 WIB
               </p>
 
               <div className="flex gap-1.5 mb-6">
