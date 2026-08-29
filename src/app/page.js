@@ -33,6 +33,12 @@ export default function Home() {
     { date: "Monday, 11 August 2025", title: "BAB 1 INFORMATIKA & PEMBELAJARANNYA", img: "/slider-3.jpg" }
   ];
 
+  const blogGuru = [
+    { date: "Tuesday, 11 July 2017", title: "Seinima Sapientia Proficiscitur Aconti Copassuni", img: "/slider-1.jpg" },
+    { date: "Tuesday, 11 July 2017", title: "Quicquid Enima Sapientia Proficiscitur, Idconti", img: "/slider-2.jpg" },
+    { date: "Tuesday, 11 July 2017", title: "Adeas Enimres Abrpicuro Praecepta Dantur. Quicquid Enim", img: "/slider-3.jpg" }
+  ];
+
   const fasilitas = [
     { title: "Ruang Laboratorium Bahasa", text: "Dilengkapi perangkat audio visual modern...", img: "/slider-1.jpg" },
     { title: "Karate, Judo, Silat", text: "Fasilitas olahraga beladiri untuk melatih fisik...", img: "/slider-2.jpg" },
@@ -42,6 +48,9 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#F3EFE4] text-slate-900 font-sans pb-0 flex flex-col">
       
+      {/* ========================================= */}
+      {/* 1. BAGIAN SLIDER UTAMA                    */}
+      {/* ========================================= */}
       <section className="relative w-full max-w-7xl mx-auto mt-4 px-4 mb-10 shrink-0">
         <div className="relative w-full h-[240px] sm:h-[380px] md:h-[480px] lg:h-[540px] overflow-hidden rounded-2xl shadow-lg bg-slate-200">
           {images.map((src, index) => (
@@ -59,8 +68,13 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ========================================= */}
+      {/* 2. DUA BLOK EDITORIAL BERSEBELAHAN        */}
+      {/* ========================================= */}
       <section className="max-w-7xl mx-auto px-4 mb-8 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          {/* KIRI: Chairman of the Foundation */}
           <div className="flex flex-col sm:flex-row gap-5">
             <div className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0">
               <img src="/slider-1.jpg" alt="Rima Melati Hutagalung" className="w-full h-full object-cover" />
@@ -87,6 +101,7 @@ export default function Home() {
             </div>
           </div>
 
+          {/* KANAN: Operations Manager */}
           <div className="flex flex-col sm:flex-row gap-5">
             <div className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0">
               <img src="/slider-2.jpg" alt="Samuel Simatupang" className="w-full h-full object-cover" />
@@ -115,9 +130,13 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ========================================= */}
+      {/* 3. EDITORIAL KEPALA SEKOLAH & BERITA      */}
+      {/* ========================================= */}
       <section className="max-w-7xl mx-auto px-4 mb-12 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           
+          {/* KIRI (2/3): Principal's Editorial */}
           <div className="lg:col-span-2 flex flex-col md:flex-row gap-5 items-start">
             <div className="w-full md:w-[35%] lg:w-[30%] aspect-square relative rounded-xl overflow-hidden shadow-sm shrink-0">
               <img src="/slider-3.jpg" alt="Tona Leon F. Situmorang" className="w-full h-full object-cover" />
@@ -149,6 +168,7 @@ export default function Home() {
             </div>
           </div>
 
+          {/* KANAN (1/3): Latest News */}
           <div className="lg:col-span-1 flex flex-col h-full">
             <div className="flex items-center gap-2 mb-3 h-7 shrink-0">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-xs">💬</span>
@@ -172,7 +192,226 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Bagian Bawah Diabaikan demi keterbacaan, strukturnya SAMA dengan kode yang sebelumnya */}
+      {/* ========================================= */}
+      {/* 4. BAGIAN PETUAH BIJAKSANA (Oranye)       */}
+      {/* ========================================= */}
+      <section className="w-full bg-[#D97706] text-white py-12 px-4 shrink-0">
+        <div className="max-w-5xl mx-auto flex flex-col items-center">
+          <h2 className="font-bold text-lg sm:text-xl mb-6">Words of Wisdom</h2>
+          <div className="flex flex-col sm:flex-row w-full justify-between gap-8 mb-6">
+            <div className="flex-1 text-left sm:pr-8 border-b sm:border-b-0 sm:border-r border-white/30 pb-4 sm:pb-0">
+              <p className="font-bold text-base sm:text-lg leading-relaxed italic">
+                "tuskan untuk mengampuni dengan u meraih kemenangan mendapatkan makin mirip sifat Tuhan"
+              </p>
+              <p className="text-sm font-semibold mt-3 text-amber-200">Menang tanpa membalas</p>
+            </div>
+            <div className="flex-1 text-left sm:text-right sm:pl-8">
+              <p className="font-bold text-base sm:text-lg leading-relaxed italic">
+                "Omnia contraria, quos e An vero disp"
+              </p>
+              <p className="text-sm font-semibold mt-3 text-amber-200">sunt</p>
+            </div>
+          </div>
+          <div className="flex space-x-2 mt-2">
+            <span className="w-2 h-2 bg-white rounded-full"></span>
+            <span className="w-2 h-2 bg-white/50 rounded-full"></span>
+            <span className="w-2 h-2 bg-white/50 rounded-full"></span>
+            <span className="w-2 h-2 bg-white/50 rounded-full"></span>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================= */}
+      {/* 5. BLOK KONTEN BAWAH (Beige/Krem)         */}
+      {/* ========================================= */}
+      <section className="w-full bg-[#E5DCC3] py-10 px-4 flex-1">
+        <div className="max-w-7xl mx-auto space-y-12">
+          
+          {/* Creative Teachers */}
+          <div className="mb-10">
+            <h2 className="font-bold text-sm sm:text-base mb-6 flex items-center gap-2 text-slate-800 uppercase">
+              <span className="bg-slate-800 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">👨‍🏫</span>
+              CREATIVE - INNOVATIVE TEACHERS
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+              {[
+                { name: "Lourens Syahartian, S.Pd", role: "Guru Bhs. Inggris" },
+                { name: "Ernast Simanjuntak, S.Pd", role: "Guru Sosiologi" },
+                { name: "Sarlen Naibaho, S.Pd., M.Pd.", role: "Guru IPS" },
+                { name: "Endang Januar Silitonga, S.Kom", role: "Bendahara BOS / Operator Dapodik" },
+                { name: "Celli Sihombing, S.Pd", role: "Waka Kurikulum / Guru IPA Kimia" },
+                { name: "Mawar Indah Sinurat, S.Pd", role: "Guru IPA Biologi" }
+              ].map((guru, index) => (
+                <div key={index} className="relative aspect-[3/4] rounded-lg overflow-hidden border border-slate-400 shadow-sm bg-slate-300 group">
+                  <img src={`/slider-${(index % 3) + 1}.jpg`} alt={guru.name} className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 w-full p-2 sm:p-3 text-white text-[10px] sm:text-xs leading-tight">
+                    <p className="font-semibold text-white/90">{guru.role}</p>
+                    <p className="font-bold mt-0.5 text-amber-300">{guru.name}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Announcements, Agenda, Blog */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">📢</span> Announcements</h3>
+              <p className="text-[11px] text-slate-500 uppercase font-semibold mb-1">TERBIT : Tuesday, 11 July 2017</p>
+              <p className="font-bold text-red-900 text-sm mb-3 leading-tight">Pengumuman Daftar Siswa Baru Tahun 2017/2018</p>
+              <div className="bg-[#DCE1C6] p-4 rounded-lg text-xs text-slate-700 text-justify mb-4 shadow-sm border border-[#C5CCAA]">
+                Quia dolori non voluptas contraria est, sed doloris privatio. Omnia contraria, quos etiam insanos esse vultis. Quid Zeno? An vero displicuit ea, quae tributa est animi virtutibus tanta praestantia? Primum cur ista res digna odio est, nisi quod est turpis?..
+              </div>
+              <button className="bg-red-900 hover:bg-red-800 text-white text-xs font-bold px-4 py-2 rounded shadow-sm">View All</button>
+            </div>
+            <div>
+              <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">📅</span> Latest Agenda</h3>
+              <div className="flex gap-4 items-start">
+                <div className="bg-red-900 text-white w-10 h-10 flex items-center justify-center rounded text-2xl font-bold shrink-0">+</div>
+                <div>
+                  <p className="font-bold text-red-900 text-sm mb-2">Tidak Ada Agenda Baru</p>
+                  <div className="bg-[#DCE1C6] p-4 rounded-lg text-xs text-slate-700 shadow-sm border border-[#C5CCAA]">
+                    Belum ada Agenda dalam waktu dekat ini, untuk melihat agenda yang telah lewat silahkan cek di halaman Arsip Agenda
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">💬</span> Teachers' Blog</h3>
+              <div className="space-y-4">
+                {blogGuru.map((blog, idx) => (
+                  <div key={idx} className="flex gap-3 items-center">
+                    <div className="w-20 h-16 shrink-0 rounded overflow-hidden shadow-sm">
+                      <img src={blog.img} alt="Thumb" className="w-full h-full object-cover" />
+                    </div>
+                    <div className="flex flex-col justify-center">
+                      <p className="text-[10px] text-slate-500">{blog.date}</p>
+                      <p className="text-xs font-bold text-red-900 leading-tight line-clamp-2">{blog.title}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Activities, Facilities, Gallery */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-6 border-t border-[#D5CCB3]">
+            <div>
+              <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">⭐</span> Activities</h3>
+              <div className="w-full aspect-[4/3] rounded-lg overflow-hidden shadow-sm relative">
+                <img src="/slider-1.jpg" alt="Kegiatan" className="w-full h-full object-cover" />
+                <div className="absolute bottom-3 left-4 flex space-x-1.5">
+                  <span className="w-2 h-2 bg-white rounded-full shadow"></span>
+                  <span className="w-2 h-2 bg-white/50 rounded-full shadow"></span>
+                  <span className="w-2 h-2 bg-white/50 rounded-full shadow"></span>
+                  <span className="w-2 h-2 bg-white/50 rounded-full shadow"></span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">➕</span> Facilities</h3>
+              <div className="space-y-4">
+                {fasilitas.map((fas, idx) => (
+                  <div key={idx} className="flex gap-3">
+                    <div className="w-20 h-14 shrink-0 rounded overflow-hidden shadow-sm">
+                      <img src={fas.img} alt={fas.title} className="w-full h-full object-cover" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-red-950 leading-tight">{fas.title}</p>
+                      <p className="text-[10px] text-slate-600 leading-tight mt-1">{fas.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">🖼️</span> Gallery</h3>
+              <div className="grid grid-cols-3 gap-2">
+                {[1, 2, 3, 4, 5, 6].map((num) => (
+                  <div key={num} className="aspect-square rounded overflow-hidden shadow-sm">
+                    <img src={`/slider-${(num % 3) + 1}.jpg`} alt={`Galeri ${num}`} className="w-full h-full object-cover hover:scale-110 transition-transform" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Video */}
+          <div className="pt-6 border-t border-[#D5CCB3]">
+            <h3 className="text-red-950 font-bold mb-4 text-lg">Video</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[1, 2, 3].map((vid) => (
+                <div key={vid} className="aspect-video relative rounded-lg overflow-hidden shadow-md group cursor-pointer">
+                  <img src={`/slider-${vid}.jpg`} alt="Video" className="w-full h-full object-cover brightness-75 group-hover:brightness-50 transition-all" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="bg-red-600 text-white w-12 h-8 rounded-lg flex items-center justify-center group-hover:bg-red-700 transition-colors">▶</div>
+                  </div>
+                  <div className="absolute top-2 left-2 right-2 text-white text-xs font-bold truncate drop-shadow-md">Video Dokumentasi {vid}</div>
+                  <div className="absolute bottom-2 right-2 text-white text-[10px] bg-black/60 px-2 py-0.5 rounded">Tonton di YouTube</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+        </div>
+      </section>
+
+      {/* ========================================= */}
+      {/* 6. FOOTER ORANYE & KREDIT BAWAH MERAH     */}
+      {/* ========================================= */}
+      <footer className="w-full shrink-0">
+        <div className="bg-[#D97706] py-12 px-4 text-white">
+          <div className="max-w-7xl mx-auto flex flex-col items-start space-y-6">
+            <div className="w-full max-w-sm">
+              <p className="font-bold text-sm italic mb-2">Search</p>
+              <div className="flex">
+                <input type="text" className="flex-1 p-1.5 text-slate-900 text-sm focus:outline-none" />
+                <button className="bg-white text-slate-800 text-xs font-bold px-4 ml-1">Search</button>
+              </div>
+            </div>
+            <div>
+              <p className="font-bold text-base mb-3">Recent Posts</p>
+              <ul className="text-xs space-y-1.5 font-semibold">
+                <li className="hover:underline cursor-pointer">KTT G20 Bali</li>
+                <li className="hover:underline cursor-pointer">BAB 1 Badan Usaha dalam Perekonomian</li>
+                <li className="hover:underline cursor-pointer">BAB 1 INFORMATIKA & PEMBELAJARANNYA</li>
+                <li className="hover:underline cursor-pointer">TIK</li>
+                <li className="hover:underline cursor-pointer">Hello world!</li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-bold text-base mb-3 mt-2">Recent Comments</p>
+              <ul className="text-xs space-y-2 font-semibold max-w-md">
+                <li className="hover:underline cursor-pointer">A WordPress Commenter on Hello world!</li>
+                <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Seinima Sapientia Proficiscitur Aconti Copassuni</li>
+                <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Seinima Sapientia Proficiscitur Aconti Copassuni</li>
+              </ul>
+            </div>
+            <div className="flex gap-16 mt-2">
+              <div>
+                <p className="font-bold text-base mb-3">Archives</p>
+                <ul className="text-xs space-y-1.5 font-semibold">
+                  <li className="hover:underline cursor-pointer">August 2025</li>
+                  <li className="hover:underline cursor-pointer">June 2025</li>
+                  <li className="hover:underline cursor-pointer">July 2021</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-bold text-base mb-3">Categories</p>
+                <ul className="text-xs space-y-1.5 font-semibold">
+                  <li className="hover:underline cursor-pointer">Grade-07</li>
+                  <li className="hover:underline cursor-pointer">Uncategorized</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="bg-[#8B0000] text-white text-[10px] sm:text-xs text-center py-4 font-semibold tracking-wider">
+          Developed by Ir. Budhy Prasetyo
+        </div>
+      </footer>
+
     </main>
   );
 }
