@@ -11,6 +11,15 @@ export default function Home() {
     "/slider-3.jpg"
   ];
 
+  // DATA ACTIVITIES (5 Foto Kegiatan)
+  const activityImages = [
+    "/slider-1.jpg",
+    "/slider-2.jpg",
+    "/slider-3.jpg",
+    "/slider-1.jpg",
+    "/slider-2.jpg"
+  ];
+
   // DATA WORDS OF WISDOM
   const wisdomQuotes = [
     {
@@ -54,13 +63,13 @@ export default function Home() {
     { name: "Kevin Pratama, S.Or", role: "Guru Penjaskes", img: "/slider-3.jpg" }
   ];
 
-  // Menduplikasi 6 foto awal ke bagian akhir agar looping slider tidak terputus (seamless)
   const extendedTeachers = [...teachersList, ...teachersList.slice(0, 6)];
 
   // STATE MANAJEMEN
   const [currentIndex, setCurrentIndex] = useState(0);
   const [wisdomIndex, setWisdomIndex] = useState(0);
   const [teacherIndex, setTeacherIndex] = useState(0);
+  const [activityIndex, setActivityIndex] = useState(0);
   const [isTeacherTransitioning, setIsTeacherTransitioning] = useState(true);
 
   // EFEK SLIDER UTAMA
@@ -79,7 +88,15 @@ export default function Home() {
     return () => clearInterval(wisdomTimer);
   }, [wisdomQuotes.length]);
 
-  // EFEK SLIDER 15 GURU (Geser Kiri Tiap 3 Detik)
+  // EFEK SLIDER ACTIVITIES
+  useEffect(() => {
+    const activityTimer = setInterval(() => {
+      setActivityIndex((prevIndex) => (prevIndex + 1) % activityImages.length);
+    }, 3500);
+    return () => clearInterval(activityTimer);
+  }, [activityImages.length]);
+
+  // EFEK SLIDER 15 GURU
   useEffect(() => {
     const teacherTimer = setInterval(() => {
       setIsTeacherTransitioning(true);
@@ -90,8 +107,8 @@ export default function Home() {
 
   const handleTeacherTransitionEnd = () => {
     if (teacherIndex >= teachersList.length) {
-      setIsTeacherTransitioning(false); // Matikan animasi sementara
-      setTeacherIndex(0); // Lompat kembali ke foto pertama (tanpa terlihat berkedip)
+      setIsTeacherTransitioning(false);
+      setTeacherIndex(0);
     }
   };
 
@@ -149,7 +166,6 @@ export default function Home() {
       {/* ========================================= */}
       <section className="max-w-7xl mx-auto px-4 mb-8 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          
           <div className="flex flex-col sm:flex-row gap-5">
             <Link href="/editorial-yayasan/detail" className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer">
               <img src="/slider-1.jpg" alt="Rima Melati Hutagalung" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -205,7 +221,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -214,7 +229,6 @@ export default function Home() {
       {/* ========================================= */}
       <section className="max-w-7xl mx-auto px-4 mb-12 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-          
           <div className="lg:col-span-2 flex flex-col md:flex-row gap-5 items-start">
             <Link href="/editorial/detail" className="w-full md:w-[35%] lg:w-[30%] aspect-square relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer">
               <img src="/slider-3.jpg" alt="Tona Leon F. Situmorang" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -262,7 +276,6 @@ export default function Home() {
               ))}
             </div>
           </div>
-
         </div>
       </section>
 
@@ -272,7 +285,6 @@ export default function Home() {
       <section className="w-full bg-[#D97706] text-white py-14 px-4 shrink-0">
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
           <h2 className="font-bold text-xl sm:text-2xl mb-8">Words of Wisdom</h2>
-          
           <div className="relative w-full h-[160px] sm:h-[120px] flex items-center justify-center overflow-hidden">
             {wisdomQuotes.map((item, index) => (
               <div 
@@ -290,7 +302,6 @@ export default function Home() {
               </div>
             ))}
           </div>
-
           <div className="flex space-x-2.5 mt-8">
             {wisdomQuotes.map((_, index) => (
               <button 
@@ -315,16 +326,12 @@ export default function Home() {
             <span className="bg-slate-800 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">👨‍🏫</span>
             CREATIVE - INNOVATIVE TEACHERS
           </h2>
-          
-          {/* Inject CSS Variable Responsif untuk lebar tiap item guru */}
           <style dangerouslySetInnerHTML={{ __html: `
             :root { --visible-teachers: 2; }
             @media (min-width: 640px) { :root { --visible-teachers: 3; } }
             @media (min-width: 1024px) { :root { --visible-teachers: 6; } }
             .teacher-slide { flex: 0 0 calc(100% / var(--visible-teachers)); max-width: calc(100% / var(--visible-teachers)); }
           `}} />
-
-          {/* Kontainer Slider 15 Guru yang bergeser ke kiri 1 per 1 */}
           <div className="w-full overflow-hidden">
             <div 
               className={`flex ${isTeacherTransitioning ? 'transition-transform duration-700 ease-in-out' : ''}`}
@@ -345,7 +352,6 @@ export default function Home() {
               ))}
             </div>
           </div>
-          
         </div>
       </section>
 
@@ -399,18 +405,30 @@ export default function Home() {
       {/* ========================================= */}
       <section className="w-full bg-[#DCC690] py-10 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          {/* ACTIVITIES SLIDER (5 FOTO) */}
           <div>
             <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">⭐</span> Activities</h3>
-            <div className="w-full aspect-[4/3] rounded-lg overflow-hidden shadow-sm relative">
-              <img src="/slider-1.jpg" alt="Kegiatan" className="w-full h-full object-cover" />
-              <div className="absolute bottom-3 left-4 flex space-x-1.5">
-                <span className="w-2 h-2 bg-white rounded-full shadow"></span>
-                <span className="w-2 h-2 bg-white/50 rounded-full shadow"></span>
-                <span className="w-2 h-2 bg-white/50 rounded-full shadow"></span>
-                <span className="w-2 h-2 bg-white/50 rounded-full shadow"></span>
+            <div className="w-full aspect-[4/3] rounded-lg overflow-hidden shadow-sm relative bg-slate-800">
+              {activityImages.map((src, idx) => (
+                <div key={idx} className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === activityIndex ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                  <img src={src} alt={`Kegiatan ${idx + 1}`} className="w-full h-full object-cover" />
+                </div>
+              ))}
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-1.5 z-10">
+                {activityImages.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActivityIndex(idx)}
+                    className={`h-2 rounded-full shadow transition-all ${idx === activityIndex ? "w-4 bg-white" : "w-2 bg-white/50 hover:bg-white/80"}`}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))}
               </div>
             </div>
           </div>
+
+          {/* FACILITIES */}
           <div>
             <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">➕</span> Facilities</h3>
             <div className="space-y-4">
@@ -427,12 +445,14 @@ export default function Home() {
               ))}
             </div>
           </div>
+
+          {/* GALLERY (9 FOTO) */}
           <div>
             <h3 className="flex items-center text-red-950 font-bold mb-4 text-lg"><span className="mr-2 text-xl">🖼️</span> Gallery</h3>
             <div className="grid grid-cols-3 gap-2">
-              {[1, 2, 3, 4, 5, 6].map((num) => (
-                <div key={num} className="aspect-square rounded overflow-hidden shadow-sm">
-                  <img src={`/slider-${(num % 3) + 1}.jpg`} alt={`Galeri ${num}`} className="w-full h-full object-cover hover:scale-110 transition-transform" />
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
+                <div key={num} className="aspect-[4/3] sm:aspect-square rounded-md overflow-hidden shadow-sm">
+                  <img src={`/slider-${(num % 3) + 1}.jpg`} alt={`Galeri ${num}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer" />
                 </div>
               ))}
             </div>
