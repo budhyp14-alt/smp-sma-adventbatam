@@ -4,12 +4,14 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function Home() {
+  // DATA SLIDER UTAMA
   const images = [
     "/slider-1.jpg",
     "/slider-2.jpg",
     "/slider-3.jpg"
   ];
 
+  // DATA WORDS OF WISDOM
   const wisdomQuotes = [
     {
       quote: "Ketika engkau memutuskan untuk mengampuni dengan setulusnya maka engkau meraih kemenangan mendapatkan sifat yang makin mirip sifat Tuhan",
@@ -33,10 +35,35 @@ export default function Home() {
     }
   ];
 
+  // DATA 15 GURU KREATIF
+  const teachersList = [
+    { name: "Renita Pandiangan, S.Pd", role: "Guru Bhs. Ind.", img: "/slider-1.jpg" },
+    { name: "Herman, S.Pd", role: "Guru Conversation", img: "/slider-2.jpg" },
+    { name: "Kumar, S.Pd", role: "Guru Conversation", img: "/slider-3.jpg" },
+    { name: "Tiurma Febryanti, S.Pd", role: "Guru IPA Fisika", img: "/slider-1.jpg" },
+    { name: "Ir. Budhy Prasetyo", role: "Guru Informatika", img: "/slider-2.jpg" },
+    { name: "Asna Rumondang S., S.Pd.", role: "Guru", img: "/slider-3.jpg" },
+    { name: "Lourens Syahartian, S.Pd", role: "Guru Bhs. Inggris", img: "/slider-1.jpg" },
+    { name: "Ernast Simanjuntak, S.Pd", role: "Guru Sosiologi", img: "/slider-2.jpg" },
+    { name: "Sarlen Naibaho, S.Pd., M.Pd.", role: "Guru IPS", img: "/slider-3.jpg" },
+    { name: "Endang Januar S., S.Kom", role: "Bendahara BOS", img: "/slider-1.jpg" },
+    { name: "Celli Sihombing, S.Pd", role: "Guru IPA Kimia", img: "/slider-2.jpg" },
+    { name: "Mawar Indah Sinurat, S.Pd", role: "Guru IPA Biologi", img: "/slider-3.jpg" },
+    { name: "Drs. Andi Mulyono", role: "Guru Matematika", img: "/slider-1.jpg" },
+    { name: "Rini Wulandari, S.Pd", role: "Guru Sejarah", img: "/slider-2.jpg" },
+    { name: "Kevin Pratama, S.Or", role: "Guru Penjaskes", img: "/slider-3.jpg" }
+  ];
+
+  // Menduplikasi 6 foto awal ke bagian akhir agar looping slider tidak terputus (seamless)
+  const extendedTeachers = [...teachersList, ...teachersList.slice(0, 6)];
+
+  // STATE MANAJEMEN
   const [currentIndex, setCurrentIndex] = useState(0);
   const [wisdomIndex, setWisdomIndex] = useState(0);
+  const [teacherIndex, setTeacherIndex] = useState(0);
+  const [isTeacherTransitioning, setIsTeacherTransitioning] = useState(true);
 
-  // Slider Utama
+  // EFEK SLIDER UTAMA
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -44,13 +71,29 @@ export default function Home() {
     return () => clearInterval(timer);
   }, [images.length]);
 
-  // Slider Words of Wisdom
+  // EFEK SLIDER WORDS OF WISDOM
   useEffect(() => {
     const wisdomTimer = setInterval(() => {
       setWisdomIndex((prevIndex) => (prevIndex + 1) % wisdomQuotes.length);
     }, 5000);
     return () => clearInterval(wisdomTimer);
   }, [wisdomQuotes.length]);
+
+  // EFEK SLIDER 15 GURU (Geser Kiri Tiap 3 Detik)
+  useEffect(() => {
+    const teacherTimer = setInterval(() => {
+      setIsTeacherTransitioning(true);
+      setTeacherIndex((prev) => prev + 1);
+    }, 3000);
+    return () => clearInterval(teacherTimer);
+  }, []);
+
+  const handleTeacherTransitionEnd = () => {
+    if (teacherIndex >= teachersList.length) {
+      setIsTeacherTransitioning(false); // Matikan animasi sementara
+      setTeacherIndex(0); // Lompat kembali ke foto pertama (tanpa terlihat berkedip)
+    }
+  };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
@@ -79,7 +122,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F3EFE4] text-slate-900 font-sans pb-0 flex flex-col">
+    <main className="min-h-screen bg-[#F3EFE4] text-slate-900 font-sans pb-0 flex flex-col overflow-x-hidden">
       
       {/* ========================================= */}
       {/* 1. BAGIAN SLIDER UTAMA                    */}
@@ -230,7 +273,6 @@ export default function Home() {
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
           <h2 className="font-bold text-xl sm:text-2xl mb-8">Words of Wisdom</h2>
           
-          {/* Kontainer Slider */}
           <div className="relative w-full h-[160px] sm:h-[120px] flex items-center justify-center overflow-hidden">
             {wisdomQuotes.map((item, index) => (
               <div 
@@ -249,7 +291,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Dots Indicator */}
           <div className="flex space-x-2.5 mt-8">
             {wisdomQuotes.map((_, index) => (
               <button 
@@ -266,33 +307,45 @@ export default function Home() {
       </section>
 
       {/* ========================================= */}
-      {/* 5. GURU KREATIF (Krem Gelap / #DCC690)    */}
+      {/* 5. GURU KREATIF SLIDER (Krem Gelap)       */}
       {/* ========================================= */}
-      <section className="w-full bg-[#DCC690] py-10 px-4">
+      <section className="w-full bg-[#DCC690] py-10 px-4 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <h2 className="font-bold text-sm sm:text-base mb-6 flex items-center gap-2 text-slate-800 uppercase">
             <span className="bg-slate-800 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">👨‍🏫</span>
             CREATIVE - INNOVATIVE TEACHERS
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-            {[
-              { name: "Lourens Syahartian, S.Pd", role: "Guru Bhs. Inggris" },
-              { name: "Ernast Simanjuntak, S.Pd", role: "Guru Sosiologi" },
-              { name: "Sarlen Naibaho, S.Pd., M.Pd.", role: "Guru IPS" },
-              { name: "Endang Januar Silitonga, S.Kom", role: "Bendahara BOS / Operator Dapodik" },
-              { name: "Celli Sihombing, S.Pd", role: "Waka Kurikulum / Guru IPA Kimia" },
-              { name: "Mawar Indah Sinurat, S.Pd", role: "Guru IPA Biologi" }
-            ].map((guru, index) => (
-              <div key={index} className="relative aspect-[3/4] rounded-lg overflow-hidden border border-slate-400 shadow-sm bg-slate-300 group">
-                <img src={`/slider-${(index % 3) + 1}.jpg`} alt={guru.name} className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 w-full p-2 sm:p-3 text-white text-[10px] sm:text-xs leading-tight">
-                  <p className="font-semibold text-white/90">{guru.role}</p>
-                  <p className="font-bold mt-0.5 text-amber-300">{guru.name}</p>
+          
+          {/* Inject CSS Variable Responsif untuk lebar tiap item guru */}
+          <style dangerouslySetInnerHTML={{ __html: `
+            :root { --visible-teachers: 2; }
+            @media (min-width: 640px) { :root { --visible-teachers: 3; } }
+            @media (min-width: 1024px) { :root { --visible-teachers: 6; } }
+            .teacher-slide { flex: 0 0 calc(100% / var(--visible-teachers)); max-width: calc(100% / var(--visible-teachers)); }
+          `}} />
+
+          {/* Kontainer Slider 15 Guru yang bergeser ke kiri 1 per 1 */}
+          <div className="w-full overflow-hidden">
+            <div 
+              className={`flex ${isTeacherTransitioning ? 'transition-transform duration-700 ease-in-out' : ''}`}
+              style={{ transform: `translateX(calc(-${teacherIndex} * (100% / var(--visible-teachers))))` }}
+              onTransitionEnd={handleTeacherTransitionEnd}
+            >
+              {extendedTeachers.map((guru, index) => (
+                <div key={index} className="teacher-slide px-1.5 sm:px-2 pb-2">
+                  <div className="relative aspect-[3/4] rounded-lg overflow-hidden border border-slate-400 shadow-md bg-slate-300 group cursor-pointer hover:-translate-y-1 transition-all duration-300">
+                    <img src={guru.img} alt={guru.name} className="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                    <div className="absolute bottom-0 left-0 w-full p-2 sm:p-3 text-white text-[10px] sm:text-xs leading-tight">
+                      <p className="font-semibold text-white/90">{guru.role}</p>
+                      <p className="font-bold mt-0.5 text-amber-300 drop-shadow">{guru.name}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+          
         </div>
       </section>
 
