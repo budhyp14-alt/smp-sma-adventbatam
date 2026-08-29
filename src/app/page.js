@@ -74,6 +74,7 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 mb-8 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
+          {/* KIRI: Chairman of the Foundation */}
           <div className="flex flex-col sm:flex-row gap-5">
             <div className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0">
               <img src="/slider-1.jpg" alt="Rima Melati Hutagalung" className="w-full h-full object-cover" />
@@ -88,18 +89,27 @@ export default function Home() {
                 <span className="bg-[#4D524F] text-white rounded-full w-7 h-7 flex items-center justify-center text-[10px] tracking-widest">•••</span>
                 <h2 className="font-bold text-lg text-[#4D524F]">Foundation Chairman's Editorial</h2>
               </div>
-              <div className="bg-[#E2DECA] p-4 rounded-t-xl shadow-sm mb-2">
+              
+              {/* KLIK JUDUL YAYASAN */}
+              <Link href="/editorial-yayasan/detail" className="bg-[#E2DECA] p-4 rounded-t-xl shadow-sm mb-2 hover:bg-[#d6d1bc] transition-colors cursor-pointer block">
                 <h3 className="text-red-900 font-bold text-base sm:text-lg leading-snug">Visi Jangka Panjang YPAB</h3>
-              </div>
-              <div className="bg-[#E2DECA] p-4 rounded-b-xl shadow-sm mb-4 flex-1">
+              </Link>
+              
+              {/* KLIK LEAD YAYASAN */}
+              <Link href="/editorial-yayasan/detail" className="bg-[#E2DECA] p-4 rounded-b-xl shadow-sm mb-4 flex-1 hover:bg-[#d6d1bc] transition-colors cursor-pointer block">
                 <p className="text-slate-600 text-[13px] sm:text-sm leading-relaxed text-justify line-clamp-6">Yayasan Pendidikan Advent Batam terus berkomitmen untuk memberikan standar pendidikan terbaik yang selaras dengan nilai-nilai moral dan spiritual bagi generasi masa depan...</p>
-              </div>
+              </Link>
+              
+              {/* KLIK VIEW ALL YAYASAN */}
               <div>
-                <button className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm">View All</button>
+                <Link href="/editorial-yayasan" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm inline-block">
+                  View All
+                </Link>
               </div>
             </div>
           </div>
 
+          {/* KANAN: Operations Manager */}
           <div className="flex flex-col sm:flex-row gap-5">
             <div className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0">
               <img src="/slider-2.jpg" alt="Samuel Simatupang" className="w-full h-full object-cover" />
@@ -114,14 +124,22 @@ export default function Home() {
                 <span className="bg-[#4D524F] text-white rounded-full w-7 h-7 flex items-center justify-center text-[10px] tracking-widest">•••</span>
                 <h2 className="font-bold text-lg text-[#4D524F]">Operations Manager's Editorial</h2>
               </div>
-              <div className="bg-[#E2DECA] p-4 rounded-t-xl shadow-sm mb-2">
+              
+              {/* KLIK JUDUL MANAJER */}
+              <Link href="/editorial-manajer/detail" className="bg-[#E2DECA] p-4 rounded-t-xl shadow-sm mb-2 hover:bg-[#d6d1bc] transition-colors cursor-pointer block">
                 <h3 className="text-red-900 font-bold text-base sm:text-lg leading-snug">Peningkatan Fasilitas Berkelanjutan</h3>
-              </div>
-              <div className="bg-[#E2DECA] p-4 rounded-b-xl shadow-sm mb-4 flex-1">
+              </Link>
+              
+              {/* KLIK LEAD MANAJER */}
+              <Link href="/editorial-manajer/detail" className="bg-[#E2DECA] p-4 rounded-b-xl shadow-sm mb-4 flex-1 hover:bg-[#d6d1bc] transition-colors cursor-pointer block">
                 <p className="text-slate-600 text-[13px] sm:text-sm leading-relaxed text-justify line-clamp-6">Pengembangan infrastruktur sekolah menjadi fokus utama kami tahun ini, untuk memastikan kegiatan belajar mengajar berjalan optimal dan nyaman bagi seluruh siswa...</p>
-              </div>
+              </Link>
+              
+              {/* KLIK VIEW ALL MANAJER */}
               <div>
-                <button className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm">View All</button>
+                <Link href="/editorial-manajer" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm inline-block">
+                  View All
+                </Link>
               </div>
             </div>
           </div>
