@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
   ];
 
   return (
-    <html lang="id">
+    <html lang="en">
       <body className="bg-slate-100 text-slate-900 font-sans antialiased min-h-screen flex flex-col">
         
         <style dangerouslySetInnerHTML={{ __html: `
@@ -66,15 +66,17 @@ export default function RootLayout({ children }) {
                 <h1 className="text-xl sm:text-2xl font-black text-red-950 tracking-tight leading-none mb-1">
                   SMP - SMA ADVENT BATAM
                 </h1>
+                {/* Teks Sub-Logo Diterjemahkan */}
                 <p className="text-xs text-slate-500 font-medium tracking-wide leading-none">
-                  Membentuk Generasi Berkarakter, Cerdas, dan Berintegritas
+                  Shaping a Generation of Character, Intelligence, and Integrity
                 </p>
               </div>
             </div>
 
             <div className="flex items-center space-x-4 sm:space-x-6">
               <div className="flex items-center space-x-3 text-xs sm:text-sm font-semibold text-slate-600">
-                <span className="hidden sm:inline text-slate-400 mr-1">Ikuti Kami:</span>
+                {/* Teks Follow Us Diterjemahkan */}
+                <span className="hidden sm:inline text-slate-400 mr-1">Follow Us:</span>
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors flex items-center space-x-1">
                   <span>📘 Facebook</span>
                 </a>
@@ -93,7 +95,7 @@ export default function RootLayout({ children }) {
             </div>
           </div>
 
-          {/* Teks Berjalan & Tanggal (Diterjemahkan) */}
+          {/* Teks Berjalan & Tanggal */}
           <div className="bg-amber-400 text-slate-900 font-bold text-xs sm:text-sm py-2 px-4 shadow-inner flex items-center border-b border-amber-500">
             <span className="bg-slate-800 text-amber-400 text-[11px] font-bold px-2.5 py-0.5 rounded mr-2 whitespace-nowrap">
               Tuesday, August 25, 2026
