@@ -10,14 +10,47 @@ export default function Home() {
     "/slider-3.jpg"
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const wisdomQuotes = [
+    {
+      quote: "Ketika engkau memutuskan untuk mengampuni dengan setulusnya maka engkau meraih kemenangan mendapatkan sifat yang makin mirip sifat Tuhan",
+      source: "Menang tanpa membalas"
+    },
+    {
+      quote: "Pendidikan adalah senjata paling mematikan yang bisa Anda gunakan untuk mengubah dunia.",
+      source: "Nelson Mandela"
+    },
+    {
+      quote: "Tujuan pendidikan itu untuk mempertajam kecerdasan, memperkukuh kemauan serta memperhalus perasaan.",
+      source: "Tan Malaka"
+    },
+    {
+      quote: "Hiduplah seolah-olah Anda akan mati besok. Belajarlah seolah-olah Anda akan hidup selamanya.",
+      source: "Mahatma Gandhi"
+    },
+    {
+      quote: "Kesuksesan bukanlah kunci kebahagiaan. Kebahagiaanlah kunci kesuksesan. Jika Anda mencintai apa yang Anda kerjakan, Anda akan sukses.",
+      source: "Albert Schweitzer"
+    }
+  ];
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [wisdomIndex, setWisdomIndex] = useState(0);
+
+  // Slider Utama
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 4000);
     return () => clearInterval(timer);
   }, [images.length]);
+
+  // Slider Words of Wisdom
+  useEffect(() => {
+    const wisdomTimer = setInterval(() => {
+      setWisdomIndex((prevIndex) => (prevIndex + 1) % wisdomQuotes.length);
+    }, 5000);
+    return () => clearInterval(wisdomTimer);
+  }, [wisdomQuotes.length]);
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
@@ -74,9 +107,7 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 mb-8 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
-          {/* KIRI: Chairman of the Foundation */}
           <div className="flex flex-col sm:flex-row gap-5">
-            {/* KLIK FOTO YAYASAN */}
             <Link href="/editorial-yayasan/detail" className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer">
               <img src="/slider-1.jpg" alt="Rima Melati Hutagalung" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
@@ -85,7 +116,6 @@ export default function Home() {
                 <p className="text-[#E5B55C] text-xs sm:text-sm">Chairman of the Foundation</p>
               </div>
             </Link>
-            
             <div className="w-full sm:w-[60%] flex flex-col">
               <div className="flex items-center gap-2 mb-3">
                 <span className="bg-[#4D524F] text-white rounded-full w-7 h-7 flex items-center justify-center text-[10px] tracking-widest">•••</span>
@@ -105,9 +135,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* KANAN: Operations Manager */}
           <div className="flex flex-col sm:flex-row gap-5">
-            {/* KLIK FOTO MANAJER */}
             <Link href="/editorial-manajer/detail" className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer">
               <img src="/slider-2.jpg" alt="Samuel Simatupang" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
@@ -116,7 +144,6 @@ export default function Home() {
                 <p className="text-[#E5B55C] text-xs sm:text-sm">Operations Manager</p>
               </div>
             </Link>
-
             <div className="w-full sm:w-[60%] flex flex-col">
               <div className="flex items-center gap-2 mb-3">
                 <span className="bg-[#4D524F] text-white rounded-full w-7 h-7 flex items-center justify-center text-[10px] tracking-widest">•••</span>
@@ -145,9 +172,7 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 mb-12 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           
-          {/* KIRI (2/3): Principal's Editorial */}
           <div className="lg:col-span-2 flex flex-col md:flex-row gap-5 items-start">
-            {/* KLIK FOTO KEPALA SEKOLAH */}
             <Link href="/editorial/detail" className="w-full md:w-[35%] lg:w-[30%] aspect-square relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer">
               <img src="/slider-3.jpg" alt="Tona Leon F. Situmorang" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
@@ -156,21 +181,17 @@ export default function Home() {
                 <p className="text-[#E5B55C] text-[10px] sm:text-xs">Principal</p>
               </div>
             </Link>
-
             <div className="w-full md:w-[65%] lg:w-[70%] flex flex-col h-full">
               <div className="flex items-center gap-2 mb-3">
                 <span className="bg-[#4D524F] text-white rounded-full w-7 h-7 flex items-center justify-center text-[10px] tracking-widest">•••</span>
                 <h2 className="font-bold text-lg text-[#4D524F]">Principal's Editorial</h2>
               </div>
-              
               <Link href="/editorial/detail" className="bg-[#E2DECA] p-4 rounded-t-xl shadow-sm mb-2 hover:bg-[#d6d1bc] transition-colors cursor-pointer block">
                 <h3 className="text-red-900 font-bold text-base sm:text-lg">Sambutan Kepala Sekolah: Menyongsong Masa Depan Melalui Website Resmi SMP & SMA Advent Batam</h3>
               </Link>
-              
               <Link href="/editorial/detail" className="bg-[#E2DECA] p-4 rounded-b-xl shadow-sm mb-4 flex-1 hover:bg-[#d6d1bc] transition-colors cursor-pointer block">
                 <p className="text-slate-600 text-[13px] sm:text-sm leading-relaxed text-justify">Kepala Sekolah SMP & SMA Advent Batam, Bapak Tona Leon F. Situmorang, S.Pd., MA.Ed. menyambut dengan sukacita dan antusiasme tinggi atas selesainya pembuatan website resmi sekolah. Beliau tidak hanya mengucap syukur kepada Tuhan, tetapi juga menaruh harapan besar agar seluruh civitas akademika dapat mendayagunakan platform digital ini secara maksimal...</p>
               </Link>
-              
               <div>
                 <Link href="/editorial" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2 px-6 rounded shadow-sm text-sm inline-block">
                   View All
@@ -179,7 +200,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* KANAN (1/3): Latest News */}
           <div className="lg:col-span-1 flex flex-col h-full">
             <div className="flex items-center gap-2 mb-3 h-7 shrink-0">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-xs">💬</span>
@@ -204,30 +224,43 @@ export default function Home() {
       </section>
 
       {/* ========================================= */}
-      {/* 4. BAGIAN PETUAH BIJAKSANA (Oranye)       */}
+      {/* 4. WORDS OF WISDOM (SLIDER 5 QUOTES)      */}
       {/* ========================================= */}
-      <section className="w-full bg-[#D97706] text-white py-12 px-4 shrink-0">
-        <div className="max-w-5xl mx-auto flex flex-col items-center">
-          <h2 className="font-bold text-lg sm:text-xl mb-6">Words of Wisdom</h2>
-          <div className="flex flex-col sm:flex-row w-full justify-between gap-8 mb-6">
-            <div className="flex-1 text-left sm:pr-8 border-b sm:border-b-0 sm:border-r border-white/30 pb-4 sm:pb-0">
-              <p className="font-bold text-base sm:text-lg leading-relaxed italic">
-                "tuskan untuk mengampuni dengan u meraih kemenangan mendapatkan makin mirip sifat Tuhan"
-              </p>
-              <p className="text-sm font-semibold mt-3 text-amber-200">Menang tanpa membalas</p>
-            </div>
-            <div className="flex-1 text-left sm:text-right sm:pl-8">
-              <p className="font-bold text-base sm:text-lg leading-relaxed italic">
-                "Omnia contraria, quos e An vero disp"
-              </p>
-              <p className="text-sm font-semibold mt-3 text-amber-200">sunt</p>
-            </div>
+      <section className="w-full bg-[#D97706] text-white py-14 px-4 shrink-0">
+        <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
+          <h2 className="font-bold text-xl sm:text-2xl mb-8">Words of Wisdom</h2>
+          
+          {/* Kontainer Slider */}
+          <div className="relative w-full h-[160px] sm:h-[120px] flex items-center justify-center overflow-hidden">
+            {wisdomQuotes.map((item, index) => (
+              <div 
+                key={index}
+                className={`absolute w-full px-4 transition-all duration-700 ease-in-out ${
+                  index === wisdomIndex ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12 pointer-events-none'
+                }`}
+              >
+                <p className="font-bold text-lg sm:text-xl md:text-2xl leading-relaxed italic mb-4">
+                  "{item.quote}"
+                </p>
+                <p className="text-sm font-semibold text-amber-200">
+                  sumber : {item.source}
+                </p>
+              </div>
+            ))}
           </div>
-          <div className="flex space-x-2 mt-2">
-            <span className="w-2 h-2 bg-white rounded-full"></span>
-            <span className="w-2 h-2 bg-white/50 rounded-full"></span>
-            <span className="w-2 h-2 bg-white/50 rounded-full"></span>
-            <span className="w-2 h-2 bg-white/50 rounded-full"></span>
+
+          {/* Dots Indicator */}
+          <div className="flex space-x-2.5 mt-8">
+            {wisdomQuotes.map((_, index) => (
+              <button 
+                key={index} 
+                onClick={() => setWisdomIndex(index)}
+                className={`rounded-full transition-all duration-300 ${
+                  index === wisdomIndex ? "w-8 h-2.5 bg-white" : "w-2.5 h-2.5 bg-white/40 hover:bg-white/70"
+                }`} 
+                aria-label={`Go to wisdom ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
       </section>
