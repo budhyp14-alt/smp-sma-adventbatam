@@ -8,28 +8,28 @@ export default function EditorialPage() {
   const editorialList = [
     {
       title: "Pelajaran Serta Keteladanan Dari Para Pahlawan",
-      date: "Tuesday, 11 Jul 2017",
+      date: "Tuesday, 11 Jul 2017, 08:00 WIB",
       excerpt: "An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem...",
       img: "/slider-1.jpg",
       link: "/editorial/detail"
     },
     {
       title: "Tugas Kepala Sekolah Sebagai Pembina Siswa Siswa",
-      date: "Tuesday, 11 Jul 2017",
+      date: "Tuesday, 11 Jul 2017, 09:30 WIB",
       excerpt: "An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem...",
       img: "/slider-2.jpg",
       link: "#"
     },
     {
       title: "Editorial Oleh Kepala Sekolah",
-      date: "Tuesday, 11 Jul 2017",
+      date: "Tuesday, 11 Jul 2017, 11:15 WIB",
       excerpt: "An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem...",
       img: "/slider-3.jpg",
       link: "#"
     },
     {
       title: "Membentuk Karakter Siswa Di Sekolah",
-      date: "Tuesday, 11 Jul 2017",
+      date: "Tuesday, 11 Jul 2017, 13:45 WIB",
       excerpt: "An potest, inquit ille, quicquam esse suavius quam nihil dolere? Contemnit enim disserendi elegantiam, confuse loquitur. An est aliquid per se ipsum flagitiosum, etiamsi nulla comitetur infamia? Ab hoc autem...",
       img: "/slider-1.jpg",
       link: "#"
