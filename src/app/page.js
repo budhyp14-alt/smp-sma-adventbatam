@@ -413,27 +413,27 @@ export default function Home() {
       {/* 7. KEGIATAN, FASILITAS, GALERI (Krem Gelap)*/}
       {/* ========================================= */}
       <section className="w-full bg-[#DCC690] py-10 px-4">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           
-          {/* ACTIVITIES SLIDER (Single Image Full) */}
-          <div className="flex flex-col">
-            <h3 className="flex items-center text-slate-800 font-bold mb-4 text-xl">
+          {/* ACTIVITIES SLIDER (Single Full Image) */}
+          <div className="flex flex-col h-full">
+            <h3 className="flex items-center text-slate-800 font-bold mb-5 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">★</span> 
-              Activities
+              Kegiatan
             </h3>
-            <div className="w-full aspect-[4/3] rounded-lg overflow-hidden shadow-sm relative bg-slate-800">
+            <div className="w-full flex-1 rounded-lg overflow-hidden shadow-sm relative bg-slate-800 min-h-[260px]">
               {activityImages.map((src, idx) => (
                 <div key={idx} className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === activityIndex ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
                   <img src={src} className="w-full h-full object-cover" alt={`Kegiatan ${idx + 1}`} />
                 </div>
               ))}
               {/* Dots Indicator di Tengah Bawah */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-1.5 z-10">
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
                 {activityImages.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setActivityIndex(idx)}
-                    className={`h-2.5 rounded-full shadow transition-all ${idx === activityIndex ? "w-2.5 bg-white" : "w-2.5 bg-white/50 hover:bg-white/80"}`}
+                    className={`w-2.5 h-2.5 rounded-full shadow transition-all ${idx === activityIndex ? "bg-white" : "bg-white/50 hover:bg-white/80"}`}
                     aria-label={`Go to activity ${idx + 1}`}
                   />
                 ))}
@@ -442,18 +442,18 @@ export default function Home() {
           </div>
 
           {/* FACILITIES */}
-          <div className="flex flex-col">
-            <h3 className="flex items-center text-slate-800 font-bold mb-4 text-xl">
+          <div className="flex flex-col h-full">
+            <h3 className="flex items-center text-slate-800 font-bold mb-5 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-lg font-bold pb-0.5 mr-2">+</span> 
-              Facilities
+              Fasilitas
             </h3>
-            <div className="space-y-4">
+            <div className="flex flex-col justify-between flex-1">
               {fasilitas.map((fas, idx) => (
-                <div key={idx} className="flex gap-4">
-                  <div className="w-24 h-16 sm:w-28 sm:h-20 shrink-0 rounded-lg overflow-hidden shadow-sm">
+                <div key={idx} className="flex gap-4 items-center">
+                  <div className="w-[32%] aspect-[4/3] shrink-0 rounded-md overflow-hidden shadow-sm">
                     <img src={fas.img} alt={fas.title} className="w-full h-full object-cover" />
                   </div>
-                  <div className="flex flex-col justify-center">
+                  <div className="flex flex-col justify-center flex-1">
                     <p className="text-sm font-bold text-red-900 leading-tight mb-1">{fas.title}</p>
                     <p className="text-[11px] sm:text-xs text-slate-700 leading-tight">{fas.text}</p>
                   </div>
@@ -463,16 +463,16 @@ export default function Home() {
           </div>
 
           {/* GALLERY (9 FOTO GRID 3x3) */}
-          <div className="flex flex-col">
-            <h3 className="flex items-center text-slate-800 font-bold mb-4 text-xl">
+          <div className="flex flex-col h-full">
+            <h3 className="flex items-center text-slate-800 font-bold mb-5 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center p-1.5 mr-2">
                 <svg className="w-full h-full fill-current" viewBox="0 0 24 24"><path d="M4 4h6v6H4zm8 0h8v6h-8zm-8 8h6v8H4zm8 0h8v8h-8z"/></svg>
               </span> 
-              Gallery
+              Galeri
             </h3>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-3 flex-1 content-between">
               {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
-                <div key={num} className="aspect-[4/3] rounded-md overflow-hidden shadow-sm">
+                <div key={num} className="w-full aspect-[4/3] rounded-md overflow-hidden shadow-sm">
                   <img src={`/slider-${(num % 3) + 1}.jpg`} alt={`Galeri ${num}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer" />
                 </div>
               ))}
