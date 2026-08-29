@@ -447,10 +447,12 @@ export default function Home() {
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-lg font-bold pb-0.5 mr-2">+</span> 
               Fasilitas
             </h3>
+            {/* Menggunakan flex dan justify-between agar rata atas bawah */}
             <div className="flex flex-col justify-between flex-1">
               {fasilitas.map((fas, idx) => (
                 <div key={idx} className="flex gap-4 items-center">
-                  <div className="w-[32%] aspect-[4/3] shrink-0 rounded-md overflow-hidden shadow-sm">
+                  {/* Foto Thumbnail Fasilitas - diperkecil (w-[28%]) agar jaraknya lega */}
+                  <div className="w-[28%] lg:w-[30%] aspect-[4/3] shrink-0 rounded-md overflow-hidden shadow-sm">
                     <img src={fas.img} alt={fas.title} className="w-full h-full object-cover" />
                   </div>
                   <div className="flex flex-col justify-center flex-1">
@@ -470,7 +472,8 @@ export default function Home() {
               </span> 
               Galeri
             </h3>
-            <div className="grid grid-cols-3 gap-3 flex-1 content-between">
+            {/* Gap diperbesar (gap-4 lg:gap-5) agar thumbnail mengecil proporsional */}
+            <div className="grid grid-cols-3 gap-4 lg:gap-5 flex-1 content-between">
               {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
                 <div key={num} className="w-full aspect-[4/3] rounded-md overflow-hidden shadow-sm">
                   <img src={`/slider-${(num % 3) + 1}.jpg`} alt={`Galeri ${num}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer" />
