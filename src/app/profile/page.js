@@ -19,7 +19,7 @@ export default function ProfilePage() {
           </div>
           
           <h1 className="text-3xl sm:text-4xl font-black text-slate-800 mb-4 border-b-2 border-slate-400/30 pb-4 uppercase tracking-wide">
-            Profil Sekolah
+            School Profile
           </h1>
         </div>
       </section>
@@ -135,7 +135,6 @@ export default function ProfilePage() {
                 <button className="bg-white text-slate-800 text-xs font-bold px-4 ml-1">Search</button>
               </div>
             </div>
-            {/* Ringkasan Footer (Disederhanakan untuk contoh) */}
             <div className="text-xs font-semibold">
               <p>© 2026 SMP SMA Advent Batam. Mendidik Generasi Cerdas dan Berkarakter Kristus.</p>
             </div>
