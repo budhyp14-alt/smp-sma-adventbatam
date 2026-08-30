@@ -5,6 +5,31 @@ export const metadata = {
 };
 
 export default function NewsDetailPage() {
+  // Simulasi berita lain yang sekategori untuk ditampilkan di sidebar kanan
+  const relatedNews = [
+    {
+      id: "teknologi-inovasi-2",
+      title: "Penerapan Absensi Wajah Berbasis AI untuk Meningkatkan Kedisiplinan Siswa",
+      date: "Wednesday, 10 Jun 2026",
+      excerpt: "Sistem absensi otomatis menggunakan pengenalan wajah kini terintegrasi langsung dengan database Google Sheets sekolah...",
+      img: "/slider-2.jpg"
+    },
+    {
+      id: "teknologi-inovasi-3",
+      title: "Pelatihan Pemrograman Python dan Penggunaan Cloud Hosting bagi Guru",
+      date: "Saturday, 15 May 2026",
+      excerpt: "Kegiatan peningkatan kompetensi tenaga pendidik dalam menguasai teknologi modern guna mendukung transformasi digital...",
+      img: "/slider-3.jpg"
+    },
+    {
+      id: "teknologi-inovasi-4",
+      title: "Optimalisasi Laboratorium Komputer dengan Perangkat Keras Terbaru",
+      date: "Tuesday, 04 Feb 2026",
+      excerpt: "Fasilitas penunjang praktik TIK dan Informatika diperbarui untuk memberikan pengalaman praktikum yang memadai...",
+      img: "/slider-1.jpg"
+    }
+  ];
+
   return (
     <main className="min-h-screen flex flex-col font-sans bg-[#F3EFE4]">
       
@@ -32,35 +57,73 @@ export default function NewsDetailPage() {
         </div>
       </section>
 
-      {/* KONTEN UTUH BERITA */}
+      {/* KONTEN UTAMA DENGAN SIDEBAR BERITA SEJENIS */}
       <section className="w-full flex-1 py-12 px-4">
-        <div className="max-w-4xl mx-auto bg-[#E5DCC3] p-6 sm:p-10 rounded-2xl shadow-sm border border-[#D5CCB3] space-y-6 text-slate-800 text-justify">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
           
-          {/* Gambar Utama Berita */}
-          <div className="w-full aspect-[16/9] rounded-xl overflow-hidden shadow-md bg-slate-300">
-            <img src="/slider-1.jpg" alt="Ilustrasi Berita" className="w-full h-full object-cover" />
+          {/* KIRI - KONTEN UTUH BERITA (8 Kolom) */}
+          <div className="lg:col-span-8 bg-[#E5DCC3] p-6 sm:p-10 rounded-2xl shadow-sm border border-[#D5CCB3] space-y-6 text-slate-800 text-justify">
+            
+            <div className="w-full aspect-[16/9] rounded-xl overflow-hidden shadow-md bg-slate-300">
+              <img src="/slider-1.jpg" alt="Ilustrasi Berita" className="w-full h-full object-cover" />
+            </div>
+
+            <div className="space-y-4 text-sm sm:text-base leading-relaxed">
+              <p className="font-semibold text-red-950 text-base sm:text-lg italic">
+                "Penting untuk mendokumentasikan secara digital dan online semua event yang terjadi di sekolah SMP dan SMA Advent Batam."
+              </p>
+              <p>
+                Batam — Di bawah persetujuan dan dukungan penuh dari Kepala Sekolah Bapak Tona Leon F. Situmorang, S.Pd., MA.Ed., civitas akademika SMP & SMA Advent Batam secara resmi meluncurkan portal web terpadu yang dirancang modern, responsif, dan interaktif.
+              </p>
+              <p>
+                Langkah ini diambil guna menjawab tantangan zaman di era digitalisasi pendidikan. Seluruh kegiatan belajar mengajar, pengumuman penting, jadwal agenda, galeri kegiatan siswa, hingga profil guru kreatif kini dapat diakses secara transparan dan cepat oleh para orang tua murid, siswa, maupun masyarakat luas.
+              </p>
+              <p>
+                Dengan sistem navigasi yang terstruktur dan antarmuka bernuansa hangat, website ini tidak hanya berfungsi sebagai media informasi, tetapi juga sebagai wadah dokumentasi prestasi digital sekolah yang berkelanjutan.
+              </p>
+            </div>
+
+            <div className="pt-6 border-t border-[#D5CCB3] flex justify-between items-center flex-wrap gap-4">
+              <span className="text-xs font-semibold text-slate-600">Share this news to parents and friends!</span>
+              <Link href="/news" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold text-xs py-2.5 px-6 rounded shadow transition-colors inline-block">
+                ← Kembali ke Berita Lainnya
+              </Link>
+            </div>
+
           </div>
 
-          <div className="space-y-4 text-sm sm:text-base leading-relaxed">
-            <p className="font-semibold text-red-950 text-base sm:text-lg italic">
-              "Penting untuk mendokumentasikan secara digital dan online semua event yang terjadi di sekolah SMP dan SMA Advent Batam."
-            </p>
-            <p>
-              Batam — Di bawah persetujuan dan dukungan penuh dari Kepala Sekolah Bapak Tona Leon F. Situmorang, S.Pd., MA.Ed., civitas akademika SMP & SMA Advent Batam secara resmi meluncurkan portal web terpadu yang dirancang modern, responsif, dan interaktif.
-            </p>
-            <p>
-              Langkah ini diambil guna menjawab tantangan zaman di era digitalisasi pendidikan. Seluruh kegiatan belajar mengajar, pengumuman penting, jadwal agenda, galeri kegiatan siswa, hingga profil guru kreatif kini dapat diakses secara transparan dan cepat oleh para orang tua murid, siswa, maupun masyarakat luas.
-            </p>
-            <p>
-              Dengan sistem navigasi yang terstruktur dan antarmuka bernuansa hangat, website ini tidak hanya berfungsi sebagai media informasi, tetapi juga sebagai wadah dokumentasi prestasi digital sekolah yang berkelanjutan.
-            </p>
-          </div>
+          {/* KANAN - SIDEBAR BERITA SEJENIS / SEKATEGORI (4 Kolom) */}
+          <div className="lg:col-span-4 space-y-6">
+            <div className="bg-white p-6 rounded-xl shadow-md border-t-4 border-red-900">
+              <h3 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2 flex items-center gap-2">
+                <span>📌</span> Berita Sekategori Lainnya
+              </h3>
 
-          <div className="pt-6 border-t border-[#D5CCB3] flex justify-between items-center flex-wrap gap-4">
-            <span className="text-xs font-semibold text-slate-600">Share this news to parents and friends!</span>
-            <Link href="/news" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold text-xs py-2.5 px-6 rounded shadow transition-colors inline-block">
-              ← Kembali ke Berita Lainnya
-            </Link>
+              <div className="space-y-6">
+                {relatedNews.map((item, index) => (
+                  <div key={index} className="flex flex-col gap-2 pb-4 border-b border-slate-200 last:border-b-0 last:pb-0 group">
+                    {/* FOTO THUMBNAIL */}
+                    <Link href={`/news/detail?id=${item.id}`} className="w-full aspect-[16/9] rounded-lg overflow-hidden bg-slate-200 shadow-sm block">
+                      <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                    </Link>
+                    
+                    <div>
+                      <p className="text-[10px] text-slate-500 mb-1">{item.date}</p>
+                      {/* JUDUL */}
+                      <Link href={`/news/detail?id=${item.id}`}>
+                        <h4 className="text-sm font-bold text-red-950 leading-snug hover:text-red-800 transition-colors cursor-pointer mb-1">
+                          {item.title}
+                        </h4>
+                      </Link>
+                      {/* LEAD / EXCERPT */}
+                      <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+                        {item.excerpt}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
         </div>
