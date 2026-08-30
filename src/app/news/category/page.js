@@ -5,7 +5,6 @@ export const metadata = {
 };
 
 export default function NewsCategoryPage() {
-  // Simulasi data 4 berita dalam satu kategori
   const categoryArticles = [
     {
       id: "teknologi-inovasi",
@@ -37,6 +36,16 @@ export default function NewsCategoryPage() {
     }
   ];
 
+  const categoriesList = [
+    { name: "Teknologi & Inovasi (Digitalisasi)", count: 1, id: "teknologi-inovasi" },
+    { name: "Akademik & Kurikulum", count: 1, id: "akademik-kurikulum" },
+    { name: "Kesiswaan & Ekstra Kurikuler (Eskul)", count: 1, id: "kesiswaan-eskul" },
+    { name: "Prestasi & Perlombaan", count: 1, id: "prestasi-perlombaan" },
+    { name: "Events & Pentas Seni (Pensi)", count: 1, id: "events-pensi" },
+    { name: "Kerja Sama dengan Instansi Terkait", count: 1, id: "kerja-sama" },
+    { name: "Alumni & Humas", count: 1, id: "alumni-humas" }
+  ];
+
   return (
     <main className="min-h-screen flex flex-col font-sans bg-[#F3EFE4]">
       
@@ -52,7 +61,7 @@ export default function NewsCategoryPage() {
             <span className="text-slate-600">Kategori Berita</span>
           </div>
           
-          <h1 className="text-3xl sm:text-4xl font-black text-slate-800 mb-2 uppercase tracking-wide">
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-800 mb-2 uppercase tracking-wide">
             Kategori : Teknologi & Inovasi (Digitalisasi)
           </h1>
           <p className="text-xs sm:text-sm text-slate-700 font-medium">
@@ -61,50 +70,94 @@ export default function NewsCategoryPage() {
         </div>
       </section>
 
-      {/* KONTEN ARSIP KATEGORI */}
+      {/* KONTEN UTAMA DENGAN SIDEBAR */}
       <section className="w-full flex-1 py-12 px-4">
-        <div className="max-w-4xl mx-auto space-y-8">
-          {categoryArticles.map((item, index) => (
-            <div key={index} className="flex flex-col sm:flex-row gap-5 items-start bg-[#E5DCC3] p-5 rounded-xl shadow-sm border border-[#D5CCB3] group">
-              
-              {/* KLIK FOTO THUMBNAIL */}
-              <Link href={`/news/detail?id=${item.id}`} className="w-full sm:w-56 aspect-[4/3] shrink-0 bg-slate-300 overflow-hidden rounded-lg shadow-inner block cursor-pointer">
-                <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              </Link>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
+          
+          {/* KIRI - DAFTAR ARSIP BERITA (4 ARTIKEL) */}
+          <div className="lg:col-span-8 flex flex-col space-y-8">
+            {categoryArticles.map((item, index) => (
+              <div key={index} className="flex flex-col sm:flex-row gap-5 items-start bg-[#E5DCC3] p-5 rounded-xl shadow-sm border border-[#D5CCB3] group">
+                
+                {/* FOTO THUMBNAIL */}
+                <Link href={`/news/detail?id=${item.id}`} className="w-full sm:w-56 aspect-[4/3] shrink-0 bg-slate-300 overflow-hidden rounded-lg shadow-inner block cursor-pointer">
+                  <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </Link>
 
-              <div className="flex flex-col flex-1 justify-between h-full">
-                <div>
-                  <p className="text-[11px] text-slate-600 font-medium mb-1">Published : {item.date}</p>
-                  
-                  {/* KLIK JUDUL */}
-                  <Link href={`/news/detail?id=${item.id}`}>
-                    <h2 className="text-lg sm:text-xl font-bold text-red-950 mb-2 leading-snug hover:text-red-800 transition-colors cursor-pointer">
-                      {item.title}
-                    </h2>
-                  </Link>
+                <div className="flex flex-col flex-1 justify-between h-full">
+                  <div>
+                    <p className="text-[11px] text-slate-600 font-medium mb-1">Published : {item.date}</p>
+                    
+                    {/* JUDUL */}
+                    <Link href={`/news/detail?id=${item.id}`}>
+                      <h2 className="text-lg sm:text-xl font-bold text-red-950 mb-2 leading-snug hover:text-red-800 transition-colors cursor-pointer">
+                        {item.title}
+                      </h2>
+                    </Link>
 
-                  {/* KLIK LEAD */}
-                  <Link href={`/news/detail?id=${item.id}`}>
-                    <p className="text-xs sm:text-sm text-slate-700 leading-relaxed text-justify line-clamp-3 mb-4 hover:text-slate-900 cursor-pointer">
-                      {item.excerpt}
-                    </p>
-                  </Link>
-                </div>
+                    {/* LEAD/EXCERPT */}
+                    <Link href={`/news/detail?id=${item.id}`}>
+                      <p className="text-xs sm:text-sm text-slate-700 leading-relaxed text-justify line-clamp-3 mb-4 hover:text-slate-900 cursor-pointer">
+                        {item.excerpt}
+                      </p>
+                    </Link>
+                  </div>
 
-                <div>
-                  <Link href={`/news/detail?id=${item.id}`} className="bg-[#8B0000] hover:bg-red-800 text-white font-bold text-xs py-2 px-4 rounded shadow-sm transition-colors inline-block">
-                    Read More
-                  </Link>
+                  <div>
+                    <Link href={`/news/detail?id=${item.id}`} className="bg-[#8B0000] hover:bg-red-800 text-white font-bold text-xs py-2 px-4 rounded shadow-sm transition-colors inline-block">
+                      Read More
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
 
-          <div className="pt-6 text-center">
-            <Link href="/news" className="bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold py-2.5 px-6 rounded shadow inline-block">
-              ← Kembali ke Halaman News
-            </Link>
+            <div className="pt-4">
+              <Link href="/news" className="bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold py-2.5 px-6 rounded shadow inline-block">
+                ← Kembali ke Halaman News
+              </Link>
+            </div>
           </div>
+
+          {/* KANAN - SIDEBAR */}
+          <div className="lg:col-span-4 space-y-8">
+            
+            {/* Kotak Cari Berita */}
+            <div className="bg-white p-6 rounded-xl shadow-md border-t-4 border-red-900">
+              <h3 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Cari Berita</h3>
+              <div className="flex">
+                <input type="text" placeholder="Masukkan kata kunci..." className="flex-1 p-2 border border-slate-300 rounded-l text-sm focus:outline-none focus:border-red-900" />
+                <button className="bg-red-900 hover:bg-red-800 text-white font-bold px-4 text-xs rounded-r">Cari</button>
+              </div>
+            </div>
+
+            {/* Kategori Berita */}
+            <div className="bg-[#E5DCC3] p-6 rounded-xl shadow-sm border border-[#D5CCB3]">
+              <h3 className="text-lg font-bold text-slate-800 mb-4 border-b border-slate-400/30 pb-2">Kategori Berita</h3>
+              <ul className="text-xs sm:text-sm font-semibold text-slate-700 space-y-2.5">
+                {categoriesList.map((cat, i) => (
+                  <li key={i} className="border-b border-[#D5CCB3]/50 pb-1.5">
+                    <Link href={`/news/category?cat=${cat.id}`} className="hover:text-red-900 flex justify-between items-center">
+                      <span>{cat.name}</span>
+                      <span className="bg-slate-700 text-white text-[10px] px-2 py-0.5 rounded-full">{cat.count}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Arsip Berita */}
+            <div className="bg-white p-6 rounded-xl shadow-md">
+              <h3 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Arsip Berita</h3>
+              <ul className="text-sm font-semibold text-slate-600 space-y-2">
+                <li className="hover:text-red-900 cursor-pointer">August 2026</li>
+                <li className="hover:text-red-900 cursor-pointer">April 2026</li>
+                <li className="hover:text-red-900 cursor-pointer">August 2025</li>
+              </ul>
+            </div>
+
+          </div>
+
         </div>
       </section>
 
