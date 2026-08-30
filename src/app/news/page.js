@@ -7,34 +7,58 @@ export const metadata = {
 export default function NewsPage() {
   const newsList = [
     {
-      title: "KTT G20 Bali: Momentum Penting Pendidikan Global",
-      date: "Tuesday, 12 August 2025",
-      category: "Global & Nasional",
-      excerpt: "Partisipasi aktif dan pemahaman mendalam mengenai isu-isu strategis internasional seperti KTT G20 menjadi salah satu wawasan penting yang diperkenalkan kepada para siswa di lingkungan SMP & SMA Advent Batam...",
+      title: "Langkah Inovatif Menuju Era Digital: SMP & SMA Advent Batam Miliki Website Terpadu",
+      date: "Monday, 21 Aug 2026",
+      category: "Teknologi & Inovasi (Digitalisasi)",
+      excerpt: "Penting untuk mendokumentasikan secara digital dan online semua event yang terjadi di sekolah SMP dan SMA Advent Batam. Di bawah persetujuan Kepala Sekolah Bapak Tona Leon F. Situmorang, S.Pd., MA.Ed., portal digital resmi ini resmi diluncurkan...",
       img: "/slider-1.jpg",
-      link: "#"
+      link: "/editorial/detail-1"
     },
     {
-      title: "BAB 1 Badan Usaha dalam Perekonomian",
-      date: "Tuesday, 12 August 2025",
-      category: "Ekonomi",
-      excerpt: "Materi pembelajaran bab awal mata pelajaran Ekonomi mengenai peran strategis badan usaha dalam menggerakkan roda perekonomian nasional serta pemahaman dasar kewirausahaan bagi siswa tingkat lanjut...",
+      title: "Simulasi dan Bedah Kisi-Kisi Ujian Mapel Informatika & Ekonomi Semester Genap",
+      date: "Thursday, 16 Apr 2026",
+      category: "Akademik & Kurikulum",
+      excerpt: "Guru mata pelajaran menyusun rangkaian kisi-kisi dan materi pendalaman guna mempersiapkan para siswa-siswi SMP dan SMA Advent Batam menghadapi Ujian Akhir Semester dengan hasil yang optimal...",
       img: "/slider-2.jpg",
       link: "#"
     },
     {
-      title: "BAB 1 INFORMATIKA & PEMBELAJARANNYA",
-      date: "Monday, 11 August 2025",
-      category: "Informatika",
-      excerpt: "Pengenalan dasar-dasar berpikir komputasional, sistem pengelolaan data, serta pemanfaatan teknologi digital secara bijak dan produktif dalam kerangka kurikulum merdeka mata pelajaran Informatika...",
+      title: "Aksi Gemilang Tim Ekstrakurikuler Beladiri (Karate & Silat) di Gelanggang Remaja",
+      date: "Saturday, 14 Mar 2026",
+      category: "Kesiswaan & Ekstra Kurikuler (Eskul)",
+      excerpt: "Ekstrakurikuler bela diri menunjukkan performa membanggakan dalam latihan gabungan fisik dan mental. Kegiatan ini rutin diadakan untuk melatih kedisiplinan serta ketahanan fisik peserta didik...",
       img: "/slider-3.jpg",
       link: "#"
     },
     {
-      title: "Pelatihan Literasi Digital dan Pemanfaatan Website Sekolah",
-      date: "Thursday, 25 September 2025",
-      category: "Teknologi & Sekolah",
-      excerpt: "Langkah progresif civitas akademika dalam mendokumentasikan seluruh kegiatan belajar mengajar dan event sekolah secara online, terstruktur, dan mudah diakses oleh orang tua serta masyarakat...",
+      title: "Siswa SMP & SMA Advent Batam Raih Juara 1 Lomba Sains Tingkat Kota Batam",
+      date: "Monday, 02 Feb 2026",
+      category: "Prestasi & Perlombaan",
+      excerpt: "Sebuah kebanggaan bagi civitas akademika! Perwakilan siswa berhasil menyisihkan puluhan peserta dari sekolah lain berkat penguasaan konsep sains dan logika informatika yang matang...",
+      img: "/slider-1.jpg",
+      link: "#"
+    },
+    {
+      title: "Pentas Seni (Pensi) 2025: Meriahkan Kreativitas Seni dan Budaya Siswa",
+      date: "Friday, 12 Dec 2025",
+      category: "Events & Pentas Seni (Pensi)",
+      excerpt: "Panggung megah di aula sekolah dipenuhi oleh sorak sorai dan decak kagum tatkala para siswa menampilkan tarian daerah, paduan suara rohani, serta drama musikal kreatif buatan sendiri...",
+      img: "/slider-2.jpg",
+      link: "#"
+    },
+    {
+      title: "Kunjungan Studi Banding dan Kerja Sama Edukasi dengan Instansi Teknologi Batam",
+      date: "Wednesday, 05 Nov 2025",
+      category: "Kerja Sama dengan Instansi Terkait",
+      excerpt: "Guna memperluas wawasan vokasi dan dunia kerja digital, pihak sekolah menjalin nota kesepahaman dan kunjungan edukatif ke lembaga pengembangan teknologi terkemuka di Kota Batam...",
+      img: "/slider-3.jpg",
+      link: "#"
+    },
+    {
+      title: "Kisah Inspiratif Alumni: Sukses Berkarier di Industri Kreatif Internasional",
+      date: "Saturday, 18 Oct 2025",
+      category: "Alumni & Hubungan Masyarakat (Humas)",
+      excerpt: "Dalam program bincang inspiratif alumni, lulusan angkatan terdahulu membagikan pengalaman berharga mengenai pentingnya fondasi karakter dan disiplin ilmu yang ditanamkan selama bersekolah di Advent Batam...",
       img: "/slider-1.jpg",
       link: "#"
     }
@@ -54,7 +78,7 @@ export default function NewsPage() {
           </div>
           
           <h1 className="text-3xl sm:text-4xl font-black text-slate-800 mb-4 border-b-2 border-slate-400/30 pb-4 uppercase tracking-wide">
-            News & Updates
+            School News & Updates
           </h1>
         </div>
       </section>
@@ -72,8 +96,8 @@ export default function NewsPage() {
                 </div>
                 <div className="flex flex-col flex-1 justify-between h-full">
                   <div>
-                    <div className="flex items-center gap-3 mb-1">
-                      <span className="text-[11px] bg-red-900 text-white font-semibold px-2 py-0.5 rounded shadow-sm">{item.category}</span>
+                    <div className="flex items-center gap-2 mb-1 flex-wrap">
+                      <span className="text-[10px] bg-red-900 text-white font-semibold px-2 py-0.5 rounded shadow-sm">{item.category}</span>
                       <span className="text-[11px] text-slate-600 font-medium">Published : {item.date}</span>
                     </div>
                     <h2 className="text-lg sm:text-xl font-bold text-red-950 mb-2 leading-snug hover:text-red-800 transition-colors cursor-pointer">
@@ -84,9 +108,9 @@ export default function NewsPage() {
                     </p>
                   </div>
                   <div>
-                    <button className="bg-[#8B0000] hover:bg-red-800 text-white font-bold text-xs py-2 px-4 rounded shadow-sm transition-colors">
+                    <Link href={item.link} className="bg-[#8B0000] hover:bg-red-800 text-white font-bold text-xs py-2 px-4 rounded shadow-sm transition-colors inline-block">
                       Read More
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -105,14 +129,31 @@ export default function NewsPage() {
               </div>
             </div>
 
-            {/* Kategori Berita */}
+            {/* Kategori Berita Sesuai Pilihan */}
             <div className="bg-[#E5DCC3] p-6 rounded-xl shadow-sm border border-[#D5CCB3]">
-              <h3 className="text-lg font-bold text-slate-800 mb-4 border-b border-slate-400/30 pb-2">Kategori</h3>
-              <ul className="text-sm font-semibold text-slate-700 space-y-2">
-                <li className="hover:text-red-900 cursor-pointer flex justify-between"><span>Global & Nasional</span><span>(1)</span></li>
-                <li className="hover:text-red-900 cursor-pointer flex justify-between"><span>Ekonomi</span><span>(1)</span></li>
-                <li className="hover:text-red-900 cursor-pointer flex justify-between"><span>Informatika</span><span>(1)</span></li>
-                <li className="hover:text-red-900 cursor-pointer flex justify-between"><span>Teknologi & Sekolah</span><span>(1)</span></li>
+              <h3 className="text-lg font-bold text-slate-800 mb-4 border-b border-slate-400/30 pb-2">Kategori Berita</h3>
+              <ul className="text-xs sm:text-sm font-semibold text-slate-700 space-y-2.5">
+                <li className="hover:text-red-900 cursor-pointer flex justify-between items-center border-b border-[#D5CCB3]/50 pb-1.5">
+                  <span>Akademik & Kurikulum</span><span className="bg-slate-700 text-white text-[10px] px-2 py-0.5 rounded-full">1</span>
+                </li>
+                <li className="hover:text-red-900 cursor-pointer flex justify-between items-center border-b border-[#D5CCB3]/50 pb-1.5">
+                  <span>Kesiswaan & Ekstra Kurikuler (Eskul)</span><span className="bg-slate-700 text-white text-[10px] px-2 py-0.5 rounded-full">1</span>
+                </li>
+                <li className="hover:text-red-900 cursor-pointer flex justify-between items-center border-b border-[#D5CCB3]/50 pb-1.5">
+                  <span>Prestasi & Perlombaan</span><span className="bg-slate-700 text-white text-[10px] px-2 py-0.5 rounded-full">1</span>
+                </li>
+                <li className="hover:text-red-900 cursor-pointer flex justify-between items-center border-b border-[#D5CCB3]/50 pb-1.5">
+                  <span>Teknologi & Inovasi (Digitalisasi)</span><span className="bg-slate-700 text-white text-[10px] px-2 py-0.5 rounded-full">1</span>
+                </li>
+                <li className="hover:text-red-900 cursor-pointer flex justify-between items-center border-b border-[#D5CCB3]/50 pb-1.5">
+                  <span>Events & Pentas Seni (Pensi)</span><span className="bg-slate-700 text-white text-[10px] px-2 py-0.5 rounded-full">1</span>
+                </li>
+                <li className="hover:text-red-900 cursor-pointer flex justify-between items-center border-b border-[#D5CCB3]/50 pb-1.5">
+                  <span>Alumni & Humas</span><span className="bg-slate-700 text-white text-[10px] px-2 py-0.5 rounded-full">1</span>
+                </li>
+                <li className="hover:text-red-900 cursor-pointer flex justify-between items-center">
+                  <span>Kerja Sama Instansi</span><span className="bg-slate-700 text-white text-[10px] px-2 py-0.5 rounded-full">1</span>
+                </li>
               </ul>
             </div>
 
@@ -120,8 +161,9 @@ export default function NewsPage() {
             <div className="bg-white p-6 rounded-xl shadow-md">
               <h3 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Arsip Berita</h3>
               <ul className="text-sm font-semibold text-slate-600 space-y-2">
+                <li className="hover:text-red-900 cursor-pointer">August 2026</li>
+                <li className="hover:text-red-900 cursor-pointer">April 2026</li>
                 <li className="hover:text-red-900 cursor-pointer">August 2025</li>
-                <li className="hover:text-red-900 cursor-pointer">July 2021</li>
               </ul>
             </div>
 
