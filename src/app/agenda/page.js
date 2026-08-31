@@ -5,7 +5,6 @@ export const metadata = {
 };
 
 export default function AgendaPage() {
-  // Data 5 Agenda Sekolah (hanya 4 yang dirender di awal)
   const agendas = [
     {
       id: "pts-ganjil-2026",
@@ -40,7 +39,6 @@ export default function AgendaPage() {
       img: "/slider-2.jpg"
     },
     {
-      // Agenda ke-5 ini akan disembunyikan (masuk ke View More)
       id: "libur-semester",
       title: "Libur Semester Ganjil Tahun Ajaran 2026/2027",
       date: "24 Dec 2026 - 03 Jan 2027",
@@ -62,8 +60,8 @@ export default function AgendaPage() {
           <span className="text-slate-600">Agenda</span>
         </div>
         
-        <h1 className="text-3xl sm:text-4xl font-black text-slate-800 mb-8 tracking-wide uppercase">
-          School Agenda
+        <h1 className="text-3xl sm:text-4xl font-black text-[#1e293b] mb-8 tracking-wide uppercase">
+          SCHOOL AGENDA
         </h1>
       </section>
 
@@ -71,36 +69,36 @@ export default function AgendaPage() {
       <section className="w-full flex-1 pb-16 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
           
-          {/* KIRI - DAFTAR AGENDA (MAX 4 DITAMPILKAN) */}
-          <div className="lg:col-span-8 flex flex-col space-y-10">
+          {/* KIRI - DAFTAR AGENDA (MAX 4 DITAMPILKAN, TANPA KOTAK BACKGROUND) */}
+          <div className="lg:col-span-8 flex flex-col space-y-12">
             {agendas.slice(0, 4).map((item, index) => (
               <div key={index} className="flex flex-col sm:flex-row gap-6 items-start group">
                 
-                {/* THUMBNAIL FOTO */}
-                <Link href={`/agenda/detail?id=${item.id}`} className="w-full sm:w-[280px] aspect-[4/3] shrink-0 bg-slate-300 overflow-hidden rounded-md shadow-sm block cursor-pointer relative">
+                {/* THUMBNAIL FOTO DENGAN BADGE EVENT PUTIH */}
+                <Link href={`/agenda/detail?id=${item.id}`} className="w-full sm:w-[300px] aspect-[4/3] shrink-0 bg-slate-300 overflow-hidden rounded-md shadow-sm block cursor-pointer relative">
                   <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm text-red-900 text-[10px] font-bold px-2 py-1 rounded shadow-sm">
-                    📅 Event
+                  <div className="absolute top-3 left-3 bg-white/95 text-[#1e3a8a] text-[11px] font-bold px-2.5 py-1 rounded shadow-sm flex items-center gap-1">
+                    <span className="text-blue-500">📅</span> Event
                   </div>
                 </Link>
 
                 {/* TEKS AGENDA */}
-                <div className="flex flex-col flex-1">
-                  <div className="flex items-center gap-3 mb-1 flex-wrap">
-                    <span className="text-[11px] text-slate-600 font-bold flex items-center gap-1">
-                      <span>🗓️</span> {item.date}
+                <div className="flex flex-col flex-1 pt-1">
+                  <div className="flex items-center gap-4 mb-2 flex-wrap">
+                    <span className="text-[11px] text-slate-700 font-bold flex items-center gap-1.5">
+                      <span className="text-blue-500 text-sm">📅</span> {item.date}
                     </span>
-                    <span className="text-[11px] text-slate-600 font-bold flex items-center gap-1">
-                      <span>⏰</span> {item.time}
+                    <span className="text-[11px] text-slate-700 font-bold flex items-center gap-1.5">
+                      <span className="text-red-500 text-sm">⏰</span> {item.time}
                     </span>
                   </div>
                   <Link href={`/agenda/detail?id=${item.id}`}>
-                    <h2 className="text-[17px] sm:text-[19px] font-bold text-[#047857] mb-2.5 leading-snug hover:text-emerald-800 transition-colors cursor-pointer mt-1">
+                    <h2 className="text-[18px] sm:text-[20px] font-bold text-[#047857] mb-3 leading-snug hover:text-emerald-800 transition-colors cursor-pointer">
                       {item.title}
                     </h2>
                   </Link>
                   <Link href={`/agenda/detail?id=${item.id}`}>
-                    <p className="text-[13px] sm:text-[14px] text-slate-800 leading-relaxed text-justify line-clamp-4 hover:text-black cursor-pointer">
+                    <p className="text-[13px] sm:text-[14px] text-slate-700 leading-relaxed text-justify hover:text-black cursor-pointer">
                       {item.excerpt}
                     </p>
                   </Link>
@@ -120,19 +118,19 @@ export default function AgendaPage() {
           {/* KANAN - SIDEBAR (DIPISAHKAN GARIS PUTUS-PUTUS) */}
           <div className="lg:col-span-4 lg:border-l border-dashed border-slate-500 lg:pl-8 space-y-8">
             
-            {/* KOTAK CARI AGENDA */}
-            <div className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
-              <h3 className="text-[15px] font-bold text-slate-800 mb-3 border-b border-slate-200 pb-2">Cari Agenda</h3>
+            {/* KOTAK CARI AGENDA (BACKGROUND PUTIH) */}
+            <div className="bg-white p-6 rounded-xl shadow-sm">
+              <h3 className="text-[15px] font-bold text-slate-800 mb-4">Cari Agenda</h3>
               <div className="flex">
-                <input type="text" placeholder="Kata kunci..." className="flex-1 p-2 border border-slate-300 rounded-l text-xs focus:outline-none focus:border-[#047857]" />
-                <button className="bg-[#047857] hover:bg-emerald-800 text-white font-bold px-4 text-xs rounded-r transition-colors">Cari</button>
+                <input type="text" placeholder="Kata kunci..." className="flex-1 p-2.5 border border-slate-300 rounded-l text-xs focus:outline-none focus:border-[#047857]" />
+                <button className="bg-[#047857] hover:bg-emerald-800 text-white font-bold px-5 text-xs rounded-r transition-colors">Cari</button>
               </div>
             </div>
 
-            {/* ARSIP AGENDA */}
-            <div className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
-              <h3 className="text-[15px] font-bold text-slate-800 mb-3 border-b border-slate-200 pb-2">Arsip Agenda</h3>
-              <ul className="text-xs font-semibold text-slate-600 space-y-2.5">
+            {/* ARSIP AGENDA (BACKGROUND PUTIH) */}
+            <div className="bg-white p-6 rounded-xl shadow-sm">
+              <h3 className="text-[15px] font-bold text-slate-800 mb-4 border-b border-slate-100 pb-2">Arsip Agenda</h3>
+              <ul className="text-[13px] font-semibold text-slate-600 space-y-3">
                 <li className="hover:text-[#047857] cursor-pointer flex justify-between"><span>December 2026</span><span>(2)</span></li>
                 <li className="hover:text-[#047857] cursor-pointer flex justify-between"><span>November 2026</span><span>(1)</span></li>
                 <li className="hover:text-[#047857] cursor-pointer flex justify-between"><span>September 2026</span><span>(1)</span></li>
@@ -143,13 +141,13 @@ export default function AgendaPage() {
             {/* INFO SEKOLAH */}
             <div className="pt-4 border-t border-dashed border-slate-500">
               <div className="flex flex-col items-center lg:items-end text-center lg:text-right">
-                <h3 className="text-xl font-black text-slate-800 mb-1">SMAS ADVENT BATAM</h3>
-                <p className="text-xs text-slate-800 mb-6 font-medium">
+                <h3 className="text-xl font-black text-[#1e293b] mb-1">SMAS ADVENT BATAM</h3>
+                <p className="text-[11px] text-slate-800 mb-6 font-medium">
                   Prof. DR. Hamka St., Kav 4, Kibing Village, Batu Aji District
                 </p>
               </div>
 
-              <ul className="text-xs sm:text-[13px] text-slate-800 space-y-4">
+              <ul className="text-[12px] sm:text-[13px] text-slate-800 space-y-4">
                 <li className="flex justify-between items-start gap-4">
                   <span className="font-bold shrink-0">NSPN</span>
                   <span className="text-right">20404yyy</span>
@@ -157,22 +155,8 @@ export default function AgendaPage() {
                 <li className="flex justify-between items-start gap-4">
                   <span className="font-bold shrink-0">Principal</span>
                   <span className="text-right leading-tight">
-                    Tona Leon Ferdinan<br/>Situmorang,<br/>S.Pd.,MA.,ED.
+                    Tona Leon Ferdinan
                   </span>
-                </li>
-                <li className="flex justify-between items-center gap-4 border-b border-dashed border-slate-500 pb-6">
-                  <span className="font-bold shrink-0">Phone</span>
-                  <span className="text-[#047857] text-right">0778-363082</span>
-                </li>
-                
-                {/* SOCIAL MEDIA LINKS */}
-                <li className="flex justify-between items-center gap-4 pt-2">
-                  <span className="font-bold text-slate-700">f</span>
-                  <span className="text-[#047857] text-right cursor-pointer hover:underline">Facebook</span>
-                </li>
-                <li className="flex justify-between items-center gap-4">
-                  <span className="font-bold text-slate-700">📷</span>
-                  <span className="text-[#047857] text-right cursor-pointer hover:underline">Instagram</span>
                 </li>
               </ul>
             </div>
