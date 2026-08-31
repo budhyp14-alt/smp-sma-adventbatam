@@ -166,6 +166,8 @@ export default function Home() {
       {/* ========================================= */}
       <section className="max-w-7xl mx-auto px-4 mb-8 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          {/* EDITORIAL YAYASAN */}
           <div className="flex flex-col sm:flex-row gap-5">
             <Link href="/editorial-yayasan/detail" className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer">
               <img src="/slider-1.jpg" alt="Rima Melati Hutagalung" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -186,14 +188,20 @@ export default function Home() {
               <Link href="/editorial-yayasan/detail" className="bg-[#E2DECA] p-4 rounded-b-xl shadow-sm mb-4 flex-1 hover:bg-[#d6d1bc] transition-colors cursor-pointer block">
                 <p className="text-slate-600 text-[13px] sm:text-sm leading-relaxed text-justify line-clamp-6">Yayasan Pendidikan Advent Batam terus berkomitmen untuk memberikan standar pendidikan terbaik yang selaras dengan nilai-nilai moral dan spiritual bagi generasi masa depan...</p>
               </Link>
-              <div>
-                <Link href="/editorial-yayasan" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm inline-block">
-                  View All
+              
+              {/* TOMBOL READ MORE & VIEW MORE YAYASAN */}
+              <div className="flex flex-wrap gap-3">
+                <Link href="/editorial-yayasan/detail" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm inline-block transition-colors">
+                  Read More
+                </Link>
+                <Link href="/editorial-yayasan" className="bg-[#D97706] hover:bg-amber-700 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm inline-block transition-colors">
+                  View More
                 </Link>
               </div>
             </div>
           </div>
 
+          {/* EDITORIAL MANAGER */}
           <div className="flex flex-col sm:flex-row gap-5">
             <Link href="/editorial-manajer/detail" className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer">
               <img src="/slider-2.jpg" alt="Samuel Simatupang" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -214,13 +222,19 @@ export default function Home() {
               <Link href="/editorial-manajer/detail" className="bg-[#E2DECA] p-4 rounded-b-xl shadow-sm mb-4 flex-1 hover:bg-[#d6d1bc] transition-colors cursor-pointer block">
                 <p className="text-slate-600 text-[13px] sm:text-sm leading-relaxed text-justify line-clamp-6">Pengembangan infrastruktur sekolah menjadi fokus utama kami tahun ini, untuk memastikan kegiatan belajar mengajar berjalan optimal dan nyaman bagi seluruh siswa...</p>
               </Link>
-              <div>
-                <Link href="/editorial-manajer" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm inline-block">
-                  View All
+              
+              {/* TOMBOL READ MORE & VIEW MORE MANAGER */}
+              <div className="flex flex-wrap gap-3">
+                <Link href="/editorial-manajer/detail" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm inline-block transition-colors">
+                  Read More
+                </Link>
+                <Link href="/editorial-manajer" className="bg-[#D97706] hover:bg-amber-700 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm inline-block transition-colors">
+                  View More
                 </Link>
               </div>
             </div>
           </div>
+
         </div>
       </section>
 
@@ -229,6 +243,8 @@ export default function Home() {
       {/* ========================================= */}
       <section className="max-w-7xl mx-auto px-4 mb-12 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+          
+          {/* EDITORIAL KEPALA SEKOLAH */}
           <div className="lg:col-span-2 flex flex-col md:flex-row gap-5 items-start">
             <Link href="/editorial/detail" className="w-full md:w-[35%] lg:w-[30%] aspect-square relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer">
               <img src="/slider-3.jpg" alt="Tona Leon F. Situmorang" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -249,9 +265,14 @@ export default function Home() {
               <Link href="/editorial/detail" className="bg-[#E2DECA] p-4 rounded-b-xl shadow-sm mb-4 flex-1 hover:bg-[#d6d1bc] transition-colors cursor-pointer block">
                 <p className="text-slate-600 text-[13px] sm:text-sm leading-relaxed text-justify">Kepala Sekolah SMP & SMA Advent Batam, Bapak Tona Leon F. Situmorang, S.Pd., MA.Ed. menyambut dengan sukacita dan antusiasme tinggi atas selesainya pembuatan website resmi sekolah. Beliau tidak hanya mengucap syukur kepada Tuhan, tetapi juga menaruh harapan besar agar seluruh civitas akademika dapat mendayagunakan platform digital ini secara maksimal...</p>
               </Link>
-              <div>
-                <Link href="/editorial" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2 px-6 rounded shadow-sm text-sm inline-block">
-                  View All
+              
+              {/* TOMBOL READ MORE & VIEW MORE KEPALA SEKOLAH */}
+              <div className="flex flex-wrap gap-3">
+                <Link href="/editorial/detail" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2 px-6 rounded shadow-sm text-sm inline-block transition-colors">
+                  Read More
+                </Link>
+                <Link href="/editorial" className="bg-[#D97706] hover:bg-amber-700 text-white font-bold py-2 px-6 rounded shadow-sm text-sm inline-block transition-colors">
+                  View More
                 </Link>
               </div>
             </div>
@@ -415,7 +436,7 @@ export default function Home() {
       <section className="w-full bg-[#DCC690] py-10 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           
-          {/* ACTIVITIES SLIDER (Single Full Image with SQUARE Corners) */}
+          {/* ACTIVITIES SLIDER */}
           <div className="flex flex-col h-full">
             <h3 className="flex items-center text-slate-800 font-bold mb-5 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">★</span> 
@@ -427,7 +448,6 @@ export default function Home() {
                   <img src={src} className="w-full h-full object-cover" alt={`Kegiatan ${idx + 1}`} />
                 </div>
               ))}
-              {/* Dots Indicator di Tengah Bawah */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
                 {activityImages.map((_, idx) => (
                   <button
@@ -462,7 +482,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* GALLERY (9 FOTO GRID 3x3) */}
+          {/* GALLERY */}
           <div className="flex flex-col h-full">
             <h3 className="flex items-center text-slate-800 font-bold mb-5 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center p-1.5 mr-2">
@@ -488,7 +508,6 @@ export default function Home() {
       <section className="w-full bg-[#E5DCC3] py-10 px-4 flex-1">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-red-950 font-bold mb-4 text-lg">Video</h3>
-          {/* Perbesar gap (jarak antar kotak video) menjadi gap-8 atau gap-12 supaya ukurannya mengecil */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
             {[1, 2, 3].map((vid) => (
               <div key={vid} className="aspect-video relative rounded-none overflow-hidden shadow-md group cursor-pointer">
