@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     { name: "ACTIVITIES", href: "/activities" },
     { name: "FACILITIES", href: "/facilities" },
     { name: "GALLERY", href: "/gallery" },
-    { name: "BIMBEL/ESKUL", href: "/ekskul" },
+    { name: "BIMBEL/ESKUL", href: "/bimbel-eskul" },
     { name: "PPDB", href: "/ppdb" },
     { name: "LIBRARY", href: "/library" },
   ];
