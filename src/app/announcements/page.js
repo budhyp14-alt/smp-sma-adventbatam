@@ -5,7 +5,6 @@ export const metadata = {
 };
 
 export default function AnnouncementsPage() {
-  // Data 5 Pengumuman (hanya 4 yang dirender di awal)
   const announcements = [
     {
       id: "pengumuman-ppdb-2026",
@@ -36,7 +35,6 @@ export default function AnnouncementsPage() {
       img: "/slider-1.jpg"
     },
     {
-      // Pengumuman ke-5 ini akan disembunyikan (masuk ke View More)
       id: "maintenance-web",
       title: "Pemeliharaan Server Website dan Sistem E-Learning",
       date: "Sunday, 01 Feb 2026, 20:00 WIB",
@@ -57,8 +55,8 @@ export default function AnnouncementsPage() {
           <span className="text-slate-600">Announcements</span>
         </div>
         
-        <h1 className="text-3xl sm:text-4xl font-black text-slate-800 mb-8 tracking-wide uppercase">
-          School Announcements
+        <h1 className="text-3xl sm:text-4xl font-black text-[#1e293b] mb-8 tracking-wide uppercase">
+          SCHOOL ANNOUNCEMENTS
         </h1>
       </section>
 
@@ -67,28 +65,30 @@ export default function AnnouncementsPage() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
           
           {/* KIRI - DAFTAR PENGUMUMAN (MAX 4 DITAMPILKAN) */}
-          <div className="lg:col-span-8 flex flex-col space-y-10">
+          <div className="lg:col-span-8 flex flex-col space-y-12">
             {announcements.slice(0, 4).map((item, index) => (
               <div key={index} className="flex flex-col sm:flex-row gap-6 items-start group">
                 
                 {/* THUMBNAIL FOTO */}
-                <Link href={`/announcements/detail?id=${item.id}`} className="w-full sm:w-[280px] aspect-[4/3] shrink-0 bg-slate-300 overflow-hidden rounded-md shadow-sm block cursor-pointer">
+                <Link href={`/announcements/detail?id=${item.id}`} className="w-full sm:w-[300px] aspect-[4/3] shrink-0 bg-slate-300 overflow-hidden rounded-md shadow-sm block cursor-pointer relative">
                   <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute top-3 left-3 bg-slate-900/90 text-white text-[11px] font-bold px-2.5 py-1 rounded shadow-sm flex items-center gap-1">
+                    📢 Info
+                  </div>
                 </Link>
 
                 {/* TEKS PENGUMUMAN */}
-                <div className="flex flex-col flex-1">
-                  <div className="flex items-center gap-2 mb-1 flex-wrap">
-                    <span className="text-[10px] bg-slate-800 text-white font-semibold px-2 py-0.5 rounded shadow-sm">📢 Info</span>
-                    <span className="text-[11px] text-slate-600 font-medium">Published : {item.date}</span>
+                <div className="flex flex-col flex-1 pt-1">
+                  <div className="flex items-center gap-2 mb-2 flex-wrap">
+                    <span className="text-[11px] text-slate-500 font-medium">Published : {item.date}</span>
                   </div>
                   <Link href={`/announcements/detail?id=${item.id}`}>
-                    <h2 className="text-[17px] sm:text-[19px] font-bold text-[#047857] mb-2.5 leading-snug hover:text-emerald-800 transition-colors cursor-pointer">
+                    <h2 className="text-[18px] sm:text-[20px] font-bold text-[#047857] mb-3 leading-snug hover:text-emerald-800 transition-colors cursor-pointer">
                       {item.title}
                     </h2>
                   </Link>
                   <Link href={`/announcements/detail?id=${item.id}`}>
-                    <p className="text-[13px] sm:text-[14px] text-slate-800 leading-relaxed text-justify line-clamp-4 hover:text-black cursor-pointer">
+                    <p className="text-[13px] sm:text-[14px] text-slate-700 leading-relaxed text-justify hover:text-black cursor-pointer">
                       {item.excerpt}
                     </p>
                   </Link>
@@ -105,22 +105,22 @@ export default function AnnouncementsPage() {
             </div>
           </div>
 
-          {/* KANAN - SIDEBAR (DIPISAHKAN GARIS PUTUS-PUTUS) */}
+          {/* KANAN - SIDEBAR */}
           <div className="lg:col-span-4 lg:border-l border-dashed border-slate-500 lg:pl-8 space-y-8">
             
             {/* KOTAK CARI */}
-            <div className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
-              <h3 className="text-[15px] font-bold text-slate-800 mb-3 border-b border-slate-200 pb-2">Cari Pengumuman</h3>
+            <div className="bg-white p-6 rounded-xl shadow-sm">
+              <h3 className="text-[15px] font-bold text-slate-800 mb-4">Cari Pengumuman</h3>
               <div className="flex">
-                <input type="text" placeholder="Kata kunci..." className="flex-1 p-2 border border-slate-300 rounded-l text-xs focus:outline-none focus:border-[#047857]" />
-                <button className="bg-[#047857] hover:bg-emerald-800 text-white font-bold px-4 text-xs rounded-r transition-colors">Cari</button>
+                <input type="text" placeholder="Kata kunci..." className="flex-1 p-2.5 border border-slate-300 rounded-l text-xs focus:outline-none focus:border-[#047857]" />
+                <button className="bg-[#047857] hover:bg-emerald-800 text-white font-bold px-5 text-xs rounded-r transition-colors">Cari</button>
               </div>
             </div>
 
             {/* ARSIP PENGUMUMAN */}
-            <div className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
-              <h3 className="text-[15px] font-bold text-slate-800 mb-3 border-b border-slate-200 pb-2">Arsip Pengumuman</h3>
-              <ul className="text-xs font-semibold text-slate-600 space-y-2.5">
+            <div className="bg-white p-6 rounded-xl shadow-sm">
+              <h3 className="text-[15px] font-bold text-slate-800 mb-4 border-b border-slate-100 pb-2">Arsip Pengumuman</h3>
+              <ul className="text-[13px] font-semibold text-slate-600 space-y-3">
                 <li className="hover:text-[#047857] cursor-pointer flex justify-between"><span>August 2026</span><span>(1)</span></li>
                 <li className="hover:text-[#047857] cursor-pointer flex justify-between"><span>June 2026</span><span>(1)</span></li>
                 <li className="hover:text-[#047857] cursor-pointer flex justify-between"><span>May 2026</span><span>(1)</span></li>
@@ -131,16 +131,16 @@ export default function AnnouncementsPage() {
             {/* INFO SEKOLAH */}
             <div className="pt-4 border-t border-dashed border-slate-500">
               <div className="flex flex-col items-center lg:items-end text-center lg:text-right">
-                <h3 className="text-xl font-black text-slate-800 mb-1">SMAS ADVENT BATAM</h3>
-                <p className="text-xs text-slate-800 mb-6 font-medium">
+                <h3 className="text-xl font-black text-[#1e293b] mb-1">SMP - SMA ADVENT BATAM</h3>
+                <p className="text-[11px] text-slate-800 mb-6 font-medium">
                   Prof. DR. Hamka St., Kav 4, Kibing Village, Batu Aji District
                 </p>
               </div>
 
-              <ul className="text-xs sm:text-[13px] text-slate-800 space-y-4">
+              <ul className="text-[12px] sm:text-[13px] text-slate-800 space-y-5">
                 <li className="flex justify-between items-start gap-4">
                   <span className="font-bold shrink-0">NSPN</span>
-                  <span className="text-right">20404yyy</span>
+                  <span className="text-right">70002994</span>
                 </li>
                 <li className="flex justify-between items-start gap-4">
                   <span className="font-bold shrink-0">Principal</span>
@@ -148,19 +148,27 @@ export default function AnnouncementsPage() {
                     Tona Leon Ferdinan<br/>Situmorang,<br/>S.Pd.,MA.,ED.
                   </span>
                 </li>
-                <li className="flex justify-between items-center gap-4 border-b border-dashed border-slate-500 pb-6">
+                <li className="flex justify-between items-center gap-4">
                   <span className="font-bold shrink-0">Phone</span>
-                  <span className="text-[#047857] text-right">0778-363082</span>
+                  <span className="text-[#047857] text-right font-medium">0778-363082</span>
+                </li>
+                <li className="flex justify-between items-center gap-4 border-b border-dashed border-slate-500 pb-6">
+                  <span className="font-bold shrink-0">Email</span>
+                  <span className="text-[#047857] text-right font-medium break-all">info@adventbatam.sch.id</span>
                 </li>
                 
                 {/* SOCIAL MEDIA LINKS */}
                 <li className="flex justify-between items-center gap-4 pt-2">
-                  <span className="font-bold text-slate-700">f</span>
-                  <span className="text-[#047857] text-right cursor-pointer hover:underline">Facebook</span>
+                  <span className="font-bold text-slate-800 text-[11px]">f</span>
+                  <span className="text-[#047857] text-right cursor-pointer hover:underline font-medium">Facebook</span>
                 </li>
                 <li className="flex justify-between items-center gap-4">
-                  <span className="font-bold text-slate-700">📷</span>
-                  <span className="text-[#047857] text-right cursor-pointer hover:underline">Instagram</span>
+                  <span className="font-bold text-slate-600 text-lg">📷</span>
+                  <span className="text-[#047857] text-right cursor-pointer hover:underline font-medium">Instagram</span>
+                </li>
+                <li className="flex justify-between items-center gap-4">
+                  <span className="font-bold text-red-600 text-sm">▶</span>
+                  <span className="text-[#047857] text-right cursor-pointer hover:underline font-medium">YouTube</span>
                 </li>
               </ul>
             </div>
