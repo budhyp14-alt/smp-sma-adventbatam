@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function Header() {
   return (
@@ -13,8 +14,8 @@ export default function Header() {
         </div>
         
         <div className="flex space-x-6 text-sm items-center font-medium">
-          <span className="flex items-center text-gray-700">📞 0099877776666</span>
-          <span className="flex items-center text-gray-700">✉️ drovpras@gmail.com</span>
+          <span className="flex items-center text-gray-700">📞 0778-363082</span>
+          <span className="flex items-center text-gray-700">✉️ info@adventbatam.sch.id</span>
           <div className="flex space-x-2">
             {/* Ikon Media Sosial */}
             <a href="#" className="w-8 h-8 bg-red-800 text-white flex items-center justify-center rounded-full hover:bg-red-700">FB</a>
@@ -28,24 +29,21 @@ export default function Header() {
       {/* Navigasi Utama */}
       <nav className="bg-red-800 text-white">
         <div className="max-w-7xl mx-auto px-4">
-          <ul className="flex space-x-6 py-3 text-sm font-semibold">
-            <li><a href="/" className="hover:text-yellow-300">Home</a></li>
-            <li><a href="/profile" className="hover:text-yellow-300">School Profile</a></li>
-            <li><a href="/news" className="hover:text-yellow-300">News</a></li>
-            <li><a href="/activities" className="hover:text-yellow-300">Activities</a></li>
-            <li><a href="/announcements" className="hover:text-yellow-300">Announcements</a></li>
-            <li><a href="/gallery" className="hover:text-yellow-300">Gallery</a></li>
-            <li><a href="/library" className="hover:text-yellow-300">Library</a></li>
-            <li><a href="/ppdb" className="hover:text-yellow-300">PPDB 2026/2027</a></li>
-            <li className="relative group cursor-pointer hover:text-yellow-300">
-              Ekskul ▾
-              {/* Dropdown Menu Ekskul */}
-              <ul className="absolute hidden group-hover:block bg-white text-black p-2 shadow-lg mt-2 w-48 z-10 rounded">
-                <li className="p-2 hover:bg-gray-100 border-b">Bimbel SMP</li>
-                <li className="p-2 hover:bg-gray-100 border-b">Bimbel SMA</li>
-                <li className="p-2 hover:bg-gray-100">Kegiatan Ekskul</li>
-              </ul>
-            </li>
+          <ul className="flex flex-wrap justify-between items-center py-3 text-sm font-semibold uppercase">
+            <li><Link href="/" className="hover:text-yellow-300">Home</Link></li>
+            <li><Link href="/profile" className="hover:text-yellow-300">School Profile</Link></li>
+            <li><Link href="/news" className="hover:text-yellow-300">News</Link></li>
+            <li><Link href="/announcements" className="hover:text-yellow-300">Announcements</Link></li>
+            <li><Link href="/agenda" className="hover:text-yellow-300">Agenda</Link></li>
+            <li><Link href="/activities" className="hover:text-yellow-300">Activities</Link></li>
+            <li><Link href="/facilities" className="hover:text-yellow-300">Facilities</Link></li>
+            <li><Link href="/gallery" className="hover:text-yellow-300">Gallery</Link></li>
+            
+            {/* INI KUNCI UTAMANYA: Mengarah persis ke folder /bimbel-eskul */}
+            <li><Link href="/bimbel-eskul" className="hover:text-yellow-300 bg-black/20 px-3 py-1 rounded">Bimbel/Eskul</Link></li>
+            
+            <li><Link href="/ppdb" className="hover:text-yellow-300">PPDB</Link></li>
+            <li><Link href="/library" className="hover:text-yellow-300">Library</Link></li>
           </ul>
         </div>
       </nav>
@@ -53,7 +51,7 @@ export default function Header() {
       {/* Teks Berjalan (Marquee) */}
       <div className="bg-yellow-300 text-red-900 py-2 font-semibold text-sm px-4">
         <marquee>
-          Sunday, 23-08-2026 | SMA Advent Batam: Mendidik Generasi Cerdas dan Berkarakter Kristus | Pendaftaran Siswa Baru Tahun Ajaran 2026/2027 Telah Dibuka!
+          SMP - SMA Advent Batam: Mendidik Generasi Cerdas dan Berkarakter Kristus | Pendaftaran Siswa Baru Tahun Ajaran 2026/2027 Telah Dibuka!
         </marquee>
       </div>
     </header>
