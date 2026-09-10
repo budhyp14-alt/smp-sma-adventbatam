@@ -6,39 +6,39 @@ import Link from "next/link";
 export default function NewsPage() {
   // STATE PENCARIAN & FILTER KATEGORI
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState("Semua"); // Default tampil semua
+  const [activeCategory, setActiveCategory] = useState("All Categories"); // Default tampil semua
 
-  // DATA DUMMY BERITA (Kategori disesuaikan dengan sidebar)
+  // DATA DUMMY BERITA
   const newsList = [
     {
       id: "upacara-kemerdekaan-ri",
       title: "Upacara Peringatan Hari Kemerdekaan RI di SMP-SMA Advent Batam",
-      date: "17 Agustus 2026",
-      category: "Kegiatan Sekolah",
+      date: "August 17, 2026",
+      category: "School Activities",
       excerpt: "Seluruh guru, staf, dan siswa-siswi SMP-SMA Advent Batam melaksanakan upacara bendera dengan khidmat untuk memperingati kemerdekaan Republik Indonesia...",
       img: "/slider-1.jpg"
     },
     {
       id: "juara-olimpiade-matematika",
       title: "Siswa SMA Advent Batam Meraih Juara 1 Olimpiade Matematika Tingkat Kota",
-      date: "05 September 2026",
-      category: "Prestasi Siswa",
+      date: "September 05, 2026",
+      category: "Student Achievements",
       excerpt: "Prestasi membanggakan kembali ditorehkan oleh siswa SMA Advent Batam yang berhasil menyingkirkan puluhan peserta lain dalam ajang Olimpiade Matematika...",
       img: "/slider-2.jpg"
     },
     {
       id: "bakti-sosial-panti-asuhan",
       title: "Kegiatan Bakti Sosial OSIS di Panti Asuhan Kasih",
-      date: "28 Agustus 2026",
-      category: "Sosial & Kerohanian",
+      date: "August 28, 2026",
+      category: "Social & Spiritual",
       excerpt: "Sebagai wujud nyata dari nilai-nilai Kristiani, pengurus OSIS menyelenggarakan kegiatan bakti sosial dan penyerahan bantuan ke panti asuhan setempat...",
       img: "/slider-3.jpg"
     },
     {
       id: "sosialisasi-bahaya-narkoba",
       title: "Sosialisasi Bahaya Narkoba Bersama BNN Kota Batam",
-      date: "10 September 2026",
-      category: "Seminar & Edukasi",
+      date: "September 10, 2026",
+      category: "Seminar & Education",
       excerpt: "Sekolah bekerja sama dengan BNN Kota Batam memberikan edukasi pencegahan bahaya narkotika kepada seluruh siswa guna menciptakan generasi bebas narkoba...",
       img: "/slider-1.jpg"
     }
@@ -51,7 +51,7 @@ export default function NewsPage() {
                         item.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
     
     // 2. Cek kecocokan kategori yang dipilih
-    const matchCategory = activeCategory === "Semua" || item.category === activeCategory;
+    const matchCategory = activeCategory === "All Categories" || item.category === activeCategory;
     
     // Tampilkan jika cocok keduanya
     return matchSearch && matchCategory;
@@ -70,7 +70,7 @@ export default function NewsPage() {
         </div>
         
         <h1 className="text-3xl sm:text-4xl font-black text-[#1e293b] mb-8 tracking-wide uppercase">
-          BERITA & ARTIKEL SEKOLAH
+          SCHOOL NEWS & ARTICLES
         </h1>
       </section>
 
@@ -83,7 +83,7 @@ export default function NewsPage() {
             
             {filteredNews.length === 0 ? (
               <div className="bg-red-100 text-red-700 p-6 rounded-lg border border-red-200 text-center font-bold shadow-sm">
-                Maaf, berita {activeCategory !== "Semua" ? `kategori "${activeCategory}"` : ""} dengan kata kunci "{searchQuery}" tidak ditemukan.
+                Sorry, no news found for "{searchQuery}". Please try another keyword!
               </div>
             ) : (
               filteredNews.map((item, index) => (
@@ -112,9 +112,11 @@ export default function NewsPage() {
                         {item.excerpt}
                       </p>
                     </Link>
+                    
+                    {/* TOMBOL READ MORE (SUDAH DIUBAH) */}
                     <div className="mt-4">
                       <Link href={`/news/detail?id=${item.id}`} className="text-[#8B0000] font-bold text-xs hover:underline flex items-center gap-1">
-                        Baca Selengkapnya <span>→</span>
+                        Read More <span>→</span>
                       </Link>
                     </div>
                   </div>
@@ -126,60 +128,60 @@ export default function NewsPage() {
           {/* KANAN - SIDEBAR PERMANEN */}
           <div className="lg:col-span-4 lg:border-l border-dashed border-slate-500 lg:pl-8 space-y-8">
             
-            {/* KOTAK PENCARIAN */}
+            {/* KOTAK PENCARIAN (SUDAH DIBAHASA-INGGRISKAN) */}
             <div className="bg-white p-6 rounded-xl shadow-sm border-t-4 border-[#8B0000]">
-              <h3 className="text-[15px] font-bold text-slate-800 mb-4">Cari Berita</h3>
+              <h3 className="text-[15px] font-bold text-slate-800 mb-4">Search News</h3>
               <div className="flex">
                 <input 
                   type="text" 
-                  placeholder="Ketik judul berita..." 
+                  placeholder="Type keyword..." 
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="flex-1 p-2.5 border border-slate-300 rounded-l text-xs focus:outline-none focus:border-[#8B0000] focus:ring-1 focus:ring-[#8B0000]" 
                 />
                 <button className="bg-[#8B0000] hover:bg-red-950 text-white font-bold px-5 text-xs rounded-r transition-colors">
-                  Cari
+                  Search
                 </button>
               </div>
             </div>
 
-            {/* KOTAK FILTER KATEGORI INTERAKTIF */}
+            {/* KOTAK FILTER KATEGORI (SUDAH DIBAHASA-INGGRISKAN) */}
             <div className="bg-white p-6 rounded-xl shadow-sm">
-              <h3 className="text-[15px] font-bold text-slate-800 mb-4 border-b border-slate-100 pb-2">Kategori Berita</h3>
+              <h3 className="text-[15px] font-bold text-slate-800 mb-4 border-b border-slate-100 pb-2">News Categories</h3>
               <ul className="text-[13px] font-semibold space-y-3">
                 <li 
-                  onClick={() => setActiveCategory("Semua")}
-                  className={`cursor-pointer flex justify-between p-2 rounded transition-colors ${activeCategory === "Semua" ? "bg-[#8B0000] text-white" : "text-slate-600 hover:bg-slate-100"}`}
+                  onClick={() => setActiveCategory("All Categories")}
+                  className={`cursor-pointer flex justify-between p-2 rounded transition-colors ${activeCategory === "All Categories" ? "bg-[#8B0000] text-white" : "text-slate-600 hover:bg-slate-100"}`}
                 >
-                  <span>Tampilkan Semua</span>
+                  <span>Show All</span>
                   <span>(34)</span>
                 </li>
                 <li 
-                  onClick={() => setActiveCategory("Kegiatan Sekolah")}
-                  className={`cursor-pointer flex justify-between p-2 rounded transition-colors ${activeCategory === "Kegiatan Sekolah" ? "bg-[#8B0000] text-white" : "text-slate-600 hover:bg-slate-100"}`}
+                  onClick={() => setActiveCategory("School Activities")}
+                  className={`cursor-pointer flex justify-between p-2 rounded transition-colors ${activeCategory === "School Activities" ? "bg-[#8B0000] text-white" : "text-slate-600 hover:bg-slate-100"}`}
                 >
-                  <span>Kegiatan Sekolah</span>
+                  <span>School Activities</span>
                   <span>(12)</span>
                 </li>
                 <li 
-                  onClick={() => setActiveCategory("Prestasi Siswa")}
-                  className={`cursor-pointer flex justify-between p-2 rounded transition-colors ${activeCategory === "Prestasi Siswa" ? "bg-[#8B0000] text-white" : "text-slate-600 hover:bg-slate-100"}`}
+                  onClick={() => setActiveCategory("Student Achievements")}
+                  className={`cursor-pointer flex justify-between p-2 rounded transition-colors ${activeCategory === "Student Achievements" ? "bg-[#8B0000] text-white" : "text-slate-600 hover:bg-slate-100"}`}
                 >
-                  <span>Prestasi Siswa</span>
+                  <span>Student Achievements</span>
                   <span>(8)</span>
                 </li>
                 <li 
-                  onClick={() => setActiveCategory("Seminar & Edukasi")}
-                  className={`cursor-pointer flex justify-between p-2 rounded transition-colors ${activeCategory === "Seminar & Edukasi" ? "bg-[#8B0000] text-white" : "text-slate-600 hover:bg-slate-100"}`}
+                  onClick={() => setActiveCategory("Seminar & Education")}
+                  className={`cursor-pointer flex justify-between p-2 rounded transition-colors ${activeCategory === "Seminar & Education" ? "bg-[#8B0000] text-white" : "text-slate-600 hover:bg-slate-100"}`}
                 >
-                  <span>Seminar & Edukasi</span>
+                  <span>Seminar & Education</span>
                   <span>(5)</span>
                 </li>
                 <li 
-                  onClick={() => setActiveCategory("Sosial & Kerohanian")}
-                  className={`cursor-pointer flex justify-between p-2 rounded transition-colors ${activeCategory === "Sosial & Kerohanian" ? "bg-[#8B0000] text-white" : "text-slate-600 hover:bg-slate-100"}`}
+                  onClick={() => setActiveCategory("Social & Spiritual")}
+                  className={`cursor-pointer flex justify-between p-2 rounded transition-colors ${activeCategory === "Social & Spiritual" ? "bg-[#8B0000] text-white" : "text-slate-600 hover:bg-slate-100"}`}
                 >
-                  <span>Sosial & Kerohanian</span>
+                  <span>Social & Spiritual</span>
                   <span>(9)</span>
                 </li>
               </ul>
