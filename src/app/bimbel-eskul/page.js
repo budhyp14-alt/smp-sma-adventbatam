@@ -1,10 +1,12 @@
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
 
-export const metadata = {
-  title: "Bimbel & Eskul - SMP SMA Advent Batam",
-};
-
 export default function BimbelEskulPage() {
+  // STATE UNTUK MENYIMPAN KATA KUNCI PENCARIAN
+  const [searchQuery, setSearchQuery] = useState("");
+
   const bimbels = [
     {
       id: "bimbel-matematika",
@@ -65,6 +67,17 @@ export default function BimbelEskulPage() {
     }
   ];
 
+  // LOGIKA FILTER PENCARIAN (Bimbel & Eskul)
+  const filteredBimbels = bimbels.filter(item => 
+    item.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    item.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const filteredEskuls = eskuls.filter(item => 
+    item.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    item.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <main className="min-h-screen flex flex-col font-sans bg-[#E5DCC3]">
       
@@ -83,83 +96,118 @@ export default function BimbelEskulPage() {
       <section className="w-full flex-1 pb-16 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
           
+          {/* KIRI - HASIL PROGRAM */}
           <div className="lg:col-span-8 flex flex-col space-y-16">
-            <div className="flex flex-col space-y-10">
-              <div className="border-b-2 border-[#047857] pb-2 mb-2 inline-block w-fit">
-                <h2 className="text-2xl font-black text-[#1e293b]">📚 Bimbingan Belajar (Bimbel)</h2>
+            
+            {/* PESAN JIKA TIDAK DITEMUKAN */}
+            {filteredBimbels.length === 0 && filteredEskuls.length === 0 && (
+              <div className="bg-red-100 text-red-700 p-6 rounded-lg border border-red-200 text-center font-bold shadow-sm">
+                Maaf, program "{searchQuery}" tidak ditemukan. Coba kata kunci lain ya!
               </div>
-              {bimbels.slice(0, 4).map((item, index) => (
-                <div key={index} className="flex flex-col sm:flex-row gap-6 items-start group">
-                  <Link href={`/bimbel-eskul/detail?id=${item.id}`} className="w-full sm:w-[300px] aspect-[4/3] shrink-0 bg-slate-300 overflow-hidden rounded-md shadow-sm block cursor-pointer relative">
-                    <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <div className="absolute top-3 left-3 bg-white/95 text-[#047857] text-[11px] font-bold px-2.5 py-1 rounded shadow-sm flex items-center gap-1">
-                      Bimbel
-                    </div>
-                  </Link>
-                  <div className="flex flex-col flex-1 pt-1">
-                    <Link href={`/bimbel-eskul/detail?id=${item.id}`}>
-                      <h3 className="text-[18px] sm:text-[20px] font-bold text-[#047857] mb-3 leading-snug hover:text-emerald-800 transition-colors cursor-pointer mt-1">
-                        {item.title}
-                      </h3>
-                    </Link>
-                    <Link href={`/bimbel-eskul/detail?id=${item.id}`}>
-                      <p className="text-[13px] sm:text-[14px] text-slate-700 leading-relaxed text-justify hover:text-black cursor-pointer">
-                        {item.excerpt}
-                      </p>
-                    </Link>
-                  </div>
-                </div>
-              ))}
-              <div className="pt-2 border-t border-slate-400/30">
-                <Link href="/bimbel-eskul/all-bimbel" className="bg-[#D97706] hover:bg-amber-700 text-white font-bold text-xs py-2.5 px-6 rounded shadow-sm transition-colors inline-block">
-                  View More Bimbel →
-                </Link>
-              </div>
-            </div>
+            )}
 
-            <div className="flex flex-col space-y-10">
-              <div className="border-b-2 border-[#047857] pb-2 mb-2 inline-block w-fit">
-                <h2 className="text-2xl font-black text-[#1e293b]">🏅 Ekstrakurikuler (Eskul)</h2>
-              </div>
-              {eskuls.slice(0, 4).map((item, index) => (
-                <div key={index} className="flex flex-col sm:flex-row gap-6 items-start group">
-                  <Link href={`/bimbel-eskul/detail?id=${item.id}`} className="w-full sm:w-[300px] aspect-[4/3] shrink-0 bg-slate-300 overflow-hidden rounded-md shadow-sm block cursor-pointer relative">
-                    <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <div className="absolute top-3 left-3 bg-white/95 text-[#D97706] text-[11px] font-bold px-2.5 py-1 rounded shadow-sm flex items-center gap-1">
-                      Eskul
-                    </div>
-                  </Link>
-                  <div className="flex flex-col flex-1 pt-1">
-                    <Link href={`/bimbel-eskul/detail?id=${item.id}`}>
-                      <h3 className="text-[18px] sm:text-[20px] font-bold text-[#047857] mb-3 leading-snug hover:text-emerald-800 transition-colors cursor-pointer mt-1">
-                        {item.title}
-                      </h3>
+            {/* BLOK BIMBEL */}
+            {filteredBimbels.length > 0 && (
+              <div className="flex flex-col space-y-10">
+                <div className="border-b-2 border-[#047857] pb-2 mb-2 inline-block w-fit">
+                  <h2 className="text-2xl font-black text-[#1e293b]">📚 Bimbingan Belajar (Bimbel)</h2>
+                </div>
+                {filteredBimbels.slice(0, 4).map((item, index) => (
+                  <div key={index} className="flex flex-col sm:flex-row gap-6 items-start group">
+                    <Link href={`/bimbel-eskul/detail?id=${item.id}`} className="w-full sm:w-[300px] aspect-[4/3] shrink-0 bg-slate-300 overflow-hidden rounded-md shadow-sm block cursor-pointer relative">
+                      <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <div className="absolute top-3 left-3 bg-white/95 text-[#047857] text-[11px] font-bold px-2.5 py-1 rounded shadow-sm flex items-center gap-1">
+                        Bimbel
+                      </div>
                     </Link>
-                    <Link href={`/bimbel-eskul/detail?id=${item.id}`}>
-                      <p className="text-[13px] sm:text-[14px] text-slate-700 leading-relaxed text-justify hover:text-black cursor-pointer">
-                        {item.excerpt}
-                      </p>
+                    <div className="flex flex-col flex-1 pt-1">
+                      <Link href={`/bimbel-eskul/detail?id=${item.id}`}>
+                        <h3 className="text-[18px] sm:text-[20px] font-bold text-[#047857] mb-3 leading-snug hover:text-emerald-800 transition-colors cursor-pointer mt-1">
+                          {item.title}
+                        </h3>
+                      </Link>
+                      <Link href={`/bimbel-eskul/detail?id=${item.id}`}>
+                        <p className="text-[13px] sm:text-[14px] text-slate-700 leading-relaxed text-justify hover:text-black cursor-pointer">
+                          {item.excerpt}
+                        </p>
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+                
+                {/* Tombol View More (Disembunyikan jika sedang mencari sesuatu) */}
+                {searchQuery === "" && (
+                  <div className="pt-2 border-t border-slate-400/30">
+                    <Link href="/bimbel-eskul/all-bimbel" className="bg-[#D97706] hover:bg-amber-700 text-white font-bold text-xs py-2.5 px-6 rounded shadow-sm transition-colors inline-block">
+                      View More Bimbel →
                     </Link>
                   </div>
+                )}
+              </div>
+            )}
+
+            {/* BLOK ESKUL */}
+            {filteredEskuls.length > 0 && (
+              <div className="flex flex-col space-y-10">
+                <div className="border-b-2 border-[#047857] pb-2 mb-2 inline-block w-fit">
+                  <h2 className="text-2xl font-black text-[#1e293b]">🏅 Ekstrakurikuler (Eskul)</h2>
                 </div>
-              ))}
-            </div>
+                {filteredEskuls.slice(0, 4).map((item, index) => (
+                  <div key={index} className="flex flex-col sm:flex-row gap-6 items-start group">
+                    <Link href={`/bimbel-eskul/detail?id=${item.id}`} className="w-full sm:w-[300px] aspect-[4/3] shrink-0 bg-slate-300 overflow-hidden rounded-md shadow-sm block cursor-pointer relative">
+                      <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <div className="absolute top-3 left-3 bg-white/95 text-[#D97706] text-[11px] font-bold px-2.5 py-1 rounded shadow-sm flex items-center gap-1">
+                        Eskul
+                      </div>
+                    </Link>
+                    <div className="flex flex-col flex-1 pt-1">
+                      <Link href={`/bimbel-eskul/detail?id=${item.id}`}>
+                        <h3 className="text-[18px] sm:text-[20px] font-bold text-[#047857] mb-3 leading-snug hover:text-emerald-800 transition-colors cursor-pointer mt-1">
+                          {item.title}
+                        </h3>
+                      </Link>
+                      <Link href={`/bimbel-eskul/detail?id=${item.id}`}>
+                        <p className="text-[13px] sm:text-[14px] text-slate-700 leading-relaxed text-justify hover:text-black cursor-pointer">
+                          {item.excerpt}
+                        </p>
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
+          {/* KANAN - SIDEBAR (STANDAR BARU PERMANEN) */}
           <div className="lg:col-span-4 lg:border-l border-dashed border-slate-500 lg:pl-8 space-y-8">
-            <div className="bg-white p-6 rounded-xl shadow-sm">
+            
+            {/* KOTAK PENCARIAN INTERAKTIF */}
+            <div className="bg-white p-6 rounded-xl shadow-sm border-t-4 border-[#047857]">
               <h3 className="text-[15px] font-bold text-slate-800 mb-4">Cari Program</h3>
               <div className="flex">
-                <input type="text" placeholder="Kata kunci..." className="flex-1 p-2.5 border border-slate-300 rounded-l text-xs focus:outline-none focus:border-[#047857]" />
-                <button className="bg-[#047857] hover:bg-emerald-800 text-white font-bold px-5 text-xs rounded-r transition-colors">Cari</button>
+                <input 
+                  type="text" 
+                  placeholder="Ketik nama program..." 
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="flex-1 p-2.5 border border-slate-300 rounded-l text-xs focus:outline-none focus:border-[#047857] focus:ring-1 focus:ring-[#047857]" 
+                />
+                <button className="bg-[#047857] hover:bg-emerald-800 text-white font-bold px-5 text-xs rounded-r transition-colors">
+                  Cari
+                </button>
               </div>
+              {searchQuery && (
+                <p className="text-[11px] text-[#D97706] mt-2 font-semibold">
+                  Mencari: "{searchQuery}"...
+                </p>
+              )}
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm">
               <h3 className="text-[15px] font-bold text-slate-800 mb-4 border-b border-slate-100 pb-2">Kategori Program</h3>
               <ul className="text-[13px] font-semibold text-slate-600 space-y-3">
-                <li className="hover:text-[#047857] cursor-pointer flex justify-between"><span>Bimbingan Belajar</span><span>(5)</span></li>
-                <li className="hover:text-[#047857] cursor-pointer flex justify-between"><span>Ekstrakurikuler</span><span>(4)</span></li>
+                <li className="hover:text-[#047857] cursor-pointer flex justify-between"><span>Bimbingan Belajar</span><span>({bimbels.length})</span></li>
+                <li className="hover:text-[#047857] cursor-pointer flex justify-between"><span>Ekstrakurikuler</span><span>({eskuls.length})</span></li>
               </ul>
             </div>
 
@@ -190,24 +238,13 @@ export default function BimbelEskulPage() {
                   <span className="font-bold shrink-0">Email</span>
                   <span className="text-[#047857] text-right font-medium break-all">info@adventbatam.sch.id</span>
                 </li>
-                <li className="flex justify-between items-center gap-4 pt-2">
-                  <span className="font-bold text-slate-800 text-[13px] ml-1">f</span>
-                  <span className="text-[#047857] text-right cursor-pointer hover:underline font-medium">Facebook</span>
-                </li>
-                <li className="flex justify-between items-center gap-4">
-                  <span className="font-bold text-slate-500 text-lg">📷</span>
-                  <span className="text-[#047857] text-right cursor-pointer hover:underline font-medium">Instagram</span>
-                </li>
-                <li className="flex justify-between items-center gap-4">
-                  <span className="font-bold text-blue-500 text-lg">▶</span>
-                  <span className="text-[#047857] text-right cursor-pointer hover:underline font-medium">YouTube</span>
-                </li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
+      {/* FOOTER */}
       <footer className="w-full shrink-0">
         <div className="bg-[#D97706] py-12 px-4 text-white">
           <div className="max-w-7xl mx-auto flex flex-col items-start space-y-6">
