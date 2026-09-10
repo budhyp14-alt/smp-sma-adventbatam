@@ -18,7 +18,8 @@ export default function RootLayout({ children }) {
     { name: "GALLERY", href: "/gallery" },
     { name: "BIMBEL/ESKUL", href: "/bimbel-eskul" },
     { name: "PPDB", href: "/ppdb" },
-    { name: "LIBRARY", href: "/library" },
+    // LINK LIBRARY DIUBAH KE WEB PERPUS EKSTERNAL
+    { name: "LIBRARY", href: "https://e-perpus-batam-mas.vercel.app/" },
   ];
 
   return (
@@ -37,15 +38,36 @@ export default function RootLayout({ children }) {
           <div className="max-w-7xl mx-auto px-2 sm:px-4">
             <div className="flex items-center justify-start lg:justify-center overflow-x-auto py-1.5">
               <div className="flex items-center space-x-1 sm:space-x-2 min-w-max py-1">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="px-3 py-2 rounded-lg text-xs sm:text-[13px] font-bold tracking-wider hover:bg-red-800 hover:text-amber-300 transition-colors duration-200 whitespace-nowrap"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
+                {navItems.map((item) => {
+                  // Cek apakah ini link eksternal (mengandung kata 'http')
+                  const isExternal = item.href.startsWith("http");
+
+                  // Jika eksternal, gunakan tag <a> biasa agar bisa meluncur keluar web di tab baru
+                  if (isExternal) {
+                    return (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        target="_blank" // Membuka web perpus di tab baru
+                        rel="noopener noreferrer"
+                        className="px-3 py-2 rounded-lg text-xs sm:text-[13px] font-bold tracking-wider hover:bg-red-800 hover:text-amber-300 transition-colors duration-200 whitespace-nowrap"
+                      >
+                        {item.name}
+                      </a>
+                    );
+                  }
+
+                  // Jika internal, gunakan fitur cepat <Link> dari Next.js
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="px-3 py-2 rounded-lg text-xs sm:text-[13px] font-bold tracking-wider hover:bg-red-800 hover:text-amber-300 transition-colors duration-200 whitespace-nowrap"
+                    >
+                      {item.name}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -66,7 +88,7 @@ export default function RootLayout({ children }) {
                 <h1 className="text-xl sm:text-2xl font-black text-red-950 tracking-tight leading-none mb-1">
                   SMP - SMA ADVENT BATAM
                 </h1>
-                {/* Teks Sub-Logo Diterjemahkan */}
+                {/* Teks Sub-Logo */}
                 <p className="text-xs text-slate-500 font-medium tracking-wide leading-none">
                   Shaping a Generation of Character, Intelligence, and Integrity
                 </p>
@@ -75,7 +97,6 @@ export default function RootLayout({ children }) {
 
             <div className="flex items-center space-x-4 sm:space-x-6">
               <div className="flex items-center space-x-3 text-xs sm:text-sm font-semibold text-slate-600">
-                {/* Teks Follow Us Diterjemahkan */}
                 <span className="hidden sm:inline text-slate-400 mr-1">Follow Us:</span>
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors flex items-center space-x-1">
                   <span>📘 Facebook</span>
