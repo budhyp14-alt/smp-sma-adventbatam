@@ -1,128 +1,105 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Detail Berita - SMP SMA Advent Batam",
+  title: "News Detail - SMP SMA Advent Batam",
 };
 
-export default function NewsDetailPage() {
-  // Simulasi berita lain yang sekategori untuk ditampilkan di sidebar kanan
-  const relatedNews = [
-    {
-      id: "teknologi-inovasi-2",
-      title: "Penerapan Absensi Wajah Berbasis AI untuk Meningkatkan Kedisiplinan Siswa",
-      date: "Wednesday, 10 Jun 2026",
-      excerpt: "Sistem absensi otomatis menggunakan pengenalan wajah kini terintegrasi langsung dengan database Google Sheets sekolah...",
-      img: "/slider-2.jpg"
-    },
-    {
-      id: "teknologi-inovasi-3",
-      title: "Pelatihan Pemrograman Python dan Penggunaan Cloud Hosting bagi Guru",
-      date: "Saturday, 15 May 2026",
-      excerpt: "Kegiatan peningkatan kompetensi tenaga pendidik dalam menguasai teknologi modern guna mendukung transformasi digital...",
-      img: "/slider-3.jpg"
-    },
-    {
-      id: "teknologi-inovasi-4",
-      title: "Optimalisasi Laboratorium Komputer dengan Perangkat Keras Terbaru",
-      date: "Tuesday, 04 Feb 2026",
-      excerpt: "Fasilitas penunjang praktik TIK dan Informatika diperbarui untuk memberikan pengalaman praktikum yang memadai...",
-      img: "/slider-1.jpg"
-    }
-  ];
+export default function DetailNewsPage({ searchParams }) {
+  // Menangkap ID dari URL dan merapikannya untuk judul
+  const itemId = searchParams?.id || "School News";
+  const judulBerita = itemId.replace(/-/g, ' ').toUpperCase();
 
   return (
-    <main className="min-h-screen flex flex-col font-sans bg-[#F3EFE4]">
+    <main className="min-h-screen flex flex-col font-sans bg-[#E5DCC3]">
       
-      {/* HEADER & BREADCRUMB */}
-      <section className="w-full bg-[#DCC690] text-slate-900 pt-6 pb-12 px-4 shrink-0">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-xs text-slate-700 font-semibold mb-6 flex items-center gap-1 flex-wrap">
-            <span>You are here :</span>
-            <Link href="/" className="text-[#047857] hover:underline ml-1">🏠 Home</Link>
-            <span>-</span>
-            <Link href="/news" className="text-[#047857] hover:underline">News</Link>
-            <span>-</span>
-            <span className="text-slate-600">Detail Berita</span>
-          </div>
-          
-          <span className="text-xs bg-red-900 text-white font-semibold px-2.5 py-1 rounded shadow-sm inline-block mb-3">
-            Teknologi & Inovasi (Digitalisasi)
-          </span>
-          <h1 className="text-2xl sm:text-4xl font-black text-slate-800 leading-snug">
-            Langkah Inovatif Menuju Era Digital: SMP & SMA Advent Batam Miliki Website Terpadu
-          </h1>
-          <p className="text-xs sm:text-sm text-slate-600 mt-3 font-medium">
-            Published on Monday, 21 Aug 2026 | By Admin Sekolah
-          </p>
+      {/* BREADCRUMB & HEADER */}
+      <section className="w-full pt-8 pb-4 px-4 sm:px-8 max-w-7xl mx-auto shrink-0">
+        <div className="text-xs text-slate-700 font-semibold mb-6 flex items-center gap-1 flex-wrap">
+          <span>You are here :</span>
+          <Link href="/" className="text-[#047857] hover:underline ml-1">🏠 Home</Link>
+          <span>-</span>
+          <Link href="/news" className="text-[#047857] hover:underline">News</Link>
+          <span>-</span>
+          <span className="text-slate-600">Read News</span>
         </div>
       </section>
 
-      {/* KONTEN UTAMA DENGAN SIDEBAR BERITA SEJENIS */}
-      <section className="w-full flex-1 py-12 px-4">
+      {/* KONTEN UTAMA */}
+      <section className="w-full flex-1 pb-16 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
           
-          {/* KIRI - KONTEN UTUH BERITA (8 Kolom) */}
-          <div className="lg:col-span-8 bg-[#E5DCC3] p-6 sm:p-10 rounded-2xl shadow-sm border border-[#D5CCB3] space-y-6 text-slate-800 text-justify">
+          {/* KIRI - KONTEN ARTIKEL */}
+          <div className="lg:col-span-8 flex flex-col bg-white p-6 sm:p-10 rounded-xl shadow-sm border-t-4 border-[#8B0000]">
             
-            <div className="w-full aspect-[16/9] rounded-xl overflow-hidden shadow-md bg-slate-300">
-              <img src="/slider-1.jpg" alt="Ilustrasi Berita" className="w-full h-full object-cover" />
+            <div className="mb-6">
+              <span className="bg-[#D97706] text-white text-[11px] font-bold px-3 py-1 rounded shadow-sm">NEWS UPDATE</span>
+              <h1 className="text-2xl sm:text-3xl font-black text-[#1e293b] mt-4 mb-3 leading-snug">
+                {judulBerita}
+              </h1>
+              <div className="text-xs text-slate-500 font-medium flex gap-4 border-b border-slate-200 pb-4">
+                <span>📅 Published: September 2026</span>
+                <span>✍️ By: School Editorial Team</span>
+              </div>
             </div>
 
-            <div className="space-y-4 text-sm sm:text-base leading-relaxed">
-              <p className="font-semibold text-red-950 text-base sm:text-lg italic">
-                "Penting untuk mendokumentasikan secara digital dan online semua event yang terjadi di sekolah SMP dan SMA Advent Batam."
-              </p>
-              <p>
-                Batam — Di bawah persetujuan dan dukungan penuh dari Kepala Sekolah Bapak Tona Leon F. Situmorang, S.Pd., MA.Ed., civitas akademika SMP & SMA Advent Batam secara resmi meluncurkan portal web terpadu yang dirancang modern, responsif, dan interaktif.
-              </p>
-              <p>
-                Langkah ini diambil guna menjawab tantangan zaman di era digitalisasi pendidikan. Seluruh kegiatan belajar mengajar, pengumuman penting, jadwal agenda, galeri kegiatan siswa, hingga profil guru kreatif kini dapat diakses secara transparan dan cepat oleh para orang tua murid, siswa, maupun masyarakat luas.
-              </p>
-              <p>
-                Dengan sistem navigasi yang terstruktur dan antarmuka bernuansa hangat, website ini tidak hanya berfungsi sebagai media informasi, tetapi juga sebagai wadah dokumentasi prestasi digital sekolah yang berkelanjutan.
-              </p>
+            <div className="w-full aspect-[16/9] bg-slate-300 mb-8 rounded-lg overflow-hidden shadow-sm">
+              <img src="/slider-2.jpg" alt="Detail Image" className="w-full h-full object-cover" />
             </div>
 
-            <div className="pt-6 border-t border-[#D5CCB3] flex justify-between items-center flex-wrap gap-4">
-              <span className="text-xs font-semibold text-slate-600">Share this news to parents and friends!</span>
-              <Link href="/news" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold text-xs py-2.5 px-6 rounded shadow transition-colors inline-block">
-                ← Kembali ke Berita Lainnya
+            <div className="prose max-w-none text-slate-700 text-sm sm:text-[15px] leading-relaxed text-justify space-y-5">
+              <p>
+                Batam - SMP dan SMA Advent Batam kembali menyelenggarakan kegiatan positif sebagai bagian dari komitmen sekolah dalam mencetak generasi muda yang unggul secara intelektual dan memiliki karakter Kristiani yang kuat. Rangkaian acara ini diikuti dengan antusias oleh seluruh siswa, guru, dan staf administrasi sekolah.
+              </p>
+              <p>
+                Kepala Sekolah, Tona Leon Ferdinan Situmorang, S.Pd.,MA.,ED., menyampaikan bahwa kegiatan ini tidak hanya bertujuan untuk mengisi jadwal akademik, tetapi juga untuk melatih kemandirian, kerja sama tim, dan kepedulian sosial di kalangan pelajar. "Kami berharap apa yang didapatkan hari ini bisa diaplikasikan langsung di kehidupan bermasyarakat," ujarnya.
+              </p>
+              <p>
+                Acara ditutup dengan doa bersama dan pembagian penghargaan bagi siswa-siswi yang telah berpartisipasi aktif. Sekolah berencana untuk menjadikan kegiatan serupa sebagai agenda rutin tahunan yang terus dievaluasi agar memberikan manfaat yang lebih besar di masa mendatang.
+              </p>
+            </div>
+            
+            {/* BAGIAN BAWAH ARTIKEL (TOMBOL KEMBALI) */}
+            <div className="mt-10 pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4">
+              <span className="text-sm text-slate-500 italic">Share this news to parents and friends!</span>
+              <Link href="/news" className="bg-[#8B0000] hover:bg-red-950 text-white font-bold text-xs py-2.5 px-6 rounded shadow-sm transition-colors inline-block text-center">
+                ← Back to All News
               </Link>
             </div>
 
           </div>
 
-          {/* KANAN - SIDEBAR BERITA SEJENIS / SEKATEGORI (4 Kolom) */}
-          <div className="lg:col-span-4 space-y-6">
-            <div className="bg-white p-6 rounded-xl shadow-md border-t-4 border-red-900">
-              <h3 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2 flex items-center gap-2">
-                <span>📌</span> Berita Sekategori Lainnya
-              </h3>
+          {/* KANAN - SIDEBAR PERMANEN */}
+          <div className="lg:col-span-4 lg:border-l border-dashed border-slate-500 lg:pl-8 space-y-8">
+            <div className="bg-white p-6 rounded-xl shadow-sm border-t-4 border-[#8B0000]">
+              <h3 className="text-[15px] font-bold text-slate-800 mb-4">Popular News</h3>
+              <ul className="space-y-3 text-[13px] text-slate-700">
+                <li className="border-b border-slate-100 pb-2 hover:text-[#8B0000] cursor-pointer">New Student Registration 2026 is Open</li>
+                <li className="border-b border-slate-100 pb-2 hover:text-[#8B0000] cursor-pointer">E-Library Usage Guide</li>
+                <li className="hover:text-[#8B0000] cursor-pointer">Even Semester Exam Schedule</li>
+              </ul>
+            </div>
 
-              <div className="space-y-6">
-                {relatedNews.map((item, index) => (
-                  <div key={index} className="flex flex-col gap-2 pb-4 border-b border-slate-200 last:border-b-0 last:pb-0 group">
-                    {/* FOTO THUMBNAIL */}
-                    <Link href={`/news/detail?id=${item.id}`} className="w-full aspect-[16/9] rounded-lg overflow-hidden bg-slate-200 shadow-sm block">
-                      <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-                    </Link>
-                    
-                    <div>
-                      <p className="text-[10px] text-slate-500 mb-1">{item.date}</p>
-                      {/* JUDUL */}
-                      <Link href={`/news/detail?id=${item.id}`}>
-                        <h4 className="text-sm font-bold text-red-950 leading-snug hover:text-red-800 transition-colors cursor-pointer mb-1">
-                          {item.title}
-                        </h4>
-                      </Link>
-                      {/* LEAD / EXCERPT */}
-                      <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
-                        {item.excerpt}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+            <div className="pt-6 border-t border-dashed border-slate-400">
+              <div className="flex flex-col items-center lg:items-end text-center lg:text-right mb-6">
+                <h3 className="text-[22px] font-black text-[#1e293b] mb-1">SMP - SMA ADVENT BATAM</h3>
+                <p className="text-[12px] text-slate-800 font-medium">
+                  Prof. DR. Hamka St., Kav 4, Kibing Village, Batu Aji District
+                </p>
               </div>
+              <ul className="text-[13px] text-slate-800 space-y-4">
+                <li className="flex justify-between items-start gap-4">
+                  <span className="font-bold shrink-0">NSPN</span>
+                  <span className="text-right">70002994</span>
+                </li>
+                <li className="flex justify-between items-start gap-4">
+                  <span className="font-bold shrink-0">Principal</span>
+                  <span className="text-right leading-tight">Tona Leon Ferdinan<br/>Situmorang,<br/>S.Pd.,MA.,ED.</span>
+                </li>
+                <li className="flex justify-between items-center gap-4 border-b border-dashed border-slate-400 pb-6">
+                  <span className="font-bold shrink-0">Phone</span>
+                  <span className="text-[#047857] text-right font-medium">0778-363082</span>
+                </li>
+              </ul>
             </div>
           </div>
 
@@ -142,7 +119,6 @@ export default function NewsDetailPage() {
           Developed by Ir. Budhy Prasetyo
         </div>
       </footer>
-
     </main>
   );
 }
