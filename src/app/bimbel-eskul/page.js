@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import Link from "next/link";
 
 export default function BimbelEskulPage() {
-  // STATE UNTUK MENYIMPAN KATA KUNCI PENCARIAN
+  // STATE PENCARIAN & FILTER KATEGORI
   const [searchQuery, setSearchQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState("Semua"); // Default tampil semua
 
   const bimbels = [
     {
@@ -67,7 +68,7 @@ export default function BimbelEskulPage() {
     }
   ];
 
-  // LOGIKA FILTER PENCARIAN (Bimbel & Eskul)
+  // LOGIKA PENCARIAN
   const filteredBimbels = bimbels.filter(item => 
     item.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
     item.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
@@ -100,14 +101,15 @@ export default function BimbelEskulPage() {
           <div className="lg:col-span-8 flex flex-col space-y-16">
             
             {/* PESAN JIKA TIDAK DITEMUKAN */}
-            {filteredBimbels.length === 0 && filteredEskuls.length === 0 && (
+            {((activeCategory === "Semua" || activeCategory === "Bimbel") && filteredBimbels.length === 0) && 
+             ((activeCategory === "Semua" || activeCategory === "Eskul") && filteredEskuls.length === 0) && (
               <div className="bg-red-100 text-red-700 p-6 rounded-lg border border-red-200 text-center font-bold shadow-sm">
                 Maaf, program "{searchQuery}" tidak ditemukan. Coba kata kunci lain ya!
               </div>
             )}
 
-            {/* BLOK BIMBEL */}
-            {filteredBimbels.length > 0 && (
+            {/* BLOK BIMBEL (Tampil jika kategori Semua ATAU Bimbel) */}
+            {(activeCategory === "Semua" || activeCategory === "Bimbel") && filteredBimbels.length > 0 && (
               <div className="flex flex-col space-y-10">
                 <div className="border-b-2 border-[#047857] pb-2 mb-2 inline-block w-fit">
                   <h2 className="text-2xl font-black text-[#1e293b]">📚 Bimbingan Belajar (Bimbel)</h2>
@@ -135,7 +137,7 @@ export default function BimbelEskulPage() {
                   </div>
                 ))}
                 
-                {/* Tombol View More (Disembunyikan jika sedang mencari sesuatu) */}
+                {/* Tombol View More */}
                 {searchQuery === "" && (
                   <div className="pt-2 border-t border-slate-400/30">
                     <Link href="/bimbel-eskul/all-bimbel" className="bg-[#D97706] hover:bg-amber-700 text-white font-bold text-xs py-2.5 px-6 rounded shadow-sm transition-colors inline-block">
@@ -146,8 +148,8 @@ export default function BimbelEskulPage() {
               </div>
             )}
 
-            {/* BLOK ESKUL */}
-            {filteredEskuls.length > 0 && (
+            {/* BLOK ESKUL (Tampil jika kategori Semua ATAU Eskul) */}
+            {(activeCategory === "Semua" || activeCategory === "Eskul") && filteredEskuls.length > 0 && (
               <div className="flex flex-col space-y-10">
                 <div className="border-b-2 border-[#047857] pb-2 mb-2 inline-block w-fit">
                   <h2 className="text-2xl font-black text-[#1e293b]">🏅 Ekstrakurikuler (Eskul)</h2>
@@ -178,10 +180,9 @@ export default function BimbelEskulPage() {
             )}
           </div>
 
-          {/* KANAN - SIDEBAR (STANDAR BARU PERMANEN) */}
+          {/* KANAN - SIDEBAR */}
           <div className="lg:col-span-4 lg:border-l border-dashed border-slate-500 lg:pl-8 space-y-8">
             
-            {/* KOTAK PENCARIAN INTERAKTIF */}
             <div className="bg-white p-6 rounded-xl shadow-sm border-t-4 border-[#047857]">
               <h3 className="text-[15px] font-bold text-slate-800 mb-4">Cari Program</h3>
               <div className="flex">
@@ -196,21 +197,37 @@ export default function BimbelEskulPage() {
                   Cari
                 </button>
               </div>
-              {searchQuery && (
-                <p className="text-[11px] text-[#D97706] mt-2 font-semibold">
-                  Mencari: "{searchQuery}"...
-                </p>
-              )}
             </div>
 
+            {/* BLOK FILTER KATEGORI INTERAKTIF */}
             <div className="bg-white p-6 rounded-xl shadow-sm">
               <h3 className="text-[15px] font-bold text-slate-800 mb-4 border-b border-slate-100 pb-2">Kategori Program</h3>
-              <ul className="text-[13px] font-semibold text-slate-600 space-y-3">
-                <li className="hover:text-[#047857] cursor-pointer flex justify-between"><span>Bimbingan Belajar</span><span>({bimbels.length})</span></li>
-                <li className="hover:text-[#047857] cursor-pointer flex justify-between"><span>Ekstrakurikuler</span><span>({eskuls.length})</span></li>
+              <ul className="text-[13px] font-semibold space-y-3">
+                <li 
+                  onClick={() => setActiveCategory("Semua")}
+                  className={`cursor-pointer flex justify-between p-2 rounded transition-colors ${activeCategory === "Semua" ? "bg-[#047857] text-white" : "text-slate-600 hover:bg-slate-100"}`}
+                >
+                  <span>Tampilkan Semua</span>
+                  <span>({bimbels.length + eskuls.length})</span>
+                </li>
+                <li 
+                  onClick={() => setActiveCategory("Bimbel")}
+                  className={`cursor-pointer flex justify-between p-2 rounded transition-colors ${activeCategory === "Bimbel" ? "bg-[#047857] text-white" : "text-slate-600 hover:bg-slate-100"}`}
+                >
+                  <span>Bimbingan Belajar</span>
+                  <span>({bimbels.length})</span>
+                </li>
+                <li 
+                  onClick={() => setActiveCategory("Eskul")}
+                  className={`cursor-pointer flex justify-between p-2 rounded transition-colors ${activeCategory === "Eskul" ? "bg-[#047857] text-white" : "text-slate-600 hover:bg-slate-100"}`}
+                >
+                  <span>Ekstrakurikuler</span>
+                  <span>({eskuls.length})</span>
+                </li>
               </ul>
             </div>
 
+            {/* BLOK INFO SEKOLAH */}
             <div className="pt-6 border-t border-dashed border-slate-400">
               <div className="flex flex-col items-center lg:items-end text-center lg:text-right mb-6">
                 <h3 className="text-[22px] font-black text-[#1e293b] mb-1">SMP - SMA ADVENT BATAM</h3>
