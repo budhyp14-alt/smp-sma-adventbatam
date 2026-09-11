@@ -1,84 +1,52 @@
 import Link from "next/link";
+import { editorialsData } from "../../../data/editorials";
 
 export const metadata = {
-  title: "Sambutan Kepala Sekolah - SMP SMA Advent Batam",
+  title: "Principal Editorial Detail - SMP SMA Advent Batam",
 };
 
-export default function EditorialDetailPage() {
+export default function EditorialKepsekDetail({ searchParams }) {
+  const itemId = searchParams?.id || editorialsData.kepsek[0].id;
+  const article = editorialsData.kepsek.find((a) => a.id === itemId) || editorialsData.kepsek[0];
+
   return (
-    <main className="min-h-screen flex flex-col font-sans">
-      
-      <section className="w-full bg-[#DCC690] text-slate-900 flex-1 pt-6 pb-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          
-          <div className="text-xs text-slate-700 font-semibold mb-8 flex items-center gap-1 flex-wrap">
-            <span>You are here :</span>
-            <Link href="/" className="text-[#047857] hover:underline ml-1">🏠 Home</Link>
-            <span>-</span>
-            <Link href="/editorial" className="text-[#047857] hover:underline">Editorial</Link>
-            <span>-</span>
-            <span className="text-slate-600 line-clamp-1 max-w-[200px] sm:max-w-none">Sambutan Kepala Sekolah</span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-            
-            <div className="lg:col-span-8 flex flex-col">
-              <h1 className="text-2xl sm:text-3xl font-black text-slate-800 mb-3 leading-tight">
-                Sambutan Kepala Sekolah: Menyongsong Masa Depan Melalui Website Resmi SMP & SMA Advent Batam
-              </h1>
-              
-              <p className="text-xs sm:text-sm text-slate-700 mb-4">
-                Published : Saturday, 29 Aug 2026, 19:54 WIB
-              </p>
-
-              <div className="flex gap-1.5 mb-6">
-                <span className="w-6 h-6 bg-blue-600 text-white flex items-center justify-center rounded text-xs cursor-pointer hover:bg-blue-700 font-bold">f</span>
-                <span className="w-6 h-6 bg-pink-600 text-white flex items-center justify-center rounded text-xs cursor-pointer hover:bg-pink-700 font-bold">📷</span>
-                <span className="w-6 h-6 bg-red-600 text-white flex items-center justify-center rounded text-xs cursor-pointer hover:bg-red-700 font-bold">▶</span>
-              </div>
-
-              {/* ISI BERITA UTUH HASIL PENGEMBANGAN */}
-              <div className="space-y-4 text-[13px] sm:text-sm text-slate-800 leading-relaxed text-justify">
-                <p className="font-semibold text-slate-900">
-                  Kepala Sekolah SMP & SMA Advent Batam, Bapak Tona Leon F. Situmorang, S.Pd., MA.Ed. menyambut dengan sukacita dan antusiasme tinggi atas selesainya pembuatan website resmi sekolah. Beliau tidak hanya mengucap syukur kepada Tuhan, tetapi juga menaruh harapan besar agar seluruh civitas akademika dapat mendayagunakan platform digital ini untuk kemajuan sekolah dalam menyongsong kemajuan teknologi yang berkembang pesat.
-                </p>
-                <p>
-                  Kehadiran *website* resmi ini bukan sekadar portofolio digital sekolah, melainkan sebuah jembatan vital antara sekolah, peserta didik, orang tua murid, serta masyarakat luas. Dalam sambutannya, Bapak Tona Leon menekankan bahwa era digital menuntut institusi pendidikan untuk lebih transparan, dinamis, dan mudah diakses.
-                </p>
-                <p>
-                  "Kita harus menyadari bahwa perkembangan zaman yang begitu masif ini menuntut kita untuk ikut bergerak maju. Website ini merupakan wajah digital dari SMP & SMA Advent Batam. Saya mengundang para dewan guru, murid, dan *stakeholder* terkait untuk berperan aktif mengisinya dengan karya, inovasi, dan prestasi yang membangun," ungkap beliau.
-                </p>
-                <p>
-                  Melalui sarana *online* ini pula, sistem dokumentasi sekolah kini lebih terintegrasi dengan baik. Hal ini sejalan dengan usulan strategis yang sebelumnya diajukan oleh guru mata pelajaran Informatika. Diharapkan ke depannya, portal informasi ini dapat terus berkembang sebagai media publikasi *event*, pendaftaran *online* (PPDB), hingga wadah pembelajaran interaktif.
-                </p>
-              </div>
-            </div>
-
-            <div className="lg:col-span-4 flex flex-col">
-              <div className="w-full aspect-[4/3] bg-slate-300 shadow-sm mb-3 rounded overflow-hidden">
-                <img src="/slider-3.jpg" alt="Ilustrasi Kepala Sekolah" className="w-full h-full object-cover" />
-              </div>
-              <p className="text-xs text-slate-700 font-medium mb-1">Author : Admin</p>
-              <p className="text-xs text-slate-700 font-medium mb-8">Read 142 times</p>
-
-              <div className="mt-2">
-                <h3 className="font-bold text-lg text-slate-800 mb-5">Other Articles</h3>
-                <div className="space-y-5">
-                  <div>
-                    <Link href="/editorial/detail-1" className="text-[#047857] font-bold hover:underline text-[13px] leading-snug block">
-                      Langkah Inovatif Menuju Era Digital: SMP & SMA Advent Batam Segera Miliki Website Terpadu
-                    </Link>
-                    <p className="text-[11px] text-slate-600 italic mt-1">Read : 357 times</p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
+    <main className="min-h-screen bg-[#E5DCC3] font-sans flex flex-col">
+      <section className="w-full pt-8 pb-4 px-4 sm:px-8 max-w-5xl mx-auto shrink-0">
+        <div className="text-xs text-slate-700 font-semibold mb-6 flex items-center gap-1 flex-wrap">
+          <Link href="/" className="text-[#047857] hover:underline">🏠 Home</Link>
+          <span>-</span>
+          <Link href="/editorial" className="text-[#047857] hover:underline">Principal's Editorial</Link>
+          <span>-</span>
+          <span className="text-slate-600">Detail</span>
         </div>
+        <article className="bg-white p-6 sm:p-10 rounded-2xl shadow-md border-t-8 border-[#8B0000]">
+          <span className="bg-[#8B0000] text-white text-xs font-bold px-3 py-1 rounded">PRINCIPAL EDITORIAL</span>
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 mt-4 mb-2 leading-snug">{article.title}</h1>
+          <div className="text-xs text-slate-500 font-medium pb-4 border-b border-slate-200 mb-6 flex gap-4">
+            <span>📅 {article.date}</span>
+            <span>✍️ {article.author} ({article.role})</span>
+          </div>
+          <div className="w-full aspect-video bg-slate-200 rounded-xl overflow-hidden mb-6">
+            <img src={article.img} alt={article.title} className="w-full h-full object-cover" />
+          </div>
+          <div className="space-y-4 text-sm sm:text-base text-slate-700 leading-relaxed text-justify">
+            {article.paragraphs.map((p, idx) => (
+              <p key={idx}>{p}</p>
+            ))}
+          </div>
+          <div className="mt-8 pt-6 border-t border-slate-200 flex justify-between items-center">
+            <Link href="/editorial" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold text-xs py-2.5 px-6 rounded transition-colors">
+              ← Back to All Articles
+            </Link>
+            <Link href="/" className="text-[#047857] text-xs font-bold hover:underline">
+              Back to Home
+            </Link>
+          </div>
+        </article>
       </section>
-
-      {/* Bagian Bawah / Footer Diabaikan demi keterbacaan, strukturnya SAMA */}
+      <footer className="w-full bg-[#8B0000] text-white text-xs text-center py-4 font-semibold mt-auto">
+        Developed by Ir. Budhy Prasetyo
+      </footer>
     </main>
   );
 }
