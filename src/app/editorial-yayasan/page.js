@@ -1,52 +1,50 @@
 import Link from "next/link";
-import { editorialsData } from "../../data/editorials";
+import { editorialsData } from "../../../data/editorials";
 
 export const metadata = {
-  title: "Foundation Chairman's Editorial - SMP SMA Advent Batam",
+  title: "Editorial Yayasan Detail - SMP SMA Advent Batam",
 };
 
-export default function EditorialYayasanIndex() {
-  const articles = editorialsData.yayasan;
+export default function EditorialYayasanDetail({ searchParams }) {
+  const itemId = searchParams?.id || editorialsData.yayasan[0].id;
+  const article = editorialsData.yayasan.find((a) => a.id === itemId) || editorialsData.yayasan[0];
 
   return (
     <main className="min-h-screen bg-[#E5DCC3] font-sans flex flex-col">
-      <section className="w-full pt-8 pb-4 px-4 sm:px-8 max-w-7xl mx-auto shrink-0">
+      <section className="w-full pt-8 pb-4 px-4 sm:px-8 max-w-5xl mx-auto shrink-0">
         <div className="text-xs text-slate-700 font-semibold mb-6 flex items-center gap-1 flex-wrap">
-          <span>You are here :</span>
-          <Link href="/" className="text-[#047857] hover:underline ml-1">🏠 Home</Link>
+          <Link href="/" className="text-[#047857] hover:underline">🏠 Home</Link>
           <span>-</span>
-          <span className="text-slate-600">Foundation Chairman's Editorial</span>
+          <Link href="/editorial-yayasan" className="text-[#047857] hover:underline">Editorial Yayasan</Link>
+          <span>-</span>
+          <span className="text-slate-600">Detail</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-black text-[#1e293b] mb-8 tracking-wide uppercase">
-          FOUNDATION CHAIRMAN'S EDITORIAL
-        </h1>
+        <article className="bg-white p-6 sm:p-10 rounded-2xl shadow-md border-t-8 border-[#D97706]">
+          <span className="bg-[#D97706] text-white text-xs font-bold px-3 py-1 rounded">YAYASAN EDITORIAL</span>
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 mt-4 mb-2 leading-snug">{article.title}</h1>
+          <div className="text-xs text-slate-500 font-medium pb-4 border-b border-slate-200 mb-6 flex gap-4">
+            <span>📅 {article.date}</span>
+            <span>✍️ {article.author} ({article.role})</span>
+          </div>
+          <div className="w-full aspect-video bg-slate-200 rounded-xl overflow-hidden mb-6">
+            <img src={article.img} alt={article.title} className="w-full h-full object-cover" />
+          </div>
+          <div className="space-y-4 text-sm sm:text-base text-slate-700 leading-relaxed text-justify">
+            {article.paragraphs.map((p, idx) => (
+              <p key={idx}>{p}</p>
+            ))}
+          </div>
+          <div className="mt-8 pt-6 border-t border-slate-200 flex justify-between items-center">
+            <Link href="/editorial-yayasan" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold text-xs py-2.5 px-6 rounded transition-colors">
+              ← Back to All Articles
+            </Link>
+            <Link href="/" className="text-[#047857] text-xs font-bold hover:underline">
+              Back to Home
+            </Link>
+          </div>
+        </article>
       </section>
-
-      <section className="w-full flex-1 pb-16 px-4 sm:px-8">
-        <div className="max-w-7xl mx-auto space-y-8">
-          {articles.map((item, idx) => (
-            <div key={idx} className="bg-white p-6 rounded-xl shadow-sm border-t-4 border-[#D97706] flex flex-col md:flex-row gap-6 items-start">
-              <div className="w-full md:w-[280px] aspect-[4/3] bg-slate-200 rounded-lg overflow-hidden shrink-0">
-                <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1 flex flex-col">
-                <span className="text-xs text-slate-500 font-semibold mb-1">📅 {item.date} | ✍️ {item.author}</span>
-                <h2 className="text-xl font-bold text-red-950 mb-3">{item.title}</h2>
-                <p className="text-sm text-slate-600 leading-relaxed text-justify mb-4 line-clamp-3">
-                  {item.paragraphs[0]}
-                </p>
-                <div>
-                  <Link href={`/editorial-yayasan/detail?id=${item.id}`} className="bg-[#8B0000] hover:bg-red-800 text-white font-bold text-xs py-2 px-5 rounded shadow-sm inline-block transition-colors">
-                    Read More →
-                  </Link>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <footer className="w-full bg-[#8B0000] text-white text-xs text-center py-4 font-semibold shrink-0">
+      <footer className="w-full bg-[#8B0000] text-white text-xs text-center py-4 font-semibold mt-auto">
         Developed by Ir. Budhy Prasetyo
       </footer>
     </main>
