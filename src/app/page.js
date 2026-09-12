@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function Home() {
-  // 4 DATA FOTO SLIDER ASLI BESERTA JUDUL & KETERANGAN
+  // 4 DATA FOTO SLIDER ASLI
   const baseSlides = [
     {
       src: "/slider-1.jpg",
@@ -32,68 +32,18 @@ export default function Home() {
     }
   ];
 
-  // DUAL-CLONING AGAR GESER KIRI DAN KANAN BISA LOOPING MELINGKAR SEMPURNA TANPA PATAH
-  // Urutan: [Slide 4 Clone, Slide 1, Slide 2, Slide 3, Slide 4, Slide 1 Clone]
+  // DUAL-CLONING SLIDER FOTO
   const extendedSlides = [
     baseSlides[baseSlides.length - 1],
     ...baseSlides,
     baseSlides[0]
   ];
 
-  // STATE SLIDER: Mulai di index 1 (yaitu Slide 1 asli)
   const [currentIndex, setCurrentIndex] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(true);
 
-  // STATE LAINNYA
-  const [wisdomIndex, setWisdomIndex] = useState(0);
-  const [teacherIndex, setTeacherIndex] = useState(0);
-  const [activityIndex, setActivityIndex] = useState(0);
-  const [isTeacherTransitioning, setIsTeacherTransitioning] = useState(true);
-
-  // 1. AUTO PLAY: BERJALAN TERUS MENERUS
-  useEffect(() => {
-    const timer = setInterval(() => {
-      handleNext();
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [currentIndex]);
-
-  // TOMBOL MANUAL NEXT ( > )
-  const handleNext = () => {
-    setIsTransitioning(true);
-    setCurrentIndex((prev) => prev + 1);
-  };
-
-  // TOMBOL MANUAL PREV ( < )
-  const handlePrev = () => {
-    setIsTransitioning(true);
-    setCurrentIndex((prev) => prev - 1);
-  };
-
-  // SAAT TRANSISI ANIMASI SELESAI: RESET INSTAN BILA MENYENTUH CLONE
-  const handleTransitionEnd = () => {
-    if (currentIndex >= extendedSlides.length - 1) {
-      // Sampai di Slide 1 Clone di ujung kanan -> kembalikan ke Slide 1 Asli tanpa animasi
-      setIsTransitioning(false);
-      setCurrentIndex(1);
-    } else if (currentIndex <= 0) {
-      // Sampai di Slide 4 Clone di ujung kiri -> kembalikan ke Slide 4 Asli tanpa animasi
-      setIsTransitioning(false);
-      setCurrentIndex(baseSlides.length);
-    }
-  };
-
-  // DATA ACTIVITIES (5 Foto Kegiatan)
-  const activityImages = [
-    "/slider-1.jpg",
-    "/slider-2.jpg",
-    "/slider-3.jpg",
-    "/slider-1.jpg",
-    "/slider-2.jpg"
-  ];
-
-  // DATA WORDS OF WISDOM
-  const wisdomQuotes = [
+  // DATA KATA-KATA BIJAKSANA (WORDS OF WISDOM)
+  const baseWisdomQuotes = [
     {
       quote: "Ketika engkau memutuskan untuk mengampuni dengan setulusnya maka engkau meraih kemenangan mendapatkan sifat yang makin mirip sifat Tuhan",
       source: "Menang tanpa membalas"
@@ -116,6 +66,77 @@ export default function Home() {
     }
   ];
 
+  // DUAL-CLONING WORDS OF WISDOM UNTUK INFINITE LOOP SEARAH
+  const extendedWisdom = [
+    baseWisdomQuotes[baseWisdomQuotes.length - 1],
+    ...baseWisdomQuotes,
+    baseWisdomQuotes[0]
+  ];
+
+  const [wisdomIndex, setWisdomIndex] = useState(1);
+  const [isWisdomTransitioning, setIsWisdomTransitioning] = useState(true);
+
+  // STATE LAINNYA
+  const [teacherIndex, setTeacherIndex] = useState(0);
+  const [activityIndex, setActivityIndex] = useState(0);
+  const [isTeacherTransitioning, setIsTeacherTransitioning] = useState(true);
+
+  // 1. AUTO PLAY SLIDER UTAMA
+  useEffect(() => {
+    const timer = setInterval(() => {
+      handleNext();
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [currentIndex]);
+
+  const handleNext = () => {
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev + 1);
+  };
+
+  const handlePrev = () => {
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev - 1);
+  };
+
+  const handleTransitionEnd = () => {
+    if (currentIndex >= extendedSlides.length - 1) {
+      setIsTransitioning(false);
+      setCurrentIndex(1);
+    } else if (currentIndex <= 0) {
+      setIsTransitioning(false);
+      setCurrentIndex(baseSlides.length);
+    }
+  };
+
+  // 2. AUTO PLAY WORDS OF WISDOM (GESER TERUS KE KIRI SETIAP 5 DETIK)
+  useEffect(() => {
+    const wisdomTimer = setInterval(() => {
+      setIsWisdomTransitioning(true);
+      setWisdomIndex((prev) => prev + 1);
+    }, 5000);
+    return () => clearInterval(wisdomTimer);
+  }, [wisdomIndex]);
+
+  const handleWisdomTransitionEnd = () => {
+    if (wisdomIndex >= extendedWisdom.length - 1) {
+      setIsWisdomTransitioning(false);
+      setWisdomIndex(1);
+    } else if (wisdomIndex <= 0) {
+      setIsWisdomTransitioning(false);
+      setWisdomIndex(baseWisdomQuotes.length);
+    }
+  };
+
+  // DATA ACTIVITIES
+  const activityImages = [
+    "/slider-1.jpg",
+    "/slider-2.jpg",
+    "/slider-3.jpg",
+    "/slider-1.jpg",
+    "/slider-2.jpg"
+  ];
+
   // DATA 15 GURU KREATIF
   const teachersList = [
     { name: "Renita Pandiangan, S.Pd", role: "Guru Bhs. Ind.", img: "/slider-1.jpg" },
@@ -136,14 +157,6 @@ export default function Home() {
   ];
 
   const extendedTeachers = [...teachersList, ...teachersList.slice(0, 6)];
-
-  // EFEK SLIDER WORDS OF WISDOM
-  useEffect(() => {
-    const wisdomTimer = setInterval(() => {
-      setWisdomIndex((prevIndex) => (prevIndex + 1) % wisdomQuotes.length);
-    }, 5000);
-    return () => clearInterval(wisdomTimer);
-  }, [wisdomQuotes.length]);
 
   // EFEK SLIDER ACTIVITIES
   useEffect(() => {
@@ -203,19 +216,17 @@ export default function Home() {
     { title: "Masjid At-Taqwa", text: "An potest, inquit ille, quicquam esse suavius quam..", img: "/slider-3.jpg" }
   ];
 
-  // Menentukan dot yang aktif (0 sampai 3)
   const activeDotIndex = (currentIndex - 1 + baseSlides.length) % baseSlides.length;
+  const activeWisdomDotIndex = (wisdomIndex - 1 + baseWisdomQuotes.length) % baseWisdomQuotes.length;
 
   return (
     <main className="min-h-screen bg-[#F3EFE4] text-slate-900 font-sans pb-0 flex flex-col overflow-x-hidden">
       
       {/* ========================================================================= */}
-      {/* 1. SLIDER UTAMA: DUA ARAH MELINGKAR SEMPURNA (INFINITE DUAL-DIRECTION)    */}
+      {/* 1. SLIDER UTAMA                                                           */}
       {/* ========================================================================= */}
       <section className="relative w-full max-w-7xl mx-auto mt-4 px-4 mb-10 shrink-0">
         <div className="relative w-full h-[280px] sm:h-[400px] md:h-[490px] lg:h-[540px] overflow-hidden rounded-2xl shadow-xl bg-slate-900 group">
-          
-          {/* TRACK SLIDES */}
           <div 
             className={`flex w-full h-full ${
               isTransitioning ? "transition-transform duration-700 ease-in-out" : ""
@@ -232,7 +243,6 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent"></div>
                 
-                {/* JUDUL DAN DESKRIPSI DI ATAS FOTO */}
                 <div className="absolute bottom-10 sm:bottom-12 left-4 sm:left-10 right-4 sm:right-16 text-white text-left z-10">
                   <span className="bg-[#D97706] text-white text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md inline-block mb-2">
                     {slide.tag}
@@ -248,7 +258,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* TOMBOL MANUAL PREV ( < ) */}
           <button 
             onClick={handlePrev} 
             className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full transition-all z-20 cursor-pointer shadow-lg"
@@ -257,7 +266,6 @@ export default function Home() {
             &#10094;
           </button>
 
-          {/* TOMBOL MANUAL NEXT ( > ) */}
           <button 
             onClick={handleNext} 
             className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full transition-all z-20 cursor-pointer shadow-lg"
@@ -266,7 +274,6 @@ export default function Home() {
             &#10095;
           </button>
 
-          {/* INDIKATOR DOT BULAT */}
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
             {baseSlides.map((_, index) => (
               <button 
@@ -435,36 +442,45 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================= */}
-      {/* 4. WORDS OF WISDOM (SLIDER 5 QUOTES)      */}
-      {/* ========================================= */}
-      <section className="w-full bg-[#D97706] text-white py-14 px-4 shrink-0">
+      {/* ========================================================================= */}
+      {/* 4. WORDS OF WISDOM: SLIDER SATU ARAH MELINGKAR (INFINITE HORIZONTAL LOOP)  */}
+      {/* ========================================================================= */}
+      <section className="w-full bg-[#D97706] text-white py-14 px-4 shrink-0 overflow-hidden">
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
           <h2 className="font-bold text-xl sm:text-2xl mb-8">Words of Wisdom</h2>
-          <div className="relative w-full h-[160px] sm:h-[120px] flex items-center justify-center overflow-hidden">
-            {wisdomQuotes.map((item, index) => (
-              <div 
-                key={index} 
-                className={`absolute w-full px-4 transition-all duration-700 ease-in-out ${
-                  index === wisdomIndex ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12 pointer-events-none'
-                }`}
-              >
-                <p className="font-bold text-lg sm:text-xl md:text-2xl leading-relaxed italic mb-4">
-                  "{item.quote}"
-                </p>
-                <p className="text-sm font-semibold text-amber-200">
-                  sumber : {item.source}
-                </p>
-              </div>
-            ))}
+          
+          <div className="relative w-full overflow-hidden min-h-[160px] sm:min-h-[120px] flex items-center">
+            <div 
+              className={`flex w-full ${
+                isWisdomTransitioning ? "transition-transform duration-700 ease-in-out" : ""
+              }`}
+              style={{ transform: `translateX(-${wisdomIndex * 100}%)` }}
+              onTransitionEnd={handleWisdomTransitionEnd}
+            >
+              {extendedWisdom.map((item, index) => (
+                <div key={index} className="w-full shrink-0 px-4 flex flex-col items-center justify-center">
+                  <p className="font-bold text-lg sm:text-xl md:text-2xl leading-relaxed italic mb-4 max-w-3xl">
+                    "{item.quote}"
+                  </p>
+                  <p className="text-sm font-semibold text-amber-200">
+                    sumber : {item.source}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
+
+          {/* INDIKATOR DOT BULAT UNTUK KATA BIJAK */}
           <div className="flex space-x-2.5 mt-8">
-            {wisdomQuotes.map((_, index) => (
+            {baseWisdomQuotes.map((_, index) => (
               <button 
                 key={index} 
-                onClick={() => setWisdomIndex(index)} 
-                className={`rounded-full transition-all duration-300 ${
-                  index === wisdomIndex ? "w-8 h-2.5 bg-white" : "w-2.5 h-2.5 bg-white/40 hover:bg-white/70"
+                onClick={() => {
+                  setIsWisdomTransitioning(true);
+                  setWisdomIndex(index + 1);
+                }} 
+                className={`rounded-full transition-all duration-300 cursor-pointer ${
+                  index === activeWisdomDotIndex ? "w-8 h-2.5 bg-white" : "w-2.5 h-2.5 bg-white/40 hover:bg-white/70"
                 }`} 
                 aria-label={`Go to wisdom ${index + 1}`}
               />
@@ -571,7 +587,6 @@ export default function Home() {
       <section className="w-full bg-[#DCC690] py-10 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           
-          {/* ACTIVITIES SLIDER */}
           <div className="flex flex-col h-full">
             <h3 className="flex items-center text-slate-800 font-bold mb-5 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">★</span> 
@@ -596,7 +611,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* FACILITIES */}
           <div className="flex flex-col h-full">
             <h3 className="flex items-center text-slate-800 font-bold mb-5 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-lg font-bold pb-0.5 mr-2">+</span> 
@@ -617,7 +631,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* GALLERY */}
           <div className="flex flex-col h-full">
             <h3 className="flex items-center text-slate-800 font-bold mb-5 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center p-1.5 mr-2">
@@ -659,7 +672,7 @@ export default function Home() {
       </section>
 
       {/* ========================================= */}
-      {/* 9. FOOTER ORANYE & KREDIT BAWAH MERAH     */}
+      {/* 9. FOOTER                                 */}
       {/* ========================================= */}
       <footer className="w-full shrink-0">
         <div className="bg-[#D97706] py-12 px-4 text-white">
