@@ -5,7 +5,7 @@ import Link from "next/link";
 import { announcementsData, agendaData } from "../data/schoolUpdates";
 
 export default function Home() {
-  // 4 DATA FOTO SLIDER ASLI
+  // 1. DATA 4 FOTO HERO SLIDER
   const baseSlides = [
     {
       src: "/slider-1.jpg",
@@ -33,7 +33,6 @@ export default function Home() {
     }
   ];
 
-  // DUAL-CLONING SLIDER FOTO
   const extendedSlides = [
     baseSlides[baseSlides.length - 1],
     ...baseSlides,
@@ -43,7 +42,7 @@ export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(true);
 
-  // DATA WORDS OF WISDOM
+  // 2. DATA WORDS OF WISDOM
   const baseWisdomQuotes = [
     {
       quote: "Ketika engkau memutuskan untuk mengampuni dengan setulusnya maka engkau meraih kemenangan mendapatkan sifat yang makin mirip sifat Tuhan",
@@ -76,7 +75,7 @@ export default function Home() {
   const [wisdomIndex, setWisdomIndex] = useState(1);
   const [isWisdomTransitioning, setIsWisdomTransitioning] = useState(true);
 
-  // DATA 15 GURU KREATIF
+  // 3. DATA 15 GURU KREATIF
   const teachersList = [
     { name: "Renita Pandiangan, S.Pd", role: "Guru Bhs. Ind.", img: "/slider-1.jpg" },
     { name: "Herman, S.Pd", role: "Guru Conversation", img: "/slider-2.jpg" },
@@ -104,9 +103,53 @@ export default function Home() {
 
   const [teacherIndex, setTeacherIndex] = useState(CLONE_COUNT);
   const [isTeacherTransitioning, setIsTeacherTransitioning] = useState(true);
-  const [activityIndex, setActivityIndex] = useState(0);
 
-  // AUTO PLAY SLIDER UTAMA
+  // 4. DATA ACTIVITIES (5 KEGIATAN LENGKAP DENGAN JUDUL & DUAL-CLONING)
+  const baseActivities = [
+    {
+      src: "/slider-1.jpg",
+      tag: "PRAMUKA & OUTDOOR",
+      title: "Perkemahan & Latihan Kepemimpinan Siswa",
+      desc: "Membentuk kemandirian, kekompakan tim, dan ketahanan mental di alam terbuka."
+    },
+    {
+      src: "/slider-2.jpg",
+      tag: "SAINS & TEKNOLOGI",
+      title: "Praktikum Laboratorium Komputasi & CBT",
+      desc: "Mengasah nalar analitis melalui simulasi pemrograman dan riset digital terpadu."
+    },
+    {
+      src: "/slider-3.jpg",
+      tag: "SPIRITUAL & IBADAH",
+      title: "Kebaktian Padang & Bina Rohani Siswa",
+      desc: "Menjalin kebersamaan serta memperdalam karakter takut akan Tuhan sejak dini."
+    },
+    {
+      src: "/slider-1.jpg",
+      tag: "SENI & KREATIVITAS",
+      title: "Pentas Seni & Paduan Suara Sekolah",
+      desc: "Mewadahi talenta artistik, harmoni vokal, dan kepercayaan diri di atas panggung."
+    },
+    {
+      src: "/slider-2.jpg",
+      tag: "OLAHRAGA & PRESTASI",
+      title: "Pekan Olahraga Antarkelas (Class Meeting)",
+      desc: "Menjunjung sportivitas, kebugaran jasmani, dan daya juang tinggi antarsiswa."
+    }
+  ];
+
+  const extendedActivities = [
+    baseActivities[baseActivities.length - 1],
+    ...baseActivities,
+    baseActivities[0]
+  ];
+
+  const [activityIndex, setActivityIndex] = useState(1);
+  const [isActivityTransitioning, setIsActivityTransitioning] = useState(true);
+
+  // -------------------------------------------------------------
+  // EFEK SLIDER UTAMA (AUTO PLAY JEDA 6 DETIK)
+  // -------------------------------------------------------------
   useEffect(() => {
     const timer = setInterval(() => {
       handleNext();
@@ -134,7 +177,9 @@ export default function Home() {
     }
   };
 
-  // AUTO PLAY WORDS OF WISDOM
+  // -------------------------------------------------------------
+  // EFEK WORDS OF WISDOM (AUTO PLAY JEDA 6 DETIK)
+  // -------------------------------------------------------------
   useEffect(() => {
     const wisdomTimer = setInterval(() => {
       handleWisdomNext();
@@ -162,7 +207,9 @@ export default function Home() {
     }
   };
 
-  // AUTO PLAY TEACHERS SLIDER
+  // -------------------------------------------------------------
+  // EFEK TEACHERS SLIDER (AUTO PLAY JEDA 5 DETIK)
+  // -------------------------------------------------------------
   useEffect(() => {
     const teacherTimer = setInterval(() => {
       handleTeacherNext();
@@ -190,21 +237,35 @@ export default function Home() {
     }
   };
 
-  // DATA ACTIVITIES
-  const activityImages = [
-    "/slider-1.jpg",
-    "/slider-2.jpg",
-    "/slider-3.jpg",
-    "/slider-1.jpg",
-    "/slider-2.jpg"
-  ];
-
+  // -------------------------------------------------------------
+  // EFEK ACTIVITIES SLIDER (AUTO PLAY JEDA 5 DETIK, TRANSISI HALUS 2400ms)
+  // -------------------------------------------------------------
   useEffect(() => {
     const activityTimer = setInterval(() => {
-      setActivityIndex((prevIndex) => (prevIndex + 1) % activityImages.length);
-    }, 4000);
+      handleActivityNext();
+    }, 5000);
     return () => clearInterval(activityTimer);
-  }, [activityImages.length]);
+  }, [activityIndex]);
+
+  const handleActivityNext = () => {
+    setIsActivityTransitioning(true);
+    setActivityIndex((prev) => prev + 1);
+  };
+
+  const handleActivityPrev = () => {
+    setIsActivityTransitioning(true);
+    setActivityIndex((prev) => prev - 1);
+  };
+
+  const handleActivityTransitionEnd = () => {
+    if (activityIndex >= extendedActivities.length - 1) {
+      setIsActivityTransitioning(false);
+      setActivityIndex(1);
+    } else if (activityIndex <= 0) {
+      setIsActivityTransitioning(false);
+      setActivityIndex(baseActivities.length);
+    }
+  };
 
   // DATA LATEST NEWS
   const latestNews = [
@@ -228,7 +289,7 @@ export default function Home() {
     }
   ];
 
-  // DATA TEACHERS' BLOG (LENGKAP DENGAN ID & JUDUL EDUKATIF)
+  // DATA TEACHERS' BLOG
   const blogGuru = [
     { 
       id: "pemanfaatan-ai-secara-kritis-dalam-pembelajaran",
@@ -258,6 +319,7 @@ export default function Home() {
 
   const activeDotIndex = (currentIndex - 1 + baseSlides.length) % baseSlides.length;
   const activeWisdomDotIndex = (wisdomIndex - 1 + baseWisdomQuotes.length) % baseWisdomQuotes.length;
+  const activeActivityDotIndex = (activityIndex - 1 + baseActivities.length) % baseActivities.length;
 
   const currentAnnouncement = announcementsData?.[0] || {
     date: "Tuesday, 08 September 2026",
@@ -275,7 +337,9 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#F3EFE4] text-slate-900 font-sans pb-0 flex flex-col overflow-x-hidden">
       
-      {/* 1. SLIDER UTAMA */}
+      {/* ========================================================================= */}
+      {/* 1. SLIDER UTAMA (HERO SLIDER)                                             */}
+      {/* ========================================================================= */}
       <section className="relative w-full max-w-7xl mx-auto mt-4 px-4 mb-10 shrink-0">
         <div className="relative w-full h-[280px] sm:h-[400px] md:h-[490px] lg:h-[540px] overflow-hidden rounded-2xl shadow-xl bg-slate-900 group">
           <div 
@@ -344,7 +408,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. DUA BLOK EDITORIAL BERSEBELAHAN */}
+      {/* ========================================= */}
+      {/* 2. DUA BLOK EDITORIAL BERSEBELAHAN        */}
+      {/* ========================================= */}
       <section className="max-w-7xl mx-auto px-4 mb-8 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
@@ -415,7 +481,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ========================================= */}
       {/* 3. EDITORIAL KEPALA SEKOLAH & LATEST NEWS */}
+      {/* ========================================= */}
       <section className="max-w-7xl mx-auto px-4 mb-12 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           
@@ -486,7 +554,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. WORDS OF WISDOM */}
+      {/* ========================================= */}
+      {/* 4. WORDS OF WISDOM                        */}
+      {/* ========================================= */}
       <section className="w-full bg-[#D97706] text-white py-14 px-4 shrink-0 overflow-hidden relative">
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center relative px-8 sm:px-12">
           <h2 className="font-bold text-xl sm:text-2xl mb-8">Words of Wisdom</h2>
@@ -547,7 +617,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. GURU KREATIF SLIDER */}
+      {/* ========================================= */}
+      {/* 5. GURU KREATIF SLIDER                    */}
+      {/* ========================================= */}
       <section className="w-full bg-[#DCC690] py-10 px-4 overflow-hidden relative">
         <div className="max-w-7xl mx-auto relative px-2 sm:px-6">
           <h2 className="font-bold text-sm sm:text-base mb-6 flex items-center gap-2 text-slate-800 uppercase">
@@ -603,11 +675,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. PENGUMUMAN, AGENDA, TEACHERS' BLOG (INTERAKTIF & ADA TOMBOL VIEW MORE) */}
+      {/* ========================================= */}
+      {/* 6. PENGUMUMAN, AGENDA, TEACHERS' BLOG     */}
+      {/* ========================================= */}
       <section className="w-full bg-[#E5DCC3] py-10 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           
-          {/* ANNOUNCEMENTS */}
           <div className="flex flex-col h-full">
             <h3 className="flex items-center text-slate-800 font-bold mb-4 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">📢</span> 
@@ -629,7 +702,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* LATEST AGENDA */}
           <div className="flex flex-col h-full">
             <h3 className="flex items-center text-slate-800 font-bold mb-4 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">📅</span> 
@@ -658,7 +730,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* TEACHERS' BLOG (FOTO, JUDUL BISA DIKLIK + TOMBOL VIEW MORE) */}
           <div className="flex flex-col h-full">
             <h3 className="flex items-center text-slate-800 font-bold mb-4 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">💬</span> 
@@ -694,27 +765,80 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. KEGIATAN, FASILITAS, GALERI */}
+      {/* ========================================================================= */}
+      {/* 7. KEGIATAN (ACTIVITIES BARU), FASILITAS, GALERI                          */}
+      {/* ========================================================================= */}
       <section className="w-full bg-[#DCC690] py-10 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           
+          {/* ACTIVITIES: INFINITE LOOP SEARAH + JUDUL & TOMBOL MANUAL */}
           <div className="flex flex-col h-full">
             <h3 className="flex items-center text-slate-800 font-bold mb-5 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">★</span> 
               Activities
             </h3>
-            <div className="w-full flex-1 rounded-none overflow-hidden shadow-sm relative bg-slate-800 min-h-[260px]">
-              {activityImages.map((src, idx) => (
-                <div key={idx} className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === activityIndex ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-                  <img src={src} className="w-full h-full object-cover" alt={`Kegiatan ${idx + 1}`} />
-                </div>
-              ))}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
-                {activityImages.map((_, idx) => (
+            <div className="w-full flex-1 rounded-xl overflow-hidden shadow-md relative bg-slate-900 min-h-[280px] group">
+              
+              {/* TRACK LUNCURAN ACTIVITIES */}
+              <div 
+                className="flex w-full h-full"
+                style={{ 
+                  transform: `translateX(-${activityIndex * 100}%)`,
+                  transition: isActivityTransitioning ? "transform 2400ms cubic-bezier(0.16, 1, 0.3, 1)" : "none"
+                }}
+                onTransitionEnd={handleActivityTransitionEnd}
+              >
+                {extendedActivities.map((act, idx) => (
+                  <div key={idx} className="w-full h-full shrink-0 relative min-h-[280px]">
+                    <img src={act.src} className="w-full h-full object-cover" alt={act.title} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent"></div>
+                    
+                    {/* LABEL & JUDUL KEGIATAN */}
+                    <div className="absolute bottom-10 left-4 right-4 text-white text-left z-10">
+                      <span className="bg-[#047857] text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wider shadow inline-block mb-1.5">
+                        {act.tag}
+                      </span>
+                      <h4 className="text-sm font-bold text-white leading-tight mb-1 drop-shadow line-clamp-2">
+                        {act.title}
+                      </h4>
+                      <p className="text-[11px] text-slate-200 line-clamp-2 leading-tight">
+                        {act.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* TOMBOL MANUAL PREV ACTIVITIES ( < ) */}
+              <button 
+                onClick={handleActivityPrev}
+                className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/75 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition-all z-20 cursor-pointer shadow"
+                aria-label="Previous Activity"
+              >
+                &#10094;
+              </button>
+
+              {/* TOMBOL MANUAL NEXT ACTIVITIES ( > ) */}
+              <button 
+                onClick={handleActivityNext}
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/75 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition-all z-20 cursor-pointer shadow"
+                aria-label="Next Activity"
+              >
+                &#10095;
+              </button>
+
+              {/* INDIKATOR DOT BULAT */}
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-1.5 z-20">
+                {baseActivities.map((_, idx) => (
                   <button
                     key={idx}
-                    onClick={() => setActivityIndex(idx)}
-                    className={`w-2.5 h-2.5 rounded-full shadow transition-all ${idx === activityIndex ? "bg-white" : "bg-white/50 hover:bg-white/80"}`}
+                    onClick={() => {
+                      setIsActivityTransitioning(true);
+                      setActivityIndex(idx + 1);
+                    }}
+                    className={`h-2 rounded-full transition-all duration-500 cursor-pointer ${
+                      idx === activeActivityDotIndex ? "bg-amber-400 w-6" : "bg-white/50 w-2 hover:bg-white"
+                    }`}
                     aria-label={`Go to activity ${idx + 1}`}
                   />
                 ))}
@@ -722,6 +846,7 @@ export default function Home() {
             </div>
           </div>
 
+          {/* FACILITIES */}
           <div className="flex flex-col h-full">
             <h3 className="flex items-center text-slate-800 font-bold mb-5 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-lg font-bold pb-0.5 mr-2">+</span> 
@@ -742,6 +867,7 @@ export default function Home() {
             </div>
           </div>
 
+          {/* GALLERY */}
           <div className="flex flex-col h-full">
             <h3 className="flex items-center text-slate-800 font-bold mb-5 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center p-1.5 mr-2">
@@ -761,7 +887,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. VIDEO */}
+      {/* ========================================= */}
+      {/* 8. VIDEO                                  */}
+      {/* ========================================= */}
       <section className="w-full bg-[#E5DCC3] py-10 px-4 flex-1">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-red-950 font-bold mb-4 text-lg">Video</h3>
@@ -780,7 +908,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. FOOTER */}
+      {/* ========================================= */}
+      {/* 9. FOOTER                                 */}
+      {/* ========================================= */}
       <footer className="w-full shrink-0">
         <div className="bg-[#D97706] py-12 px-4 text-white">
           <div className="max-w-7xl mx-auto flex flex-col items-start space-y-6">
