@@ -143,12 +143,13 @@ function ActivityDetailContent() {
               ))}
             </div>
 
+            {/* TOMBOL KEMBALI (BACK TO HOME) */}
             <div className="mt-8 pt-6 border-t border-slate-200 flex justify-between items-center flex-wrap gap-4">
               <Link
                 href="/"
                 className="bg-[#8B0000] hover:bg-red-800 text-white font-bold text-xs py-2.5 px-6 rounded shadow-sm transition-colors"
               >
-                ← Kembali ke Beranda
+                Back to Home
               </Link>
             </div>
           </article>
@@ -197,11 +198,12 @@ function ActivityDetailContent() {
                       </h4>
                     </Link>
 
+                    {/* TOMBOL READ MORE */}
                     <Link
                       href={`/activities/detail?id=${item.id}`}
                       className="text-[11px] font-bold text-[#047857] hover:underline inline-flex items-center gap-1"
                     >
-                      Baca Selengkapnya →
+                      Read More
                     </Link>
                   </div>
                 ))}
