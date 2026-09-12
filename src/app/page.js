@@ -66,7 +66,7 @@ export default function Home() {
     }
   ];
 
-  // DUAL-CLONING WORDS OF WISDOM UNTUK INFINITE LOOP SEARAH
+  // DUAL-CLONING WORDS OF WISDOM
   const extendedWisdom = [
     baseWisdomQuotes[baseWisdomQuotes.length - 1],
     ...baseWisdomQuotes,
@@ -81,11 +81,11 @@ export default function Home() {
   const [activityIndex, setActivityIndex] = useState(0);
   const [isTeacherTransitioning, setIsTeacherTransitioning] = useState(true);
 
-  // 1. AUTO PLAY SLIDER UTAMA
+  // 1. AUTO PLAY SLIDER UTAMA (TENANG & HALUS)
   useEffect(() => {
     const timer = setInterval(() => {
       handleNext();
-    }, 5000);
+    }, 6000);
     return () => clearInterval(timer);
   }, [currentIndex]);
 
@@ -109,14 +109,23 @@ export default function Home() {
     }
   };
 
-  // 2. AUTO PLAY WORDS OF WISDOM (GESER TERUS KE KIRI SETIAP 5 DETIK)
+  // 2. AUTO PLAY WORDS OF WISDOM (TENANG & HALUS)
   useEffect(() => {
     const wisdomTimer = setInterval(() => {
-      setIsWisdomTransitioning(true);
-      setWisdomIndex((prev) => prev + 1);
-    }, 5000);
+      handleWisdomNext();
+    }, 6000);
     return () => clearInterval(wisdomTimer);
   }, [wisdomIndex]);
+
+  const handleWisdomNext = () => {
+    setIsWisdomTransitioning(true);
+    setWisdomIndex((prev) => prev + 1);
+  };
+
+  const handleWisdomPrev = () => {
+    setIsWisdomTransitioning(true);
+    setWisdomIndex((prev) => prev - 1);
+  };
 
   const handleWisdomTransitionEnd = () => {
     if (wisdomIndex >= extendedWisdom.length - 1) {
@@ -162,7 +171,7 @@ export default function Home() {
   useEffect(() => {
     const activityTimer = setInterval(() => {
       setActivityIndex((prevIndex) => (prevIndex + 1) % activityImages.length);
-    }, 3500);
+    }, 4000);
     return () => clearInterval(activityTimer);
   }, [activityImages.length]);
 
@@ -171,7 +180,7 @@ export default function Home() {
     const teacherTimer = setInterval(() => {
       setIsTeacherTransitioning(true);
       setTeacherIndex((prev) => prev + 1);
-    }, 3000);
+    }, 3500);
     return () => clearInterval(teacherTimer);
   }, []);
 
@@ -223,13 +232,13 @@ export default function Home() {
     <main className="min-h-screen bg-[#F3EFE4] text-slate-900 font-sans pb-0 flex flex-col overflow-x-hidden">
       
       {/* ========================================================================= */}
-      {/* 1. SLIDER UTAMA                                                           */}
+      {/* 1. SLIDER UTAMA (TRANSISI LEBIH PERLAHAN & HALUS)                          */}
       {/* ========================================================================= */}
       <section className="relative w-full max-w-7xl mx-auto mt-4 px-4 mb-10 shrink-0">
         <div className="relative w-full h-[280px] sm:h-[400px] md:h-[490px] lg:h-[540px] overflow-hidden rounded-2xl shadow-xl bg-slate-900 group">
           <div 
             className={`flex w-full h-full ${
-              isTransitioning ? "transition-transform duration-700 ease-in-out" : ""
+              isTransitioning ? "transition-transform duration-1000 ease-out" : ""
             }`}
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             onTransitionEnd={handleTransitionEnd}
@@ -282,7 +291,7 @@ export default function Home() {
                   setIsTransitioning(true);
                   setCurrentIndex(index + 1);
                 }} 
-                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                className={`h-2.5 rounded-full transition-all duration-500 cursor-pointer ${
                   index === activeDotIndex ? "bg-amber-400 w-8" : "bg-white/60 w-2.5 hover:bg-white"
                 }`} 
                 aria-label={`Go to slide ${index + 1}`}
@@ -443,16 +452,17 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. WORDS OF WISDOM: SLIDER SATU ARAH MELINGKAR (INFINITE HORIZONTAL LOOP)  */}
+      {/* 4. WORDS OF WISDOM: SLIDER DENGAN TOMBOL MANUAL PREV & NEXT               */}
       {/* ========================================================================= */}
-      <section className="w-full bg-[#D97706] text-white py-14 px-4 shrink-0 overflow-hidden">
-        <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
+      <section className="w-full bg-[#D97706] text-white py-14 px-4 shrink-0 overflow-hidden relative">
+        <div className="max-w-4xl mx-auto flex flex-col items-center text-center relative px-8 sm:px-12">
           <h2 className="font-bold text-xl sm:text-2xl mb-8">Words of Wisdom</h2>
           
+          {/* TRACK QUOTES (TRANSISI HALUS & PERLAHAN) */}
           <div className="relative w-full overflow-hidden min-h-[160px] sm:min-h-[120px] flex items-center">
             <div 
               className={`flex w-full ${
-                isWisdomTransitioning ? "transition-transform duration-700 ease-in-out" : ""
+                isWisdomTransitioning ? "transition-transform duration-1000 ease-out" : ""
               }`}
               style={{ transform: `translateX(-${wisdomIndex * 100}%)` }}
               onTransitionEnd={handleWisdomTransitionEnd}
@@ -470,7 +480,25 @@ export default function Home() {
             </div>
           </div>
 
-          {/* INDIKATOR DOT BULAT UNTUK KATA BIJAK */}
+          {/* TOMBOL MANUAL PREV ( < ) */}
+          <button 
+            onClick={handleWisdomPrev} 
+            className="absolute left-0 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/50 text-white w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center rounded-full transition-all cursor-pointer shadow-md"
+            aria-label="Previous Wisdom"
+          >
+            &#10094;
+          </button>
+
+          {/* TOMBOL MANUAL NEXT ( > ) */}
+          <button 
+            onClick={handleWisdomNext} 
+            className="absolute right-0 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/50 text-white w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center rounded-full transition-all cursor-pointer shadow-md"
+            aria-label="Next Wisdom"
+          >
+            &#10095;
+          </button>
+
+          {/* INDIKATOR DOT BULAT */}
           <div className="flex space-x-2.5 mt-8">
             {baseWisdomQuotes.map((_, index) => (
               <button 
@@ -479,7 +507,7 @@ export default function Home() {
                   setIsWisdomTransitioning(true);
                   setWisdomIndex(index + 1);
                 }} 
-                className={`rounded-full transition-all duration-300 cursor-pointer ${
+                className={`rounded-full transition-all duration-500 cursor-pointer ${
                   index === activeWisdomDotIndex ? "w-8 h-2.5 bg-white" : "w-2.5 h-2.5 bg-white/40 hover:bg-white/70"
                 }`} 
                 aria-label={`Go to wisdom ${index + 1}`}
