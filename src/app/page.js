@@ -247,7 +247,6 @@ export default function Home() {
   const activeDotIndex = (currentIndex - 1 + baseSlides.length) % baseSlides.length;
   const activeWisdomDotIndex = (wisdomIndex - 1 + baseWisdomQuotes.length) % baseWisdomQuotes.length;
 
-  // Mengambil item pertama dari pengumuman & agenda jika data tersedia
   const currentAnnouncement = announcementsData?.[0] || {
     date: "Tuesday, 08 September 2026",
     title: "Pengumuman Daftar Siswa Baru (PPDB) Tahun Pelajaran 2026/2027",
@@ -256,7 +255,7 @@ export default function Home() {
 
   const currentAgenda = agendaData?.[0] || {
     date: "Jumat - Sabtu, 18-19 September 2026",
-    time: "08:00 WIB",
+    time: "08:00 - 15:00 WIB",
     title: "Kebaktian Padang & Bina Karakter Siswa",
     desc: "Persekutuan rohani dan pelatihan kepemimpinan luar ruang untuk mempererat persaudaraan..."
   };
@@ -609,7 +608,7 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 6. PENGUMUMAN, AGENDA, BLOG (TERHUBUNG KE DATA RESMI AKTIF)                */}
+      {/* 6. PENGUMUMAN, AGENDA, BLOG (TOMBOL TELAH DIUBAH MENJADI VIEW MORE)        */}
       {/* ========================================================================= */}
       <section className="w-full bg-[#E5DCC3] py-10 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -629,8 +628,8 @@ export default function Home() {
             <div className="bg-[#DCE1C6] p-4 rounded-lg text-xs text-slate-700 text-justify mb-4 shadow-sm border border-[#C5CCAA] line-clamp-4">
               {currentAnnouncement.content}
             </div>
-            <Link href="/announcements" className="bg-red-900 hover:bg-red-800 text-white text-xs font-bold px-4 py-2 rounded shadow-sm inline-block transition-colors">
-              View All ({announcementsData ? announcementsData.length : 7})
+            <Link href="/announcements" className="bg-red-900 hover:bg-red-800 text-white text-xs font-bold py-2.5 px-6 rounded shadow-sm inline-block transition-colors">
+              View More
             </Link>
           </div>
 
@@ -656,8 +655,8 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <Link href="/agenda" className="bg-[#D97706] hover:bg-amber-700 text-white text-xs font-bold px-4 py-2 rounded shadow-sm inline-block transition-colors">
-              View All ({agendaData ? agendaData.length : 7})
+            <Link href="/agenda" className="bg-[#D97706] hover:bg-amber-700 text-white text-xs font-bold py-2.5 px-6 rounded shadow-sm inline-block transition-colors">
+              View More
             </Link>
           </div>
 
