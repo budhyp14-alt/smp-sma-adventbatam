@@ -1,164 +1,230 @@
-import Link from "next/link";
+"use client";
 
-export const metadata = {
-  title: "Agenda - SMP SMA Advent Batam",
-};
+import { useState } from "react";
+import Link from "next/link";
+import { agendaData } from "../../data/schoolUpdates";
 
 export default function AgendaPage() {
-  const agendas = [
+  const allAgenda = agendaData || [
     {
-      id: "pts-ganjil-2026",
+      id: "pts-ganjil-2026-2027",
       title: "Pelaksanaan Ujian Tengah Semester (PTS) Ganjil 2026/2027",
       date: "14 - 18 September 2026",
       time: "07:30 - 12:00 WIB",
-      excerpt: "Diinformasikan kepada seluruh siswa-siswi SMP dan SMA Advent Batam bahwa Ujian Tengah Semester (PTS) Ganjil akan diselenggarakan pada pertengahan bulan September. Diharapkan seluruh siswa mempersiapkan diri dengan baik materi yang telah diajarkan...",
-      img: "/slider-2.jpg"
+      img: "/slider-1.jpg",
+      desc: "Diinformasikan kepada seluruh siswa siswi SMP dan SMA Advent Batam bahwa Ujian Tengah Semester (PTS) Ganjil akan diselenggarakan pada pertengahan bulan September. Diharapkan seluruh siswa mempersiapkan diri dengan baik materi yang telah diajarkan..."
     },
     {
-      id: "hari-guru-2026",
+      id: "upacara-hari-guru-nasional-2026",
       title: "Upacara dan Perayaan Hari Guru Nasional 2026",
       date: "Wednesday, 25 November 2026",
       time: "07:00 - Selesai",
-      excerpt: "Sebagai bentuk penghormatan dan apresiasi kepada para pahlawan tanpa tanda jasa, OSIS SMP dan SMA Advent Batam akan menyelenggarakan upacara bendera khusus dilanjutkan dengan acara ramah tamah, persembahan lagu, dan pentas seni kecil dari perwakilan kelas...",
-      img: "/slider-3.jpg"
+      img: "/slider-2.jpg",
+      desc: "Sebagai bentuk penghormatan dan apresiasi kepada para pahlawan tanpa tanda jasa, OSIS SMP dan SMA Advent Batam akan menyelenggarakan upacara bendera khusus dilanjutkan dengan acara ramah tamah, persembahan lagu, dan pentas seni kecil dari perwakilan kelas..."
     },
     {
-      id: "pembagian-rapor-ganjil",
+      id: "pembagian-rapor-semester-ganjil",
       title: "Pembagian Rapor Semester Ganjil dan Rapat Wali Murid",
       date: "Friday, 18 December 2026",
       time: "08:00 - 11:30 WIB",
-      excerpt: "Puncak evaluasi belajar siswa selama satu semester akan ditandai dengan penyerahan Buku Laporan Hasil Belajar (Rapor). Kami memohon kehadiran Bapak/Ibu wali murid sesuai dengan jadwal sesi yang akan dibagikan oleh masing-masing wali kelas...",
-      img: "/slider-1.jpg"
+      img: "/slider-3.jpg",
+      desc: "Puncak evaluasi belajar siswa selama satu semester akan ditandai dengan penyerahan Buku Laporan Hasil Belajar (Rapor). Kami memohon kehadiran Bapak/Ibu wali murid sesuai dengan jadwal sesi yang akan dibagikan oleh masing-masing wali kelas..."
     },
     {
-      id: "class-meeting-2026",
+      id: "class-meeting-dan-porseni",
       title: "Class Meeting & Pekan Olahraga dan Seni (Porseni)",
       date: "21 - 23 December 2026",
       time: "08:00 - 14:00 WIB",
-      excerpt: "Untuk menyegarkan pikiran siswa pasca ujian semester, sekolah mengadakan kegiatan Class Meeting yang berisi berbagai perlombaan olahraga (futsal, basket, tarik tambang) dan seni antarkelas. Mari junjung tinggi sportivitas dan jalin keakraban antar siswa...",
-      img: "/slider-2.jpg"
+      img: "/slider-1.jpg",
+      desc: "Untuk menyegarkan pikiran siswa pasca ujian semester, sekolah mengadakan kegiatan Class Meeting yang berisi berbagai perlombaan olahraga (futsal, basket, tarik tambang) dan seni antarkelas. Mari junjung tinggi sportivitas dan jalin keakraban antar siswa..."
     },
     {
-      id: "libur-semester",
-      title: "Libur Semester Ganjil Tahun Ajaran 2026/2027",
-      date: "24 Dec 2026 - 03 Jan 2027",
-      time: "All Day",
-      excerpt: "Pemberitahuan masa libur semester ganjil bagi seluruh siswa. Kegiatan belajar mengajar semester genap akan kembali aktif pada awal Januari 2027. Selamat menikmati waktu liburan akhir tahun dan berkumpul bersama keluarga tercinta...",
-      img: "/slider-3.jpg"
+      id: "kebaktian-padang-retreat-spiritual",
+      title: "Kebaktian Padang & Bina Karakter Siswa",
+      date: "18 - 19 September 2026",
+      time: "08:00 - 15:00 WIB",
+      img: "/slider-2.jpg",
+      desc: "Persekutuan rohani dan pelatihan kepemimpinan luar ruang untuk mempererat persaudaraan dan ketahanan mental siswa di Kawasan Agrowisata Marina Batam."
+    },
+    {
+      id: "donor-darah-dan-bakti-sosial",
+      title: "Aksi Donor Darah Kemanusiaan YPAB",
+      date: "Thursday, 01 October 2026",
+      time: "08:30 - 14:00 WIB",
+      img: "/slider-3.jpg",
+      desc: "Kegiatan bakti sosial donor darah bekerja sama dengan PMI Kota Batam yang terbuka untuk umum, guru, dan para orang tua murid."
+    },
+    {
+      id: "advent-education-art-expo",
+      title: "Advent Batam Education & Art Expo 2026",
+      date: "Thursday, 15 October 2026",
+      time: "08:00 - 16:00 WIB",
+      img: "/slider-1.jpg",
+      desc: "Pameran proyek karya seni rupa, kerajinan tangan daur ulang, dan stan mini kewirausahaan mandiri hasil kreativitas siswa."
     }
   ];
 
+  // Batasi tampilan awal maksimal 4 agenda
+  const [visibleCount, setVisibleCount] = useState(4);
+
+  const handleViewMore = () => {
+    setVisibleCount((prev) => prev + 4);
+  };
+
+  const displayedList = allAgenda.slice(0, visibleCount);
+
   return (
-    <main className="min-h-screen flex flex-col font-sans bg-[#E5DCC3]">
-      
+    <main className="min-h-screen bg-[#F3EFE4] font-sans flex flex-col text-slate-800">
       {/* BREADCRUMB & HEADER */}
       <section className="w-full pt-8 pb-4 px-4 sm:px-8 max-w-7xl mx-auto shrink-0">
-        <div className="text-xs text-slate-700 font-semibold mb-6 flex items-center gap-1 flex-wrap">
+        <div className="text-xs text-slate-600 font-semibold mb-4 flex items-center gap-1 flex-wrap">
           <span>You are here :</span>
           <Link href="/" className="text-[#047857] hover:underline ml-1">🏠 Home</Link>
           <span>-</span>
-          <span className="text-slate-600">Agenda</span>
+          <span className="text-slate-500">Agenda</span>
         </div>
-        
-        <h1 className="text-3xl sm:text-4xl font-black text-[#1e293b] mb-8 tracking-wide uppercase">
+        <h1 className="text-2xl sm:text-3xl font-black text-[#1e293b] tracking-wider uppercase mb-8">
           SCHOOL AGENDA
         </h1>
       </section>
 
-      {/* KONTEN UTAMA */}
-      <section className="w-full flex-1 pb-16 px-4 sm:px-8">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
+      {/* KONTEN UTAMA: 2 KOLOM */}
+      <section className="w-full flex-1 pb-16 px-4 sm:px-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* KIRI - DAFTAR AGENDA (MAX 4 DITAMPILKAN, TANPA KOTAK BACKGROUND) */}
-          <div className="lg:col-span-8 flex flex-col space-y-12">
-            {agendas.slice(0, 4).map((item, index) => (
-              <div key={index} className="flex flex-col sm:flex-row gap-6 items-start group">
+          {/* KOLOM KIRI: DAFTAR AGENDA (MAKSIMAL 4 DI AWAL) */}
+          <div className="lg:col-span-8 space-y-8">
+            {displayedList.map((item, idx) => (
+              <div key={idx} className="flex flex-col sm:flex-row gap-5 items-start group">
                 
-                {/* THUMBNAIL FOTO DENGAN BADGE EVENT PUTIH */}
-                <Link href={`/agenda/detail?id=${item.id}`} className="w-full sm:w-[300px] aspect-[4/3] shrink-0 bg-slate-300 overflow-hidden rounded-md shadow-sm block cursor-pointer relative">
-                  <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute top-3 left-3 bg-white/95 text-[#1e3a8a] text-[11px] font-bold px-2.5 py-1 rounded shadow-sm flex items-center gap-1">
-                    <span className="text-blue-500">📅</span> Event
+                {/* 1. THUMBNAIL FOTO AGENDA */}
+                <div className="w-full sm:w-[220px] aspect-[4/3] bg-slate-200 rounded-lg overflow-hidden shrink-0 shadow-sm relative">
+                  <img 
+                    src={item.img || "/slider-1.jpg"} 
+                    alt={item.title} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-2 left-2 bg-[#1e293b]/80 text-white text-[10px] font-bold px-2 py-0.5 rounded flex items-center gap-1">
+                    <span>📅</span> Event
                   </div>
-                </Link>
-
-                {/* TEKS AGENDA */}
-                <div className="flex flex-col flex-1 pt-1">
-                  <div className="flex items-center gap-4 mb-2 flex-wrap">
-                    <span className="text-[11px] text-slate-700 font-bold flex items-center gap-1.5">
-                      <span className="text-blue-500 text-sm">📅</span> {item.date}
-                    </span>
-                    <span className="text-[11px] text-slate-700 font-bold flex items-center gap-1.5">
-                      <span className="text-red-500 text-sm">⏰</span> {item.time}
-                    </span>
-                  </div>
-                  <Link href={`/agenda/detail?id=${item.id}`}>
-                    <h2 className="text-[18px] sm:text-[20px] font-bold text-[#047857] mb-3 leading-snug hover:text-emerald-800 transition-colors cursor-pointer">
-                      {item.title}
-                    </h2>
-                  </Link>
-                  <Link href={`/agenda/detail?id=${item.id}`}>
-                    <p className="text-[13px] sm:text-[14px] text-slate-700 leading-relaxed text-justify hover:text-black cursor-pointer">
-                      {item.excerpt}
-                    </p>
-                  </Link>
                 </div>
 
+                {/* 2. TEKS DETAIL AGENDA */}
+                <div className="flex-1 flex flex-col">
+                  <div className="flex items-center gap-3 text-[11px] text-slate-500 font-semibold mb-1 flex-wrap">
+                    <span>📅 {item.date}</span>
+                    <span>⏰ {item.time}</span>
+                  </div>
+                  
+                  {/* JUDUL */}
+                  <h2 className="text-base sm:text-lg font-bold text-[#047857] group-hover:text-emerald-800 transition-colors leading-snug mb-2 cursor-pointer">
+                    {item.title}
+                  </h2>
+
+                  {/* DESKRIPSI LEAD */}
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-justify line-clamp-4">
+                    {item.desc}
+                  </p>
+                </div>
               </div>
             ))}
 
-            {/* TOMBOL VIEW MORE */}
-            <div className="pt-4 border-t border-slate-400/30">
-              <Link href="/agenda/all" className="bg-[#D97706] hover:bg-amber-700 text-white font-bold text-xs py-2.5 px-6 rounded shadow-sm transition-colors inline-block">
-                View More Agenda →
-              </Link>
-            </div>
+            {/* TOMBOL VIEW MORE AGENDA (DINAMIS & AMAN DARI ERROR 404) */}
+            {visibleCount < allAgenda.length && (
+              <div className="pt-2">
+                <button
+                  type="button"
+                  onClick={handleViewMore}
+                  className="bg-[#D97706] hover:bg-amber-700 text-white font-bold text-xs sm:text-sm py-2.5 px-6 rounded-md shadow transition-all transform hover:scale-105 flex items-center gap-2 cursor-pointer"
+                >
+                  <span>View More Agenda</span>
+                  <span>→</span>
+                </button>
+              </div>
+            )}
           </div>
 
-          {/* KANAN - SIDEBAR (DIPISAHKAN GARIS PUTUS-PUTUS) */}
-          <div className="lg:col-span-4 lg:border-l border-dashed border-slate-500 lg:pl-8 space-y-8">
+          {/* KOLOM KANAN: SIDEBAR */}
+          <div className="lg:col-span-4 lg:border-l lg:border-slate-300 lg:pl-8 space-y-6">
             
-            {/* KOTAK CARI AGENDA (BACKGROUND PUTIH) */}
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <h3 className="text-[15px] font-bold text-slate-800 mb-4">Cari Agenda</h3>
-              <div className="flex">
-                <input type="text" placeholder="Kata kunci..." className="flex-1 p-2.5 border border-slate-300 rounded-l text-xs focus:outline-none focus:border-[#047857]" />
-                <button className="bg-[#047857] hover:bg-emerald-800 text-white font-bold px-5 text-xs rounded-r transition-colors">Cari</button>
+            {/* CARI AGENDA */}
+            <div className="bg-[#EFEAD8] p-5 rounded-xl shadow-sm border border-slate-200">
+              <h3 className="font-bold text-sm text-slate-800 mb-3">Cari Agenda</h3>
+              <div className="flex gap-2">
+                <input 
+                  type="text" 
+                  placeholder="Kata kunci..." 
+                  className="flex-1 bg-white px-3 py-1.5 text-xs rounded border border-slate-300 focus:outline-none focus:ring-1 focus:ring-emerald-600"
+                />
+                <button className="bg-[#047857] hover:bg-emerald-800 text-white text-xs font-bold px-4 py-1.5 rounded transition-colors cursor-pointer">
+                  Cari
+                </button>
               </div>
             </div>
 
-            {/* ARSIP AGENDA (BACKGROUND PUTIH) */}
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <h3 className="text-[15px] font-bold text-slate-800 mb-4 border-b border-slate-100 pb-2">Arsip Agenda</h3>
-              <ul className="text-[13px] font-semibold text-slate-600 space-y-3">
-                <li className="hover:text-[#047857] cursor-pointer flex justify-between"><span>December 2026</span><span>(2)</span></li>
-                <li className="hover:text-[#047857] cursor-pointer flex justify-between"><span>November 2026</span><span>(1)</span></li>
-                <li className="hover:text-[#047857] cursor-pointer flex justify-between"><span>September 2026</span><span>(1)</span></li>
-                <li className="hover:text-[#047857] cursor-pointer flex justify-between"><span>July 2026</span><span>(2)</span></li>
+            {/* ARSIP AGENDA */}
+            <div className="bg-[#EFEAD8] p-5 rounded-xl shadow-sm border border-slate-200">
+              <h3 className="font-bold text-sm text-slate-800 mb-3">Arsip Agenda</h3>
+              <ul className="text-xs space-y-2 text-slate-700 font-medium">
+                <li className="flex justify-between hover:text-[#047857] cursor-pointer">
+                  <span>December 2026</span>
+                  <span className="text-slate-500">(2)</span>
+                </li>
+                <li className="flex justify-between hover:text-[#047857] cursor-pointer">
+                  <span>November 2026</span>
+                  <span className="text-slate-500">(1)</span>
+                </li>
+                <li className="flex justify-between hover:text-[#047857] cursor-pointer">
+                  <span>September 2026</span>
+                  <span className="text-slate-500">(2)</span>
+                </li>
+                <li className="flex justify-between hover:text-[#047857] cursor-pointer">
+                  <span>October 2026</span>
+                  <span className="text-slate-500">(2)</span>
+                </li>
               </ul>
             </div>
 
-            {/* INFO SEKOLAH */}
-            <div className="pt-4 border-t border-dashed border-slate-500">
-              <div className="flex flex-col items-center lg:items-end text-center lg:text-right">
-                <h3 className="text-xl font-black text-[#1e293b] mb-1">SMAS ADVENT BATAM</h3>
-                <p className="text-[11px] text-slate-800 mb-6 font-medium">
-                  Prof. DR. Hamka St., Kav 4, Kibing Village, Batu Aji District
-                </p>
+            {/* IDENTITAS SEKOLAH */}
+            <div className="pt-2 border-t border-dashed border-slate-300 text-xs text-slate-700 space-y-3">
+              <div>
+                <h4 className="font-black text-sm text-slate-900 tracking-wide">SMP - SMA ADVENT BATAM</h4>
+                <p className="text-[11px] text-slate-600">Prof. DR. Hamka St., Kav 4, Kibing Village, Batu Aji District</p>
               </div>
 
-              <ul className="text-[12px] sm:text-[13px] text-slate-800 space-y-4">
-                <li className="flex justify-between items-start gap-4">
-                  <span className="font-bold shrink-0">NSPN</span>
-                  <span className="text-right">20404yyy</span>
-                </li>
-                <li className="flex justify-between items-start gap-4">
-                  <span className="font-bold shrink-0">Principal</span>
-                  <span className="text-right leading-tight">
-                    Tona Leon Ferdinan
-                  </span>
-                </li>
-              </ul>
+              <div className="space-y-1 pt-1 text-[11px]">
+                <div className="flex justify-between">
+                  <span className="font-semibold text-slate-600">NSPN</span>
+                  <span className="font-bold text-slate-900">70002994</span>
+                </div>
+                <div className="flex justify-between items-start">
+                  <span className="font-semibold text-slate-600">Principal</span>
+                  <span className="font-bold text-slate-900 text-right">Tona Leon Ferdinan Situmorang, S.Pd.,MA.,ED.</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="font-semibold text-slate-600">Phone</span>
+                  <span className="font-bold text-[#047857]">0778-363082</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="font-semibold text-slate-600">Email</span>
+                  <span className="font-bold text-slate-900">info@adventbatam.sch.id</span>
+                </div>
+              </div>
+
+              <div className="pt-3 border-t border-dashed border-slate-300 space-y-1.5 text-xs font-semibold">
+                <div className="flex items-center justify-between text-slate-600 hover:text-blue-700 cursor-pointer">
+                  <span>Facebook</span>
+                  <span>f</span>
+                </div>
+                <div className="flex items-center justify-between text-slate-600 hover:text-pink-700 cursor-pointer">
+                  <span>Instagram</span>
+                  <span>📷</span>
+                </div>
+                <div className="flex items-center justify-between text-slate-600 hover:text-red-700 cursor-pointer">
+                  <span>YouTube</span>
+                  <span>▶</span>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -167,26 +233,9 @@ export default function AgendaPage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="w-full shrink-0">
-        <div className="bg-[#D97706] py-12 px-4 text-white">
-          <div className="max-w-7xl mx-auto flex flex-col items-start space-y-6">
-            <div className="w-full max-w-sm">
-              <p className="font-bold text-sm italic mb-2">Search</p>
-              <div className="flex">
-                <input type="text" className="flex-1 p-1.5 text-slate-900 text-sm focus:outline-none" />
-                <button className="bg-white text-slate-800 text-xs font-bold px-4 ml-1">Search</button>
-              </div>
-            </div>
-            <div className="text-xs font-semibold">
-              <p>© 2026 SMP SMA Advent Batam. Mendidik Generasi Cerdas dan Berkarakter Kristus.</p>
-            </div>
-          </div>
-        </div>
-        <div className="bg-[#8B0000] text-white text-[10px] sm:text-xs text-center py-4 font-semibold tracking-wider">
-          Developed by Ir. Budhy Prasetyo
-        </div>
+      <footer className="w-full bg-[#8B0000] text-white text-[10px] sm:text-xs text-center py-4 font-semibold shrink-0 mt-auto">
+        Developed by Ir. Budhy Prasetyo
       </footer>
-
     </main>
   );
 }
