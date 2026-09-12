@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { announcementsData, agendaData } from "../data/schoolUpdates";
 
 export default function Home() {
   // 4 DATA FOTO SLIDER ASLI
@@ -95,7 +96,7 @@ export default function Home() {
     { name: "Kevin Pratama, S.Or", role: "Guru Penjaskes", img: "/slider-3.jpg" }
   ];
 
-  // DUAL-CLONING TEACHERS (Kloning 6 di depan dan 6 di belakang agar looping multi-kartu mulus)
+  // DUAL-CLONING TEACHERS (Kloning 6 di awal dan 6 di akhir)
   const CLONE_COUNT = 6;
   const extendedTeachers = [
     ...teachersList.slice(-CLONE_COUNT),
@@ -109,7 +110,7 @@ export default function Home() {
   // STATE LAINNYA
   const [activityIndex, setActivityIndex] = useState(0);
 
-  // 1. AUTO PLAY SLIDER UTAMA (JEDA 6 DETIK)
+  // 1. AUTO PLAY SLIDER UTAMA (JEDA 6 DETIK, TRANSISI 2800ms)
   useEffect(() => {
     const timer = setInterval(() => {
       handleNext();
@@ -137,7 +138,7 @@ export default function Home() {
     }
   };
 
-  // 2. AUTO PLAY WORDS OF WISDOM (JEDA 6 DETIK)
+  // 2. AUTO PLAY WORDS OF WISDOM (JEDA 6 DETIK, TRANSISI 2800ms)
   useEffect(() => {
     const wisdomTimer = setInterval(() => {
       handleWisdomNext();
@@ -165,7 +166,7 @@ export default function Home() {
     }
   };
 
-  // 3. AUTO PLAY TEACHERS SLIDER (JEDA 5 DETIK, TRANSISI LUNCURAN HALUS & PELAN)
+  // 3. AUTO PLAY TEACHERS SLIDER (JEDA 5 DETIK, TRANSISI 2400ms)
   useEffect(() => {
     const teacherTimer = setInterval(() => {
       handleTeacherNext();
@@ -193,7 +194,7 @@ export default function Home() {
     }
   };
 
-  // DATA ACTIVITIES
+  // DATA ACTIVITIES (5 FOTO)
   const activityImages = [
     "/slider-1.jpg",
     "/slider-2.jpg",
@@ -202,7 +203,6 @@ export default function Home() {
     "/slider-2.jpg"
   ];
 
-  // EFEK SLIDER ACTIVITIES
   useEffect(() => {
     const activityTimer = setInterval(() => {
       setActivityIndex((prevIndex) => (prevIndex + 1) % activityImages.length);
@@ -246,6 +246,20 @@ export default function Home() {
 
   const activeDotIndex = (currentIndex - 1 + baseSlides.length) % baseSlides.length;
   const activeWisdomDotIndex = (wisdomIndex - 1 + baseWisdomQuotes.length) % baseWisdomQuotes.length;
+
+  // Mengambil item pertama dari pengumuman & agenda jika data tersedia
+  const currentAnnouncement = announcementsData?.[0] || {
+    date: "Tuesday, 08 September 2026",
+    title: "Pengumuman Daftar Siswa Baru (PPDB) Tahun Pelajaran 2026/2027",
+    content: "Pendaftaran Peserta Didik Baru gelombang pertama untuk jenjang SMP dan SMA Advent Batam resmi dibuka..."
+  };
+
+  const currentAgenda = agendaData?.[0] || {
+    date: "Jumat - Sabtu, 18-19 September 2026",
+    time: "08:00 WIB",
+    title: "Kebaktian Padang & Bina Karakter Siswa",
+    desc: "Persekutuan rohani dan pelatihan kepemimpinan luar ruang untuk mempererat persaudaraan..."
+  };
 
   return (
     <main className="min-h-screen bg-[#F3EFE4] text-slate-900 font-sans pb-0 flex flex-col overflow-x-hidden">
@@ -594,38 +608,60 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================= */}
-      {/* 6. PENGUMUMAN, AGENDA, BLOG (Krem Terang) */}
-      {/* ========================================= */}
+      {/* ========================================================================= */}
+      {/* 6. PENGUMUMAN, AGENDA, BLOG (TERHUBUNG KE DATA RESMI AKTIF)                */}
+      {/* ========================================================================= */}
       <section className="w-full bg-[#E5DCC3] py-10 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          {/* ANNOUNCEMENTS */}
           <div>
             <h3 className="flex items-center text-slate-800 font-bold mb-4 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">📢</span> 
               Announcements
             </h3>
-            <p className="text-[11px] text-slate-500 uppercase font-semibold mb-1">TERBIT : Tuesday, 11 July 2017</p>
-            <p className="font-bold text-red-900 text-sm mb-3 leading-tight">Pengumuman Daftar Siswa Baru Tahun 2017/2018</p>
-            <div className="bg-[#DCE1C6] p-4 rounded-lg text-xs text-slate-700 text-justify mb-4 shadow-sm border border-[#C5CCAA]">
-              Quia dolori non voluptas contraria est, sed doloris privatio. Omnia contraria, quos etiam insanos esse vultis. Quid Zeno? An vero displicuit ea, quae tributa est animi virtutibus tanta praestantia? Primum cur ista res digna odio est, nisi quod est turpis?..
+            <p className="text-[11px] text-slate-500 uppercase font-semibold mb-1">TERBIT : {currentAnnouncement.date}</p>
+            <Link href="/announcements">
+              <p className="font-bold text-red-900 text-sm mb-3 leading-tight hover:text-red-700 cursor-pointer">
+                {currentAnnouncement.title}
+              </p>
+            </Link>
+            <div className="bg-[#DCE1C6] p-4 rounded-lg text-xs text-slate-700 text-justify mb-4 shadow-sm border border-[#C5CCAA] line-clamp-4">
+              {currentAnnouncement.content}
             </div>
-            <Link href="/announcements" className="bg-red-900 hover:bg-red-800 text-white text-xs font-bold px-4 py-2 rounded shadow-sm inline-block">View All</Link>
+            <Link href="/announcements" className="bg-red-900 hover:bg-red-800 text-white text-xs font-bold px-4 py-2 rounded shadow-sm inline-block transition-colors">
+              View All ({announcementsData ? announcementsData.length : 7})
+            </Link>
           </div>
+
+          {/* LATEST AGENDA */}
           <div>
             <h3 className="flex items-center text-slate-800 font-bold mb-4 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">📅</span> 
               Latest Agenda
             </h3>
-            <div className="flex gap-4 items-start">
-              <div className="bg-red-900 text-white w-10 h-10 flex items-center justify-center rounded text-2xl font-bold shrink-0">+</div>
-              <div>
-                <p className="font-bold text-red-900 text-sm mb-2">Tidak Ada Agenda Baru</p>
-                <div className="bg-[#DCE1C6] p-4 rounded-lg text-xs text-slate-700 shadow-sm border border-[#C5CCAA]">
-                  Belum ada Agenda dalam waktu dekat ini, untuk melihat agenda yang telah lewat silahkan cek di halaman Arsip Agenda
+            <div className="flex gap-4 items-start mb-4">
+              <div className="bg-red-900 text-white w-10 h-10 flex items-center justify-center rounded text-base font-bold shrink-0">
+                18
+              </div>
+              <div className="flex-1">
+                <Link href="/agenda">
+                  <p className="font-bold text-red-900 text-sm mb-1 hover:text-red-700 cursor-pointer">
+                    {currentAgenda.title}
+                  </p>
+                </Link>
+                <p className="text-[10px] text-slate-600 mb-2">{currentAgenda.date} | {currentAgenda.time}</p>
+                <div className="bg-[#DCE1C6] p-3 rounded-lg text-xs text-slate-700 shadow-sm border border-[#C5CCAA] line-clamp-3">
+                  {currentAgenda.desc}
                 </div>
               </div>
             </div>
+            <Link href="/agenda" className="bg-[#D97706] hover:bg-amber-700 text-white text-xs font-bold px-4 py-2 rounded shadow-sm inline-block transition-colors">
+              View All ({agendaData ? agendaData.length : 7})
+            </Link>
           </div>
+
+          {/* TEACHERS' BLOG */}
           <div>
             <h3 className="flex items-center text-slate-800 font-bold mb-4 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">💬</span> 
@@ -634,7 +670,7 @@ export default function Home() {
             <div className="space-y-4">
               {blogGuru.map((blog, idx) => (
                 <div key={idx} className="flex gap-3 items-center">
-                  <div className="w-20 h-16 shrink-0 rounded overflow-hidden shadow-sm">
+                  <div className="w-20 h-16 shrink-0 rounded overflow-hidden shadow-sm bg-slate-200">
                     <img src={blog.img} alt="Thumb" className="w-full h-full object-cover" />
                   </div>
                   <div className="flex flex-col justify-center">
@@ -645,6 +681,7 @@ export default function Home() {
               ))}
             </div>
           </div>
+
         </div>
       </section>
 
