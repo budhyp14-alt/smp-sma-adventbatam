@@ -104,37 +104,42 @@ export default function Home() {
   const [teacherIndex, setTeacherIndex] = useState(CLONE_COUNT);
   const [isTeacherTransitioning, setIsTeacherTransitioning] = useState(true);
 
-  // 4. DATA ACTIVITIES (5 KEGIATAN LENGKAP DENGAN JUDUL & DUAL-CLONING)
+  // 4. DATA ACTIVITIES (TERHUBUNG KE DETAIL KEGIATAN)
   const baseActivities = [
     {
+      id: "class-meeting-porseni",
       src: "/slider-1.jpg",
+      tag: "OLAHRAGA & PRESTASI",
+      title: "Pekan Olahraga Antarkelas (Class Meeting)",
+      desc: "Menjunjung sportivitas, kebugaran jasmani, dan daya juang tinggi antarsiswa."
+    },
+    {
+      id: "perkemahan-latihan-kepemimpinan",
+      src: "/slider-2.jpg",
       tag: "PRAMUKA & OUTDOOR",
       title: "Perkemahan & Latihan Kepemimpinan Siswa",
       desc: "Membentuk kemandirian, kekompakan tim, dan ketahanan mental di alam terbuka."
     },
     {
-      src: "/slider-2.jpg",
+      id: "praktikum-komputasi-sains-cbt",
+      src: "/slider-3.jpg",
       tag: "SAINS & TEKNOLOGI",
       title: "Praktikum Laboratorium Komputasi & CBT",
       desc: "Mengasah nalar analitis melalui simulasi pemrograman dan riset digital terpadu."
     },
     {
-      src: "/slider-3.jpg",
+      id: "kebaktian-padang-bina-rohani",
+      src: "/slider-1.jpg",
       tag: "SPIRITUAL & IBADAH",
       title: "Kebaktian Padang & Bina Rohani Siswa",
       desc: "Menjalin kebersamaan serta memperdalam karakter takut akan Tuhan sejak dini."
     },
     {
-      src: "/slider-1.jpg",
+      id: "pentas-seni-paduan-suara",
+      src: "/slider-2.jpg",
       tag: "SENI & KREATIVITAS",
       title: "Pentas Seni & Paduan Suara Sekolah",
       desc: "Mewadahi talenta artistik, harmoni vokal, dan kepercayaan diri di atas panggung."
-    },
-    {
-      src: "/slider-2.jpg",
-      tag: "OLAHRAGA & PRESTASI",
-      title: "Pekan Olahraga Antarkelas (Class Meeting)",
-      desc: "Menjunjung sportivitas, kebugaran jasmani, dan daya juang tinggi antarsiswa."
     }
   ];
 
@@ -147,9 +152,7 @@ export default function Home() {
   const [activityIndex, setActivityIndex] = useState(1);
   const [isActivityTransitioning, setIsActivityTransitioning] = useState(true);
 
-  // -------------------------------------------------------------
-  // EFEK SLIDER UTAMA (AUTO PLAY JEDA 6 DETIK)
-  // -------------------------------------------------------------
+  // SLIDER UTAMA AUTO PLAY
   useEffect(() => {
     const timer = setInterval(() => {
       handleNext();
@@ -177,9 +180,7 @@ export default function Home() {
     }
   };
 
-  // -------------------------------------------------------------
-  // EFEK WORDS OF WISDOM (AUTO PLAY JEDA 6 DETIK)
-  // -------------------------------------------------------------
+  // WORDS OF WISDOM AUTO PLAY
   useEffect(() => {
     const wisdomTimer = setInterval(() => {
       handleWisdomNext();
@@ -207,9 +208,7 @@ export default function Home() {
     }
   };
 
-  // -------------------------------------------------------------
-  // EFEK TEACHERS SLIDER (AUTO PLAY JEDA 5 DETIK)
-  // -------------------------------------------------------------
+  // TEACHERS SLIDER AUTO PLAY
   useEffect(() => {
     const teacherTimer = setInterval(() => {
       handleTeacherNext();
@@ -237,9 +236,7 @@ export default function Home() {
     }
   };
 
-  // -------------------------------------------------------------
-  // EFEK ACTIVITIES SLIDER (AUTO PLAY JEDA 5 DETIK, TRANSISI HALUS 2400ms)
-  // -------------------------------------------------------------
+  // ACTIVITIES SLIDER AUTO PLAY
   useEffect(() => {
     const activityTimer = setInterval(() => {
       handleActivityNext();
@@ -337,9 +334,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#F3EFE4] text-slate-900 font-sans pb-0 flex flex-col overflow-x-hidden">
       
-      {/* ========================================================================= */}
-      {/* 1. SLIDER UTAMA (HERO SLIDER)                                             */}
-      {/* ========================================================================= */}
+      {/* 1. SLIDER UTAMA */}
       <section className="relative w-full max-w-7xl mx-auto mt-4 px-4 mb-10 shrink-0">
         <div className="relative w-full h-[280px] sm:h-[400px] md:h-[490px] lg:h-[540px] overflow-hidden rounded-2xl shadow-xl bg-slate-900 group">
           <div 
@@ -408,9 +403,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================= */}
-      {/* 2. DUA BLOK EDITORIAL BERSEBELAHAN        */}
-      {/* ========================================= */}
+      {/* 2. DUA BLOK EDITORIAL */}
       <section className="max-w-7xl mx-auto px-4 mb-8 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
@@ -481,9 +474,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================= */}
       {/* 3. EDITORIAL KEPALA SEKOLAH & LATEST NEWS */}
-      {/* ========================================= */}
       <section className="max-w-7xl mx-auto px-4 mb-12 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           
@@ -554,9 +545,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================= */}
-      {/* 4. WORDS OF WISDOM                        */}
-      {/* ========================================= */}
+      {/* 4. WORDS OF WISDOM */}
       <section className="w-full bg-[#D97706] text-white py-14 px-4 shrink-0 overflow-hidden relative">
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center relative px-8 sm:px-12">
           <h2 className="font-bold text-xl sm:text-2xl mb-8">Words of Wisdom</h2>
@@ -617,9 +606,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================= */}
-      {/* 5. GURU KREATIF SLIDER                    */}
-      {/* ========================================= */}
+      {/* 5. GURU KREATIF SLIDER */}
       <section className="w-full bg-[#DCC690] py-10 px-4 overflow-hidden relative">
         <div className="max-w-7xl mx-auto relative px-2 sm:px-6">
           <h2 className="font-bold text-sm sm:text-base mb-6 flex items-center gap-2 text-slate-800 uppercase">
@@ -675,9 +662,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================= */}
-      {/* 6. PENGUMUMAN, AGENDA, TEACHERS' BLOG     */}
-      {/* ========================================= */}
+      {/* 6. PENGUMUMAN, AGENDA, TEACHERS' BLOG */}
       <section className="w-full bg-[#E5DCC3] py-10 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           
@@ -766,12 +751,12 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 7. KEGIATAN (ACTIVITIES BARU), FASILITAS, GALERI                          */}
+      {/* 7. KEGIATAN (ACTIVITIES: FOTO & JUDUL DAPAT DIKLIK MENUJU DETAIL UTUH)     */}
       {/* ========================================================================= */}
       <section className="w-full bg-[#DCC690] py-10 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           
-          {/* ACTIVITIES: INFINITE LOOP SEARAH + JUDUL & TOMBOL MANUAL */}
+          {/* ACTIVITIES */}
           <div className="flex flex-col h-full">
             <h3 className="flex items-center text-slate-800 font-bold mb-5 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">★</span> 
@@ -779,7 +764,7 @@ export default function Home() {
             </h3>
             <div className="w-full flex-1 rounded-xl overflow-hidden shadow-md relative bg-slate-900 min-h-[280px] group">
               
-              {/* TRACK LUNCURAN ACTIVITIES */}
+              {/* TRACK ACTIVITIES */}
               <div 
                 className="flex w-full h-full"
                 style={{ 
@@ -790,21 +775,24 @@ export default function Home() {
               >
                 {extendedActivities.map((act, idx) => (
                   <div key={idx} className="w-full h-full shrink-0 relative min-h-[280px]">
-                    <img src={act.src} className="w-full h-full object-cover" alt={act.title} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent"></div>
-                    
-                    {/* LABEL & JUDUL KEGIATAN */}
-                    <div className="absolute bottom-10 left-4 right-4 text-white text-left z-10">
-                      <span className="bg-[#047857] text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wider shadow inline-block mb-1.5">
-                        {act.tag}
-                      </span>
-                      <h4 className="text-sm font-bold text-white leading-tight mb-1 drop-shadow line-clamp-2">
-                        {act.title}
-                      </h4>
-                      <p className="text-[11px] text-slate-200 line-clamp-2 leading-tight">
-                        {act.desc}
-                      </p>
-                    </div>
+                    {/* Tautan Pembungkus Seluruh Foto Kegiatan */}
+                    <Link href={`/activities/detail?id=${act.id}`} className="block w-full h-full cursor-pointer">
+                      <img src={act.src} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt={act.title} />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent"></div>
+                      
+                      {/* LABEL & JUDUL KEGIATAN */}
+                      <div className="absolute bottom-10 left-4 right-4 text-white text-left z-10">
+                        <span className="bg-[#047857] text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wider shadow inline-block mb-1.5">
+                          {act.tag}
+                        </span>
+                        <h4 className="text-sm font-bold text-white leading-tight mb-1 drop-shadow line-clamp-2 hover:text-amber-300 transition-colors">
+                          {act.title}
+                        </h4>
+                        <p className="text-[11px] text-slate-200 line-clamp-2 leading-tight">
+                          {act.desc}
+                        </p>
+                      </div>
+                    </Link>
                   </div>
                 ))}
               </div>
@@ -887,9 +875,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================= */}
-      {/* 8. VIDEO                                  */}
-      {/* ========================================= */}
+      {/* 8. VIDEO */}
       <section className="w-full bg-[#E5DCC3] py-10 px-4 flex-1">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-red-950 font-bold mb-4 text-lg">Video</h3>
@@ -908,9 +894,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================= */}
-      {/* 9. FOOTER                                 */}
-      {/* ========================================= */}
+      {/* 9. FOOTER */}
       <footer className="w-full shrink-0">
         <div className="bg-[#D97706] py-12 px-4 text-white">
           <div className="max-w-7xl mx-auto flex flex-col items-start space-y-6">
