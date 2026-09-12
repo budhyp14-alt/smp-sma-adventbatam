@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 export default function Home() {
-  // DATA SLIDER UTAMA DENGAN JUDUL & DESKRIPSI (BERGESER HORIZONTAL)
-  const slides = [
+  // DATA 4 SLIDER UTAMA DENGAN JUDUL LENGKAP
+  const baseSlides = [
     {
       src: "/slider-1.jpg",
       tag: "CAMPUS ENVIRONMENT",
@@ -31,6 +31,9 @@ export default function Home() {
       desc: "Mewadahi antusiasme dan daya juang siswa melalui program ekstrakurikuler dinamis serta pembinaan prestasi berstandar nasional."
     }
   ];
+
+  // CLONE SLIDE PERTAMA KE AKHIR UNTUK PERPUTARAN SATU ARAH TANPA PUTUS (INFINITE LOOP)
+  const extendedSlides = [...baseSlides, baseSlides[0]];
 
   // DATA ACTIVITIES (5 Foto Kegiatan)
   const activityImages = [
@@ -86,20 +89,48 @@ export default function Home() {
 
   const extendedTeachers = [...teachersList, ...teachersList.slice(0, 6)];
 
-  // STATE MANAJEMEN
+  // STATE MANAJEMEN SLIDER UTAMA
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isSliderTransitioning, setIsSliderTransitioning] = useState(true);
+
+  // STATE MANAJEMEN SEKSI LAINNYA
   const [wisdomIndex, setWisdomIndex] = useState(0);
   const [teacherIndex, setTeacherIndex] = useState(0);
   const [activityIndex, setActivityIndex] = useState(0);
   const [isTeacherTransitioning, setIsTeacherTransitioning] = useState(true);
 
-  // EFEK SLIDER UTAMA (AUTO SLIDE GESER KE KIRI TIAP 5 DETIK)
+  // EFEK PERGESERAN KONTINU SEARAH (SELALU DARI KANAN KE KIRI)
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+      setIsSliderTransitioning(true);
+      setCurrentIndex((prev) => prev + 1);
     }, 5000);
     return () => clearInterval(timer);
-  }, [slides.length]);
+  }, []);
+
+  // KETIKA TRANSISI SLIDE SELESAI
+  const handleSliderTransitionEnd = () => {
+    // Jika sudah tiba di slide cloning (ujung), kembalikan ke slide 0 secara instan tanpa animasi balik
+    if (currentIndex >= baseSlides.length) {
+      setIsSliderTransitioning(false);
+      setCurrentIndex(0);
+    }
+  };
+
+  const nextSlide = () => {
+    setIsSliderTransitioning(true);
+    setCurrentIndex((prev) => prev + 1);
+  };
+
+  const prevSlide = () => {
+    setIsSliderTransitioning(true);
+    if (currentIndex === 0) {
+      // Jika di slide pertama dan ditekan tombol kembali
+      setCurrentIndex(baseSlides.length - 1);
+    } else {
+      setCurrentIndex((prev) => prev - 1);
+    }
+  };
 
   // EFEK SLIDER WORDS OF WISDOM
   useEffect(() => {
@@ -131,14 +162,6 @@ export default function Home() {
       setIsTeacherTransitioning(false);
       setTeacherIndex(0);
     }
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1));
-  };
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
   };
 
   // DATA LATEST NEWS
@@ -175,21 +198,27 @@ export default function Home() {
     { title: "Masjid At-Taqwa", text: "An potest, inquit ille, quicquam esse suavius quam..", img: "/slider-3.jpg" }
   ];
 
+  // Penanda titik dot aktif (modulus jumlah asli 4 slide)
+  const activeDotIndex = currentIndex % baseSlides.length;
+
   return (
     <main className="min-h-screen bg-[#F3EFE4] text-slate-900 font-sans pb-0 flex flex-col overflow-x-hidden">
       
       {/* ========================================================= */}
-      {/* 1. SLIDER UTAMA: GESER HORIZONTAL KANAN-KIRI + JUDUL FOTO */}
+      {/* 1. SLIDER UTAMA: MELUNCUR SEARAH KE KIRI (INFINITE LOOP)   */}
       {/* ========================================================= */}
       <section className="relative w-full max-w-7xl mx-auto mt-4 px-4 mb-10 shrink-0">
         <div className="relative w-full h-[280px] sm:h-[400px] md:h-[490px] lg:h-[540px] overflow-hidden rounded-2xl shadow-xl bg-slate-900 group">
           
-          {/* TRACK SLIDE (MELUNCUR SECARA HORIZONTAL) */}
+          {/* TRACK SLIDE DENGAN LOGIKA TRANSISI RESET OTOMATIS */}
           <div 
-            className="flex w-full h-full transition-transform duration-700 ease-in-out"
+            className={`flex w-full h-full ${
+              isSliderTransitioning ? "transition-transform duration-700 ease-in-out" : ""
+            }`}
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            onTransitionEnd={handleSliderTransitionEnd}
           >
-            {slides.map((slide, index) => (
+            {extendedSlides.map((slide, index) => (
               <div key={index} className="w-full h-full shrink-0 relative">
                 {/* Foto Latar Belakang */}
                 <img 
@@ -198,7 +227,7 @@ export default function Home() {
                   className="w-full h-full object-cover" 
                 />
                 
-                {/* Gradient Lembut untuk Keterbacaan Judul */}
+                {/* Gradient Latar Belakang untuk Keterbacaan Teks */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent"></div>
                 
                 {/* KOTAK JUDUL & DESKRIPSI DI ATAS FOTO */}
@@ -217,7 +246,7 @@ export default function Home() {
             ))}
           </div>
 
-          {/* TOMBOL NAVIGASI PREV & NEXT */}
+          {/* TOMBOL PREV & NEXT */}
           <button 
             onClick={prevSlide} 
             className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full transition-all z-20 cursor-pointer shadow-lg"
@@ -233,14 +262,17 @@ export default function Home() {
             &#10095;
           </button>
 
-          {/* INDIKATOR DOT BULAT DI BAWAH SLIDER */}
+          {/* INDIKATOR DOT BULAT */}
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
-            {slides.map((_, index) => (
+            {baseSlides.map((_, index) => (
               <button 
                 key={index} 
-                onClick={() => setCurrentIndex(index)} 
+                onClick={() => {
+                  setIsSliderTransitioning(true);
+                  setCurrentIndex(index);
+                }} 
                 className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  index === currentIndex ? "bg-amber-400 w-8" : "bg-white/60 w-2.5 hover:bg-white"
+                  index === activeDotIndex ? "bg-amber-400 w-8" : "bg-white/60 w-2.5 hover:bg-white"
                 }`} 
                 aria-label={`Go to slide ${index + 1}`}
               />
