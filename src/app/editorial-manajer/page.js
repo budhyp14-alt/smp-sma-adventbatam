@@ -1,12 +1,19 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { editorialsData } from "../../data/editorials";
 
-export const metadata = {
-  title: "Operations Manager's Editorial - SMP SMA Advent Batam",
-};
-
 export default function EditorialManajerIndex() {
-  const articles = editorialsData.manajer;
+  const allArticles = editorialsData?.manajer || [];
+  // Batasi awal maksimal 4 berita
+  const [visibleCount, setVisibleCount] = useState(4);
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + 4);
+  };
+
+  const displayedArticles = allArticles.slice(0, visibleCount);
 
   return (
     <main className="min-h-screen bg-[#E5DCC3] font-sans flex flex-col">
@@ -23,15 +30,15 @@ export default function EditorialManajerIndex() {
         </h1>
       </section>
 
-      {/* DAFTAR BERITA */}
+      {/* DAFTAR BERITA THUMBNAIL (MAKS 4 AWAL) */}
       <section className="w-full flex-1 pb-16 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto space-y-8">
-          {articles.map((item, idx) => (
+          {displayedArticles.map((item, idx) => (
             <div 
               key={idx} 
               className="bg-white p-6 rounded-xl shadow-sm border-t-4 border-[#047857] flex flex-col md:flex-row gap-6 items-start group"
             >
-              {/* 1. FOTO THUMBNAIL (BISA DIKLIK) */}
+              {/* 1. FOTO THUMBNAIL */}
               <Link 
                 href={`/editorial-manajer/detail?id=${item.id}`} 
                 className="w-full md:w-[280px] aspect-[4/3] bg-slate-200 rounded-lg overflow-hidden shrink-0 block cursor-pointer"
@@ -43,27 +50,27 @@ export default function EditorialManajerIndex() {
                 />
               </Link>
 
-              {/* KONTEN TEKS */}
+              {/* 2. KONTEN TEKS & LEAD */}
               <div className="flex-1 flex flex-col">
                 <span className="text-xs text-slate-500 font-semibold mb-1">
                   📅 {item.date} | ✍️ {item.author} ({item.role})
                 </span>
 
-                {/* 2. JUDUL BERITA (BISA DIKLIK) */}
+                {/* JUDUL */}
                 <Link href={`/editorial-manajer/detail?id=${item.id}`}>
                   <h2 className="text-xl font-bold text-red-950 mb-3 hover:text-[#047857] transition-colors cursor-pointer leading-snug">
                     {item.title}
                   </h2>
                 </Link>
 
-                {/* 3. LEAD BERITA / RINGKASAN (BISA DIKLIK) */}
+                {/* LEAD BERITA */}
                 <Link href={`/editorial-manajer/detail?id=${item.id}`}>
                   <p className="text-sm text-slate-600 leading-relaxed text-justify mb-4 line-clamp-3 hover:text-slate-900 transition-colors cursor-pointer">
                     {item.paragraphs[0]}
                   </p>
                 </Link>
 
-                {/* 4. TOMBOL READ MORE */}
+                {/* TOMBOL READ MORE */}
                 <div>
                   <Link 
                     href={`/editorial-manajer/detail?id=${item.id}`} 
@@ -75,6 +82,19 @@ export default function EditorialManajerIndex() {
               </div>
             </div>
           ))}
+
+          {/* TOMBOL VIEW MORE JIKA MASIH ADA BERITA SEBELUMNYA */}
+          {visibleCount < allArticles.length && (
+            <div className="pt-6 flex justify-center">
+              <button
+                onClick={handleLoadMore}
+                className="bg-[#047857] hover:bg-emerald-800 text-white font-bold text-sm py-3 px-8 rounded-full shadow-md transition-transform transform hover:scale-105 flex items-center gap-2 cursor-pointer"
+              >
+                <span>View More Articles</span>
+                <span>↓</span>
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
