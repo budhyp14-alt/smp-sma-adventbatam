@@ -5,63 +5,11 @@ import Link from "next/link";
 import { announcementsData } from "../../data/schoolUpdates";
 
 export default function AnnouncementsPage() {
-  // Ambil data pengumuman (7 item dari data terpusat)
-  const allAnnouncements = announcementsData || [
-    {
-      id: "pengumuman-daftar-siswa-baru-2026-2027",
-      title: "Pengumuman Pendaftaran Peserta Didik Baru (PPDB) Tahun Ajaran 2026/2027",
-      date: "Tuesday, 25 Aug 2026, 08:00 WIB",
-      img: "/slider-1.jpg",
-      content: "Diberitahukan kepada seluruh calon peserta didik dan orang tua/wali, bahwa pendaftaran siswa baru tingkat SMP dan SMA Advent Batam untuk gelombang pertama telah resmi dibuka. Silakan melengkapi berkas pendaftaran melalui portal PPDB online atau langsung ke kantor sekretariat panitia."
-    },
-    {
-      id: "jadwal-pengambilan-rapor-semester-genap",
-      title: "Jadwal Pengambilan Rapor Semester Genap dan Pertemuan Wali Murid",
-      date: "Monday, 15 Jun 2026, 10:30 WIB",
-      img: "/slider-2.jpg",
-      content: "Menjelang akhir tahun ajaran, kami mengundang Bapak/Ibu wali murid untuk hadir dalam acara penyerahan rapor hasil evaluasi belajar siswa. Acara akan dilaksanakan secara bergiliran untuk mematuhi protokol kenyamanan bersama di aula utama sekolah."
-    },
-    {
-      id: "pemberitahuan-libur-nasional-cuti-bersama",
-      title: "Pemberitahuan Libur Nasional dan Cuti Bersama Hari Raya",
-      date: "Wednesday, 20 May 2026, 14:15 WIB",
-      img: "/slider-3.jpg",
-      content: "Berdasarkan kalender akademik dan ketetapan pemerintah pusat, kegiatan belajar mengajar (KBM) akan diliburkan sementara waktu. Seluruh aktivitas KBM akan kembali aktif normal sesuai jadwal terlampir."
-    },
-    {
-      id: "pembaruan-tata-tertib-ketentuan-seragam",
-      title: "Pembaruan Tata Tertib dan Ketentuan Seragam Sekolah",
-      date: "Thursday, 12 Mar 2026, 09:00 WIB",
-      img: "/slider-1.jpg",
-      content: "Dalam rangka meningkatkan kedisiplinan dan kerapian peserta didik, pihak manajemen sekolah telah memperbarui beberapa poin terkait standar penggunaan seragam harian dan seragam olahraga. Harap diperhatikan dengan saksama."
-    },
-    {
-      id: "jadwal-penilaian-tengah-semester-ganjil",
-      title: "Jadwal Pelaksanaan Penilaian Tengah Semester (PTS) Berbasis Komputer",
-      date: "Monday, 07 Sep 2026, 07:30 WIB",
-      img: "/slider-2.jpg",
-      content: "Penilaian Tengah Semester Ganjil akan diselenggarakan berbasis komputer (CBT). Seluruh siswa diharapkan mengecek kartu peserta ujian dan memastikan kesiapan perangkat serta akun pembelajaran masing-masing."
-    },
-    {
-      id: "seleksi-olimpiade-sains-pelajar-tingkat-kota",
-      title: "Pembukaan Seleksi Internal Olimpiade Sains Nasional (OSN)",
-      date: "Friday, 28 Aug 2026, 13:00 WIB",
-      img: "/slider-3.jpg",
-      content: "Bidang kesiswaan mengundang siswa yang berminat di cabang Matematika, Fisika, Biologi, dan Informatika untuk mendaftar seleksi tahap awal bimbingan intensif tim olimpiade sains sekolah."
-    },
-    {
-      id: "gerakan-green-campus-lingkungan-asri",
-      title: "Gerakan Bakti Lingkungan dan Budaya Asri Kampus Advent Batam",
-      date: "Monday, 24 Aug 2026, 08:30 WIB",
-      img: "/slider-1.jpg",
-      content: "Seluruh warga sekolah diajak berpartisipasi dalam pemeliharaan taman kelas dan penataan pemilahan sampah organik guna menyukseskan program kampus bersih dan ramah lingkungan."
-    }
-  ];
-
-  // Batasi tampilan awal maksimal 4 berita thumbnail
+  const allAnnouncements = announcementsData || [];
+  
+  // Tampilkan tepat 4 pengumuman awal
   const [visibleCount, setVisibleCount] = useState(4);
 
-  // Fungsi menambah tampilan saat tombol View More diklik
   const handleViewMore = () => {
     setVisibleCount((prev) => prev + 4);
   };
@@ -70,7 +18,7 @@ export default function AnnouncementsPage() {
 
   return (
     <main className="min-h-screen bg-[#F3EFE4] font-sans flex flex-col text-slate-800">
-      {/* HEADER & BREADCRUMB */}
+      {/* BREADCRUMB & TITLE */}
       <section className="w-full pt-8 pb-4 px-4 sm:px-8 max-w-7xl mx-auto shrink-0">
         <div className="text-xs text-slate-600 font-semibold mb-4 flex items-center gap-1 flex-wrap">
           <span>You are here :</span>
@@ -83,16 +31,16 @@ export default function AnnouncementsPage() {
         </h1>
       </section>
 
-      {/* KONTEN UTAMA: 2 KOLOM (KIRI BERITA, KANAN SIDEBAR PERSIS TAMPILAN BRO) */}
+      {/* DUA KOLOM */}
       <section className="w-full flex-1 pb-16 px-4 sm:px-8 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* KOLOM KIRI: DAFTAR PENGUMUMAN (8 DARI 12 KOLOM) */}
+          {/* KOLOM KIRI: DAFTAR PENGUMUMAN (MAKSIMAL 4 DI AWAL) */}
           <div className="lg:col-span-8 space-y-8">
             {displayedList.map((item, idx) => (
               <div key={idx} className="flex flex-col sm:flex-row gap-5 items-start group">
                 
-                {/* 1. THUMBNAIL FOTO */}
+                {/* THUMBNAIL */}
                 <div className="w-full sm:w-[220px] aspect-[4/3] bg-slate-200 rounded-lg overflow-hidden shrink-0 shadow-sm relative">
                   <img 
                     src={item.img || "/slider-1.jpg"} 
@@ -104,29 +52,28 @@ export default function AnnouncementsPage() {
                   </div>
                 </div>
 
-                {/* 2. TEKS PENGUMUMAN */}
+                {/* DETAIL TEKS */}
                 <div className="flex-1 flex flex-col">
                   <span className="text-[11px] text-slate-500 font-semibold mb-1">
                     Published : {item.date}
                   </span>
                   
-                  {/* JUDUL */}
                   <h2 className="text-base sm:text-lg font-bold text-[#047857] group-hover:text-emerald-800 transition-colors leading-snug mb-2 cursor-pointer">
                     {item.title}
                   </h2>
 
-                  {/* DESKRIPSI LEAD */}
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-justify line-clamp-4 mb-3">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-justify line-clamp-4">
                     {item.content}
                   </p>
                 </div>
               </div>
             ))}
 
-            {/* TOMBOL VIEW MORE ANNOUNCEMENTS (ACTION BUTTON, BUKAN LINK RUSAK) */}
+            {/* TOMBOL VIEW MORE JIKA MASIH ADA PENGUMUMAN SEBELUMNYA */}
             {visibleCount < allAnnouncements.length && (
-              <div className="pt-4">
+              <div className="pt-2">
                 <button
+                  type="button"
                   onClick={handleViewMore}
                   className="bg-[#D97706] hover:bg-amber-700 text-white font-bold text-xs sm:text-sm py-2.5 px-6 rounded-md shadow transition-all transform hover:scale-105 flex items-center gap-2 cursor-pointer"
                 >
@@ -137,10 +84,10 @@ export default function AnnouncementsPage() {
             )}
           </div>
 
-          {/* KOLOM KANAN: SIDEBAR (4 DARI 12 KOLOM) */}
+          {/* KOLOM KANAN: SIDEBAR */}
           <div className="lg:col-span-4 lg:border-l lg:border-slate-300 lg:pl-8 space-y-6">
             
-            {/* KOTAK 1: CARI PENGUMUMAN */}
+            {/* CARI PENGUMUMAN */}
             <div className="bg-[#EFEAD8] p-5 rounded-xl shadow-sm border border-slate-200">
               <h3 className="font-bold text-sm text-slate-800 mb-3">Cari Pengumuman</h3>
               <div className="flex gap-2">
@@ -155,7 +102,7 @@ export default function AnnouncementsPage() {
               </div>
             </div>
 
-            {/* KOTAK 2: ARSIP PENGUMUMAN */}
+            {/* ARSIP */}
             <div className="bg-[#EFEAD8] p-5 rounded-xl shadow-sm border border-slate-200">
               <h3 className="font-bold text-sm text-slate-800 mb-3">Arsip Pengumuman</h3>
               <ul className="text-xs space-y-2 text-slate-700 font-medium">
@@ -178,9 +125,9 @@ export default function AnnouncementsPage() {
               </ul>
             </div>
 
-            {/* KOTAK 3: IDENTITAS & KONTAK SEKOLAH */}
+            {/* INFORMASI SEKOLAH */}
             <div className="pt-2 border-t border-dashed border-slate-300 text-xs text-slate-700 space-y-3">
-              <div className="text-center sm:text-left">
+              <div>
                 <h4 className="font-black text-sm text-slate-900 tracking-wide">SMP - SMA ADVENT BATAM</h4>
                 <p className="text-[11px] text-slate-600">Prof. DR. Hamka St., Kav 4, Kibing Village, Batu Aji District</p>
               </div>
