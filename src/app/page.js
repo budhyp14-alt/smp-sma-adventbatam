@@ -120,10 +120,26 @@ export default function Home() {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
+  // DATA LATEST NEWS (Lengkap dengan ID/slug untuk routing detail)
   const latestNews = [
-    { date: "Tuesday, 12 August 2025", title: "KTT G20 Bali", img: "/slider-1.jpg" },
-    { date: "Tuesday, 12 August 2025", title: "BAB 1 Badan Usaha dalam Perekonomian", img: "/slider-2.jpg" },
-    { date: "Monday, 11 August 2025", title: "BAB 1 INFORMATIKA & PEMBELAJARANNYA", img: "/slider-3.jpg" }
+    { 
+      id: "ktt-g20-bali", 
+      date: "Tuesday, 12 August 2025", 
+      title: "KTT G20 Bali", 
+      img: "/slider-1.jpg" 
+    },
+    { 
+      id: "bab-1-badan-usaha-dalam-perekonomian", 
+      date: "Tuesday, 12 August 2025", 
+      title: "BAB 1 Badan Usaha dalam Perekonomian", 
+      img: "/slider-2.jpg" 
+    },
+    { 
+      id: "bab-1-informatika-dan-pembelajarannya", 
+      date: "Monday, 11 August 2025", 
+      title: "BAB 1 INFORMATIKA & PEMBELAJARANNYA", 
+      img: "/slider-3.jpg" 
+    }
   ];
 
   const blogGuru = [
@@ -278,6 +294,7 @@ export default function Home() {
             </div>
           </div>
 
+          {/* LATEST NEWS - SEKARANG SEMUA FOTO & JUDUL DAPAT DIKLIK MENUJU DETAIL */}
           <div className="lg:col-span-1 flex flex-col h-full">
             <div className="flex items-center gap-2 mb-3 h-7 shrink-0">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-xs">💬</span>
@@ -285,18 +302,33 @@ export default function Home() {
             </div>
             <div className="space-y-4 flex-1 flex flex-col justify-between">
               {latestNews.map((news, idx) => (
-                <div key={idx} className="flex gap-4 items-center">
-                  <div className="w-20 h-16 sm:w-24 sm:h-20 shrink-0 rounded-xl overflow-hidden shadow-sm">
-                    <img src={news.img} alt="Thumb" className="w-full h-full object-cover" />
-                  </div>
-                  <div className="flex flex-col justify-center">
+                <div key={idx} className="flex gap-4 items-center group">
+                  {/* 1. FOTO THUMBNAIL (BISA DIKLIK) */}
+                  <Link 
+                    href={`/news/detail?id=${news.id}`} 
+                    className="w-20 h-16 sm:w-24 sm:h-20 shrink-0 rounded-xl overflow-hidden shadow-sm bg-slate-200 block cursor-pointer"
+                  >
+                    <img 
+                      src={news.img} 
+                      alt={news.title} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+                    />
+                  </Link>
+
+                  {/* 2. TEKS & JUDUL (BISA DIKLIK) */}
+                  <div className="flex flex-col justify-center flex-1">
                     <p className="text-[10px] sm:text-xs text-slate-600 mb-1">{news.date}</p>
-                    <p className="text-xs sm:text-sm font-bold text-red-950 leading-tight line-clamp-2">{news.title}</p>
+                    <Link href={`/news/detail?id=${news.id}`}>
+                      <p className="text-xs sm:text-sm font-bold text-red-950 hover:text-[#047857] transition-colors leading-tight line-clamp-2 cursor-pointer">
+                        {news.title}
+                      </p>
+                    </Link>
                   </div>
                 </div>
               ))}
             </div>
           </div>
+
         </div>
       </section>
 
@@ -309,7 +341,7 @@ export default function Home() {
           <div className="relative w-full h-[160px] sm:h-[120px] flex items-center justify-center overflow-hidden">
             {wisdomQuotes.map((item, index) => (
               <div 
-                key={index}
+                key={index} 
                 className={`absolute w-full px-4 transition-all duration-700 ease-in-out ${
                   index === wisdomIndex ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12 pointer-events-none'
                 }`}
@@ -327,7 +359,7 @@ export default function Home() {
             {wisdomQuotes.map((_, index) => (
               <button 
                 key={index} 
-                onClick={() => setWisdomIndex(index)}
+                onClick={() => setWisdomIndex(index)} 
                 className={`rounded-full transition-all duration-300 ${
                   index === wisdomIndex ? "w-8 h-2.5 bg-white" : "w-2.5 h-2.5 bg-white/40 hover:bg-white/70"
                 }`} 
@@ -391,7 +423,7 @@ export default function Home() {
             <div className="bg-[#DCE1C6] p-4 rounded-lg text-xs text-slate-700 text-justify mb-4 shadow-sm border border-[#C5CCAA]">
               Quia dolori non voluptas contraria est, sed doloris privatio. Omnia contraria, quos etiam insanos esse vultis. Quid Zeno? An vero displicuit ea, quae tributa est animi virtutibus tanta praestantia? Primum cur ista res digna odio est, nisi quod est turpis?..
             </div>
-            <button className="bg-red-900 hover:bg-red-800 text-white text-xs font-bold px-4 py-2 rounded shadow-sm">View All</button>
+            <Link href="/announcements" className="bg-red-900 hover:bg-red-800 text-white text-xs font-bold px-4 py-2 rounded shadow-sm inline-block">View All</Link>
           </div>
           <div>
             <h3 className="flex items-center text-slate-800 font-bold mb-4 text-xl">
