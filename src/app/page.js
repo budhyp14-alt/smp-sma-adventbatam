@@ -76,12 +76,40 @@ export default function Home() {
   const [wisdomIndex, setWisdomIndex] = useState(1);
   const [isWisdomTransitioning, setIsWisdomTransitioning] = useState(true);
 
-  // STATE LAINNYA
-  const [teacherIndex, setTeacherIndex] = useState(0);
-  const [activityIndex, setActivityIndex] = useState(0);
+  // DATA 15 GURU KREATIF
+  const teachersList = [
+    { name: "Renita Pandiangan, S.Pd", role: "Guru Bhs. Ind.", img: "/slider-1.jpg" },
+    { name: "Herman, S.Pd", role: "Guru Conversation", img: "/slider-2.jpg" },
+    { name: "Kumar, S.Pd", role: "Guru Conversation", img: "/slider-3.jpg" },
+    { name: "Tiurma Febryanti, S.Pd", role: "Guru IPA Fisika", img: "/slider-1.jpg" },
+    { name: "Ir. Budhy Prasetyo", role: "Guru Informatika", img: "/slider-2.jpg" },
+    { name: "Asna Rumondang S., S.Pd.", role: "Guru", img: "/slider-3.jpg" },
+    { name: "Lourens Syahartian, S.Pd", role: "Guru Bhs. Inggris", img: "/slider-1.jpg" },
+    { name: "Ernast Simanjuntak, S.Pd", role: "Guru Sosiologi", img: "/slider-2.jpg" },
+    { name: "Sarlen Naibaho, S.Pd., M.Pd.", role: "Guru IPS", img: "/slider-3.jpg" },
+    { name: "Endang Januar S., S.Kom", role: "Bendahara BOS", img: "/slider-1.jpg" },
+    { name: "Celli Sihombing, S.Pd", role: "Guru IPA Kimia", img: "/slider-2.jpg" },
+    { name: "Mawar Indah Sinurat, S.Pd", role: "Guru IPA Biologi", img: "/slider-3.jpg" },
+    { name: "Drs. Andi Mulyono", role: "Guru Matematika", img: "/slider-1.jpg" },
+    { name: "Rini Wulandari, S.Pd", role: "Guru Sejarah", img: "/slider-2.jpg" },
+    { name: "Kevin Pratama, S.Or", role: "Guru Penjaskes", img: "/slider-3.jpg" }
+  ];
+
+  // DUAL-CLONING TEACHERS (Kloning 6 di depan dan 6 di belakang agar looping multi-kartu mulus)
+  const CLONE_COUNT = 6;
+  const extendedTeachers = [
+    ...teachersList.slice(-CLONE_COUNT),
+    ...teachersList,
+    ...teachersList.slice(0, CLONE_COUNT)
+  ];
+
+  const [teacherIndex, setTeacherIndex] = useState(CLONE_COUNT);
   const [isTeacherTransitioning, setIsTeacherTransitioning] = useState(true);
 
-  // 1. AUTO PLAY SLIDER UTAMA (JEDA TETAP 6 DETIK)
+  // STATE LAINNYA
+  const [activityIndex, setActivityIndex] = useState(0);
+
+  // 1. AUTO PLAY SLIDER UTAMA (JEDA 6 DETIK)
   useEffect(() => {
     const timer = setInterval(() => {
       handleNext();
@@ -109,7 +137,7 @@ export default function Home() {
     }
   };
 
-  // 2. AUTO PLAY WORDS OF WISDOM (JEDA TETAP 6 DETIK)
+  // 2. AUTO PLAY WORDS OF WISDOM (JEDA 6 DETIK)
   useEffect(() => {
     const wisdomTimer = setInterval(() => {
       handleWisdomNext();
@@ -137,6 +165,34 @@ export default function Home() {
     }
   };
 
+  // 3. AUTO PLAY TEACHERS SLIDER (JEDA 5 DETIK, TRANSISI LUNCURAN HALUS & PELAN)
+  useEffect(() => {
+    const teacherTimer = setInterval(() => {
+      handleTeacherNext();
+    }, 5000);
+    return () => clearInterval(teacherTimer);
+  }, [teacherIndex]);
+
+  const handleTeacherNext = () => {
+    setIsTeacherTransitioning(true);
+    setTeacherIndex((prev) => prev + 1);
+  };
+
+  const handleTeacherPrev = () => {
+    setIsTeacherTransitioning(true);
+    setTeacherIndex((prev) => prev - 1);
+  };
+
+  const handleTeacherTransitionEnd = () => {
+    if (teacherIndex >= teachersList.length + CLONE_COUNT) {
+      setIsTeacherTransitioning(false);
+      setTeacherIndex(CLONE_COUNT);
+    } else if (teacherIndex <= 0) {
+      setIsTeacherTransitioning(false);
+      setTeacherIndex(teachersList.length);
+    }
+  };
+
   // DATA ACTIVITIES
   const activityImages = [
     "/slider-1.jpg",
@@ -146,27 +202,6 @@ export default function Home() {
     "/slider-2.jpg"
   ];
 
-  // DATA 15 GURU KREATIF
-  const teachersList = [
-    { name: "Renita Pandiangan, S.Pd", role: "Guru Bhs. Ind.", img: "/slider-1.jpg" },
-    { name: "Herman, S.Pd", role: "Guru Conversation", img: "/slider-2.jpg" },
-    { name: "Kumar, S.Pd", role: "Guru Conversation", img: "/slider-3.jpg" },
-    { name: "Tiurma Febryanti, S.Pd", role: "Guru IPA Fisika", img: "/slider-1.jpg" },
-    { name: "Ir. Budhy Prasetyo", role: "Guru Informatika", img: "/slider-2.jpg" },
-    { name: "Asna Rumondang S., S.Pd.", role: "Guru", img: "/slider-3.jpg" },
-    { name: "Lourens Syahartian, S.Pd", role: "Guru Bhs. Inggris", img: "/slider-1.jpg" },
-    { name: "Ernast Simanjuntak, S.Pd", role: "Guru Sosiologi", img: "/slider-2.jpg" },
-    { name: "Sarlen Naibaho, S.Pd., M.Pd.", role: "Guru IPS", img: "/slider-3.jpg" },
-    { name: "Endang Januar S., S.Kom", role: "Bendahara BOS", img: "/slider-1.jpg" },
-    { name: "Celli Sihombing, S.Pd", role: "Guru IPA Kimia", img: "/slider-2.jpg" },
-    { name: "Mawar Indah Sinurat, S.Pd", role: "Guru IPA Biologi", img: "/slider-3.jpg" },
-    { name: "Drs. Andi Mulyono", role: "Guru Matematika", img: "/slider-1.jpg" },
-    { name: "Rini Wulandari, S.Pd", role: "Guru Sejarah", img: "/slider-2.jpg" },
-    { name: "Kevin Pratama, S.Or", role: "Guru Penjaskes", img: "/slider-3.jpg" }
-  ];
-
-  const extendedTeachers = [...teachersList, ...teachersList.slice(0, 6)];
-
   // EFEK SLIDER ACTIVITIES
   useEffect(() => {
     const activityTimer = setInterval(() => {
@@ -174,22 +209,6 @@ export default function Home() {
     }, 4000);
     return () => clearInterval(activityTimer);
   }, [activityImages.length]);
-
-  // EFEK SLIDER 15 GURU
-  useEffect(() => {
-    const teacherTimer = setInterval(() => {
-      setIsTeacherTransitioning(true);
-      setTeacherIndex((prev) => prev + 1);
-    }, 3500);
-    return () => clearInterval(teacherTimer);
-  }, []);
-
-  const handleTeacherTransitionEnd = () => {
-    if (teacherIndex >= teachersList.length) {
-      setIsTeacherTransitioning(false);
-      setTeacherIndex(0);
-    }
-  };
 
   // DATA LATEST NEWS
   const latestNews = [
@@ -232,7 +251,7 @@ export default function Home() {
     <main className="min-h-screen bg-[#F3EFE4] text-slate-900 font-sans pb-0 flex flex-col overflow-x-hidden">
       
       {/* ========================================================================= */}
-      {/* 1. SLIDER UTAMA (DURASI LUNCURAN LEBIH PELAN: 2800ms)                      */}
+      {/* 1. SLIDER UTAMA (LUNCURAN SANGAT PERLAHAN & HALUS: 2800ms)                 */}
       {/* ========================================================================= */}
       <section className="relative w-full max-w-7xl mx-auto mt-4 px-4 mb-10 shrink-0">
         <div className="relative w-full h-[280px] sm:h-[400px] md:h-[490px] lg:h-[540px] overflow-hidden rounded-2xl shadow-xl bg-slate-900 group">
@@ -453,7 +472,7 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. WORDS OF WISDOM (DURASI LUNCURAN LEBIH PELAN: 2800ms)                  */}
+      {/* 4. WORDS OF WISDOM (TRANSISI LUNCURAN PERLAHAN: 2800ms)                  */}
       {/* ========================================================================= */}
       <section className="w-full bg-[#D97706] text-white py-14 px-4 shrink-0 overflow-hidden relative">
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center relative px-8 sm:px-12">
@@ -515,11 +534,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================= */}
-      {/* 5. GURU KREATIF SLIDER (Krem Gelap)       */}
-      {/* ========================================= */}
-      <section className="w-full bg-[#DCC690] py-10 px-4 overflow-hidden">
-        <div className="max-w-7xl mx-auto">
+      {/* ========================================================================= */}
+      {/* 5. GURU KREATIF SLIDER (INFINITE LOOP SEARAH + TOMBOL MANUAL < & >)       */}
+      {/* ========================================================================= */}
+      <section className="w-full bg-[#DCC690] py-10 px-4 overflow-hidden relative">
+        <div className="max-w-7xl mx-auto relative px-2 sm:px-6">
           <h2 className="font-bold text-sm sm:text-base mb-6 flex items-center gap-2 text-slate-800 uppercase">
             <span className="bg-slate-800 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">👨‍🏫</span>
             CREATIVE - INNOVATIVE TEACHERS
@@ -530,10 +549,14 @@ export default function Home() {
             @media (min-width: 1024px) { :root { --visible-teachers: 6; } }
             .teacher-slide { flex: 0 0 calc(100% / var(--visible-teachers)); max-width: calc(100% / var(--visible-teachers)); }
           `}} />
-          <div className="w-full overflow-hidden">
+          
+          <div className="w-full overflow-hidden relative">
             <div 
-              className={`flex ${isTeacherTransitioning ? 'transition-transform duration-700 ease-in-out' : ''}`}
-              style={{ transform: `translateX(calc(-${teacherIndex} * (100% / var(--visible-teachers))))` }}
+              className="flex"
+              style={{ 
+                transform: `translateX(calc(-${teacherIndex} * (100% / var(--visible-teachers))))`,
+                transition: isTeacherTransitioning ? "transform 2400ms cubic-bezier(0.16, 1, 0.3, 1)" : "none"
+              }}
               onTransitionEnd={handleTeacherTransitionEnd}
             >
               {extendedTeachers.map((guru, index) => (
@@ -549,6 +572,24 @@ export default function Home() {
                 </div>
               ))}
             </div>
+
+            {/* TOMBOL MANUAL PREV GURU ( < ) */}
+            <button 
+              onClick={handleTeacherPrev} 
+              className="absolute left-1 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/75 text-white w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full transition-all z-20 cursor-pointer shadow-md"
+              aria-label="Previous Teacher"
+            >
+              &#10094;
+            </button>
+
+            {/* TOMBOL MANUAL NEXT GURU ( > ) */}
+            <button 
+              onClick={handleTeacherNext} 
+              className="absolute right-1 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/75 text-white w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full transition-all z-20 cursor-pointer shadow-md"
+              aria-label="Next Teacher"
+            >
+              &#10095;
+            </button>
           </div>
         </div>
       </section>
