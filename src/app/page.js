@@ -232,7 +232,7 @@ export default function Home() {
     <main className="min-h-screen bg-[#F3EFE4] text-slate-900 font-sans pb-0 flex flex-col overflow-x-hidden">
       
       {/* ========================================================================= */}
-      {/* 1. SLIDER UTAMA (TRANSISI LUNCURAN SANGAT PERLAHAN & ELEGAN: 1800ms)       */}
+      {/* 1. SLIDER UTAMA (DURASI LUNCURAN LEBIH PELAN: 2800ms)                      */}
       {/* ========================================================================= */}
       <section className="relative w-full max-w-7xl mx-auto mt-4 px-4 mb-10 shrink-0">
         <div className="relative w-full h-[280px] sm:h-[400px] md:h-[490px] lg:h-[540px] overflow-hidden rounded-2xl shadow-xl bg-slate-900 group">
@@ -240,7 +240,7 @@ export default function Home() {
             className="flex w-full h-full"
             style={{ 
               transform: `translateX(-${currentIndex * 100}%)`,
-              transition: isTransitioning ? "transform 1800ms cubic-bezier(0.25, 1, 0.5, 1)" : "none"
+              transition: isTransitioning ? "transform 2800ms cubic-bezier(0.16, 1, 0.3, 1)" : "none"
             }}
             onTransitionEnd={handleTransitionEnd}
           >
@@ -453,7 +453,7 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. WORDS OF WISDOM (TRANSISI LUNCURAN LEBIH PERLAHAN: 1800ms)             */}
+      {/* 4. WORDS OF WISDOM (DURASI LUNCURAN LEBIH PELAN: 2800ms)                  */}
       {/* ========================================================================= */}
       <section className="w-full bg-[#D97706] text-white py-14 px-4 shrink-0 overflow-hidden relative">
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center relative px-8 sm:px-12">
@@ -464,7 +464,7 @@ export default function Home() {
               className="flex w-full"
               style={{ 
                 transform: `translateX(-${wisdomIndex * 100}%)`,
-                transition: isWisdomTransitioning ? "transform 1800ms cubic-bezier(0.25, 1, 0.5, 1)" : "none"
+                transition: isWisdomTransitioning ? "transform 2800ms cubic-bezier(0.16, 1, 0.3, 1)" : "none"
               }}
               onTransitionEnd={handleWisdomTransitionEnd}
             >
@@ -566,7 +566,7 @@ export default function Home() {
             <p className="text-[11px] text-slate-500 uppercase font-semibold mb-1">TERBIT : Tuesday, 11 July 2017</p>
             <p className="font-bold text-red-900 text-sm mb-3 leading-tight">Pengumuman Daftar Siswa Baru Tahun 2017/2018</p>
             <div className="bg-[#DCE1C6] p-4 rounded-lg text-xs text-slate-700 text-justify mb-4 shadow-sm border border-[#C5CCAA]">
-              Quia dolori non voluptas contraria est, sed doloris privatio. Omnia contraria, quos变 insanos esse vultis. Quid Zeno? An vero displicuit ea, quae tributa est animi virtutibus tanta praestantia? Primum cur ista res digna odio est, nisi quod est turpis?..
+              Quia dolori non voluptas contraria est, sed doloris privatio. Omnia contraria, quos etiam insanos esse vultis. Quid Zeno? An vero displicuit ea, quae tributa est animi virtutibus tanta praestantia? Primum cur ista res digna odio est, nisi quod est turpis?..
             </div>
             <Link href="/announcements" className="bg-red-900 hover:bg-red-800 text-white text-xs font-bold px-4 py-2 rounded shadow-sm inline-block">View All</Link>
           </div>
