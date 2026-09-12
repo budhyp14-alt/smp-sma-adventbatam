@@ -81,7 +81,7 @@ export default function Home() {
   const [activityIndex, setActivityIndex] = useState(0);
   const [isTeacherTransitioning, setIsTeacherTransitioning] = useState(true);
 
-  // 1. AUTO PLAY SLIDER UTAMA (TENANG & HALUS)
+  // 1. AUTO PLAY SLIDER UTAMA (JEDA TETAP 6 DETIK)
   useEffect(() => {
     const timer = setInterval(() => {
       handleNext();
@@ -109,7 +109,7 @@ export default function Home() {
     }
   };
 
-  // 2. AUTO PLAY WORDS OF WISDOM (TENANG & HALUS)
+  // 2. AUTO PLAY WORDS OF WISDOM (JEDA TETAP 6 DETIK)
   useEffect(() => {
     const wisdomTimer = setInterval(() => {
       handleWisdomNext();
@@ -232,15 +232,16 @@ export default function Home() {
     <main className="min-h-screen bg-[#F3EFE4] text-slate-900 font-sans pb-0 flex flex-col overflow-x-hidden">
       
       {/* ========================================================================= */}
-      {/* 1. SLIDER UTAMA (TRANSISI LEBIH PERLAHAN & HALUS)                          */}
+      {/* 1. SLIDER UTAMA (TRANSISI LUNCURAN SANGAT PERLAHAN & ELEGAN: 1800ms)       */}
       {/* ========================================================================= */}
       <section className="relative w-full max-w-7xl mx-auto mt-4 px-4 mb-10 shrink-0">
         <div className="relative w-full h-[280px] sm:h-[400px] md:h-[490px] lg:h-[540px] overflow-hidden rounded-2xl shadow-xl bg-slate-900 group">
           <div 
-            className={`flex w-full h-full ${
-              isTransitioning ? "transition-transform duration-1000 ease-out" : ""
-            }`}
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            className="flex w-full h-full"
+            style={{ 
+              transform: `translateX(-${currentIndex * 100}%)`,
+              transition: isTransitioning ? "transform 1800ms cubic-bezier(0.25, 1, 0.5, 1)" : "none"
+            }}
             onTransitionEnd={handleTransitionEnd}
           >
             {extendedSlides.map((slide, index) => (
@@ -291,7 +292,7 @@ export default function Home() {
                   setIsTransitioning(true);
                   setCurrentIndex(index + 1);
                 }} 
-                className={`h-2.5 rounded-full transition-all duration-500 cursor-pointer ${
+                className={`h-2.5 rounded-full transition-all duration-700 cursor-pointer ${
                   index === activeDotIndex ? "bg-amber-400 w-8" : "bg-white/60 w-2.5 hover:bg-white"
                 }`} 
                 aria-label={`Go to slide ${index + 1}`}
@@ -452,19 +453,19 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. WORDS OF WISDOM: SLIDER DENGAN TOMBOL MANUAL PREV & NEXT               */}
+      {/* 4. WORDS OF WISDOM (TRANSISI LUNCURAN LEBIH PERLAHAN: 1800ms)             */}
       {/* ========================================================================= */}
       <section className="w-full bg-[#D97706] text-white py-14 px-4 shrink-0 overflow-hidden relative">
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center relative px-8 sm:px-12">
           <h2 className="font-bold text-xl sm:text-2xl mb-8">Words of Wisdom</h2>
           
-          {/* TRACK QUOTES (TRANSISI HALUS & PERLAHAN) */}
           <div className="relative w-full overflow-hidden min-h-[160px] sm:min-h-[120px] flex items-center">
             <div 
-              className={`flex w-full ${
-                isWisdomTransitioning ? "transition-transform duration-1000 ease-out" : ""
-              }`}
-              style={{ transform: `translateX(-${wisdomIndex * 100}%)` }}
+              className="flex w-full"
+              style={{ 
+                transform: `translateX(-${wisdomIndex * 100}%)`,
+                transition: isWisdomTransitioning ? "transform 1800ms cubic-bezier(0.25, 1, 0.5, 1)" : "none"
+              }}
               onTransitionEnd={handleWisdomTransitionEnd}
             >
               {extendedWisdom.map((item, index) => (
@@ -480,7 +481,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* TOMBOL MANUAL PREV ( < ) */}
           <button 
             onClick={handleWisdomPrev} 
             className="absolute left-0 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/50 text-white w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center rounded-full transition-all cursor-pointer shadow-md"
@@ -489,7 +489,6 @@ export default function Home() {
             &#10094;
           </button>
 
-          {/* TOMBOL MANUAL NEXT ( > ) */}
           <button 
             onClick={handleWisdomNext} 
             className="absolute right-0 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/50 text-white w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center rounded-full transition-all cursor-pointer shadow-md"
@@ -498,7 +497,6 @@ export default function Home() {
             &#10095;
           </button>
 
-          {/* INDIKATOR DOT BULAT */}
           <div className="flex space-x-2.5 mt-8">
             {baseWisdomQuotes.map((_, index) => (
               <button 
@@ -507,7 +505,7 @@ export default function Home() {
                   setIsWisdomTransitioning(true);
                   setWisdomIndex(index + 1);
                 }} 
-                className={`rounded-full transition-all duration-500 cursor-pointer ${
+                className={`rounded-full transition-all duration-700 cursor-pointer ${
                   index === activeWisdomDotIndex ? "w-8 h-2.5 bg-white" : "w-2.5 h-2.5 bg-white/40 hover:bg-white/70"
                 }`} 
                 aria-label={`Go to wisdom ${index + 1}`}
@@ -568,7 +566,7 @@ export default function Home() {
             <p className="text-[11px] text-slate-500 uppercase font-semibold mb-1">TERBIT : Tuesday, 11 July 2017</p>
             <p className="font-bold text-red-900 text-sm mb-3 leading-tight">Pengumuman Daftar Siswa Baru Tahun 2017/2018</p>
             <div className="bg-[#DCE1C6] p-4 rounded-lg text-xs text-slate-700 text-justify mb-4 shadow-sm border border-[#C5CCAA]">
-              Quia dolori non voluptas contraria est, sed doloris privatio. Omnia contraria, quos etiam insanos esse vultis. Quid Zeno? An vero displicuit ea, quae tributa est animi virtutibus tanta praestantia? Primum cur ista res digna odio est, nisi quod est turpis?..
+              Quia dolori non voluptas contraria est, sed doloris privatio. Omnia contraria, quos变 insanos esse vultis. Quid Zeno? An vero displicuit ea, quae tributa est animi virtutibus tanta praestantia? Primum cur ista res digna odio est, nisi quod est turpis?..
             </div>
             <Link href="/announcements" className="bg-red-900 hover:bg-red-800 text-white text-xs font-bold px-4 py-2 rounded shadow-sm inline-block">View All</Link>
           </div>
