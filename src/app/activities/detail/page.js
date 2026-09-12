@@ -1,13 +1,14 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
-export default function ActivityDetailPage() {
+function ActivityDetailContent() {
   const searchParams = useSearchParams();
   const currentId = searchParams.get("id") || "class-meeting-porseni";
 
-  // DATA KEGIATAN SEKOLAH (URUTAN TERKINI)
+  // DATA KEGIATAN SEKOLAH LENGKAP
   const allActivities = [
     {
       id: "class-meeting-porseni",
@@ -46,7 +47,7 @@ export default function ActivityDetailPage() {
       img: "/slider-3.jpg",
       paragraphs: [
         "Menjawab tantangan revolusi industri berbasis data dan otomatisasi, SMP-SMA Advent Batam secara berkala menyelenggarakan sesi praktikum terpadu di laboratorium komputer dan laboratorium sains modern. Kegiatan ini dirancang untuk menghubungkan konsep teori ilmiah di kelas dengan aplikasi pemecahan masalah praktis.",
-        "Siswa diperkenalkan dengan metode pemodelan komputasi, simulasi eksperimen fisika dan kimia berbasis perangkat lunak, serta logika pemrograman algoritmik dasar. Pembelajaran kontekstual ini membiasakan siswa berpikir terstruktur (*computational thinking*), merumuskan hipotesis yang terukur, dan menguji validitas data secara ilmiah.",
+        "Siswa diperkenalkan dengan metode pemodelan komputasi, simulasi eksperimen fisika dan kimia berbasis perangkat lunak, serta logika pemrograman algoritmik dasar. Pembelajaran kontekstual ini membiasakan siswa berpikir terstruktur, merumuskan hipotesis yang terukur, dan menguji validitas data secara ilmiah.",
         "Selain keterampilan teknis, ditekankan pula etika integritas akademik dalam pemanfaatan teknologi digital. Para siswa dilatih untuk tidak sekadar mengandalkan hasil otomatisasi kecerdasan buatan, melainkan memiliki daya analisis kritis untuk memeriksa keabsahan sumber referensi dan memahami proses logika di baliknya.",
         "Pengalaman langsung di laboratorium diharapkan menumbuhkan rasa percaya diri generasi muda sekolah kita untuk tidak hanya menjadi konsumen teknologi, tetapi mampu berkembang menjadi kreator inovasi yang bermanfaat bagi masyarakat luas."
       ]
@@ -61,7 +62,7 @@ export default function ActivityDetailPage() {
       paragraphs: [
         "Kebaktian padang di alam terbuka menjadi momen yang senantiasa dinantikan oleh seluruh guru, staf, dan siswa SMP-SMA Advent Batam. Menjauh sejenak dari hiruk-pikuk suasana kelas, seluruh warga sekolah berkumpul dalam suasana teduh untuk beribadah dan memuji kebesaran Tuhan Sang Pencipta.",
         "Rangkaian ibadah diisi dengan puji-pujian yang dibawakan oleh paduan suara siswa, kesaksian pengalaman hidup yang menginspirasi, serta pembacaan firman Tuhan yang kontekstual dengan pergumulan hidup remaja masa kini. Suasana alam yang asri semakin memperdalam perenungan batin tentang arti kasih, kerendahan hati, dan pengampunan.",
-        "Seusai ibadah formal, kegiatan dilanjutkan dengan sesi makan siang bersama secara kekeluargaan dan dinamika kelompok persahabatan. Sekat antartingkat kelas melebur dalam kehangatan dialog, canda tawa sehat, dan permainan kolaboratif yang menumbuhkan rasa saling memiliki (*sense of community*).",
+        "Seusai ibadah formal, kegiatan dilanjutkan dengan sesi makan siang bersama secara kekeluargaan dan dinamika kelompok persahabatan. Sekat antartingkat kelas melebur dalam kehangatan dialog, canda tawa sehat, dan permainan kolaboratif yang menumbuhkan rasa saling memiliki.",
         "Pendidikan spiritual semacam ini adalah jantung dari seluruh proses pendidikan di Advent Batam. Kami meyakini bahwa kecerdasan akal yang tidak diimbangi dengan hati yang takut akan Tuhan hanya akan menghasilkan kesombongan intelektual, sedangkan generasi yang berlandaskan iman akan membawa terang dan damai bagi lingkungannya."
       ]
     },
@@ -73,7 +74,7 @@ export default function ActivityDetailPage() {
       author: "Koordinator Kesenian",
       img: "/slider-2.jpg",
       paragraphs: [
-        "Gelar Seni dan Musik tahunan SMP-SMA Advent Batam sukses memukau ratusan penonton yang memadati aula sekolah. Acara ini menjadi panggung apresiasi bagi seluruh karya kreatif siswa, mulai dari seni lukis, kriya tangan daur ulang, tari tradisional, hingga penampilan paduan suara (*choir*) sekolah yang sarat prestasi.",
+        "Gelar Seni dan Musik tahunan SMP-SMA Advent Batam sukses memukau ratusan penonton yang memadati aula sekolah. Acara ini menjadi panggung apresiasi bagi seluruh karya kreatif siswa, mulai dari seni lukis, kriya tangan daur ulang, tari tradisional, hingga penampilan paduan suara sekolah yang sarat prestasi.",
         "Harmonisasi vokal dan penguasaan instrumen musik yang ditampilkan merupakan buah dari latihan disiplin dan kesabaran siswa selama berbulan-bulan di bawah bimbingan guru seni. Melalui musik dan seni, para siswa belajar bekerja sama secara selaras, di mana kontribusi tiap nada dan warna menentukan kesempurnaan penampilan bersama.",
         "Pameran instalasi seni rupa di selasar gedung sekolah juga memamerkan beragam kreasi orisinal bertema pelestarian alam dan kearifan lokal Melayu Kepulauan Riau. Hal ini memperlihatkan kepekaan estetika dan kecintaan siswa terhadap kekayaan budaya bangsa.",
         "Kegiatan ini membuktikan bahwa pendidikan holistik di SMP-SMA Advent Batam menaruh perhatian yang seimbang pada pertumbuhan logika sains, kesehatan jasmani, serta kehalusan budi pekerti melalui apresiasi seni dan budaya."
@@ -81,14 +82,14 @@ export default function ActivityDetailPage() {
     }
   ];
 
-  // 1. CARI BERITA ACTIVITIES YANG SEDANG AKTIF DIBACA
+  // 1. Berita kegiatan yang sedang aktif dibaca utuh
   const currentActivity =
     allActivities.find((item) => item.id === currentId) || allActivities[0];
 
-  // 2. AMBIL 4 BERITA TERKINI (THE 4 LATEST ACTIVITIES NEWS)
+  // 2. Empat berita kegiatan terkini (The 4 Latest Activities)
   const the4Latest = allActivities.slice(0, 4);
 
-  // 3. SARING 3 THUMBNAIL LAINNYA (Eksklusif: selain berita yang sedang tampil utuh saat ini)
+  // 3. Tiga thumbnail kegiatan terkini lainnya
   const other3Thumbnails = the4Latest
     .filter((item) => item.id !== currentActivity.id)
     .slice(0, 3);
@@ -111,7 +112,7 @@ export default function ActivityDetailPage() {
       <section className="w-full flex-1 pb-16 px-4 sm:px-8 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* KOLOM KIRI (8 DARI 12): BERITA ACTIVITIES UTUH */}
+          {/* KOLOM KIRI (8 KOLOM): BERITA UTUH */}
           <article className="lg:col-span-8 bg-white p-6 sm:p-10 rounded-2xl shadow-sm border-t-4 border-[#047857]">
             <span className="bg-[#047857] text-white text-[11px] font-bold px-3 py-1 rounded uppercase tracking-wider">
               {currentActivity.tag}
@@ -126,7 +127,7 @@ export default function ActivityDetailPage() {
               <span>✍️ Oleh: {currentActivity.author}</span>
             </div>
 
-            {/* FOTO KEGIATAN UTUH */}
+            {/* FOTO UTAMA */}
             <div className="w-full aspect-[16/9] bg-slate-200 rounded-xl overflow-hidden mb-6 shadow-sm">
               <img
                 src={currentActivity.img}
@@ -135,14 +136,13 @@ export default function ActivityDetailPage() {
               />
             </div>
 
-            {/* PARAGRAF BERITA UTUH */}
+            {/* ISI BERITA UTUH */}
             <div className="space-y-4 text-sm sm:text-base text-slate-700 leading-relaxed text-justify">
               {currentActivity.paragraphs.map((p, idx) => (
                 <p key={idx}>{p}</p>
               ))}
             </div>
 
-            {/* TOMBOL KEMBALI */}
             <div className="mt-8 pt-6 border-t border-slate-200 flex justify-between items-center flex-wrap gap-4">
               <Link
                 href="/"
@@ -153,7 +153,7 @@ export default function ActivityDetailPage() {
             </div>
           </article>
 
-          {/* KOLOM KANAN (4 DARI 12): 3 THUMBNAIL BERITA ACTIVITIES TERKINI LAINNYA */}
+          {/* KOLOM KANAN (4 KOLOM): 3 THUMBNAIL BERITA ACTIVITIES TERKINI */}
           <aside className="lg:col-span-4 space-y-6">
             <div className="bg-[#EFEAD8] p-6 rounded-2xl shadow-sm border border-slate-200">
               
@@ -173,7 +173,6 @@ export default function ActivityDetailPage() {
                 {other3Thumbnails.map((item, idx) => (
                   <div key={idx} className="bg-white p-3.5 rounded-xl shadow-xs border border-slate-200 hover:border-emerald-600 transition-colors group">
                     
-                    {/* FOTO THUMBNAIL (BISA DIKLIK) */}
                     <Link
                       href={`/activities/detail?id=${item.id}`}
                       className="w-full aspect-video rounded-lg overflow-hidden block bg-slate-200 mb-2.5 cursor-pointer relative"
@@ -188,7 +187,6 @@ export default function ActivityDetailPage() {
                       </span>
                     </Link>
 
-                    {/* TANGGAL & JUDUL THUMBNAIL (BISA DIKLIK) */}
                     <span className="text-[10px] text-slate-500 font-semibold block mb-1">
                       📅 {item.date}
                     </span>
@@ -211,7 +209,6 @@ export default function ActivityDetailPage() {
 
             </div>
 
-            {/* KOTAK INFORMASI TAMBAHAN */}
             <div className="bg-[#EFEAD8] p-5 rounded-2xl shadow-sm border border-slate-200 text-xs text-slate-700 space-y-2">
               <h4 className="font-bold text-slate-900">SMP - SMA ADVENT BATAM</h4>
               <p className="text-[11px] text-slate-600">
@@ -229,5 +226,13 @@ export default function ActivityDetailPage() {
         Developed by Ir. Budhy Prasetyo
       </footer>
     </main>
+  );
+}
+
+export default function ActivityDetailPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#F3EFE4] p-10 text-center font-bold text-slate-700">Memuat Kegiatan...</div>}>
+      <ActivityDetailContent />
+    </Suspense>
   );
 }
