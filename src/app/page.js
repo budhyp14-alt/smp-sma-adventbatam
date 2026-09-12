@@ -5,7 +5,7 @@ import Link from "next/link";
 import { announcementsData, agendaData } from "../data/schoolUpdates";
 
 export default function Home() {
-  // 1. DATA 4 FOTO HERO SLIDER
+  // 1. DATA HERO SLIDER
   const baseSlides = [
     {
       src: "/slider-1.jpg",
@@ -104,7 +104,7 @@ export default function Home() {
   const [teacherIndex, setTeacherIndex] = useState(CLONE_COUNT);
   const [isTeacherTransitioning, setIsTeacherTransitioning] = useState(true);
 
-  // 4. DATA ACTIVITIES (TERHUBUNG KE DETAIL KEGIATAN)
+  // 4. DATA ACTIVITIES
   const baseActivities = [
     {
       id: "class-meeting-porseni",
@@ -751,7 +751,7 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 7. KEGIATAN (ACTIVITIES: FOTO & JUDUL DAPAT DIKLIK MENUJU DETAIL UTUH)     */}
+      {/* 7. KEGIATAN (ACTIVITIES: HITBOX ABSOLUTE INSET-0, 100% BISA DIKLIK)        */}
       {/* ========================================================================= */}
       <section className="w-full bg-[#DCC690] py-10 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
@@ -762,7 +762,9 @@ export default function Home() {
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">★</span> 
               Activities
             </h3>
-            <div className="w-full flex-1 rounded-xl overflow-hidden shadow-md relative bg-slate-900 min-h-[280px] group">
+            
+            {/* CONTAINER BINGKAI SLIDER DENGAN TINGGI PATEN */}
+            <div className="w-full rounded-xl overflow-hidden shadow-md relative bg-slate-900 h-[280px] sm:h-[300px] group">
               
               {/* TRACK ACTIVITIES */}
               <div 
@@ -774,18 +776,26 @@ export default function Home() {
                 onTransitionEnd={handleActivityTransitionEnd}
               >
                 {extendedActivities.map((act, idx) => (
-                  <div key={idx} className="w-full h-full shrink-0 relative min-h-[280px]">
-                    {/* Tautan Pembungkus Seluruh Foto Kegiatan */}
-                    <Link href={`/activities/detail?id=${act.id}`} className="block w-full h-full cursor-pointer">
-                      <img src={act.src} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt={act.title} />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent"></div>
+                  <div key={idx} className="w-full h-full shrink-0 relative overflow-hidden">
+                    
+                    {/* LINK MENGISI 100% AREA DARI UJUNG KE UJUNG */}
+                    <Link 
+                      href={`/activities/detail?id=${act.id}`} 
+                      className="absolute inset-0 z-10 block cursor-pointer"
+                    >
+                      <img 
+                        src={act.src} 
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                        alt={act.title} 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none"></div>
                       
                       {/* LABEL & JUDUL KEGIATAN */}
-                      <div className="absolute bottom-10 left-4 right-4 text-white text-left z-10">
+                      <div className="absolute bottom-10 left-4 right-4 text-white text-left pointer-events-none">
                         <span className="bg-[#047857] text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wider shadow inline-block mb-1.5">
                           {act.tag}
                         </span>
-                        <h4 className="text-sm font-bold text-white leading-tight mb-1 drop-shadow line-clamp-2 hover:text-amber-300 transition-colors">
+                        <h4 className="text-sm font-bold text-white leading-tight mb-1 drop-shadow line-clamp-2">
                           {act.title}
                         </h4>
                         <p className="text-[11px] text-slate-200 line-clamp-2 leading-tight">
@@ -793,11 +803,12 @@ export default function Home() {
                         </p>
                       </div>
                     </Link>
+
                   </div>
                 ))}
               </div>
 
-              {/* TOMBOL MANUAL PREV ACTIVITIES ( < ) */}
+              {/* TOMBOL PREV (Z-20 AGAR TIDAK TERTUTUP LINK) */}
               <button 
                 onClick={handleActivityPrev}
                 className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/75 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition-all z-20 cursor-pointer shadow"
@@ -806,7 +817,7 @@ export default function Home() {
                 &#10094;
               </button>
 
-              {/* TOMBOL MANUAL NEXT ACTIVITIES ( > ) */}
+              {/* TOMBOL NEXT (Z-20 AGAR TIDAK TERTUTUP LINK) */}
               <button 
                 onClick={handleActivityNext}
                 className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/75 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition-all z-20 cursor-pointer shadow"
