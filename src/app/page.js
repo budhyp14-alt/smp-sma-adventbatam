@@ -4,11 +4,32 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function Home() {
-  // DATA SLIDER UTAMA
-  const images = [
-    "/slider-1.jpg",
-    "/slider-2.jpg",
-    "/slider-3.jpg"
+  // DATA SLIDER UTAMA DENGAN JUDUL & DESKRIPSI (BERGESER HORIZONTAL)
+  const slides = [
+    {
+      src: "/slider-1.jpg",
+      tag: "CAMPUS ENVIRONMENT",
+      title: "Gedung Pembelajaran Modern & Asri SMP-SMA Advent Batam",
+      desc: "Lingkungan sekolah yang representatif, aman, dan kondusif untuk menunjang tumbuh kembang karakter serta akademik peserta didik."
+    },
+    {
+      src: "/slider-2.jpg",
+      tag: "DIGITAL LEARNING & INNOVATION",
+      title: "Pusat Pembelajaran Berbasis Teknologi & Literasi Digital",
+      desc: "Mempersiapkan generasi masa depan yang cakap teknologi melalui fasilitas komputasi terintegrasi dan kurikulum adaptif."
+    },
+    {
+      src: "/slider-3.jpg",
+      tag: "SPIRITUAL & CHARACTER BUILDING",
+      title: "Pendidikan Holistik Berlandaskan Nilai-Nilai Kristiani",
+      desc: "Membina hati dan budi pekerti luhur melalui persekutuan doa, kebaktian berkala, dan pembiasaan kasih dalam keseharian."
+    },
+    {
+      src: "/slider-1.jpg",
+      tag: "STUDENT TALENTS & CO-CURRICULAR",
+      title: "Eksplorasi Bakat, Prestasi Atletik, dan Jiwa Kepemimpinan",
+      desc: "Mewadahi antusiasme dan daya juang siswa melalui program ekstrakurikuler dinamis serta pembinaan prestasi berstandar nasional."
+    }
   ];
 
   // DATA ACTIVITIES (5 Foto Kegiatan)
@@ -72,13 +93,13 @@ export default function Home() {
   const [activityIndex, setActivityIndex] = useState(0);
   const [isTeacherTransitioning, setIsTeacherTransitioning] = useState(true);
 
-  // EFEK SLIDER UTAMA
+  // EFEK SLIDER UTAMA (AUTO SLIDE GESER KE KIRI TIAP 5 DETIK)
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 4000);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+    }, 5000);
     return () => clearInterval(timer);
-  }, [images.length]);
+  }, [slides.length]);
 
   // EFEK SLIDER WORDS OF WISDOM
   useEffect(() => {
@@ -113,14 +134,14 @@ export default function Home() {
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1));
   };
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
   };
 
-  // DATA LATEST NEWS (Lengkap dengan ID/slug untuk routing detail)
+  // DATA LATEST NEWS
   const latestNews = [
     { 
       id: "ktt-g20-bali", 
@@ -157,21 +178,72 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#F3EFE4] text-slate-900 font-sans pb-0 flex flex-col overflow-x-hidden">
       
-      {/* ========================================= */}
-      {/* 1. BAGIAN SLIDER UTAMA                    */}
-      {/* ========================================= */}
+      {/* ========================================================= */}
+      {/* 1. SLIDER UTAMA: GESER HORIZONTAL KANAN-KIRI + JUDUL FOTO */}
+      {/* ========================================================= */}
       <section className="relative w-full max-w-7xl mx-auto mt-4 px-4 mb-10 shrink-0">
-        <div className="relative w-full h-[240px] sm:h-[380px] md:h-[480px] lg:h-[540px] overflow-hidden rounded-2xl shadow-lg bg-slate-200">
-          {images.map((src, index) => (
-            <div key={src} className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentIndex ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-              <img src={src} alt={`Foto Kegiatan ${index + 1}`} className="w-full h-full object-cover" />
-            </div>
-          ))}
-          <button onClick={prevSlide} className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white w-10 h-10 flex items-center justify-center rounded-full transition-all">&#10094;</button>
-          <button onClick={nextSlide} className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white w-10 h-10 flex items-center justify-center rounded-full transition-all">&#10095;</button>
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-            {images.map((_, index) => (
-              <button key={index} onClick={() => setCurrentIndex(index)} className={`h-2.5 rounded-full transition-all ${index === currentIndex ? "bg-amber-400 w-8" : "bg-white/70 w-2.5"}`} />
+        <div className="relative w-full h-[280px] sm:h-[400px] md:h-[490px] lg:h-[540px] overflow-hidden rounded-2xl shadow-xl bg-slate-900 group">
+          
+          {/* TRACK SLIDE (MELUNCUR SECARA HORIZONTAL) */}
+          <div 
+            className="flex w-full h-full transition-transform duration-700 ease-in-out"
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {slides.map((slide, index) => (
+              <div key={index} className="w-full h-full shrink-0 relative">
+                {/* Foto Latar Belakang */}
+                <img 
+                  src={slide.src} 
+                  alt={slide.title} 
+                  className="w-full h-full object-cover" 
+                />
+                
+                {/* Gradient Lembut untuk Keterbacaan Judul */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent"></div>
+                
+                {/* KOTAK JUDUL & DESKRIPSI DI ATAS FOTO */}
+                <div className="absolute bottom-10 sm:bottom-12 left-4 sm:left-10 right-4 sm:right-16 text-white text-left z-10">
+                  <span className="bg-[#D97706] text-white text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md inline-block mb-2">
+                    {slide.tag}
+                  </span>
+                  <h2 className="text-lg sm:text-2xl md:text-3xl font-black text-white drop-shadow-md leading-tight mb-1.5 max-w-3xl">
+                    {slide.title}
+                  </h2>
+                  <p className="text-xs sm:text-sm text-slate-200 line-clamp-2 max-w-2xl drop-shadow hidden sm:block">
+                    {slide.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* TOMBOL NAVIGASI PREV & NEXT */}
+          <button 
+            onClick={prevSlide} 
+            className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full transition-all z-20 cursor-pointer shadow-lg"
+            aria-label="Previous Slide"
+          >
+            &#10094;
+          </button>
+          <button 
+            onClick={nextSlide} 
+            className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full transition-all z-20 cursor-pointer shadow-lg"
+            aria-label="Next Slide"
+          >
+            &#10095;
+          </button>
+
+          {/* INDIKATOR DOT BULAT DI BAWAH SLIDER */}
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+            {slides.map((_, index) => (
+              <button 
+                key={index} 
+                onClick={() => setCurrentIndex(index)} 
+                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  index === currentIndex ? "bg-amber-400 w-8" : "bg-white/60 w-2.5 hover:bg-white"
+                }`} 
+                aria-label={`Go to slide ${index + 1}`}
+              />
             ))}
           </div>
         </div>
@@ -205,7 +277,6 @@ export default function Home() {
                 <p className="text-slate-600 text-[13px] sm:text-sm leading-relaxed text-justify line-clamp-6">Yayasan Pendidikan Advent Batam terus berkomitmen untuk memberikan standar pendidikan terbaik yang selaras dengan nilai-nilai moral dan spiritual bagi generasi masa depan...</p>
               </Link>
               
-              {/* TOMBOL READ MORE & VIEW MORE YAYASAN */}
               <div className="flex flex-wrap gap-3">
                 <Link href="/editorial-yayasan/detail" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm inline-block transition-colors">
                   Read More
@@ -239,7 +310,6 @@ export default function Home() {
                 <p className="text-slate-600 text-[13px] sm:text-sm leading-relaxed text-justify line-clamp-6">Pengembangan infrastruktur sekolah menjadi fokus utama kami tahun ini, untuk memastikan kegiatan belajar mengajar berjalan optimal dan nyaman bagi seluruh siswa...</p>
               </Link>
               
-              {/* TOMBOL READ MORE & VIEW MORE MANAGER */}
               <div className="flex flex-wrap gap-3">
                 <Link href="/editorial-manajer/detail" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm inline-block transition-colors">
                   Read More
@@ -282,7 +352,6 @@ export default function Home() {
                 <p className="text-slate-600 text-[13px] sm:text-sm leading-relaxed text-justify">Kepala Sekolah SMP & SMA Advent Batam, Bapak Tona Leon F. Situmorang, S.Pd., MA.Ed. menyambut dengan sukacita dan antusiasme tinggi atas selesainya pembuatan website resmi sekolah. Beliau tidak hanya mengucap syukur kepada Tuhan, tetapi juga menaruh harapan besar agar seluruh civitas akademika dapat mendayagunakan platform digital ini secara maksimal...</p>
               </Link>
               
-              {/* TOMBOL READ MORE & VIEW MORE KEPALA SEKOLAH */}
               <div className="flex flex-wrap gap-3">
                 <Link href="/editorial/detail" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2 px-6 rounded shadow-sm text-sm inline-block transition-colors">
                   Read More
@@ -294,7 +363,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* LATEST NEWS - SEKARANG SEMUA FOTO & JUDUL DAPAT DIKLIK MENUJU DETAIL */}
+          {/* LATEST NEWS */}
           <div className="lg:col-span-1 flex flex-col h-full">
             <div className="flex items-center gap-2 mb-3 h-7 shrink-0">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-xs">💬</span>
@@ -303,7 +372,6 @@ export default function Home() {
             <div className="space-y-4 flex-1 flex flex-col justify-between">
               {latestNews.map((news, idx) => (
                 <div key={idx} className="flex gap-4 items-center group">
-                  {/* 1. FOTO THUMBNAIL (BISA DIKLIK) */}
                   <Link 
                     href={`/news/detail?id=${news.id}`} 
                     className="w-20 h-16 sm:w-24 sm:h-20 shrink-0 rounded-xl overflow-hidden shadow-sm bg-slate-200 block cursor-pointer"
@@ -315,7 +383,6 @@ export default function Home() {
                     />
                   </Link>
 
-                  {/* 2. TEKS & JUDUL (BISA DIKLIK) */}
                   <div className="flex flex-col justify-center flex-1">
                     <p className="text-[10px] sm:text-xs text-slate-600 mb-1">{news.date}</p>
                     <Link href={`/news/detail?id=${news.id}`}>
