@@ -43,7 +43,7 @@ export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(true);
 
-  // DATA KATA-KATA BIJAKSANA (WORDS OF WISDOM)
+  // DATA WORDS OF WISDOM
   const baseWisdomQuotes = [
     {
       quote: "Ketika engkau memutuskan untuk mengampuni dengan setulusnya maka engkau meraih kemenangan mendapatkan sifat yang makin mirip sifat Tuhan",
@@ -67,7 +67,6 @@ export default function Home() {
     }
   ];
 
-  // DUAL-CLONING WORDS OF WISDOM
   const extendedWisdom = [
     baseWisdomQuotes[baseWisdomQuotes.length - 1],
     ...baseWisdomQuotes,
@@ -96,7 +95,6 @@ export default function Home() {
     { name: "Kevin Pratama, S.Or", role: "Guru Penjaskes", img: "/slider-3.jpg" }
   ];
 
-  // DUAL-CLONING TEACHERS (Kloning 6 di awal dan 6 di akhir)
   const CLONE_COUNT = 6;
   const extendedTeachers = [
     ...teachersList.slice(-CLONE_COUNT),
@@ -106,11 +104,9 @@ export default function Home() {
 
   const [teacherIndex, setTeacherIndex] = useState(CLONE_COUNT);
   const [isTeacherTransitioning, setIsTeacherTransitioning] = useState(true);
-
-  // STATE LAINNYA
   const [activityIndex, setActivityIndex] = useState(0);
 
-  // 1. AUTO PLAY SLIDER UTAMA (JEDA 6 DETIK, TRANSISI 2800ms)
+  // AUTO PLAY SLIDER UTAMA
   useEffect(() => {
     const timer = setInterval(() => {
       handleNext();
@@ -138,7 +134,7 @@ export default function Home() {
     }
   };
 
-  // 2. AUTO PLAY WORDS OF WISDOM (JEDA 6 DETIK, TRANSISI 2800ms)
+  // AUTO PLAY WORDS OF WISDOM
   useEffect(() => {
     const wisdomTimer = setInterval(() => {
       handleWisdomNext();
@@ -166,7 +162,7 @@ export default function Home() {
     }
   };
 
-  // 3. AUTO PLAY TEACHERS SLIDER (JEDA 5 DETIK, TRANSISI 2400ms)
+  // AUTO PLAY TEACHERS SLIDER
   useEffect(() => {
     const teacherTimer = setInterval(() => {
       handleTeacherNext();
@@ -194,7 +190,7 @@ export default function Home() {
     }
   };
 
-  // DATA ACTIVITIES (5 FOTO)
+  // DATA ACTIVITIES
   const activityImages = [
     "/slider-1.jpg",
     "/slider-2.jpg",
@@ -232,16 +228,32 @@ export default function Home() {
     }
   ];
 
+  // DATA TEACHERS' BLOG (LENGKAP DENGAN ID & JUDUL EDUKATIF)
   const blogGuru = [
-    { date: "Tuesday, 11 July 2017", title: "Seinima Sapientia Proficiscitur Aconti Copassuni", img: "/slider-1.jpg" },
-    { date: "Tuesday, 11 July 2017", title: "Quicquid Enima Sapientia Proficiscitur, Idconti", img: "/slider-2.jpg" },
-    { date: "Tuesday, 11 July 2017", title: "Adeas Enimres Abrpicuro Praecepta Dantur. Quicquid Enim", img: "/slider-3.jpg" }
+    { 
+      id: "pemanfaatan-ai-secara-kritis-dalam-pembelajaran",
+      date: "Tuesday, 08 September 2026", 
+      title: "Pemanfaatan AI secara Kritis dan Bertanggung Jawab dalam Pembelajaran Siswa", 
+      img: "/slider-1.jpg" 
+    },
+    { 
+      id: "membangun-integritas-dan-literasi-sains",
+      date: "Monday, 31 August 2026", 
+      title: "Membangun Integritas Akademik dan Kecintaan pada Eksplorasi Sains", 
+      img: "/slider-2.jpg" 
+    },
+    { 
+      id: "metode-komunikasi-efektif-guru-dan-murid",
+      date: "Friday, 21 August 2026", 
+      title: "Seni Mendengar: Kunci Membina Hubungan Harmonis Guru dan Remaja di Era Digital", 
+      img: "/slider-3.jpg" 
+    }
   ];
 
   const fasilitas = [
-    { title: "Ruang Laboratorium Bahasa", text: "An potest, inquit ille, quicquam esse suavius quam..", img: "/slider-1.jpg" },
-    { title: "Karate, Judo, Silat", text: "An potest, inquit ille, quicquam esse suavius quam..", img: "/slider-2.jpg" },
-    { title: "Masjid At-Taqwa", text: "An potest, inquit ille, quicquam esse suavius quam..", img: "/slider-3.jpg" }
+    { title: "Ruang Laboratorium Bahasa", text: "Fasilitas audio visual interaktif untuk meningkatkan kecakapan percakapan bahasa asing peserta didik.", img: "/slider-1.jpg" },
+    { title: "Sarana Olahraga & Bela Diri", text: "Mendukung kebugaran fisik, sportivitas, dan disiplin siswa melalui berbagai cabang olahraga pilihan.", img: "/slider-2.jpg" },
+    { title: "Aula & Ruang Peribadatan", text: "Tempat persekutuan doa, renungan rohani harian, dan pembinaan karakter spiritual seluruh siswa.", img: "/slider-3.jpg" }
   ];
 
   const activeDotIndex = (currentIndex - 1 + baseSlides.length) % baseSlides.length;
@@ -263,9 +275,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#F3EFE4] text-slate-900 font-sans pb-0 flex flex-col overflow-x-hidden">
       
-      {/* ========================================================================= */}
-      {/* 1. SLIDER UTAMA (LUNCURAN SANGAT PERLAHAN & HALUS: 2800ms)                 */}
-      {/* ========================================================================= */}
+      {/* 1. SLIDER UTAMA */}
       <section className="relative w-full max-w-7xl mx-auto mt-4 px-4 mb-10 shrink-0">
         <div className="relative w-full h-[280px] sm:h-[400px] md:h-[490px] lg:h-[540px] overflow-hidden rounded-2xl shadow-xl bg-slate-900 group">
           <div 
@@ -334,13 +344,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================= */}
-      {/* 2. DUA BLOK EDITORIAL BERSEBELAHAN        */}
-      {/* ========================================= */}
+      {/* 2. DUA BLOK EDITORIAL BERSEBELAHAN */}
       <section className="max-w-7xl mx-auto px-4 mb-8 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
-          {/* EDITORIAL YAYASAN */}
           <div className="flex flex-col sm:flex-row gap-5">
             <Link href="/editorial-yayasan/detail" className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer">
               <img src="/slider-1.jpg" alt="Rima Melati Hutagalung" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -373,7 +380,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* EDITORIAL MANAGER */}
           <div className="flex flex-col sm:flex-row gap-5">
             <Link href="/editorial-manajer/detail" className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer">
               <img src="/slider-2.jpg" alt="Samuel Simatupang" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -409,13 +415,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================= */}
-      {/* 3. EDITORIAL KEPALA SEKOLAH & BERITA      */}
-      {/* ========================================= */}
+      {/* 3. EDITORIAL KEPALA SEKOLAH & LATEST NEWS */}
       <section className="max-w-7xl mx-auto px-4 mb-12 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           
-          {/* EDITORIAL KEPALA SEKOLAH */}
           <div className="lg:col-span-2 flex flex-col md:flex-row gap-5 items-start">
             <Link href="/editorial/detail" className="w-full md:w-[35%] lg:w-[30%] aspect-square relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer">
               <img src="/slider-3.jpg" alt="Tona Leon F. Situmorang" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -448,7 +451,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* LATEST NEWS */}
           <div className="lg:col-span-1 flex flex-col h-full">
             <div className="flex items-center gap-2 mb-3 h-7 shrink-0">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-xs">💬</span>
@@ -484,9 +486,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================================================= */}
-      {/* 4. WORDS OF WISDOM (TRANSISI LUNCURAN PERLAHAN: 2800ms)                  */}
-      {/* ========================================================================= */}
+      {/* 4. WORDS OF WISDOM */}
       <section className="w-full bg-[#D97706] text-white py-14 px-4 shrink-0 overflow-hidden relative">
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center relative px-8 sm:px-12">
           <h2 className="font-bold text-xl sm:text-2xl mb-8">Words of Wisdom</h2>
@@ -547,9 +547,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================================================= */}
-      {/* 5. GURU KREATIF SLIDER (INFINITE LOOP SEARAH + TOMBOL MANUAL < & >)       */}
-      {/* ========================================================================= */}
+      {/* 5. GURU KREATIF SLIDER */}
       <section className="w-full bg-[#DCC690] py-10 px-4 overflow-hidden relative">
         <div className="max-w-7xl mx-auto relative px-2 sm:px-6">
           <h2 className="font-bold text-sm sm:text-base mb-6 flex items-center gap-2 text-slate-800 uppercase">
@@ -586,7 +584,6 @@ export default function Home() {
               ))}
             </div>
 
-            {/* TOMBOL MANUAL PREV GURU ( < ) */}
             <button 
               onClick={handleTeacherPrev} 
               className="absolute left-1 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/75 text-white w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full transition-all z-20 cursor-pointer shadow-md"
@@ -595,7 +592,6 @@ export default function Home() {
               &#10094;
             </button>
 
-            {/* TOMBOL MANUAL NEXT GURU ( > ) */}
             <button 
               onClick={handleTeacherNext} 
               className="absolute right-1 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/75 text-white w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full transition-all z-20 cursor-pointer shadow-md"
@@ -607,14 +603,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================================================= */}
-      {/* 6. PENGUMUMAN, AGENDA, BLOG (TOMBOL TELAH DIUBAH MENJADI VIEW MORE)        */}
-      {/* ========================================================================= */}
+      {/* 6. PENGUMUMAN, AGENDA, TEACHERS' BLOG (INTERAKTIF & ADA TOMBOL VIEW MORE) */}
       <section className="w-full bg-[#E5DCC3] py-10 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           
           {/* ANNOUNCEMENTS */}
-          <div>
+          <div className="flex flex-col h-full">
             <h3 className="flex items-center text-slate-800 font-bold mb-4 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">📢</span> 
               Announcements
@@ -625,21 +619,23 @@ export default function Home() {
                 {currentAnnouncement.title}
               </p>
             </Link>
-            <div className="bg-[#DCE1C6] p-4 rounded-lg text-xs text-slate-700 text-justify mb-4 shadow-sm border border-[#C5CCAA] line-clamp-4">
+            <div className="bg-[#DCE1C6] p-4 rounded-lg text-xs text-slate-700 text-justify mb-4 shadow-sm border border-[#C5CCAA] line-clamp-4 flex-1">
               {currentAnnouncement.content}
             </div>
-            <Link href="/announcements" className="bg-red-900 hover:bg-red-800 text-white text-xs font-bold py-2.5 px-6 rounded shadow-sm inline-block transition-colors">
-              View More
-            </Link>
+            <div>
+              <Link href="/announcements" className="bg-red-900 hover:bg-red-800 text-white text-xs font-bold py-2.5 px-6 rounded shadow-sm inline-block transition-colors">
+                View More
+              </Link>
+            </div>
           </div>
 
           {/* LATEST AGENDA */}
-          <div>
+          <div className="flex flex-col h-full">
             <h3 className="flex items-center text-slate-800 font-bold mb-4 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">📅</span> 
               Latest Agenda
             </h3>
-            <div className="flex gap-4 items-start mb-4">
+            <div className="flex gap-4 items-start mb-4 flex-1">
               <div className="bg-red-900 text-white w-10 h-10 flex items-center justify-center rounded text-base font-bold shrink-0">
                 18
               </div>
@@ -655,38 +651,50 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <Link href="/agenda" className="bg-[#D97706] hover:bg-amber-700 text-white text-xs font-bold py-2.5 px-6 rounded shadow-sm inline-block transition-colors">
-              View More
-            </Link>
+            <div>
+              <Link href="/agenda" className="bg-[#D97706] hover:bg-amber-700 text-white text-xs font-bold py-2.5 px-6 rounded shadow-sm inline-block transition-colors">
+                View More
+              </Link>
+            </div>
           </div>
 
-          {/* TEACHERS' BLOG */}
-          <div>
+          {/* TEACHERS' BLOG (FOTO, JUDUL BISA DIKLIK + TOMBOL VIEW MORE) */}
+          <div className="flex flex-col h-full">
             <h3 className="flex items-center text-slate-800 font-bold mb-4 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">💬</span> 
               Teachers' Blog
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-4 flex-1">
               {blogGuru.map((blog, idx) => (
-                <div key={idx} className="flex gap-3 items-center">
-                  <div className="w-20 h-16 shrink-0 rounded overflow-hidden shadow-sm bg-slate-200">
-                    <img src={blog.img} alt="Thumb" className="w-full h-full object-cover" />
-                  </div>
-                  <div className="flex flex-col justify-center">
-                    <p className="text-[10px] text-slate-500">{blog.date}</p>
-                    <p className="text-xs font-bold text-red-900 leading-tight line-clamp-2">{blog.title}</p>
+                <div key={idx} className="flex gap-3 items-center group">
+                  <Link 
+                    href={`/blog/detail?id=${blog.id}`}
+                    className="w-20 h-16 shrink-0 rounded overflow-hidden shadow-sm bg-slate-200 block cursor-pointer"
+                  >
+                    <img src={blog.img} alt={blog.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  </Link>
+                  <div className="flex flex-col justify-center flex-1">
+                    <p className="text-[10px] text-slate-500 mb-1">{blog.date}</p>
+                    <Link href={`/blog/detail?id=${blog.id}`}>
+                      <p className="text-xs font-bold text-red-900 group-hover:text-[#047857] transition-colors leading-tight line-clamp-2 cursor-pointer">
+                        {blog.title}
+                      </p>
+                    </Link>
                   </div>
                 </div>
               ))}
+            </div>
+            <div className="pt-4">
+              <Link href="/blog" className="bg-[#047857] hover:bg-emerald-800 text-white text-xs font-bold py-2.5 px-6 rounded shadow-sm inline-block transition-colors">
+                View More
+              </Link>
             </div>
           </div>
 
         </div>
       </section>
 
-      {/* ========================================= */}
-      {/* 7. KEGIATAN, FASILITAS, GALERI (Krem Gelap)*/}
-      {/* ========================================= */}
+      {/* 7. KEGIATAN, FASILITAS, GALERI */}
       <section className="w-full bg-[#DCC690] py-10 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           
@@ -753,9 +761,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================= */}
-      {/* 8. VIDEO (Krem Terang)                    */}
-      {/* ========================================= */}
+      {/* 8. VIDEO */}
       <section className="w-full bg-[#E5DCC3] py-10 px-4 flex-1">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-red-950 font-bold mb-4 text-lg">Video</h3>
@@ -774,9 +780,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================= */}
-      {/* 9. FOOTER                                 */}
-      {/* ========================================= */}
+      {/* 9. FOOTER */}
       <footer className="w-full shrink-0">
         <div className="bg-[#D97706] py-12 px-4 text-white">
           <div className="max-w-7xl mx-auto flex flex-col items-start space-y-6">
@@ -801,16 +805,16 @@ export default function Home() {
               <p className="font-bold text-base mb-3 mt-2">Recent Comments</p>
               <ul className="text-xs space-y-2 font-semibold max-w-md">
                 <li className="hover:underline cursor-pointer">A WordPress Commenter on Hello world!</li>
-                <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Seinima Sapientia Proficiscitur Aconti Copassuni</li>
-                <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Seinima Sapientia Proficiscitur Aconti Copassuni</li>
+                <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Pemanfaatan AI secara Kritis dalam Pembelajaran</li>
+                <li className="hover:underline cursor-pointer line-clamp-1">Cluss Creative on Membangun Integritas dan Literasi Sains</li>
               </ul>
             </div>
             <div className="flex gap-16 mt-2">
               <div>
                 <p className="font-bold text-base mb-3">Archives</p>
                 <ul className="text-xs space-y-1.5 font-semibold">
-                  <li className="hover:underline cursor-pointer">August 2025</li>
-                  <li className="hover:underline cursor-pointer">June 2025</li>
+                  <li className="hover:underline cursor-pointer">August 2026</li>
+                  <li className="hover:underline cursor-pointer">June 2026</li>
                   <li className="hover:underline cursor-pointer">July 2021</li>
                 </ul>
               </div>
