@@ -38,7 +38,7 @@ export default function LibraryPage() {
             title="E-Perpustakaan SMPS Advent Batam Mas"
             className="w-full h-full border-0"
             allowFullScreen
-          ></iframe>
+          />
         </div>
       </section>
 
