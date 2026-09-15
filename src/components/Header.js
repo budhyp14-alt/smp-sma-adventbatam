@@ -168,15 +168,18 @@ export default function Header() {
         </div>
       )}
 
-      {/* 2. MAIN HEADER PUTIH (TINGGI KOTAK DIKUNCI RAMPING h-16 / h-18, LOGO DIPERBESAR NYATA) */}
-      <div className="w-full bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 h-16 sm:h-18 flex items-center justify-between gap-4">
+      {/* 2. MAIN HEADER PUTIH: TINGGI TETAP DIJAGA RAMPING (h-16), LOGO BERPUTAR DIPERBESAR 1.5x */}
+      <div className="w-full bg-white border-b border-slate-200 overflow-visible">
+        <div className="max-w-7xl mx-auto px-4 h-16 sm:h-18 flex items-center justify-between gap-4 overflow-visible">
           
-          <div className="flex items-center gap-3 sm:gap-4 text-left">
+          <div className="flex items-center gap-4 sm:gap-6 text-left overflow-visible">
             
-            {/* LOGO ADVENTIST EDUCATION BERPUTAR: DIPERBESAR 1.5x DAN TINGGI KOTAK TETAP RAMPING */}
-            <Link href="/" className="shrink-0 flex items-center justify-center relative w-16 sm:w-20 h-14">
-              <div className="logo-adventist-spin w-16 h-16 sm:w-20 sm:h-20 scale-[1.7] sm:scale-[1.9] flex items-center justify-center cursor-pointer origin-center">
+            {/* LOGO DIPERBESAR 1.5x DENGAN SKALA TINGGI JELAS & TIDAK MENDORONG KOTAK PUTIH */}
+            <Link 
+              href="/" 
+              className="shrink-0 flex items-center justify-center relative w-12 sm:w-16 h-12 sm:h-14 overflow-visible"
+            >
+              <div className="logo-adventist-spin w-16 h-16 sm:w-20 sm:h-20 scale-[1.75] sm:scale-[2.1] flex items-center justify-center cursor-pointer origin-center transition-transform">
                 <img 
                   src="/logo.png" 
                   alt="Logo Adventist Education" 
