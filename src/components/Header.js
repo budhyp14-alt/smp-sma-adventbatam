@@ -168,15 +168,15 @@ export default function Header() {
         </div>
       )}
 
-      {/* 2. MAIN HEADER PUTIH DENGAN LOGO BERPUTAR 2X LEBIH BESAR */}
-      <div className="w-full bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 py-2 sm:py-3 flex flex-col md:flex-row items-center justify-between gap-4">
+      {/* 2. MAIN HEADER PUTIH (TINGGI KOTAK KEMBALI NORMAL, LOGO DIPERBESAR 1.5x) */}
+      <div className="w-full bg-white border-b border-slate-200 overflow-visible">
+        <div className="max-w-7xl mx-auto px-4 py-2 sm:py-2.5 flex flex-col md:flex-row items-center justify-between gap-3 overflow-visible">
           
-          <div className="flex items-center gap-4 sm:gap-5 text-center md:text-left">
+          <div className="flex items-center gap-4 sm:gap-6 text-center md:text-left overflow-visible">
             
-            {/* LOGO ADVENTIST EDUCATION BERPUTAR: 2X LEBIH BESAR (w-24 h-28 / w-28 h-32) */}
-            <Link href="/" className="shrink-0 flex items-center justify-center py-1">
-              <div className="logo-adventist-spin w-24 h-28 sm:w-28 sm:h-32 flex items-center justify-center cursor-pointer">
+            {/* LOGO DIPERBESAR 1.5x LAGI DENGAN TINGGI KOTAK PUTIH TETAP RAMPING */}
+            <Link href="/" className="shrink-0 flex items-center justify-center relative overflow-visible">
+              <div className="logo-adventist-spin w-20 h-24 sm:w-24 sm:h-28 scale-110 sm:scale-125 flex items-center justify-center cursor-pointer transition-transform origin-center">
                 <img 
                   src="/logo.png" 
                   alt="Logo Adventist Education" 
@@ -191,11 +191,11 @@ export default function Header() {
 
             <div>
               <Link href="/">
-                <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 tracking-tight leading-tight hover:text-[#047857] transition-colors">
+                <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-tight hover:text-[#047857] transition-colors">
                   SMP - SMA ADVENT BATAM
                 </h1>
               </Link>
-              <p className="text-xs sm:text-sm text-slate-600 font-medium mt-1">
+              <p className="text-[11px] sm:text-xs text-slate-600 font-medium mt-0.5">
                 Shaping a Generation of Character, Intelligence, and Integrity
               </p>
             </div>
