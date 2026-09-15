@@ -168,16 +168,16 @@ export default function Header() {
         </div>
       )}
 
-      {/* 2. MAIN HEADER PUTIH: KOTAK DIKUNCI RAMPING (h-16), LOGO FLOATING (MELAYANG) 2X LEBIH BESAR */}
+      {/* 2. MAIN HEADER PUTIH: KOTAK TETAP RAMPING, LOGO DIGESER LEBIH KE KIRI & DIPERBESAR 1.3X LAGI */}
       <div className="w-full bg-white border-b border-slate-200 relative overflow-visible">
         <div className="max-w-7xl mx-auto px-4 h-16 sm:h-18 flex items-center justify-between gap-4 relative overflow-visible">
           
           <div className="flex items-center text-left relative overflow-visible">
             
-            {/* LOGO MELAYANG (FLOATING) 2X LEBIH BESAR & BEBAS DARI TINGGI KOTAK PUTIH */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 z-30 pointer-events-auto">
+            {/* LOGO ADVENTIST: GESER KE KIRI (-left-2 sm:-left-3) DAN DIPERBESAR (w-32 h-32 sm:w-36 sm:h-36) */}
+            <div className="absolute -left-2 sm:-left-3 top-1/2 -translate-y-1/2 z-30 pointer-events-auto">
               <Link href="/" className="block cursor-pointer">
-                <div className="logo-adventist-spin w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center filter drop-shadow-md">
+                <div className="logo-adventist-spin w-32 h-32 sm:w-36 sm:h-36 flex items-center justify-center filter drop-shadow-md">
                   <img 
                     src="/logo.png" 
                     alt="Logo Adventist Education" 
@@ -191,8 +191,8 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* TEKS DIBERI MARGIN KIRI AGAR TIDAK TERTABRAK LOGO MELAYANG */}
-            <div className="flex flex-col justify-center ml-24 sm:ml-28">
+            {/* TEKS DIBERI MARGIN KIRI AGAR SEIMBANG DENGAN LOGO YANG LEBIH BESAR */}
+            <div className="flex flex-col justify-center ml-28 sm:ml-32">
               <Link href="/">
                 <h1 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight leading-none hover:text-[#047857] transition-colors">
                   SMP - SMA ADVENT BATAM
