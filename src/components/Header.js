@@ -33,11 +33,11 @@ export default function Header() {
   return (
     <header className="w-full font-sans shadow-md sticky top-0 z-50">
       
-      {/* STYLE KHUSUS ANIMASI PUTAR LOGO ADVENTIST EDUCATION */}
+      {/* STYLE ANIMASI PUTAR 3D LOGO ADVENTIST EDUCATION */}
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes spinY {
-          0% { transform: perspective(600px) rotateY(0deg); }
-          100% { transform: perspective(600px) rotateY(360deg); }
+          0% { transform: perspective(800px) rotateY(0deg); }
+          100% { transform: perspective(800px) rotateY(360deg); }
         }
         .logo-adventist-spin {
           animation: spinY 8s linear infinite;
@@ -168,21 +168,20 @@ export default function Header() {
         </div>
       )}
 
-      {/* 2. MAIN HEADER PUTIH DENGAN LOGO ADVENTIST EDUCATION BERPUTAR */}
+      {/* 2. MAIN HEADER PUTIH DENGAN LOGO BERPUTAR 2X LEBIH BESAR */}
       <div className="w-full bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 py-3 sm:py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-4 py-2 sm:py-3 flex flex-col md:flex-row items-center justify-between gap-4">
           
-          <div className="flex items-center gap-3 sm:gap-4 text-center md:text-left">
+          <div className="flex items-center gap-4 sm:gap-5 text-center md:text-left">
             
-            {/* LOGO ADVENTIST EDUCATION BERPUTAR (ROTATING 3D LOGO) */}
-            <Link href="/" className="shrink-0 flex items-center justify-center p-1">
-              <div className="logo-adventist-spin w-12 h-14 sm:w-14 sm:h-16 flex items-center justify-center cursor-pointer">
+            {/* LOGO ADVENTIST EDUCATION BERPUTAR: 2X LEBIH BESAR (w-24 h-28 / w-28 h-32) */}
+            <Link href="/" className="shrink-0 flex items-center justify-center py-1">
+              <div className="logo-adventist-spin w-24 h-28 sm:w-28 sm:h-32 flex items-center justify-center cursor-pointer">
                 <img 
                   src="/logo.png" 
                   alt="Logo Adventist Education" 
                   className="w-full h-full object-contain drop-shadow-md"
                   onError={(e) => {
-                    // Fallback otomatis jika file /logo.png belum terupload di folder public
                     e.currentTarget.onerror = null;
                     e.currentTarget.src = "https://upload.wikimedia.org/wikipedia/commons/e/e0/Adventist_Education_Logo.png";
                   }}
@@ -192,11 +191,11 @@ export default function Header() {
 
             <div>
               <Link href="/">
-                <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-none hover:text-[#047857] transition-colors">
+                <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 tracking-tight leading-tight hover:text-[#047857] transition-colors">
                   SMP - SMA ADVENT BATAM
                 </h1>
               </Link>
-              <p className="text-[11px] sm:text-xs text-slate-600 font-medium mt-1">
+              <p className="text-xs sm:text-sm text-slate-600 font-medium mt-1">
                 Shaping a Generation of Character, Intelligence, and Integrity
               </p>
             </div>
