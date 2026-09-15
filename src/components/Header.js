@@ -11,8 +11,8 @@ export default function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const today = new Date().toLocaleDateString('en-US', options);
+    const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+    const today = new Date().toLocaleDateString("en-US", options);
     setCurrentDate(today);
   }, []);
 
@@ -50,7 +50,7 @@ export default function Header() {
 
       {/* 1. TOP NAVBAR MERAH MARUN */}
       <nav className="w-full bg-[#8B0000] text-white">
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-11 sm:h-12 overflow-visible">
+        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-11 overflow-visible">
           
           <div className="hidden lg:flex items-center space-x-3 xl:space-x-5 w-full justify-between overflow-visible">
             <div className="flex items-center space-x-3 xl:space-x-5">
@@ -168,19 +168,19 @@ export default function Header() {
         </div>
       )}
 
-      {/* 2. MAIN HEADER PUTIH (TINGGI KOTAK KEMBALI NORMAL, LOGO DIPERBESAR 1.5x) */}
-      <div className="w-full bg-white border-b border-slate-200 overflow-visible">
-        <div className="max-w-7xl mx-auto px-4 py-2 sm:py-2.5 flex flex-col md:flex-row items-center justify-between gap-3 overflow-visible">
+      {/* 2. MAIN HEADER PUTIH (TINGGI KOTAK DIKUNCI RAMPING h-16 / h-18, LOGO DIPERBESAR NYATA) */}
+      <div className="w-full bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 h-16 sm:h-18 flex items-center justify-between gap-4">
           
-          <div className="flex items-center gap-4 sm:gap-6 text-center md:text-left overflow-visible">
+          <div className="flex items-center gap-3 sm:gap-4 text-left">
             
-            {/* LOGO DIPERBESAR 1.5x LAGI DENGAN TINGGI KOTAK PUTIH TETAP RAMPING */}
-            <Link href="/" className="shrink-0 flex items-center justify-center relative overflow-visible">
-              <div className="logo-adventist-spin w-20 h-24 sm:w-24 sm:h-28 scale-110 sm:scale-125 flex items-center justify-center cursor-pointer transition-transform origin-center">
+            {/* LOGO ADVENTIST EDUCATION BERPUTAR: DIPERBESAR 1.5x DAN TINGGI KOTAK TETAP RAMPING */}
+            <Link href="/" className="shrink-0 flex items-center justify-center relative w-16 sm:w-20 h-14">
+              <div className="logo-adventist-spin w-16 h-16 sm:w-20 sm:h-20 scale-[1.7] sm:scale-[1.9] flex items-center justify-center cursor-pointer origin-center">
                 <img 
                   src="/logo.png" 
                   alt="Logo Adventist Education" 
-                  className="w-full h-full object-contain drop-shadow-md"
+                  className="w-full h-full object-contain drop-shadow"
                   onError={(e) => {
                     e.currentTarget.onerror = null;
                     e.currentTarget.src = "https://upload.wikimedia.org/wikipedia/commons/e/e0/Adventist_Education_Logo.png";
@@ -189,21 +189,21 @@ export default function Header() {
               </div>
             </Link>
 
-            <div>
+            <div className="flex flex-col justify-center">
               <Link href="/">
-                <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-tight hover:text-[#047857] transition-colors">
+                <h1 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight leading-none hover:text-[#047857] transition-colors">
                   SMP - SMA ADVENT BATAM
                 </h1>
               </Link>
-              <p className="text-[11px] sm:text-xs text-slate-600 font-medium mt-0.5">
+              <p className="text-[10px] sm:text-xs text-slate-600 font-medium mt-1 leading-none">
                 Shaping a Generation of Character, Intelligence, and Integrity
               </p>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 sm:gap-6 text-xs text-slate-600">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <span className="font-semibold text-slate-500 hidden sm:inline">Follow Us:</span>
+          <div className="flex items-center gap-3 sm:gap-6 text-xs text-slate-600 shrink-0">
+            <div className="hidden md:flex items-center gap-2 sm:gap-3">
+              <span className="font-semibold text-slate-500">Follow Us:</span>
               <a href="#" className="hover:text-blue-600 flex items-center gap-1 font-semibold">
                 <span className="text-blue-500">📘</span> Facebook
               </a>
@@ -215,7 +215,7 @@ export default function Header() {
               </a>
             </div>
 
-            <div className="bg-red-50 border border-red-200 text-[#8B0000] px-3 sm:px-4 py-1.5 rounded-full font-bold text-xs sm:text-sm flex items-center gap-1.5 shadow-xs">
+            <div className="bg-red-50 border border-red-200 text-[#8B0000] px-3 sm:px-4 py-1.5 rounded-full font-bold text-xs sm:text-sm flex items-center gap-1.5 shadow-xs whitespace-nowrap">
               <span>📞</span> 0778-363082
             </div>
           </div>
