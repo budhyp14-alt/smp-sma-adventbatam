@@ -33,15 +33,20 @@ export default function Header() {
   return (
     <header className="w-full font-sans shadow-md sticky top-0 z-50">
       
-      {/* STYLE ANIMASI PUTAR 3D LOGO ADVENTIST EDUCATION */}
+      {/* STYLE ANIMASI PUTAR SEARAH JARUM JAM TERUS-MENERUS (TIDAK BOLAK-BALIK) */}
       <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes spinY {
-          0% { transform: perspective(800px) rotateY(0deg); }
-          100% { transform: perspective(800px) rotateY(360deg); }
+        @keyframes spinClockwise {
+          from {
+            transform: perspective(800px) rotateY(0deg);
+          }
+          to {
+            transform: perspective(800px) rotateY(360deg);
+          }
         }
         .logo-adventist-spin {
-          animation: spinY 8s linear infinite;
+          animation: spinClockwise 7s linear infinite;
           transform-style: preserve-3d;
+          will-change: transform;
         }
         .logo-adventist-spin:hover {
           animation-play-state: paused;
@@ -168,14 +173,14 @@ export default function Header() {
         </div>
       )}
 
-      {/* 2. MAIN HEADER PUTIH: KOTAK TETAP RAMPING, LOGO DIGESER LEBIH KE KIRI & DIPERBESAR 1.3X LAGI */}
+      {/* 2. MAIN HEADER PUTIH: LOGO DIGESER LEBIH KE KIRI & BERPUTAR SEARAH JARUM JAM */}
       <div className="w-full bg-white border-b border-slate-200 relative overflow-visible">
         <div className="max-w-7xl mx-auto px-4 h-16 sm:h-18 flex items-center justify-between gap-4 relative overflow-visible">
           
           <div className="flex items-center text-left relative overflow-visible">
             
-            {/* LOGO ADVENTIST: GESER KE KIRI (-left-2 sm:-left-3) DAN DIPERBESAR (w-32 h-32 sm:w-36 sm:h-36) */}
-            <div className="absolute -left-2 sm:-left-3 top-1/2 -translate-y-1/2 z-30 pointer-events-auto">
+            {/* LOGO DIGESER LEBIH KE KIRI LAGI (-left-6 sm:-left-8) & BERPUTAR SEARAH JARUM JAM */}
+            <div className="absolute -left-6 sm:-left-8 top-1/2 -translate-y-1/2 z-30 pointer-events-auto">
               <Link href="/" className="block cursor-pointer">
                 <div className="logo-adventist-spin w-32 h-32 sm:w-36 sm:h-36 flex items-center justify-center filter drop-shadow-md">
                   <img 
@@ -191,8 +196,8 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* TEKS DIBERI MARGIN KIRI AGAR SEIMBANG DENGAN LOGO YANG LEBIH BESAR */}
-            <div className="flex flex-col justify-center ml-28 sm:ml-32">
+            {/* TEKS BERADA RAPI DI SAMPING LOGO YANG DIGESER */}
+            <div className="flex flex-col justify-center ml-24 sm:ml-28">
               <Link href="/">
                 <h1 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight leading-none hover:text-[#047857] transition-colors">
                   SMP - SMA ADVENT BATAM
