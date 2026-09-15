@@ -6,6 +6,7 @@ import Link from "next/link";
 export default function Butir12Page() {
   const [selectedDoc, setSelectedDoc] = useState(null);
   const [activeSkTab, setActiveSkTab] = useState("2026-2027");
+  const [activeMateriTab, setActiveMateriTab] = useState("materi-1");
 
   // DATA SK PROGRAM GERAKAN KELAS HARMONI 3 TAHUN PELAJARAN
   const skHarmoniData = {
@@ -39,8 +40,7 @@ export default function Butir12Page() {
       badge: "SK Kebijakan Resmi",
       status: "Tersedia 3 Dokumen Sah",
       desc: "Surat Keputusan Kepala SMPS Advent Batam Mas tentang Program Gerakan Kelas Harmoni (Penyusunan Kesepakatan Kelas) untuk TP 2024/2025, TP 2025/2026, dan TP 2026/2027 guna menciptakan iklim belajar yang aman, tertib, dan bebas perundungan.",
-      isMultiSk: true,
-      isGallery: false
+      docType: "sk-multi"
     },
     {
       id: "sop-penanganan",
@@ -50,8 +50,7 @@ export default function Butir12Page() {
       badge: "SOP Prosedural",
       status: "Terverifikasi Asesor",
       desc: "Panduan berjenjang 6 tahap penanganan (Identifikasi, Klarifikasi & Dialog Empatik, Penetapan Kategori, Pembinaan, Pendokumentasian & Komunikasi Ortu, Pemantauan Tindak Lanjut).",
-      isMultiSk: false,
-      isGallery: false,
+      docType: "standard",
       docSubtitle: "V. PROSEDUR PENANGANAN PELANGGARAN & DIAGRAM ALUR ESKALASI",
       details: [
         "5.1 Alur Umum: Identifikasi Perilaku → Klarifikasi & Dialog Empatik → Penetapan Kategori (Ringan/Sedang/Berat) → Pembinaan Sesuai Kategori → Pendokumentasian & Komunikasi Ortu → Pemantauan & Evaluasi Tindak Lanjut.",
@@ -67,8 +66,7 @@ export default function Butir12Page() {
       badge: "Tata Tertib Siswa",
       status: "Dokumen Sah Sekolah",
       desc: "Sistem poin dan deskripsi peraturan kehadiran, upacara bendera, kerapian seragam sekolah, ketertiban proses belajar mengajar (KBM), serta larangan kekerasan fisik dan verbal.",
-      isMultiSk: false,
-      isGallery: false,
+      docType: "standard",
       docSubtitle: "TATA TERTIB DAN SISTEM POIN KEDISIPLINAN SISWA",
       details: [
         "A. Kehadiran: Hadir setiap hari efektif belajar sebelum pukul 07.15 WIB.",
@@ -85,8 +83,7 @@ export default function Butir12Page() {
       badge: "Edukasi & Sosialisasi",
       status: "Foto & Arsip Materi",
       desc: "Materi edukasi interaktif fenomena gunung es bullying, deklarasi komitmen bersama di aula gereja sekolah, dan penandatanganan papan deklarasi ramah anak.",
-      isMultiSk: false,
-      isGallery: true,
+      docType: "gallery",
       docSubtitle: "DOKUMENTASI FOTO KEGIATAN & VIDEO SOSIALISASI ANTI-PERUNDUNGAN",
       youtubeUrl: "https://www.youtube.com/watch?v=hviOV49zohc",
       youtubeEmbed: "https://www.youtube.com/embed/hviOV49zohc",
@@ -94,40 +91,33 @@ export default function Butir12Page() {
         {
           title: "Penandatanganan Papan Deklarasi oleh Pendidik",
           caption: "Pendidik dan pimpinan sekolah menandatangani komitmen deklarasi anti-perundungan di SMPS-SMAS Advent Batam Mas.",
-          src: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&auto=format&fit=crop&q=80",
-          localFallback: "/akreditasi/foto-antibullying-02.jpeg"
+          src: "/akreditasi/foto-antibullying-02.jpeg",
+          fallback: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&auto=format&fit=crop&q=80"
         },
         {
-          title: "Seminar Anti-Bullying & Cyber Bullying di Aula Gereja Sekolah",
-          caption: "Pemberian materi edukasi pencegahan perundungan dan cyber-bullying oleh Mestika Retina Tampubolon, M.Psi.",
-          src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&auto=format&fit=crop&q=80",
-          localFallback: "/akreditasi/seminar-anti-bullying.jpg"
+          title: "Seminar Anti-Bullying di Aula Gereja Sekolah",
+          caption: "Pelatihan psiko-edukasi pencegahan perundungan dan cyber bullying bersama Mestika Retina Tampubolon, M.Psi., Psikolog.",
+          src: "/akreditasi/guru&siswa-dalam seminar pelatihan anti bullying oleh Mestika Retina Tampubolon M.Psi.jpg",
+          fallback: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&auto=format&fit=crop&q=80"
         },
         {
-          title: "Penandatanganan Komitmen Bersama Seluruh Peserta Didik",
-          caption: "Antusiasme peserta didik menandatangani Papan Deklarasi Sekolah Ramah Anak sebagai wujud saling menghormati dan menciptakan kelas yang aman.",
-          src: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&auto=format&fit=crop&q=80",
-          localFallback: "/akreditasi/penandatanganan-siswa.jpg"
+          title: "Penandatanganan Komitmen Seluruh Peserta Didik",
+          caption: "Peserta didik menandatangani Papan Deklarasi Sekolah Ramah Anak sebagai wujud saling menghormati dan menciptakan kelas yang aman.",
+          src: "/akreditasi/penandatanganan-siswa.jpg",
+          fallback: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&auto=format&fit=crop&q=80"
         }
       ]
     },
     {
       id: "evaluasi-laporan",
       code: "LAPORAN-EVALUASI-03",
-      nomor: "Bab VII Pedoman Disiplin Positif",
+      nomor: "Bab VII Pedoman Disiplin Positif & 2 Modul Pelatihan",
       title: "Dokumentasi, Pelaporan Berkala, dan Evaluasi Disiplin Positif",
       badge: "Laporan & Evaluasi",
       status: "Portofolio Lengkap",
-      desc: "Rekapitulasi pembinaan bulanan wali kelas, laporan evaluasi semester wakasek kesiswaan, peninjauan tahunan kepatuhan PTK, dan jadwal penerapan budaya sekolah aman.",
-      isMultiSk: false,
-      isGallery: false,
-      docSubtitle: "VII. PENDOKUMENTASIAN, PELAPORAN, DAN EVALUASI BERKALA",
-      details: [
-        "7.1 Pendokumentasian: Menggunakan formulir baku pembinaan yang tersimpan aman dan konfidensial.",
-        "7.2 Pelaporan Berkala: Rekapitulasi bulanan wali kelas kepada PKS Kesiswaan dan laporan evaluasi semester kepada Kepala Sekolah.",
-        "7.3 Evaluasi Tahunan: Mengukur penurunan tingkat pelanggaran, efektivitas tindak lanjut, dan kepatuhan guru terhadap larangan kekerasan.",
-        "7.4 Jadwal Penerapan: Sosialisasi pedoman, penguatan konsistensi, dan pemantapan budaya sekolah aman berkelanjutan."
-      ]
+      desc: "Rekapitulasi pembinaan bulanan wali kelas, laporan evaluasi semester wakasek kesiswaan, peninjauan tahunan kepatuhan PTK, serta 2 modul materi psiko-edukasi narasumber.",
+      docType: "materi-edukasi",
+      docSubtitle: "MODUL MATERI EDUKASI ANTI-BULLYING & SISTEM EVALUASI DISIPLIN POSITIF"
     }
   ];
 
@@ -169,11 +159,11 @@ export default function Butir12Page() {
         </div>
       </section>
 
-      {/* KONTEN UTAMA */}
+      {/* KONTEN UTAMA DUA KOLOM */}
       <section className="w-full flex-1 pb-16 px-4 sm:px-8 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* KOLOM KIRI: DAFTAR BUKTI DUKUNG */}
+          {/* KOLOM KIRI */}
           <div className="lg:col-span-8 space-y-6">
             
             {/* KARTU PENGANTAR BUTIR 12 */}
@@ -216,7 +206,7 @@ export default function Butir12Page() {
               </div>
             </div>
 
-            {/* DAFTAR KARTU BUKTI DUKUNG EVIDENCE */}
+            {/* DAFTAR BUKTI FISIK EVIDENCE */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="font-black text-sm text-slate-900 uppercase tracking-wide">
@@ -260,7 +250,8 @@ export default function Butir12Page() {
                       type="button"
                       onClick={() => {
                         setSelectedDoc(doc);
-                        if (doc.isMultiSk) setActiveSkTab("2026-2027");
+                        if (doc.docType === "sk-multi") setActiveSkTab("2026-2027");
+                        if (doc.docType === "materi-edukasi") setActiveMateriTab("materi-1");
                       }}
                       className="bg-[#047857] hover:bg-emerald-800 text-white font-bold text-xs px-4 py-2 rounded-lg shadow-sm transition-all transform hover:scale-105 cursor-pointer whitespace-nowrap flex items-center gap-1"
                     >
@@ -290,7 +281,7 @@ export default function Butir12Page() {
 
           </div>
 
-          {/* KOLOM KANAN: SIDEBAR ASESOR */}
+          {/* KOLOM KANAN */}
           <aside className="lg:col-span-4 space-y-6">
             
             <div className="bg-[#EFEAD8] p-6 rounded-2xl shadow-sm border border-slate-200">
@@ -308,7 +299,7 @@ export default function Butir12Page() {
                   <strong className="text-slate-900">NPSN:</strong> 70002994
                 </p>
                 <p>
-                  <strong className="text-slate-900">Fokus Verifikasi Butir 12:</strong> Pemeriksaan SK Satgas TPPK dan SK Program Gerakan Kelas Harmoni (3 TP), alur eskalasi penanganan kasus, buku catatan disiplin positif, serta observasi iklim interaksi kondusif di lingkungan sekolah.
+                  <strong className="text-slate-900">Fokus Verifikasi Butir 12:</strong> Pemeriksaan SK Satgas TPPK dan SK Program Gerakan Kelas Harmoni (3 TP), modul pelatihan narasumber psikolog, dokumentasi kegiatan, serta instrumen pelaporan evaluasi disiplin positif.
                 </p>
               </div>
             </div>
@@ -346,7 +337,7 @@ export default function Butir12Page() {
       </section>
 
       {/* ========================================================================= */}
-      {/* MODAL POP-UP VIEWER DOKUMEN                                                */}
+      {/* MODAL POP-UP VIEWER DOKUMEN INTERAKTIF                                    */}
       {/* ========================================================================= */}
       {selectedDoc && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-3 sm:p-6 backdrop-blur-xs animate-in fade-in duration-200">
@@ -373,8 +364,8 @@ export default function Butir12Page() {
               </button>
             </div>
 
-            {/* TAB PILIHAN SK JIKA MULTI-SK */}
-            {selectedDoc.isMultiSk && (
+            {/* TAB PILIHAN SK JIKA SK MULTI-TAHUN */}
+            {selectedDoc.docType === "sk-multi" && (
               <div className="bg-slate-100 border-b border-slate-300 px-4 pt-3 flex gap-2 overflow-x-auto shrink-0">
                 {Object.keys(skHarmoniData).map((key) => {
                   const item = skHarmoniData[key];
@@ -396,105 +387,264 @@ export default function Butir12Page() {
               </div>
             )}
 
+            {/* TAB PILIHAN JIKA MEMBUKA MODUL MATERI EDUKASI & EVALUASI */}
+            {selectedDoc.docType === "materi-edukasi" && (
+              <div className="bg-slate-100 border-b border-slate-300 px-4 pt-3 flex gap-2 overflow-x-auto shrink-0">
+                <button
+                  onClick={() => setActiveMateriTab("materi-1")}
+                  className={`px-4 py-2 text-xs font-bold rounded-t-lg transition-all border-t border-x cursor-pointer ${
+                    activeMateriTab === "materi-1"
+                      ? "bg-white text-[#047857] border-slate-300 border-b-transparent shadow-xs"
+                      : "bg-slate-200 text-slate-600 hover:bg-slate-300 border-transparent"
+                  }`}
+                >
+                  📘 Materi 1: Anti Bullying & Self Healing
+                </button>
+                <button
+                  onClick={() => setActiveMateriTab("materi-2")}
+                  className={`px-4 py-2 text-xs font-bold rounded-t-lg transition-all border-t border-x cursor-pointer ${
+                    activeMateriTab === "materi-2"
+                      ? "bg-white text-[#047857] border-slate-300 border-b-transparent shadow-xs"
+                      : "bg-slate-200 text-slate-600 hover:bg-slate-300 border-transparent"
+                  }`}
+                >
+                  📕 Materi 2: Bullying Remaja & Sekolah Ramah Anak
+                </button>
+                <button
+                  onClick={() => setActiveMateriTab("evaluasi")}
+                  className={`px-4 py-2 text-xs font-bold rounded-t-lg transition-all border-t border-x cursor-pointer ${
+                    activeMateriTab === "evaluasi"
+                      ? "bg-white text-[#047857] border-slate-300 border-b-transparent shadow-xs"
+                      : "bg-slate-200 text-slate-600 hover:bg-slate-300 border-transparent"
+                  }`}
+                >
+                  📋 Bab VII: Pedoman Pelaporan & Evaluasi
+                </button>
+              </div>
+            )}
+
             {/* BODY DOKUMEN MODAL (SCROLLABLE) */}
             <div className="p-4 sm:p-6 overflow-y-auto space-y-6 text-xs sm:text-sm text-slate-800 leading-relaxed bg-[#f8fafc]">
               
-              {/* TAMPILAN 1: KARTU EDUKASI & SOSIALISASI (MENAMPILKAN 3 FOTO & VIDEO YOUTUBE) */}
-              {selectedDoc.isGallery ? (
+              {/* TAMPILAN 1: MODUL MATERI EDUKASI & EVALUASI DISIPLIN POSITIF */}
+              {selectedDoc.docType === "materi-edukasi" ? (
+                <div>
+                  {activeMateriTab === "materi-1" && (
+                    <div className="bg-white p-5 sm:p-7 rounded-xl border border-slate-300 shadow-sm space-y-5">
+                      <div className="text-center pb-3 border-b-2 border-slate-800">
+                        <span className="bg-emerald-100 text-emerald-900 font-bold text-[10px] px-2 py-0.5 rounded uppercase">
+                          Materi Pelatihan Psiko-Edukasi
+                        </span>
+                        <h4 className="font-black text-base sm:text-lg text-slate-900 mt-1 uppercase">
+                          MATERI ANTI BULLYING
+                        </h4>
+                        <p className="font-bold text-xs text-slate-700">
+                          Narasumber: Mestika Retina Tampubolon, M.Psi., Psikolog
+                        </p>
+                        <p className="text-[11px] text-slate-500">
+                          Pelaksanaan: Kamis, 16 Juli 2026 • Aula Gereja SMPS Advent Batam Mas
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                          <h5 className="font-bold text-xs text-slate-900 mb-2 uppercase border-b border-slate-300 pb-1">
+                            1. Definisi & Kata Kunci Bullying
+                          </h5>
+                          <p className="text-xs text-slate-600 leading-relaxed text-justify mb-2">
+                            Segala bentuk penindasan atau kekerasan yang dilakukan dengan sengaja oleh satu orang atau sekelompok orang yang lebih kuat terhadap orang lain dengan tujuan menyakiti dan dilakukan secara terus-menerus.
+                          </p>
+                          <ul className="text-[11px] text-slate-700 space-y-1 list-disc pl-4 font-medium">
+                            <li><strong>Ketidakseimbangan Kekuatan:</strong> Korban tidak berdaya melawan.</li>
+                            <li><strong>Intimidasi:</strong> Bertujuan menyakiti fisik & psikis.</li>
+                            <li><strong>Berulang (Repeat):</strong> Dilakukan terus-menerus & berkelanjutan.</li>
+                          </ul>
+                        </div>
+
+                        <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                          <h5 className="font-bold text-xs text-slate-900 mb-2 uppercase border-b border-slate-300 pb-1">
+                            2. Jenis-Jenis Bullying
+                          </h5>
+                          <ol className="text-[11px] text-slate-700 space-y-1 list-decimal pl-4">
+                            <li><strong>Kontak Fisik Langsung:</strong> Memukul, mendorong, menendang, memeras barang.</li>
+                            <li><strong>Kontak Verbal Langsung:</strong> Mengancam, name-calling, merendahkan, mencela.</li>
+                            <li><strong>Non-Verbal Langsung:</strong> Melihat sinis, menjulurkan lidah, ekspresi mengancam.</li>
+                            <li><strong>Non-Verbal Tidak Langsung:</strong> Mendiamkan, manipulasi persahabatan, mengucilkan.</li>
+                            <li><strong>Cyber Bullying:</strong> Meneror via gawai, trolling, jejak digital pencemaran nama baik.</li>
+                            <li><strong>Pelecehan Seksual:</strong> Perilaku agresi verbal maupun fisik berbau sensual.</li>
+                          </ol>
+                        </div>
+                      </div>
+
+                      <div className="bg-emerald-50 border border-emerald-300 p-4 rounded-xl">
+                        <h5 className="font-bold text-xs text-emerald-950 uppercase mb-2">
+                          3. Pembekalan Self Healing Bagi Korban
+                        </h5>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-[11px] text-slate-700">
+                          <div className="bg-white p-2.5 rounded border border-emerald-200">
+                            <strong className="text-emerald-900 block">Deep Breathing:</strong>
+                            Tarik napas hidung 4 detik, tahan 7 detik, hembuskan kuat lewat mulut 8 detik (ulangi 4x).
+                          </div>
+                          <div className="bg-white p-2.5 rounded border border-emerald-200">
+                            <strong className="text-emerald-900 block">Progressive Muscle:</strong>
+                            Fokus pada bahu, angkat ke arah telinga tahan 5-10 detik, lalu rilekskan penuh.
+                          </div>
+                          <div className="bg-white p-2.5 rounded border border-emerald-200">
+                            <strong className="text-emerald-900 block">Guided Imagery:</strong>
+                            Visualisasi tempat tenang yang membangkitkan rasa aman dan kedamaian batin.
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="bg-amber-50 border border-amber-300 p-3.5 rounded-xl text-xs text-amber-950 flex flex-col sm:flex-row gap-3 justify-between items-center">
+                        <div className="font-semibold italic">
+                          "Barang siapa berkata bahwa ia berada di dalam terang tetapi ia membenci saudaranya, ia berada di dalam kegelapan sampai sekarang." (1 Yohanes 2:9)
+                        </div>
+                        <span className="font-bold text-amber-900 shrink-0">Lukas 6:27-28</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {activeMateriTab === "materi-2" && (
+                    <div className="bg-white p-5 sm:p-7 rounded-xl border border-slate-300 shadow-sm space-y-5">
+                      <div className="text-center pb-3 border-b-2 border-slate-800">
+                        <span className="bg-blue-100 text-blue-900 font-bold text-[10px] px-2 py-0.5 rounded uppercase">
+                          Kajian Teori & Rencana Aksi SRA
+                        </span>
+                        <h4 className="font-black text-base sm:text-lg text-slate-900 mt-1 uppercase">
+                          BULLYING PADA ANAK REMAJA
+                        </h4>
+                        <p className="font-bold text-xs text-slate-700">
+                          Narasumber: Mestika Retina Tampubolon, M.Psi., Psikolog
+                        </p>
+                        <p className="text-[11px] text-slate-500">
+                          Kajian Fenomena Gunung Es & Perlindungan Hukum Siswa di Sekolah
+                        </p>
+                      </div>
+
+                      <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h5 className="font-bold text-xs text-slate-900 uppercase">
+                          Payung Hukum Perlindungan Anak di Lingkungan Satuan Pendidikan
+                        </h5>
+                        <ul className="text-xs text-slate-700 space-y-1.5 list-disc pl-4">
+                          <li>
+                            <strong>Pasal 76C UU No. 35/2014:</strong> Setiap orang dilarang menempatkan, membiarkan, melakukan, menyuruh melakukan, atau turut serta melakukan kekerasan terhadap anak.
+                          </li>
+                          <li>
+                            <strong>Pasal 54 UU No. 35/2014:</strong> Anak di dalam dan lingkungan satuan pendidikan wajib mendapatkan perlindungan dari tindak kekerasan fisik, psikis, kejahatan seksual, dan diskriminasi.
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                          <h5 className="font-bold text-xs text-slate-900 mb-2 uppercase border-b border-slate-300 pb-1">
+                            Dampak Serius bagi Remaja
+                          </h5>
+                          <ul className="text-[11px] text-slate-700 space-y-1.5 list-disc pl-4">
+                            <li><strong>School Phobia:</strong> Ketakutan luar biasa untuk pergi ke sekolah.</li>
+                            <li><strong>Penurunan Prestasi:</strong> Motivasi belajar hilang dan kecemasan terus-menerus.</li>
+                            <li><strong>Konsep Diri Rendah:</strong> Korban merasa lemah, bodoh, dan terisolasi.</li>
+                            <li><strong>Risiko Depresi:</strong> Memicu trauma mendalam jika tidak ada pendampingan konseling.</li>
+                          </ul>
+                        </div>
+
+                        <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                          <h5 className="font-bold text-xs text-slate-900 mb-2 uppercase border-b border-slate-300 pb-1">
+                            Tahapan Sekolah Ramah Anak (Permeneg PPPA No. 8/2014)
+                          </h5>
+                          <ul className="text-[11px] text-slate-700 space-y-1.5 list-decimal pl-4">
+                            <li><strong>Persiapan:</strong> Kebijakan tertulis, konsultasi anak, dan pembentukan Tim SRA/TPPK.</li>
+                            <li><strong>Perencanaan:</strong> Rencana aksi tahunan dan sinergi program disiplin positif.</li>
+                            <li><strong>Pelaksanaan:</strong> Mengoptimalkan peran warga sekolah, orang tua, dan komite.</li>
+                            <li><strong>Pemantauan & Evaluasi:</strong> Monitoring bulanan dan evaluasi berkala 3 bulan.</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div className="bg-emerald-50 border border-emerald-200 p-3.5 rounded-xl text-xs text-emerald-950">
+                        <strong>Solusi Komunikasi Asertif:</strong> Guru dan sekolah melatih siswa bersikap asertif—mampu mengekspresikan hak, pikiran, dan perasaan secara jujur, terhormat, tegas menolak perundungan tanpa menyakiti pihak lain.
+                      </div>
+                    </div>
+                  )}
+
+                  {activeMateriTab === "evaluasi" && (
+                    <div className="bg-white p-5 sm:p-7 rounded-xl border border-slate-300 shadow-sm space-y-4">
+                      <div className="text-center pb-3 border-b-2 border-slate-800">
+                        <p className="font-extrabold text-xs text-slate-900">PEDOMAN DISIPLIN POSITIF SMPS ADVENT BATAM MAS</p>
+                        <h4 className="font-black text-base text-[#047857] uppercase">
+                          BAB VII. PENDOKUMENTASIAN, PELAPORAN, DAN EVALUASI BERKALA
+                        </h4>
+                      </div>
+
+                      <div className="space-y-3 text-xs text-slate-700 leading-relaxed text-justify">
+                        <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                          <strong className="text-slate-900 block mb-1">7.1 Pendokumentasian:</strong>
+                          Setiap proses pembinaan wajib didokumentasikan menggunakan formulir baku yang tersedia, mencakup identitas siswa, uraian kejadian, kategori pelanggaran, bentuk pembinaan, dan hasil pemantauan yang disimpan secara rahasia dan aman.
+                        </div>
+
+                        <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                          <strong className="text-slate-900 block mb-1">7.2 Pelaporan Berkala:</strong>
+                          Wali kelas menyampaikan rekapitulasi pembinaan kelas kepada PKS Kesiswaan setiap bulan; Tim Kesiswaan menyusun laporan evaluasi semester kepada Kepala Sekolah dan Dinas Pendidikan sesuai kebutuhan.
+                        </div>
+
+                        <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                          <strong className="text-slate-900 block mb-1">7.3 Evaluasi dan Peninjauan Tahunan:</strong>
+                          Mengukur penurunan jumlah dan tingkat keparahan pelanggaran, tingkat kepuasan peserta didik dan orang tua, efektivitas tindak lanjut pembinaan, serta kepatuhan pendidik terhadap larangan kekerasan.
+                        </div>
+
+                        <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                          <strong className="text-slate-900 block mb-1">7.4 Jadwal Penerapan Budaya Sekolah Aman:</strong>
+                          Pelatihan guru dan tendik mengenai disiplin positif restoratif (Juli), penguatan konsistensi evaluasi (Agustus), dan pemantapan budaya sekolah aman bebas kekerasan terintegrasi 8 Dimensi Profil Lulusan (September).
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : selectedDoc.docType === "gallery" ? (
+                /* TAMPILAN 2: FOTO & VIDEO YOUTUBE */
                 <div className="space-y-6">
-                  
-                  {/* PENGANTAR SINGKAT */}
                   <div className="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-xs">
                     <h4 className="font-black text-sm text-[#047857] uppercase mb-1">
                       Dokumentasi Bukti Fisik: Sosialisasi & Komitmen Deklarasi Anti-Perundungan
                     </h4>
                     <p className="text-xs text-slate-600 leading-relaxed">
-                      Berikut dokumentasi otentik penyelenggaraan sosialisasi anti-bullying, seminar psiko-edukasi bersama narasumber ahli, penandatanganan papan komitmen bersama, serta video kegiatan terintegrasi.
+                      Dokumentasi otentik sosialisasi anti-bullying, seminar psiko-edukasi bersama narasumber ahli, penandatanganan papan komitmen bersama, dan video kegiatan terintegrasi.
                     </p>
                   </div>
 
-                  {/* 3 FOTO BUKTI DOKUMENTASI */}
                   <div className="space-y-4">
                     <h5 className="font-black text-xs sm:text-sm text-slate-900 uppercase tracking-wide flex items-center gap-1.5">
                       <span>📸</span> Galeri 3 Foto Kegiatan
                     </h5>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      
-                      {/* FOTO 1 */}
-                      <div className="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
-                        <div className="relative aspect-4/3 bg-slate-100 overflow-hidden">
-                          <img
-                            src="/akreditasi/foto-antibullying-02.jpeg"
-                            alt="Penandatanganan Papan Deklarasi oleh Pendidik"
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                            onError={(e) => {
-                              // Fallback preview SVG jika file lokal belum dipindah ke folder public
-                              e.currentTarget.onerror = null;
-                              e.currentTarget.src = "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&auto=format&fit=crop&q=80";
-                            }}
-                          />
+                      {selectedDoc.photos.map((item, pIdx) => (
+                        <div key={pIdx} className="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
+                          <div className="relative aspect-4/3 bg-slate-100 overflow-hidden">
+                            <img
+                              src={item.src}
+                              alt={item.title}
+                              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                              onError={(e) => {
+                                e.currentTarget.onerror = null;
+                                e.currentTarget.src = item.fallback;
+                              }}
+                            />
+                          </div>
+                          <div className="p-3 flex-1 flex flex-col justify-between">
+                            <h6 className="font-bold text-xs text-slate-900 leading-snug">
+                              {item.title}
+                            </h6>
+                            <p className="text-[11px] text-slate-500 mt-1 leading-normal">
+                              {item.caption}
+                            </p>
+                          </div>
                         </div>
-                        <div className="p-3 flex-1 flex flex-col justify-between">
-                          <h6 className="font-bold text-xs text-slate-900 leading-snug">
-                            1. Komitmen Pendidik & Satgas
-                          </h6>
-                          <p className="text-[11px] text-slate-500 mt-1 leading-normal">
-                            Penandatanganan resmi Papan Deklarasi Stop Bullying oleh jajaran guru SMPS-SMAS Advent Batam Mas.
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* FOTO 2 */}
-                      <div className="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
-                        <div className="relative aspect-4/3 bg-slate-100 overflow-hidden">
-                          <img
-                            src="/akreditasi/guru&siswa-dalam seminar pelatihan anti bullying oleh Mestika Retina Tampubolon M.Psi.jpg"
-                            alt="Seminar Pelatihan Anti Bullying"
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                            onError={(e) => {
-                              e.currentTarget.onerror = null;
-                              e.currentTarget.src = "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&auto=format&fit=crop&q=80";
-                            }}
-                          />
-                        </div>
-                        <div className="p-3 flex-1 flex flex-col justify-between">
-                          <h6 className="font-bold text-xs text-slate-900 leading-snug">
-                            2. Pelatihan & Psiko-Edukasi
-                          </h6>
-                          <p className="text-[11px] text-slate-500 mt-1 leading-normal">
-                            Seminar interaktif Anti Bullying & Cyber Bullying bersama Mestika Retina Tampubolon, M.Psi di aula gereja.
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* FOTO 3 */}
-                      <div className="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
-                        <div className="relative aspect-4/3 bg-slate-100 overflow-hidden">
-                          <img
-                            src="/akreditasi/foto-antibullying-03.jpeg"
-                            alt="Penandatanganan oleh Peserta Didik"
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                            onError={(e) => {
-                              e.currentTarget.onerror = null;
-                              e.currentTarget.src = "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&auto=format&fit=crop&q=80";
-                            }}
-                          />
-                        </div>
-                        <div className="p-3 flex-1 flex flex-col justify-between">
-                          <h6 className="font-bold text-xs text-slate-900 leading-snug">
-                            3. Deklarasi Peserta Didik
-                          </h6>
-                          <p className="text-[11px] text-slate-500 mt-1 leading-normal">
-                            Peserta didik membubuhkan tanda tangan penolakan terhadap segala aksi perundungan fisik maupun verbal.
-                          </p>
-                        </div>
-                      </div>
-
+                      ))}
                     </div>
                   </div>
 
-                  {/* VIDEO YOUTUBE DOKUMENTASI TERINTEGRASI */}
                   <div className="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-xs space-y-3">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-200">
                       <div className="flex items-center gap-2">
@@ -516,7 +666,7 @@ export default function Butir12Page() {
                     </div>
 
                     <p className="text-xs text-slate-600">
-                      Tautan video resmi kegiatan edukasi di kanal SMPS Advent Batam Mas:{" "}
+                      Tautan video resmi kegiatan di kanal SMPS Advent Batam Mas:{" "}
                       <a 
                         href={selectedDoc.youtubeUrl} 
                         target="_blank" 
@@ -527,7 +677,6 @@ export default function Butir12Page() {
                       </a>
                     </p>
 
-                    {/* PEMUTAR VIDEO YOUTUBE EMBED */}
                     <div className="aspect-video w-full rounded-lg overflow-hidden bg-slate-900 shadow-md border border-slate-300">
                       <iframe
                         className="w-full h-full"
@@ -538,15 +687,13 @@ export default function Butir12Page() {
                       ></iframe>
                     </div>
                   </div>
-
                 </div>
-              ) : selectedDoc.isMultiSk ? (
-                /* TAMPILAN 2: SK HARMONI 3 TAHUN */
+              ) : selectedDoc.docType === "sk-multi" ? (
+                /* TAMPILAN 3: SK HARMONI 3 TAHUN */
                 (() => {
                   const currentSk = skHarmoniData[activeSkTab];
                   return (
                     <div className="bg-white p-6 sm:p-8 rounded-xl border border-slate-300 shadow-sm max-w-3xl mx-auto space-y-4 text-justify">
-                      
                       <div className="text-center pb-4 border-b-2 border-slate-800">
                         <p className="font-extrabold text-xs sm:text-sm text-slate-900 tracking-wider">
                           YAYASAN PENDIDIKAN ADVENT BATAM
@@ -621,12 +768,11 @@ export default function Butir12Page() {
                           </p>
                         </div>
                       </div>
-
                     </div>
                   );
                 })()
               ) : (
-                /* TAMPILAN 3: DOKUMEN EVIDENCE LAIN */
+                /* TAMPILAN 4: DOKUMEN LAINNYA */
                 <div className="bg-white p-6 rounded-xl border border-slate-300 shadow-sm max-w-3xl mx-auto space-y-4">
                   <div className="text-center pb-3 border-b-2 border-slate-800">
                     <p className="font-extrabold text-xs text-slate-900">SMPS ADVENT BATAM MAS</p>
