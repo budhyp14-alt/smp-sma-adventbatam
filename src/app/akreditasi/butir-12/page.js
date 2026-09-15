@@ -39,7 +39,8 @@ export default function Butir12Page() {
       badge: "SK Kebijakan Resmi",
       status: "Tersedia 3 Dokumen Sah",
       desc: "Surat Keputusan Kepala SMPS Advent Batam Mas tentang Program Gerakan Kelas Harmoni (Penyusunan Kesepakatan Kelas) untuk TP 2024/2025, TP 2025/2026, dan TP 2026/2027 guna menciptakan iklim belajar yang aman, tertib, dan bebas perundungan.",
-      isMultiSk: true
+      isMultiSk: true,
+      isGallery: false
     },
     {
       id: "sop-penanganan",
@@ -50,6 +51,7 @@ export default function Butir12Page() {
       status: "Terverifikasi Asesor",
       desc: "Panduan berjenjang 6 tahap penanganan (Identifikasi, Klarifikasi & Dialog Empatik, Penetapan Kategori, Pembinaan, Pendokumentasian & Komunikasi Ortu, Pemantauan Tindak Lanjut).",
       isMultiSk: false,
+      isGallery: false,
       docSubtitle: "V. PROSEDUR PENANGANAN PELANGGARAN & DIAGRAM ALUR ESKALASI",
       details: [
         "5.1 Alur Umum: Identifikasi Perilaku → Klarifikasi & Dialog Empatik → Penetapan Kategori (Ringan/Sedang/Berat) → Pembinaan Sesuai Kategori → Pendokumentasian & Komunikasi Ortu → Pemantauan & Evaluasi Tindak Lanjut.",
@@ -66,6 +68,7 @@ export default function Butir12Page() {
       status: "Dokumen Sah Sekolah",
       desc: "Sistem poin dan deskripsi peraturan kehadiran, upacara bendera, kerapian seragam sekolah, ketertiban proses belajar mengajar (KBM), serta larangan kekerasan fisik dan verbal.",
       isMultiSk: false,
+      isGallery: false,
       docSubtitle: "TATA TERTIB DAN SISTEM POIN KEDISIPLINAN SISWA",
       details: [
         "A. Kehadiran: Hadir setiap hari efektif belajar sebelum pukul 07.15 WIB.",
@@ -83,12 +86,29 @@ export default function Butir12Page() {
       status: "Foto & Arsip Materi",
       desc: "Materi edukasi interaktif fenomena gunung es bullying, deklarasi komitmen bersama di aula gereja sekolah, dan penandatanganan papan deklarasi ramah anak.",
       isMultiSk: false,
-      docSubtitle: "DOKUMENTASI KAMPANYE ANTI-PERUNDUNGAN & PAPAN DEKLARASI",
-      details: [
-        "Sosialisasi berkala di Aula Pertemuan Sekolah membahas bahaya cyber-bullying dan perundungan verbal.",
-        "Pemberian materi edukasi tentang fenomena gunung es kasus bullying di Indonesia.",
-        "Penandatanganan Papan Deklarasi Sekolah Ramah Anak & Anti Perundungan oleh perwakilan guru, komite, dan siswa.",
-        "Dokumentasi video publik di YouTube: https://www.youtube.com/watch?v=hviOV49zohc"
+      isGallery: true,
+      docSubtitle: "DOKUMENTASI FOTO KEGIATAN & VIDEO SOSIALISASI ANTI-PERUNDUNGAN",
+      youtubeUrl: "https://www.youtube.com/watch?v=hviOV49zohc",
+      youtubeEmbed: "https://www.youtube.com/embed/hviOV49zohc",
+      photos: [
+        {
+          title: "Penandatanganan Papan Deklarasi oleh Pendidik",
+          caption: "Pendidik dan pimpinan sekolah menandatangani komitmen deklarasi anti-perundungan di SMPS-SMAS Advent Batam Mas.",
+          src: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&auto=format&fit=crop&q=80",
+          localFallback: "/akreditasi/foto-antibullying-02.jpeg"
+        },
+        {
+          title: "Seminar Anti-Bullying & Cyber Bullying di Aula Gereja Sekolah",
+          caption: "Pemberian materi edukasi pencegahan perundungan dan cyber-bullying oleh Mestika Retina Tampubolon, M.Psi.",
+          src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&auto=format&fit=crop&q=80",
+          localFallback: "/akreditasi/seminar-anti-bullying.jpg"
+        },
+        {
+          title: "Penandatanganan Komitmen Bersama Seluruh Peserta Didik",
+          caption: "Antusiasme peserta didik menandatangani Papan Deklarasi Sekolah Ramah Anak sebagai wujud saling menghormati dan menciptakan kelas yang aman.",
+          src: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&auto=format&fit=crop&q=80",
+          localFallback: "/akreditasi/penandatanganan-siswa.jpg"
+        }
       ]
     },
     {
@@ -100,6 +120,7 @@ export default function Butir12Page() {
       status: "Portofolio Lengkap",
       desc: "Rekapitulasi pembinaan bulanan wali kelas, laporan evaluasi semester wakasek kesiswaan, peninjauan tahunan kepatuhan PTK, dan jadwal penerapan budaya sekolah aman.",
       isMultiSk: false,
+      isGallery: false,
       docSubtitle: "VII. PENDOKUMENTASIAN, PELAPORAN, DAN EVALUASI BERKALA",
       details: [
         "7.1 Pendokumentasian: Menggunakan formulir baku pembinaan yang tersimpan aman dan konfidensial.",
@@ -251,38 +272,6 @@ export default function Butir12Page() {
               ))}
             </div>
 
-            {/* VIDEO DOKUMENTASI ANTI-BULLYING */}
-            <div className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
-              <div className="flex items-center justify-between mb-3 pb-2 border-b border-slate-200">
-                <div className="flex items-center gap-2">
-                  <span className="text-red-600 text-base">▶</span>
-                  <h3 className="font-bold text-sm text-slate-900">
-                    Video Dokumentasi Kampanye & Sosialisasi Anti-Bullying
-                  </h3>
-                </div>
-                <a 
-                  href="https://www.youtube.com/watch?v=hviOV49zohc" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-xs text-red-700 hover:underline font-bold"
-                >
-                  Tonton di YouTube ↗
-                </a>
-              </div>
-              <p className="text-xs text-slate-600 mb-3">
-                Dokumentasi tayangan kegiatan edukasi dan komitmen bersama seluruh siswa SMPS Advent Batam Mas dalam menghentikan perundungan di lingkungan sekolah.
-              </p>
-              <div className="aspect-video w-full rounded-lg overflow-hidden bg-slate-900 shadow">
-                <iframe 
-                  className="w-full h-full"
-                  src="https://www.youtube.com/embed/hviOV49zohc" 
-                  title="Sosialisasi Anti-Bullying SMPS Advent Batam Mas"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </div>
-
             {/* NAVIGASI BAWAH */}
             <div className="pt-2 flex flex-wrap gap-3">
               <Link
@@ -357,14 +346,14 @@ export default function Butir12Page() {
       </section>
 
       {/* ========================================================================= */}
-      {/* MODAL POP-UP VIEWER DOKUMEN (MEMUAT SK 3 TP SECARA UTUH)                   */}
+      {/* MODAL POP-UP VIEWER DOKUMEN                                                */}
       {/* ========================================================================= */}
       {selectedDoc && (
-        <div className="fixed inset-0 bg-black/75 z-50 flex items-center justify-center p-3 sm:p-6 backdrop-blur-xs animate-in fade-in duration-200">
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-3 sm:p-6 backdrop-blur-xs animate-in fade-in duration-200">
           <div className="bg-white w-full max-w-4xl max-h-[94vh] rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-slate-200">
             
             {/* HEADER MODAL */}
-            <div className="bg-[#1e293b] text-white p-4 sm:p-5 flex items-center justify-between">
+            <div className="bg-[#1e293b] text-white p-4 sm:p-5 flex items-center justify-between shrink-0">
               <div>
                 <span className="bg-amber-500 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">
                   {selectedDoc.badge}
@@ -384,9 +373,9 @@ export default function Butir12Page() {
               </button>
             </div>
 
-            {/* TAB PILIHAN TAHUN PELAJARAN (JIKA MEMBUKA SK 3 TAHUN) */}
+            {/* TAB PILIHAN SK JIKA MULTI-SK */}
             {selectedDoc.isMultiSk && (
-              <div className="bg-slate-100 border-b border-slate-300 px-4 pt-3 flex gap-2 overflow-x-auto">
+              <div className="bg-slate-100 border-b border-slate-300 px-4 pt-3 flex gap-2 overflow-x-auto shrink-0">
                 {Object.keys(skHarmoniData).map((key) => {
                   const item = skHarmoniData[key];
                   const isActive = activeSkTab === key;
@@ -408,16 +397,156 @@ export default function Butir12Page() {
             )}
 
             {/* BODY DOKUMEN MODAL (SCROLLABLE) */}
-            <div className="p-5 sm:p-8 overflow-y-auto space-y-4 text-xs sm:text-sm text-slate-800 leading-relaxed bg-[#f8fafc]">
+            <div className="p-4 sm:p-6 overflow-y-auto space-y-6 text-xs sm:text-sm text-slate-800 leading-relaxed bg-[#f8fafc]">
               
-              {/* TAMPILAN JIKA SK HARMONI DIKLIK */}
-              {selectedDoc.isMultiSk ? (
+              {/* TAMPILAN 1: KARTU EDUKASI & SOSIALISASI (MENAMPILKAN 3 FOTO & VIDEO YOUTUBE) */}
+              {selectedDoc.isGallery ? (
+                <div className="space-y-6">
+                  
+                  {/* PENGANTAR SINGKAT */}
+                  <div className="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-xs">
+                    <h4 className="font-black text-sm text-[#047857] uppercase mb-1">
+                      Dokumentasi Bukti Fisik: Sosialisasi & Komitmen Deklarasi Anti-Perundungan
+                    </h4>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      Berikut dokumentasi otentik penyelenggaraan sosialisasi anti-bullying, seminar psiko-edukasi bersama narasumber ahli, penandatanganan papan komitmen bersama, serta video kegiatan terintegrasi.
+                    </p>
+                  </div>
+
+                  {/* 3 FOTO BUKTI DOKUMENTASI */}
+                  <div className="space-y-4">
+                    <h5 className="font-black text-xs sm:text-sm text-slate-900 uppercase tracking-wide flex items-center gap-1.5">
+                      <span>📸</span> Galeri 3 Foto Kegiatan
+                    </h5>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      
+                      {/* FOTO 1 */}
+                      <div className="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
+                        <div className="relative aspect-4/3 bg-slate-100 overflow-hidden">
+                          <img
+                            src="/akreditasi/foto-antibullying-02.jpeg"
+                            alt="Penandatanganan Papan Deklarasi oleh Pendidik"
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            onError={(e) => {
+                              // Fallback preview SVG jika file lokal belum dipindah ke folder public
+                              e.currentTarget.onerror = null;
+                              e.currentTarget.src = "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&auto=format&fit=crop&q=80";
+                            }}
+                          />
+                        </div>
+                        <div className="p-3 flex-1 flex flex-col justify-between">
+                          <h6 className="font-bold text-xs text-slate-900 leading-snug">
+                            1. Komitmen Pendidik & Satgas
+                          </h6>
+                          <p className="text-[11px] text-slate-500 mt-1 leading-normal">
+                            Penandatanganan resmi Papan Deklarasi Stop Bullying oleh jajaran guru SMPS-SMAS Advent Batam Mas.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* FOTO 2 */}
+                      <div className="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
+                        <div className="relative aspect-4/3 bg-slate-100 overflow-hidden">
+                          <img
+                            src="/akreditasi/guru&siswa-dalam seminar pelatihan anti bullying oleh Mestika Retina Tampubolon M.Psi.jpg"
+                            alt="Seminar Pelatihan Anti Bullying"
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            onError={(e) => {
+                              e.currentTarget.onerror = null;
+                              e.currentTarget.src = "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&auto=format&fit=crop&q=80";
+                            }}
+                          />
+                        </div>
+                        <div className="p-3 flex-1 flex flex-col justify-between">
+                          <h6 className="font-bold text-xs text-slate-900 leading-snug">
+                            2. Pelatihan & Psiko-Edukasi
+                          </h6>
+                          <p className="text-[11px] text-slate-500 mt-1 leading-normal">
+                            Seminar interaktif Anti Bullying & Cyber Bullying bersama Mestika Retina Tampubolon, M.Psi di aula gereja.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* FOTO 3 */}
+                      <div className="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
+                        <div className="relative aspect-4/3 bg-slate-100 overflow-hidden">
+                          <img
+                            src="/akreditasi/foto-antibullying-03.jpeg"
+                            alt="Penandatanganan oleh Peserta Didik"
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            onError={(e) => {
+                              e.currentTarget.onerror = null;
+                              e.currentTarget.src = "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&auto=format&fit=crop&q=80";
+                            }}
+                          />
+                        </div>
+                        <div className="p-3 flex-1 flex flex-col justify-between">
+                          <h6 className="font-bold text-xs text-slate-900 leading-snug">
+                            3. Deklarasi Peserta Didik
+                          </h6>
+                          <p className="text-[11px] text-slate-500 mt-1 leading-normal">
+                            Peserta didik membubuhkan tanda tangan penolakan terhadap segala aksi perundungan fisik maupun verbal.
+                          </p>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  {/* VIDEO YOUTUBE DOKUMENTASI TERINTEGRASI */}
+                  <div className="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-xs space-y-3">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-200">
+                      <div className="flex items-center gap-2">
+                        <span className="text-red-600 text-lg">▶</span>
+                        <h5 className="font-black text-xs sm:text-sm text-slate-900 uppercase tracking-wide">
+                          Video Dokumentasi Kampanye Anti-Perundungan
+                        </h5>
+                      </div>
+                      
+                      <a
+                        href={selectedDoc.youtubeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-red-600 hover:bg-red-700 text-white font-bold text-[11px] px-3 py-1 rounded shadow-xs transition-colors flex items-center gap-1 w-fit"
+                      >
+                        <span>Buka di YouTube</span>
+                        <span>↗</span>
+                      </a>
+                    </div>
+
+                    <p className="text-xs text-slate-600">
+                      Tautan video resmi kegiatan edukasi di kanal SMPS Advent Batam Mas:{" "}
+                      <a 
+                        href={selectedDoc.youtubeUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-blue-600 underline font-mono break-all font-semibold"
+                      >
+                        {selectedDoc.youtubeUrl}
+                      </a>
+                    </p>
+
+                    {/* PEMUTAR VIDEO YOUTUBE EMBED */}
+                    <div className="aspect-video w-full rounded-lg overflow-hidden bg-slate-900 shadow-md border border-slate-300">
+                      <iframe
+                        className="w-full h-full"
+                        src={selectedDoc.youtubeEmbed}
+                        title="Video Kampanye Anti Perundungan SMPS Advent Batam Mas"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+                  </div>
+
+                </div>
+              ) : selectedDoc.isMultiSk ? (
+                /* TAMPILAN 2: SK HARMONI 3 TAHUN */
                 (() => {
                   const currentSk = skHarmoniData[activeSkTab];
                   return (
                     <div className="bg-white p-6 sm:p-8 rounded-xl border border-slate-300 shadow-sm max-w-3xl mx-auto space-y-4 text-justify">
                       
-                      {/* KOP RESMI */}
                       <div className="text-center pb-4 border-b-2 border-slate-800">
                         <p className="font-extrabold text-xs sm:text-sm text-slate-900 tracking-wider">
                           YAYASAN PENDIDIKAN ADVENT BATAM
@@ -430,7 +559,6 @@ export default function Butir12Page() {
                         </p>
                       </div>
 
-                      {/* NOMOR & TENTANG */}
                       <div className="text-center py-2">
                         <h4 className="font-black text-sm sm:text-base text-slate-900 uppercase">
                           SURAT KEPUTUSAN KEPALA SEKOLAH MENENGAH PERTAMA SWASTA ADVENT BATAM MAS
@@ -446,7 +574,6 @@ export default function Butir12Page() {
                         </p>
                       </div>
 
-                      {/* MENIMBANG & MENGINGAT */}
                       <div className="space-y-2 text-[11px] sm:text-xs text-slate-700 border-t border-slate-200 pt-3">
                         <p className="font-bold text-slate-900">Menimbang :</p>
                         <ol className="list-alpha pl-5 space-y-1">
@@ -467,7 +594,6 @@ export default function Butir12Page() {
                         </ol>
                       </div>
 
-                      {/* MEMUTUSKAN */}
                       <div className="space-y-2 text-[11px] sm:text-xs text-slate-800 border-t border-slate-200 pt-3">
                         <p className="font-black text-center text-slate-900">MEMUTUSKAN</p>
                         <p><strong className="text-slate-900">KESATU :</strong> Memberlakukan Program Gerakan Kelas Harmoni sebagai program pembentukan kesepakatan kelas (class agreement) di setiap rombongan belajar SMPS Advent Batam Mas, mulai Tahun Pelajaran {currentSk.tp}.</p>
@@ -479,7 +605,6 @@ export default function Butir12Page() {
                         <p><strong className="text-slate-900">KETUJUH :</strong> Surat Keputusan ini mulai berlaku sejak tanggal ditetapkan.</p>
                       </div>
 
-                      {/* TANDA TANGAN KEPALA SEKOLAH */}
                       <div className="pt-6 border-t border-slate-200 flex justify-end">
                         <div className="text-center text-xs">
                           <p>Ditetapkan di: Batam</p>
@@ -501,7 +626,7 @@ export default function Butir12Page() {
                   );
                 })()
               ) : (
-                /* TAMPILAN DOKUMEN EVIDENCE LAINNYA */
+                /* TAMPILAN 3: DOKUMEN EVIDENCE LAIN */
                 <div className="bg-white p-6 rounded-xl border border-slate-300 shadow-sm max-w-3xl mx-auto space-y-4">
                   <div className="text-center pb-3 border-b-2 border-slate-800">
                     <p className="font-extrabold text-xs text-slate-900">SMPS ADVENT BATAM MAS</p>
@@ -522,7 +647,7 @@ export default function Butir12Page() {
             </div>
 
             {/* FOOTER MODAL */}
-            <div className="bg-slate-100 p-3 sm:p-4 border-t border-slate-200 flex justify-between items-center flex-wrap gap-2">
+            <div className="bg-slate-100 p-3 sm:p-4 border-t border-slate-200 flex justify-between items-center flex-wrap gap-2 shrink-0">
               <span className="text-[11px] text-slate-600 font-medium">
                 Arsip Resmi Terakreditasi BAN-PDM / BAN-S/M
               </span>
