@@ -10,14 +10,12 @@ export default function Header() {
   const [currentDate, setCurrentDate] = useState("Tuesday, September 15, 2026");
   const pathname = usePathname();
 
-  // FORMAT TANGGAL RESMI
   useEffect(() => {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const today = new Date().toLocaleDateString('en-US', options);
     setCurrentDate(today);
   }, []);
 
-  // DAFTAR MENU UTAMA
   const navLinks = [
     { label: "HOME", href: "/" },
     { label: "SCHOOL PROFILE", href: "/profile" },
@@ -35,11 +33,25 @@ export default function Header() {
   return (
     <header className="w-full font-sans shadow-md sticky top-0 z-50">
       
+      {/* STYLE KHUSUS ANIMASI PUTAR LOGO ADVENTIST EDUCATION */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes spinY {
+          0% { transform: perspective(600px) rotateY(0deg); }
+          100% { transform: perspective(600px) rotateY(360deg); }
+        }
+        .logo-adventist-spin {
+          animation: spinY 8s linear infinite;
+          transform-style: preserve-3d;
+        }
+        .logo-adventist-spin:hover {
+          animation-play-state: paused;
+        }
+      `}} />
+
       {/* 1. TOP NAVBAR MERAH MARUN */}
       <nav className="w-full bg-[#8B0000] text-white">
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-11 sm:h-12 overflow-visible">
           
-          {/* MENU DESKTOP */}
           <div className="hidden lg:flex items-center space-x-3 xl:space-x-5 w-full justify-between overflow-visible">
             <div className="flex items-center space-x-3 xl:space-x-5">
               {navLinks.map((item, idx) => {
@@ -60,7 +72,7 @@ export default function Header() {
               })}
             </div>
 
-            {/* MENU AKREDITASI DENGAN DROPDOWN SUBMENU DI PALING KANAN */}
+            {/* MENU AKREDITASI + SUBMENU BUTIR 12 */}
             <div 
               className="relative group py-2"
               onMouseEnter={() => setIsAkreditasiDropdown(true)}
@@ -76,7 +88,6 @@ export default function Header() {
                 </Link>
               </div>
 
-              {/* DROPDOWN SUB MENU */}
               <div 
                 className={`absolute right-0 top-full pt-1 w-52 transition-all duration-200 z-50 ${
                   isAkreditasiDropdown ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2 pointer-events-none"
@@ -101,7 +112,6 @@ export default function Header() {
 
           </div>
 
-          {/* TOGGLE MENU UNTUK TAMPILAN MOBILE */}
           <div className="flex lg:hidden items-center justify-between w-full">
             <span className="text-xs font-bold tracking-wider text-amber-300">
               MENU UTAMA
@@ -158,18 +168,28 @@ export default function Header() {
         </div>
       )}
 
-      {/* 2. MAIN HEADER PUTIH */}
+      {/* 2. MAIN HEADER PUTIH DENGAN LOGO ADVENTIST EDUCATION BERPUTAR */}
       <div className="w-full bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 py-3 sm:py-4 flex flex-col md:flex-row items-center justify-between gap-4">
           
           <div className="flex items-center gap-3 sm:gap-4 text-center md:text-left">
-            <Link href="/" className="shrink-0">
-              <img 
-                src="/slider-1.jpg" 
-                alt="Logo Advent Batam" 
-                className="w-10 h-10 sm:w-12 sm:h-12 object-contain rounded-full shadow-xs"
-              />
+            
+            {/* LOGO ADVENTIST EDUCATION BERPUTAR (ROTATING 3D LOGO) */}
+            <Link href="/" className="shrink-0 flex items-center justify-center p-1">
+              <div className="logo-adventist-spin w-12 h-14 sm:w-14 sm:h-16 flex items-center justify-center cursor-pointer">
+                <img 
+                  src="/logo.png" 
+                  alt="Logo Adventist Education" 
+                  className="w-full h-full object-contain drop-shadow-md"
+                  onError={(e) => {
+                    // Fallback otomatis jika file /logo.png belum terupload di folder public
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = "https://upload.wikimedia.org/wikipedia/commons/e/e0/Adventist_Education_Logo.png";
+                  }}
+                />
+              </div>
             </Link>
+
             <div>
               <Link href="/">
                 <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-none hover:text-[#047857] transition-colors">
