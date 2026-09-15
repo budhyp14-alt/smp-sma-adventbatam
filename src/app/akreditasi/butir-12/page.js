@@ -5,25 +5,41 @@ import Link from "next/link";
 
 export default function Butir12Page() {
   const [selectedDoc, setSelectedDoc] = useState(null);
+  const [activeSkTab, setActiveSkTab] = useState("2026-2027");
 
-  // DATA BERKAS BUKTI FISIK LENGKAP DENGAN GAMBAR MODAL
+  // DATA SK PROGRAM GERAKAN KELAS HARMONI 3 TAHUN PELAJARAN
+  const skHarmoniData = {
+    "2024-2025": {
+      tp: "2024/2025",
+      nomor: "058/08/SMP-YPAB/VII/2024",
+      tanggal: "10 Juli 2024",
+      rapat: "10 Juli 2024"
+    },
+    "2025-2026": {
+      tp: "2025/2026",
+      nomor: "059/08/SMP-YPAB/VII/2025",
+      tanggal: "10 Juli 2025",
+      rapat: "10 Juli 2025"
+    },
+    "2026-2027": {
+      tp: "2026/2027",
+      nomor: "060/08/SMP-YPAB/VII/2026",
+      tanggal: "10 Juli 2026",
+      rapat: "10 Juli 2026"
+    }
+  };
+
+  // DAFTAR BUKTI FISIK EVIDENCE BUTIR 12
   const evidenceDocuments = [
     {
-      id: "sk-tppk",
-      code: "SK-TPPK-2026",
-      nomor: "Nomor: 056/08/YPAB-SMP/VII/2026",
-      title: "SK Pembentukan Satuan Tugas (Satgas) Sekolah Ramah Anak & Anti Perundungan (TPPK)",
-      badge: "SK Kebijakan",
-      status: "Tersedia Fisik & SK Resmi",
-      desc: "Surat Keputusan Kepala SMPS Advent Batam Mas tentang pembentukan Satgas TPPK guna menjamin hak perlindungan peserta didik dari kekerasan fisik, psikis, dan diskriminasi.",
-      docSubtitle: "SURAT KEPUTUSAN KEPALA SEKOLAH SMPS ADVENT BATAM MAS",
-      docImage: "/akreditasi/sk-tppk.jpg",
-      details: [
-        "Menimbang: Setiap peserta didik berhak memperoleh perlindungan dari kekerasan fisik, psikis, dan tindakan diskriminasi selama berada di lingkungan satuan pendidikan.",
-        "Menimbang: Perundungan (bullying) dalam bentuk apapun dapat menghambat tumbuh kembang, rasa aman, dan prestasi belajar peserta didik.",
-        "Mewujudkan prinsip Sekolah Ramah Anak (SRA) yang menjamin pemenuhan hak perlindungan dan partisipasi anak.",
-        "Ditetapkan di Batam untuk Tahun Pelajaran 2025/2026 dan 2026/2027 oleh Kepala Sekolah SMPS Advent Batam Mas."
-      ]
+      id: "sk-harmoni-3tp",
+      code: "SK-HARMONI-3TP",
+      nomor: "No: 058 (2024) | No: 059 (2025) | No: 060 (2026)",
+      title: "SK Pembentukan Program Gerakan Kelas Harmoni & Satgas Anti Perundungan (3 Tahun Berturut-turut)",
+      badge: "SK Kebijakan Resmi",
+      status: "Tersedia 3 Dokumen Sah",
+      desc: "Surat Keputusan Kepala SMPS Advent Batam Mas tentang Program Gerakan Kelas Harmoni (Penyusunan Kesepakatan Kelas) untuk TP 2024/2025, TP 2025/2026, dan TP 2026/2027 guna menciptakan iklim belajar yang aman, tertib, dan bebas perundungan.",
+      isMultiSk: true
     },
     {
       id: "sop-penanganan",
@@ -33,12 +49,12 @@ export default function Butir12Page() {
       badge: "SOP Prosedural",
       status: "Terverifikasi Asesor",
       desc: "Panduan berjenjang 6 tahap penanganan (Identifikasi, Klarifikasi & Dialog Empatik, Penetapan Kategori, Pembinaan, Pendokumentasian & Komunikasi Ortu, Pemantauan Tindak Lanjut).",
+      isMultiSk: false,
       docSubtitle: "V. PROSEDUR PENANGANAN PELANGGARAN & DIAGRAM ALUR ESKALASI",
-      docImage: "/akreditasi/sop-penanganan.jpg",
       details: [
-        "5.1 Alur Umum Penanganan: Identifikasi Perilaku → Klarifikasi & Dialog Empatik → Penetapan Kategori (Ringan/Sedang/Berat) → Pembinaan Sesuai Kategori → Pendokumentasian → Komunikasi Orang Tua → Pemantauan & Evaluasi.",
-        "5.2 Prinsip Prosedural: Asas praduga tak bersalah, jaminan kerahasiaan identitas, proporsionalitas pembinaan, konsistensi tanpa diskriminasi, dan hak pendampingan.",
-        "5.3 Diagram Alur: Tahap 1-3 (Identifikasi hingga Kategori) dilanjutkan Tahap 4-6 (Pembinaan, Pendokumentasian hingga Evaluasi Berkala)."
+        "5.1 Alur Umum: Identifikasi Perilaku → Klarifikasi & Dialog Empatik → Penetapan Kategori (Ringan/Sedang/Berat) → Pembinaan Sesuai Kategori → Pendokumentasian & Komunikasi Ortu → Pemantauan & Evaluasi Tindak Lanjut.",
+        "5.2 Prinsip Prosedural: Asas praduga tak bersalah, jaminan kerahasiaan identitas, proporsionalitas pembinaan mendidik, konsistensi penerapan adil, dan hak didampingi orang tua/wali kelas.",
+        "5.3 Diagram Alur Eskalasi: Kasus yang belum membaik dieskalasi secara terukur mengikuti kategori pembinaan yang berlaku."
       ]
     },
     {
@@ -48,14 +64,14 @@ export default function Butir12Page() {
       title: "Dokumen Tata Tertib SMPS Advent Batam Tahun Pelajaran 2026/2027",
       badge: "Tata Tertib Siswa",
       status: "Dokumen Sah Sekolah",
-      desc: "Sistem poin dan deskripsi peraturan kehadiran, upacara, kerapian seragam, ketertiban KBM, larangan membawa gawai tanpa izin, serta sanksi tegas tindakan indisipliner.",
-      docSubtitle: "TATA TERTIB DAN SISTEM POIN SMPS ADVENT BATAM",
-      docImage: "/akreditasi/tata-tertib.jpg",
+      desc: "Sistem poin dan deskripsi peraturan kehadiran, upacara bendera, kerapian seragam sekolah, ketertiban proses belajar mengajar (KBM), serta larangan kekerasan fisik dan verbal.",
+      isMultiSk: false,
+      docSubtitle: "TATA TERTIB DAN SISTEM POIN KEDISIPLINAN SISWA",
       details: [
-        "A. Kehadiran & Keterlambatan: Batas hadir pukul 07.15 WIB, prosedur izin guru piket dan wali kelas.",
-        "B. Upacara Bendera: Kelengkapan atribut (topi, dasi, ikat pinggang, kaos kaki putih).",
-        "C. Kerapian Pakaian: Seragam putih-biru, batik yayasan, pramuka, olahraga, busana melayu, dan pakaian ibadah chapel.",
-        "D & E. Tata Tertib KBM: Disiplin kelas, larangan penggunaan alat komunikasi tanpa izin, serta penanganan tegas terhadap ketidaksopanan atau kekerasan verbal/fisik."
+        "A. Kehadiran: Hadir setiap hari efektif belajar sebelum pukul 07.15 WIB.",
+        "B. Upacara Bendera: Kedisiplinan barisan dan kelengkapan atribut seragam lengkap.",
+        "C. Kerapian Pakaian: Seragam putih-biru, batik, pramuka, olahraga, pakaian melayu, dan pakaian chapel ibadah.",
+        "D & E. Ketertiban Belajar: Larangan mengganggu kelas, larangan pengoperasian gawai tanpa izin guru, serta sanksi tegas tindakan tidak sopan atau kekerasan antarsiswa."
       ]
     },
     {
@@ -66,13 +82,13 @@ export default function Butir12Page() {
       badge: "Edukasi & Sosialisasi",
       status: "Foto & Arsip Materi",
       desc: "Materi edukasi interaktif fenomena gunung es bullying, deklarasi komitmen bersama di aula gereja sekolah, dan penandatanganan papan deklarasi ramah anak.",
-      docSubtitle: "DOKUMENTASI KAMPANYE ANTI PERUNDUNGAN & PAPAN DEKLARASI",
-      docImage: "/akreditasi/sosialisasi-deklarasi.jpg",
+      isMultiSk: false,
+      docSubtitle: "DOKUMENTASI KAMPANYE ANTI-PERUNDUNGAN & PAPAN DEKLARASI",
       details: [
         "Sosialisasi berkala di Aula Pertemuan Sekolah membahas bahaya cyber-bullying dan perundungan verbal.",
-        "Pemberian materi komprehensif tentang konsep 'Fenomena Gunung Es' kasus bullying di Indonesia.",
-        "Penandatanganan Papan Deklarasi Sekolah Ramah Anak & Anti Perundungan oleh perwakilan guru, komite, dan peserta didik.",
-        "Video sosialisasi publik terintegrasi di YouTube: https://www.youtube.com/watch?v=hviOV49zohc"
+        "Pemberian materi edukasi tentang fenomena gunung es kasus bullying di Indonesia.",
+        "Penandatanganan Papan Deklarasi Sekolah Ramah Anak & Anti Perundungan oleh perwakilan guru, komite, dan siswa.",
+        "Dokumentasi video publik di YouTube: https://www.youtube.com/watch?v=hviOV49zohc"
       ]
     },
     {
@@ -83,13 +99,13 @@ export default function Butir12Page() {
       badge: "Laporan & Evaluasi",
       status: "Portofolio Lengkap",
       desc: "Rekapitulasi pembinaan bulanan wali kelas, laporan evaluasi semester wakasek kesiswaan, peninjauan tahunan kepatuhan PTK, dan jadwal penerapan budaya sekolah aman.",
+      isMultiSk: false,
       docSubtitle: "VII. PENDOKUMENTASIAN, PELAPORAN, DAN EVALUASI BERKALA",
-      docImage: "/akreditasi/evaluasi-laporan.jpg",
       details: [
-        "7.1 Pendokumentasian: Penggunaan formulir baku pencatatan pembinaan yang tersimpan aman dan konfidensial.",
-        "7.2 Pelaporan Berkala: Laporan bulanan wali kelas kepada PKS Kesiswaan dan rekapitulasi semesteran kepada Kepala Sekolah.",
-        "7.3 Evaluasi & Peninjauan Tahunan: Mengukur penurunan tingkat keparahan pelanggaran, efektivitas konseling, serta kepatuhan tenaga pendidik terhadap larangan tindak kekerasan.",
-        "7.4 Jadwal Penerapan: Pelatihan pendidik mengenai disiplin positif restoratif (Juli 2025 - 2026) hingga pemantapan budaya sekolah aman berkelanjutan."
+        "7.1 Pendokumentasian: Menggunakan formulir baku pembinaan yang tersimpan aman dan konfidensial.",
+        "7.2 Pelaporan Berkala: Rekapitulasi bulanan wali kelas kepada PKS Kesiswaan dan laporan evaluasi semester kepada Kepala Sekolah.",
+        "7.3 Evaluasi Tahunan: Mengukur penurunan tingkat pelanggaran, efektivitas tindak lanjut, dan kepatuhan guru terhadap larangan kekerasan.",
+        "7.4 Jadwal Penerapan: Sosialisasi pedoman, penguatan konsistensi, dan pemantapan budaya sekolah aman berkelanjutan."
       ]
     }
   ];
@@ -97,7 +113,7 @@ export default function Butir12Page() {
   return (
     <main className="min-h-screen bg-[#F3EFE4] font-sans flex flex-col text-slate-800">
       
-      {/* BREADCRUMB & HEADER */}
+      {/* BREADCRUMB & JUDUL HALAMAN */}
       <section className="w-full pt-8 pb-4 px-4 sm:px-8 max-w-7xl mx-auto shrink-0">
         <div className="text-xs text-slate-600 font-semibold mb-4 flex items-center gap-1 flex-wrap">
           <span>You are here :</span>
@@ -111,7 +127,7 @@ export default function Butir12Page() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-slate-300">
           <div>
             <span className="bg-[#8B0000] text-white text-[10px] sm:text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider inline-block mb-2">
-              INSTRUMEN AKREDITASI BAN-S/M
+              INSTRUMEN AKREDITASI BAN-PDM / BAN-S/M
             </span>
             <h1 className="text-2xl sm:text-3xl font-black text-[#1e293b] tracking-wider uppercase">
               BUKTI KINERJA BUTIR 12
@@ -136,7 +152,7 @@ export default function Butir12Page() {
       <section className="w-full flex-1 pb-16 px-4 sm:px-8 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* KOLOM KIRI (8 DARI 12) */}
+          {/* KOLOM KIRI: DAFTAR BUKTI DUKUNG */}
           <div className="lg:col-span-8 space-y-6">
             
             {/* KARTU PENGANTAR BUTIR 12 */}
@@ -144,7 +160,6 @@ export default function Butir12Page() {
               <h2 className="text-base sm:text-lg font-bold text-slate-900 mb-2">
                 Butir 12. Iklim Lingkungan Belajar yang Aman Secara Psikis dan Fisik
               </h2>
-              
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-justify mb-5">
                 SMPS Advent Batam Mas berkomitmen penuh menghadirkan lingkungan pendidikan yang kondusif, berkeadilan, dan bebas dari segala bentuk diskriminasi, intimidasi, maupun kekerasan fisik dan emosional. Seluruh tata kelola perlindungan warga sekolah didukung oleh regulasi tertulis yang terstruktur, satuan tugas pencegahan kekerasan yang aktif, serta program pembinaan terukur bagi peserta didik, pendidik, dan tenaga kependidikan.
               </p>
@@ -180,7 +195,7 @@ export default function Butir12Page() {
               </div>
             </div>
 
-            {/* DAFTAR BUKTI FISIK EVIDENCE */}
+            {/* DAFTAR KARTU BUKTI DUKUNG EVIDENCE */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="font-black text-sm text-slate-900 uppercase tracking-wide">
@@ -220,10 +235,12 @@ export default function Butir12Page() {
                       ✓ {doc.status}
                     </span>
                     
-                    {/* TOMBOL BUKA DOKUMEN AKTIF */}
                     <button 
                       type="button"
-                      onClick={() => setSelectedDoc(doc)}
+                      onClick={() => {
+                        setSelectedDoc(doc);
+                        if (doc.isMultiSk) setActiveSkTab("2026-2027");
+                      }}
                       className="bg-[#047857] hover:bg-emerald-800 text-white font-bold text-xs px-4 py-2 rounded-lg shadow-sm transition-all transform hover:scale-105 cursor-pointer whitespace-nowrap flex items-center gap-1"
                     >
                       <span>Buka Dokumen</span>
@@ -284,7 +301,7 @@ export default function Butir12Page() {
 
           </div>
 
-          {/* KOLOM KANAN: SIDEBAR */}
+          {/* KOLOM KANAN: SIDEBAR ASESOR */}
           <aside className="lg:col-span-4 space-y-6">
             
             <div className="bg-[#EFEAD8] p-6 rounded-2xl shadow-sm border border-slate-200">
@@ -302,7 +319,7 @@ export default function Butir12Page() {
                   <strong className="text-slate-900">NPSN:</strong> 70002994
                 </p>
                 <p>
-                  <strong className="text-slate-900">Fokus Verifikasi Butir 12:</strong> Pemeriksaan SK Satgas TPPK, bukti alur eskalasi penanganan kasus, buku catatan disiplin positif, serta observasi iklim interaksi kondusif di lingkungan sekolah.
+                  <strong className="text-slate-900">Fokus Verifikasi Butir 12:</strong> Pemeriksaan SK Satgas TPPK dan SK Program Gerakan Kelas Harmoni (3 TP), alur eskalasi penanganan kasus, buku catatan disiplin positif, serta observasi iklim interaksi kondusif di lingkungan sekolah.
                 </p>
               </div>
             </div>
@@ -340,11 +357,11 @@ export default function Butir12Page() {
       </section>
 
       {/* ========================================================================= */}
-      {/* MODAL POP-UP VIEWER DOKUMEN (MUNCUL KETIKA TOMBOL "Buka Dokumen ↗" DIKLIK) */}
+      {/* MODAL POP-UP VIEWER DOKUMEN (MEMUAT SK 3 TP SECARA UTUH)                   */}
       {/* ========================================================================= */}
       {selectedDoc && (
         <div className="fixed inset-0 bg-black/75 z-50 flex items-center justify-center p-3 sm:p-6 backdrop-blur-xs animate-in fade-in duration-200">
-          <div className="bg-white w-full max-w-3xl max-h-[92vh] rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-slate-200">
+          <div className="bg-white w-full max-w-4xl max-h-[94vh] rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-slate-200">
             
             {/* HEADER MODAL */}
             <div className="bg-[#1e293b] text-white p-4 sm:p-5 flex items-center justify-between">
@@ -355,9 +372,6 @@ export default function Butir12Page() {
                 <h3 className="text-sm sm:text-base font-bold mt-1 text-white leading-tight">
                   {selectedDoc.title}
                 </h3>
-                <p className="text-[11px] text-slate-300 font-mono">
-                  {selectedDoc.nomor}
-                </p>
               </div>
 
               <button
@@ -370,53 +384,148 @@ export default function Butir12Page() {
               </button>
             </div>
 
-            {/* BODY DOKUMEN MODAL (SCROLLABLE) */}
-            <div className="p-5 sm:p-6 overflow-y-auto space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed bg-[#f8fafc]">
-              
-              {/* LEMBAR PRATINJAU DOKUMEN RESMI */}
-              <div className="bg-white p-5 sm:p-6 rounded-xl border border-slate-300 shadow-xs">
-                
-                {/* KOP RESMI DOKUMEN */}
-                <div className="text-center pb-3 border-b-2 border-slate-800 mb-4">
-                  <p className="font-extrabold text-[11px] sm:text-xs text-slate-900 tracking-wider">
-                    YAYASAN PENDIDIKAN ADVENT BATAM
-                  </p>
-                  <p className="font-black text-sm sm:text-base text-slate-950">
-                    SMPS ADVENT BATAM MAS
-                  </p>
-                  <p className="text-[10px] text-slate-500">
-                    AKTA No. 29 Tahun 2011 • NPSN : 70002994 • Jl. Prof. Dr. Hamka Kav. IV Batu Aji Batam
-                  </p>
-                </div>
-
-                <div className="text-center font-bold text-xs sm:text-sm text-[#047857] pb-3 border-b border-slate-200 mb-4">
-                  {selectedDoc.docSubtitle}
-                </div>
-
-                {/* BUTIR-BUTIR PASAL / POIN PERATURAN DOKUMEN */}
-                <div className="space-y-2.5">
-                  {selectedDoc.details.map((point, pIdx) => (
-                    <div key={pIdx} className="flex gap-2 items-start bg-slate-50 p-2.5 rounded border border-slate-200">
-                      <span className="text-[#047857] font-bold">✓</span>
-                      <span className="text-slate-800 leading-relaxed text-justify">{point}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* TANDA VERIFIKASI ASESOR */}
-                <div className="mt-6 pt-4 border-t border-dashed border-slate-300 flex justify-between items-center text-[11px] text-slate-500">
-                  <span>Status: Terarsip dan diverifikasi untuk Akreditasi Sekolah</span>
-                  <span className="font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                    Dokumen Sah SMPS Advent Batam Mas
-                  </span>
-                </div>
-
+            {/* TAB PILIHAN TAHUN PELAJARAN (JIKA MEMBUKA SK 3 TAHUN) */}
+            {selectedDoc.isMultiSk && (
+              <div className="bg-slate-100 border-b border-slate-300 px-4 pt-3 flex gap-2 overflow-x-auto">
+                {Object.keys(skHarmoniData).map((key) => {
+                  const item = skHarmoniData[key];
+                  const isActive = activeSkTab === key;
+                  return (
+                    <button
+                      key={key}
+                      onClick={() => setActiveSkTab(key)}
+                      className={`px-4 py-2 text-xs font-bold rounded-t-lg transition-all border-t border-x cursor-pointer ${
+                        isActive
+                          ? "bg-white text-[#047857] border-slate-300 border-b-transparent shadow-xs"
+                          : "bg-slate-200 text-slate-600 hover:bg-slate-300 border-transparent"
+                      }`}
+                    >
+                      📄 SK TP {item.tp}
+                    </button>
+                  );
+                })}
               </div>
+            )}
+
+            {/* BODY DOKUMEN MODAL (SCROLLABLE) */}
+            <div className="p-5 sm:p-8 overflow-y-auto space-y-4 text-xs sm:text-sm text-slate-800 leading-relaxed bg-[#f8fafc]">
+              
+              {/* TAMPILAN JIKA SK HARMONI DIKLIK */}
+              {selectedDoc.isMultiSk ? (
+                (() => {
+                  const currentSk = skHarmoniData[activeSkTab];
+                  return (
+                    <div className="bg-white p-6 sm:p-8 rounded-xl border border-slate-300 shadow-sm max-w-3xl mx-auto space-y-4 text-justify">
+                      
+                      {/* KOP RESMI */}
+                      <div className="text-center pb-4 border-b-2 border-slate-800">
+                        <p className="font-extrabold text-xs sm:text-sm text-slate-900 tracking-wider">
+                          YAYASAN PENDIDIKAN ADVENT BATAM
+                        </p>
+                        <p className="font-black text-base sm:text-lg text-slate-950">
+                          SMPS ADVENT BATAM MAS
+                        </p>
+                        <p className="text-[10px] text-slate-500">
+                          AKTA No. 29 Tahun 2011 • NPSN : 70002994 • Jalan Prof. Dr. Hamka Kav. IV - Batu Aji - Batam
+                        </p>
+                      </div>
+
+                      {/* NOMOR & TENTANG */}
+                      <div className="text-center py-2">
+                        <h4 className="font-black text-sm sm:text-base text-slate-900 uppercase">
+                          SURAT KEPUTUSAN KEPALA SEKOLAH MENENGAH PERTAMA SWASTA ADVENT BATAM MAS
+                        </h4>
+                        <p className="font-bold text-xs text-slate-700 mt-1">
+                          Nomor : {currentSk.nomor}
+                        </p>
+                        <p className="font-black text-xs sm:text-sm text-[#8B0000] mt-2 uppercase tracking-wide">
+                          TENTANG<br/>
+                          PROGRAM GERAKAN KELAS HARMONI<br/>
+                          (PENYUSUNAN KESEPAKATAN KELAS)<br/>
+                          TAHUN PELAJARAN {currentSk.tp}
+                        </p>
+                      </div>
+
+                      {/* MENIMBANG & MENGINGAT */}
+                      <div className="space-y-2 text-[11px] sm:text-xs text-slate-700 border-t border-slate-200 pt-3">
+                        <p className="font-bold text-slate-900">Menimbang :</p>
+                        <ol className="list-alpha pl-5 space-y-1">
+                          <li>bahwa untuk mewujudkan iklim kelas yang aman, nyaman, dan kondusif bagi tumbuh kembang peserta didik, diperlukan kesepakatan bersama antara guru dan peserta didik mengenai norma sikap dan perilaku di dalam kelas;</li>
+                          <li>bahwa Program Gerakan Kelas Harmoni merupakan upaya sekolah untuk menumbuhkan disiplin positif, sikap saling menghormati, dan tanggung jawab bersama dalam proses pembelajaran;</li>
+                          <li>bahwa penyusunan kesepakatan kelas secara partisipatif terbukti mendukung optimalisasi waktu belajar yang fokus dan minim gangguan sebagaimana dipersyaratkan dalam Instrumen Akreditasi IA2024 Versi 2025;</li>
+                          <li>bahwa berdasarkan pertimbangan sebagaimana dimaksud pada huruf a, b, dan c, perlu ditetapkan Surat Keputusan Kepala Sekolah tentang Program Gerakan Kelas Harmoni.</li>
+                        </ol>
+
+                        <p className="font-bold text-slate-900 pt-2">Mengingat :</p>
+                        <ol className="list-decimal pl-5 space-y-1">
+                          <li>Undang-Undang Nomor 20 Tahun 2003 tentang Sistem Pendidikan Nasional;</li>
+                          <li>Peraturan Menteri Pendidikan dan Kebudayaan Nomor 82 Tahun 2015 tentang Pencegahan dan Penanggulangan Tindak Kekerasan di Lingkungan Satuan Pendidikan;</li>
+                          <li>Peraturan Menteri Pendidikan, Kebudayaan, Riset, dan Teknologi Nomor 46 Tahun 2023 tentang Pencegahan dan Penanganan Perundungan di Lingkungan Satuan Pendidikan;</li>
+                          <li>Instrumen Akreditasi IA2024 Versi 2025 Badan Akreditasi Nasional Pendidikan Dasar dan Menengah (BAN-PDM);</li>
+                          <li>Program Kerja Yayasan Advent Indonesia Bidang Pendidikan Tahun Pelajaran 2026/2027;</li>
+                          <li>Hasil Rapat Dewan Guru SMPS Advent Batam Mas tanggal {currentSk.rapat}.</li>
+                        </ol>
+                      </div>
+
+                      {/* MEMUTUSKAN */}
+                      <div className="space-y-2 text-[11px] sm:text-xs text-slate-800 border-t border-slate-200 pt-3">
+                        <p className="font-black text-center text-slate-900">MEMUTUSKAN</p>
+                        <p><strong className="text-slate-900">KESATU :</strong> Memberlakukan Program Gerakan Kelas Harmoni sebagai program pembentukan kesepakatan kelas (class agreement) di setiap rombongan belajar SMPS Advent Batam Mas, mulai Tahun Pelajaran {currentSk.tp}.</p>
+                        <p><strong className="text-slate-900">KEDUA :</strong> Program Gerakan Kelas Harmoni bertujuan membangun kesepakatan kelas bersama, menumbuhkan budaya disiplin positif tanpa kekerasan fisik maupun verbal, menciptakan suasana belajar fokus dan tertib, meningkatkan rasa memiliki, serta menanamkan nilai-nilai Kristiani Advent (kasih, hormat, dan tanggung jawab).</p>
+                        <p><strong className="text-slate-900">KETIGA :</strong> Setiap wali kelas wajib memfasilitasi penyusunan kesepakatan kelas pada minggu pertama tahun pelajaran, mendokumentasikan dalam bentuk piagam/poster yang ditandatangani bersama, dan menempelkannya di ruang kelas.</p>
+                        <p><strong className="text-slate-900">KEEMPAT :</strong> Kesepakatan kelas memuat norma sikap dan tutur kata, pengelolaan waktu belajar tertib, prosedur pengingatan (reminder), dan konsekuensi mendidik tanpa hukuman fisik atau perundungan.</p>
+                        <p><strong className="text-slate-900">KELIMA :</strong> Guru BK dan Wakil Kepala Kesiswaan bertugas mendampingi, memantau, mengevaluasi berkala setiap semester, dan melaporkan hasilnya kepada Kepala Sekolah.</p>
+                        <p><strong className="text-slate-900">KEENAM :</strong> Segala biaya yang timbul dibebankan pada anggaran operasional sekolah yang sesuai.</p>
+                        <p><strong className="text-slate-900">KETUJUH :</strong> Surat Keputusan ini mulai berlaku sejak tanggal ditetapkan.</p>
+                      </div>
+
+                      {/* TANDA TANGAN KEPALA SEKOLAH */}
+                      <div className="pt-6 border-t border-slate-200 flex justify-end">
+                        <div className="text-center text-xs">
+                          <p>Ditetapkan di: Batam</p>
+                          <p>Pada tanggal: {currentSk.tanggal}</p>
+                          <p className="font-bold mt-1">Kepala SMPS Advent Batam Mas,</p>
+                          <div className="py-5 font-script text-slate-400 italic font-bold">
+                            [Tanda Tangan & Cap Sah Sekolah]
+                          </div>
+                          <p className="font-black text-slate-900 underline">
+                            Tona Leon F. Situmorang, S.Pd., MA.Ed.
+                          </p>
+                          <p className="text-[10px] text-slate-600 font-mono">
+                            NRKS. 21023L0013160241226163
+                          </p>
+                        </div>
+                      </div>
+
+                    </div>
+                  );
+                })()
+              ) : (
+                /* TAMPILAN DOKUMEN EVIDENCE LAINNYA */
+                <div className="bg-white p-6 rounded-xl border border-slate-300 shadow-sm max-w-3xl mx-auto space-y-4">
+                  <div className="text-center pb-3 border-b-2 border-slate-800">
+                    <p className="font-extrabold text-xs text-slate-900">SMPS ADVENT BATAM MAS</p>
+                    <p className="font-black text-sm text-[#047857]">{selectedDoc.docSubtitle}</p>
+                    <p className="text-[10px] text-slate-500">{selectedDoc.nomor}</p>
+                  </div>
+                  <div className="space-y-3 pt-2">
+                    {selectedDoc.details?.map((item, dIdx) => (
+                      <div key={dIdx} className="flex gap-2.5 items-start bg-slate-50 p-3 rounded-lg border border-slate-200">
+                        <span className="text-[#047857] font-bold text-sm">✓</span>
+                        <p className="text-xs text-slate-800 leading-relaxed text-justify">{item}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
             </div>
 
             {/* FOOTER MODAL */}
-            <div className="bg-slate-100 p-3 sm:p-4 border-t border-slate-200 flex justify-end gap-2">
+            <div className="bg-slate-100 p-3 sm:p-4 border-t border-slate-200 flex justify-between items-center flex-wrap gap-2">
+              <span className="text-[11px] text-slate-600 font-medium">
+                Arsip Resmi Terakreditasi BAN-PDM / BAN-S/M
+              </span>
               <button
                 type="button"
                 onClick={() => setSelectedDoc(null)}
@@ -430,7 +539,7 @@ export default function Butir12Page() {
         </div>
       )}
 
-      {/* FOOTER */}
+      {/* FOOTER WEB */}
       <footer className="w-full bg-[#8B0000] text-white text-[10px] sm:text-xs text-center py-4 font-semibold shrink-0 mt-auto">
         Developed by Ir. Budhy Prasetyo
       </footer>
