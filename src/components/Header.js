@@ -168,31 +168,31 @@ export default function Header() {
         </div>
       )}
 
-      {/* 2. MAIN HEADER PUTIH: TINGGI TETAP DIJAGA RAMPING (h-16), LOGO BERPUTAR DIPERBESAR 1.5x */}
-      <div className="w-full bg-white border-b border-slate-200 overflow-visible">
-        <div className="max-w-7xl mx-auto px-4 h-16 sm:h-18 flex items-center justify-between gap-4 overflow-visible">
+      {/* 2. MAIN HEADER PUTIH: KOTAK DIKUNCI RAMPING (h-16), LOGO FLOATING (MELAYANG) 2X LEBIH BESAR */}
+      <div className="w-full bg-white border-b border-slate-200 relative overflow-visible">
+        <div className="max-w-7xl mx-auto px-4 h-16 sm:h-18 flex items-center justify-between gap-4 relative overflow-visible">
           
-          <div className="flex items-center gap-4 sm:gap-6 text-left overflow-visible">
+          <div className="flex items-center text-left relative overflow-visible">
             
-            {/* LOGO DIPERBESAR 1.5x DENGAN SKALA TINGGI JELAS & TIDAK MENDORONG KOTAK PUTIH */}
-            <Link 
-              href="/" 
-              className="shrink-0 flex items-center justify-center relative w-12 sm:w-16 h-12 sm:h-14 overflow-visible"
-            >
-              <div className="logo-adventist-spin w-16 h-16 sm:w-20 sm:h-20 scale-[1.75] sm:scale-[2.1] flex items-center justify-center cursor-pointer origin-center transition-transform">
-                <img 
-                  src="/logo.png" 
-                  alt="Logo Adventist Education" 
-                  className="w-full h-full object-contain drop-shadow"
-                  onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.src = "https://upload.wikimedia.org/wikipedia/commons/e/e0/Adventist_Education_Logo.png";
-                  }}
-                />
-              </div>
-            </Link>
+            {/* LOGO MELAYANG (FLOATING) 2X LEBIH BESAR & BEBAS DARI TINGGI KOTAK PUTIH */}
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 z-30 pointer-events-auto">
+              <Link href="/" className="block cursor-pointer">
+                <div className="logo-adventist-spin w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center filter drop-shadow-md">
+                  <img 
+                    src="/logo.png" 
+                    alt="Logo Adventist Education" 
+                    className="w-full h-full object-contain"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = "https://upload.wikimedia.org/wikipedia/commons/e/e0/Adventist_Education_Logo.png";
+                    }}
+                  />
+                </div>
+              </Link>
+            </div>
 
-            <div className="flex flex-col justify-center">
+            {/* TEKS DIBERI MARGIN KIRI AGAR TIDAK TERTABRAK LOGO MELAYANG */}
+            <div className="flex flex-col justify-center ml-24 sm:ml-28">
               <Link href="/">
                 <h1 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight leading-none hover:text-[#047857] transition-colors">
                   SMP - SMA ADVENT BATAM
@@ -227,7 +227,7 @@ export default function Header() {
       </div>
 
       {/* 3. RUNNING TICKER KUNING EMAS */}
-      <div className="w-full bg-[#D97706] text-white">
+      <div className="w-full bg-[#D97706] text-white relative z-10">
         <div className="max-w-7xl mx-auto px-4 flex items-center h-8 text-[11px] sm:text-xs overflow-hidden">
           <div className="bg-[#1e293b] text-white font-bold px-2 sm:px-3 py-1 mr-2 rounded text-[10px] sm:text-[11px] shrink-0">
             {currentDate}
