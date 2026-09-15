@@ -16,7 +16,8 @@ export default function Header() {
     setCurrentDate(today);
   }, []);
 
-  // DAFTAR MENU UTAMA (LIBRARY DIARAHKAN KE https://e-perpus-batam-mas.vercel.app/)
+  // DAFTAR MENU UTAMA
+  // LIBRARY diarahkan langsung ke web perpustakaan di tab yang sama agar tombol 'Back' browser berfungsi normal
   const navLinks = [
     { label: "HOME", href: "/", isExternal: false },
     { label: "SCHOOL PROFILE", href: "/profile", isExternal: false },
@@ -34,7 +35,7 @@ export default function Header() {
   return (
     <header className="w-full font-sans shadow-md sticky top-0 z-50">
       
-      {/* STYLE ANIMASI PUTAR 3D LOGO ADVENTIST EDUCATION SEARAH JARUM JAM */}
+      {/* ANIMASI PUTAR SEARAH JARUM JAM */}
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes spinClockwise {
           from {
@@ -63,23 +64,19 @@ export default function Header() {
               {navLinks.map((item, idx) => {
                 const isActive = pathname === item.href;
 
-                // TAMPILAN MENU LIBRARY (EXTERNAL LINK KE TAB BARU)
+                // MENU EXTERNAL (LIBRARY) DI TAB YANG SAMA
                 if (item.isExternal) {
                   return (
                     <a
                       key={idx}
                       href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[11px] xl:text-xs font-bold tracking-wider uppercase transition-colors whitespace-nowrap py-1 text-white hover:text-amber-300 flex items-center gap-1"
+                      className="text-[11px] xl:text-xs font-bold tracking-wider uppercase transition-colors whitespace-nowrap py-1 text-white hover:text-amber-300"
                     >
-                      <span>{item.label}</span>
-                      <span className="text-[10px]">↗</span>
+                      {item.label}
                     </a>
                   );
                 }
 
-                // TAMPILAN MENU INTERNAL LAINNYA
                 return (
                   <Link
                     key={idx}
@@ -136,7 +133,7 @@ export default function Header() {
 
           </div>
 
-          {/* TOGGLE TOMBOL MOBILE */}
+          {/* TOGGLE MOBILE */}
           <div className="flex lg:hidden items-center justify-between w-full">
             <span className="text-xs font-bold tracking-wider text-amber-300">
               MENU UTAMA
@@ -168,13 +165,10 @@ export default function Header() {
                 <a
                   key={idx}
                   href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
-                  className="block text-xs font-bold py-1.5 px-2 rounded hover:bg-red-900 text-amber-300 flex items-center justify-between"
+                  className="block text-xs font-bold py-1.5 px-2 rounded hover:bg-red-900 text-amber-300"
                 >
-                  <span>{item.label}</span>
-                  <span className="text-[10px]">↗</span>
+                  {item.label}
                 </a>
               );
             }
@@ -211,13 +205,11 @@ export default function Header() {
         </div>
       )}
 
-      {/* 2. MAIN HEADER PUTIH: LOGO BERPUTAR MELAYANG DI KIRI */}
+      {/* 2. MAIN HEADER PUTIH: LOGO MELAYANG */}
       <div className="w-full bg-white border-b border-slate-200 relative overflow-visible">
         <div className="max-w-7xl mx-auto px-4 h-16 sm:h-18 flex items-center justify-between gap-4 relative overflow-visible">
           
           <div className="flex items-center text-left relative overflow-visible">
-            
-            {/* LOGO ADVENTIST BERPUTAR SEARAH JARUM JAM & MELAYANG */}
             <div className="absolute -left-6 sm:-left-8 top-1/2 -translate-y-1/2 z-30 pointer-events-auto">
               <Link href="/" className="block cursor-pointer">
                 <div className="logo-adventist-spin w-32 h-32 sm:w-36 sm:h-36 flex items-center justify-center filter drop-shadow-md">
@@ -234,7 +226,6 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* TEKS DI SEBELAH LOGO MELAYANG */}
             <div className="flex flex-col justify-center ml-24 sm:ml-28">
               <Link href="/">
                 <h1 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight leading-none hover:text-[#047857] transition-colors">
