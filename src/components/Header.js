@@ -16,24 +16,25 @@ export default function Header() {
     setCurrentDate(today);
   }, []);
 
+  // DAFTAR MENU UTAMA (LIBRARY DIARAHKAN KE https://e-perpus-batam-mas.vercel.app/)
   const navLinks = [
-    { label: "HOME", href: "/" },
-    { label: "SCHOOL PROFILE", href: "/profile" },
-    { label: "NEWS", href: "/news" },
-    { label: "ANNOUNCEMENTS", href: "/announcements" },
-    { label: "AGENDA", href: "/agenda" },
-    { label: "ACTIVITIES", href: "/activities" },
-    { label: "FACILITIES", href: "/facilities" },
-    { label: "GALLERY", href: "/gallery" },
-    { label: "BIMBEL/ESKUL", href: "/bimbel-eskul" },
-    { label: "PPDB", href: "/ppdb" },
-    { label: "LIBRARY", href: "/library" },
+    { label: "HOME", href: "/", isExternal: false },
+    { label: "SCHOOL PROFILE", href: "/profile", isExternal: false },
+    { label: "NEWS", href: "/news", isExternal: false },
+    { label: "ANNOUNCEMENTS", href: "/announcements", isExternal: false },
+    { label: "AGENDA", href: "/agenda", isExternal: false },
+    { label: "ACTIVITIES", href: "/activities", isExternal: false },
+    { label: "FACILITIES", href: "/facilities", isExternal: false },
+    { label: "GALLERY", href: "/gallery", isExternal: false },
+    { label: "BIMBEL/ESKUL", href: "/bimbel-eskul", isExternal: false },
+    { label: "PPDB", href: "/ppdb", isExternal: false },
+    { label: "LIBRARY", href: "https://e-perpus-batam-mas.vercel.app/", isExternal: true },
   ];
 
   return (
     <header className="w-full font-sans shadow-md sticky top-0 z-50">
       
-      {/* STYLE ANIMASI PUTAR SEARAH JARUM JAM TERUS-MENERUS (TIDAK BOLAK-BALIK) */}
+      {/* STYLE ANIMASI PUTAR 3D LOGO ADVENTIST EDUCATION SEARAH JARUM JAM */}
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes spinClockwise {
           from {
@@ -61,6 +62,24 @@ export default function Header() {
             <div className="flex items-center space-x-3 xl:space-x-5">
               {navLinks.map((item, idx) => {
                 const isActive = pathname === item.href;
+
+                // TAMPILAN MENU LIBRARY (EXTERNAL LINK KE TAB BARU)
+                if (item.isExternal) {
+                  return (
+                    <a
+                      key={idx}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[11px] xl:text-xs font-bold tracking-wider uppercase transition-colors whitespace-nowrap py-1 text-white hover:text-amber-300 flex items-center gap-1"
+                    >
+                      <span>{item.label}</span>
+                      <span className="text-[10px]">↗</span>
+                    </a>
+                  );
+                }
+
+                // TAMPILAN MENU INTERNAL LAINNYA
                 return (
                   <Link
                     key={idx}
@@ -117,6 +136,7 @@ export default function Header() {
 
           </div>
 
+          {/* TOGGLE TOMBOL MOBILE */}
           <div className="flex lg:hidden items-center justify-between w-full">
             <span className="text-xs font-bold tracking-wider text-amber-300">
               MENU UTAMA
@@ -142,16 +162,34 @@ export default function Header() {
       {/* DROPDOWN MENU MOBILE */}
       {isOpen && (
         <div className="lg:hidden bg-[#700000] text-white px-4 py-3 space-y-2 border-t border-red-800">
-          {navLinks.map((item, idx) => (
-            <Link
-              key={idx}
-              href={item.href}
-              onClick={() => setIsOpen(false)}
-              className="block text-xs font-bold py-1.5 px-2 rounded hover:bg-red-900 text-slate-100"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navLinks.map((item, idx) => {
+            if (item.isExternal) {
+              return (
+                <a
+                  key={idx}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="block text-xs font-bold py-1.5 px-2 rounded hover:bg-red-900 text-amber-300 flex items-center justify-between"
+                >
+                  <span>{item.label}</span>
+                  <span className="text-[10px]">↗</span>
+                </a>
+              );
+            }
+
+            return (
+              <Link
+                key={idx}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className="block text-xs font-bold py-1.5 px-2 rounded hover:bg-red-900 text-slate-100"
+              >
+                {item.label}
+              </Link>
+            );
+          })}
           
           <div className="pt-2 border-t border-red-800/60">
             <span className="text-[10px] text-amber-300 font-bold uppercase tracking-wider block px-2 mb-1">Akreditasi</span>
@@ -173,13 +211,13 @@ export default function Header() {
         </div>
       )}
 
-      {/* 2. MAIN HEADER PUTIH: LOGO DIGESER LEBIH KE KIRI & BERPUTAR SEARAH JARUM JAM */}
+      {/* 2. MAIN HEADER PUTIH: LOGO BERPUTAR MELAYANG DI KIRI */}
       <div className="w-full bg-white border-b border-slate-200 relative overflow-visible">
         <div className="max-w-7xl mx-auto px-4 h-16 sm:h-18 flex items-center justify-between gap-4 relative overflow-visible">
           
           <div className="flex items-center text-left relative overflow-visible">
             
-            {/* LOGO DIGESER LEBIH KE KIRI LAGI (-left-6 sm:-left-8) & BERPUTAR SEARAH JARUM JAM */}
+            {/* LOGO ADVENTIST BERPUTAR SEARAH JARUM JAM & MELAYANG */}
             <div className="absolute -left-6 sm:-left-8 top-1/2 -translate-y-1/2 z-30 pointer-events-auto">
               <Link href="/" className="block cursor-pointer">
                 <div className="logo-adventist-spin w-32 h-32 sm:w-36 sm:h-36 flex items-center justify-center filter drop-shadow-md">
@@ -196,7 +234,7 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* TEKS BERADA RAPI DI SAMPING LOGO YANG DIGESER */}
+            {/* TEKS DI SEBELAH LOGO MELAYANG */}
             <div className="flex flex-col justify-center ml-24 sm:ml-28">
               <Link href="/">
                 <h1 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight leading-none hover:text-[#047857] transition-colors">
