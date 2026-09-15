@@ -32,263 +32,399 @@ export default function Butir12Page() {
     }
   };
 
+  // =========================================================================
   // SLIDE LENGKAP MATERI 1: MATERI ANTI BULLYING (MESTIKA R TAMPUBOLON, M.PSI)
+  // =========================================================================
   const slidesMateri1 = [
     {
       title: "ANTI BULLYING",
-      subtitle: "Sosialisasi & Edukasi Pencegahan Perundungan di Lingkungan Sekolah",
-      speaker: "Mestika R Tampubolon, M.Psi., Psikolog",
-      date: "Kamis, 16 Juli 2026",
-      location: "SMPS Advent Batam Mas",
+      subtitle: "Sosialisasi & Edukasi Pencegahan Perundungan Satuan Pendidikan",
+      tag: "Cover Slide",
       points: [
-        "Membangun kesadaran moral dan empati antarsesama warga sekolah.",
-        "Mewujudkan iklim belajar yang aman, suportif, dan bebas intimidasi.",
-        "Menghargai martabat setiap peserta didik tanpa membeda-bedakan latar belakang."
+        "Narasumber: Mestika R Tampubolon, M.Psi., Psikolog",
+        "Waktu Pelaksanaan: Kamis, 16 Juli 2026",
+        "Lokasi: SMPS Advent Batam Mas",
+        "Tujuan: Membangun kesadaran moral, rasa empati, dan mewujudkan lingkungan sekolah aman tanpa intimidasi."
       ]
     },
     {
       title: "APA ITU BULLYING?",
-      subtitle: "Definisi dan Pemahaman Dasar",
+      subtitle: "Definisi dan Pemahaman Hakiki Perundungan",
+      tag: "Konsep Dasar",
       points: [
         "Bullying (Bhs. Inggris) = Penindasan / Risak / Perundungan atau Penganiayaan (Bhs. Indonesia).",
-        "Segala bentuk penindasan atau kekerasan yang dilakukan dengan sengaja oleh satu orang atau sekelompok orang yang lebih kuat atau berkuasa terhadap orang lain.",
-        "Tujuan: Menyakiti pihak korban dan dilakukan secara terus-menerus dan berulang.",
-        "Contoh Lingkup: School Bullying di ruang kelas, kantin, lorong sekolah, toilet, dan media sosial."
+        "Definisi: Segala bentuk penindasan atau kekerasan yang dilakukan dengan sengaja oleh satu orang atau sekelompok orang yang lebih kuat atau berkuasa terhadap orang lain.",
+        "Tujuan Tindakan: Untuk menyakiti korban secara fisik maupun emosional dan dilakukan secara terus-menerus.",
+        "Contoh Nyata: School Bullying di ruang kelas, kantin, halaman sekolah, toilet, asrama, dan ruang siber."
       ]
     },
     {
       title: "JENIS-JENIS BULLYING: 1. KONTAK FISIK LANGSUNG",
-      subtitle: "Bentuk Kekerasan Jasmani Nyata",
+      subtitle: "Agresi Jasmani yang Menyebabkan Cedera & Kerugian Materi",
+      tag: "Klasifikasi Bullying",
       points: [
-        "Tindakan memukul, menampar, mendorong, dan menendang teman.",
-        "Tindakan menjambak, menggigit, mencubit, dan mencakar.",
-        "Mengunci seseorang di dalam ruangan (toilet, gudang, atau kelas kosong).",
-        "Tindakan memeras uang saku (pungli) dan merusak barang atau perlengkapan milik orang lain."
+        "Tindakan fisik menyerang tubuh: memukul, menampar, menendang, mendorong, menjambak, menggigit, mencubit, dan mencakar.",
+        "Tindakan isolasi fisik: mengunci seseorang di dalam ruangan tertutup (toilet, gudang, ruang kelas sepi).",
+        "Pemerasan materi: memeras uang saku (pungli sekolah) secara paksa di bawah ancaman kekerasan.",
+        "Perusakan barang: merusak buku, seragam, sepeda, gawai, atau perlengkapan pribadi milik korban."
       ]
     },
     {
       title: "JENIS-JENIS BULLYING: 2. KONTAK VERBAL LANGSUNG",
-      subtitle: "Kekerasan Berupa Tutur Kata dan Tekanan Lisan",
+      subtitle: "Kekerasan Berupa Tutur Kata, Hinaan, dan Tekanan Psikologis",
+      tag: "Klasifikasi Bullying",
       points: [
-        "Tindakan mengancam dan mengintimidasi korban secara lisan.",
-        "Mempermalukan dan merendahkan martabat di depan khalayak umum.",
-        "Memberi julukan buruk atau panggilan merendahkan (name-calling / body shaming).",
-        "Sarkasme melukai perasaan, mencela, mengejek, memaki dengan kata kotor, dan menyebarkan fitnah/gosip."
+        "Tindakan lisan mengintimidasi: mengancam secara verbal dan membentak.",
+        "Penghinaan martabat: mempermalukan korban di depan umum dan merendahkan (putdowns).",
+        "Name-Calling: memberi julukan atau nama panggilan yang merendahkan fisik atau kekurangan korban.",
+        "Sarkasme menyakitkan hati, mencela, mengejek kekurangan, memaki dengan kata kotor, dan menyebarkan fitnah/gosip bohong."
       ]
     },
     {
       title: "JENIS-JENIS BULLYING: 3 & 4. PERILAKU NON-VERBAL",
-      subtitle: "Kekerasan Bahasa Tubuh & Pengucilan Sosial",
+      subtitle: "Bahasa Tubuh Merendahkan & Manuver Pengucilan Sosial",
+      tag: "Klasifikasi Bullying",
       points: [
-        "Perilaku Non-Verbal Langsung: Melihat sinis, menjulurkan lidah, menampilkan ekspresi muka merendahkan atau mengancam (biasanya menyertai bullying fisik dan verbal).",
-        "Perilaku Non-Verbal Tidak Langsung: Sengaja mendiamkan seseorang, memanipulasi persahabatan hingga retak, mengucilkan teman dari pergaulan atau belajar kelompok, dan mengirimkan surat kaleng."
+        "3. Perilaku Non-Verbal Langsung: Melihat korban dengan tatapan sinis, menjulurkan lidah, memasang ekspresi muka merendahkan atau mengancam (sering kali menyertai bullying fisik dan verbal).",
+        "4. Perilaku Non-Verbal Tidak Langsung: Sengaja mendiamkan seseorang, memanipulasi persahabatan sehingga menjadi retak, sengaja mengucilkan atau mengabaikan keberadaan korban dari kelompok, serta mengirimkan surat kaleng bernada kebencian."
       ]
     },
     {
       title: "JENIS-JENIS BULLYING: 5. CYBER BULLYING",
-      subtitle: "Kekerasan Melalui Sarana Media Digital & Elektronik",
+      subtitle: "Kekerasan Berbasis Media Elektronik & Jejak Digital",
+      tag: "Klasifikasi Bullying",
       points: [
-        "Tindakan menyakiti, mengintimidasi, atau mencemarkan nama baik seseorang melalui media sosial.",
-        "Menyebarkan kebohongan, foto memalukan, atau video korban tanpa izin.",
-        "Mengirimkan pesan ancaman via platform chatting (WhatsApp, DM Instagram, dsb).",
-        "Trolling di ruang obrolan/game online, pembajakan akun (fake account), dan pembuatan grup berisi kebencian.",
-        "Catatan Penting: Cyberbullying meninggalkan jejak digital (digital footprint) permanen yang sah dijadikan alat bukti hukum."
+        "Tindakan menyakiti orang lain melalui perangkat media elektronik (rekaman video intimidasi, pencemaran nama baik di media sosial).",
+        "Contoh Konkret Cyberbullying:",
+        "► Menyebarkan kebohongan atau memposting foto memalukan korban di jejaring sosial.",
+        "► Mengirim pesan ancaman menyakitkan melalui platform chatting atau kolom komentar.",
+        "► Membuat akun palsu (fake account) atau meretas akun korban untuk mengirim pesan jahat.",
+        "► Trolling, pengucilan di grup online / game online, dan pembentukan group chat berisi kebencian.",
+        "Catatan Kritis: Cyberbullying meninggalkan rekaman jejak digital (digital footprint) permanen yang sah dijadikan alat bukti hukum pengaduan."
       ]
     },
     {
       title: "JENIS-JENIS BULLYING: 6. PELECEHAN SEKSUAL",
-      subtitle: "Perilaku Agresi Seksual Fisik & Verbal",
+      subtitle: "Perilaku Agresi Kesusilaan Fisik & Verbal",
+      tag: "Klasifikasi Bullying",
       points: [
-        "Tindakan pelecehan yang merendahkan kesusilaan dan privasi tubuh peserta didik.",
-        "Dapat berupa agresi fisik menyentuh bagian pribadi tanpa persetujuan.",
-        "Dapat berupa komentar verbal sensual tidak pantas, rayuan melecehkan, atau pemaksaan mengirim foto tidak senonoh secara daring."
+        "Tindakan pelecehan yang melanggar batas privasi tubuh dan kesusilaan anak.",
+        "Dapat dikategorikan sebagai perilaku agresi fisik (kontak tubuh tanpa persetujuan) maupun agresi verbal berbau sensual.",
+        "Pemaksaan mengirimkan gambar sensual atau memaksa terlibat dalam percakapan seksual secara langsung maupun daring."
       ]
     },
     {
-      title: "3 KARAKTERISTIK UTAMA BULLYING",
-      subtitle: "Kata Kunci dalam Mengidentifikasi Kasus",
+      title: "3 KARAKTERISTIK UTAMA DALAM MEMAHAMI BULLYING",
+      subtitle: "Kunci Identifikasi Kasus Secara Akurat",
+      tag: "Karakteristik",
       points: [
-        "1. Ketidakseimbangan Kekuatan (Power Imbalance): Korban berada dalam posisi tidak mampu membela atau mempertahankan diri (contoh: pelaku berbadan besar vs kecil, pelaku berkelompok vs korban sendiri).",
-        "2. Intimidasi (Intentional Harm): Perbuatan secara sadar dirancang untuk melukai korban baik fisik maupun mental.",
-        "3. Berulang (Repetition): Perilaku tidak terjadi sekali saja, melainkan berlangsung berulang-ulang secara konsisten."
+        "1. Ketidakseimbangan Kekuatan (Power Imbalance): Korban berada dalam keadaan tidak mampu mempertahankan diri melawan pelaku (contoh: pelaku berbadan besar vs kecil, pelaku berkelompok vs korban sendiri).",
+        "2. Intimidasi (Intentional Harm): Tindakan secara sadar bertujuan untuk menyakiti korban secara fisik maupun psikologis.",
+        "3. Berulang (Repetition): Dilakukan secara berulang-ulang, terus-menerus, dan berlanjut dalam rentang waktu tertentu."
       ]
     },
     {
-      title: "DAMPAK BULLYING BAGI SISWA",
-      subtitle: "Trauma Fisik, Emosional, dan Penurunan Akademik",
+      title: "DAMPAK BULLYING BAGI ANAK SEKOLAH",
+      subtitle: "Bahaya Psikis, Akademik, dan Keselamatan Jiwa",
+      tag: "Dampak Psikologis",
       points: [
-        "Menimbulkan ketakutan luar biasa, kecemasan kronis, dan gangguan psikologis.",
-        "Memicu dendam pribadi dan melahirkan siklus rantai budaya kekerasan.",
-        "School Phobia: Takut hadir ke sekolah, mogok belajar, dan penurunan prestasi drastis.",
-        "Konsep Diri Rendah: Anak merasa lemah, bodoh, tidak berharga, dan merasa pantas diperlakukan buruk.",
-        "Dalam kondisi ekstrem: Mengancam keselamatan nyawa dan memicu keputusasaan."
+        "Menimbulkan ketakutan mendalam, kecemasan akut, dan gangguan psikologi kronis.",
+        "Mewariskan rasa dendam dan menumbuhkan rantai budaya kekerasan baru antarsiswa.",
+        "School Phobia: Takut berangkat ke sekolah, sering beralasan sakit, dan motivasi berprestasi menurun drastis.",
+        "Konsep Diri Rendah: Korban merasa dirinya lemah, bodoh, tidak berguna, serta merasa pantas dikerjai oleh teman.",
+        "Bahaya Tertinggi: Menyebabkan trauma mendalam dan membahayakan keselamatan nyawa."
       ]
     },
     {
-      title: "PROFIL ANAK: PELAKU VS ANAK RENTAN",
-      subtitle: "Analisis Faktor Risiko Perilaku",
+      title: "PROFIL ANAK: FAKTOR PELAKU VS ANAK RENTAN",
+      subtitle: "Analisis Psiko-Sosial Lingkungan Siswa",
+      tag: "Faktor Penyebab",
       points: [
-        "Faktor Anak yang Suka Membully: Cemburu karena merasa gagal di bidang akademik, mengalami konflik/disharmoni keluarga di rumah, pola asuh terlalu dimanja tanpa batasan, haus pengakuan kelompok, atau sakit hati kalah bersaing.",
-        "Faktor Anak yang Rentan Di-bully: Cenderung pendiam atau sulit bersosialisasi, memiliki perbedaan fisik menonjol, berasal dari strata sosial berbeda, atau mengalami hambatan pada mata pelajaran tertentu."
+        "Faktor Anak Suka Membully: Cemburu akibat merasa gagal di bidang akademik, mengalami konflik/masalah dalam keluarga, pola asuh terlalu dimanja tanpa batasan tegas di rumah, haus pengakuan kelompok sebaya, atau sakit hati kalah bersaing.",
+        "Karakteristik Anak yang Rentan Di-bully: Cenderung pendiam dan sulit bersosialisasi, memiliki perbedaan ciri fisik yang mencolok, berasal dari latar belakang keluarga minoritas, atau mengalami kesulitan pada mata pelajaran tertentu."
       ]
     },
     {
-      title: "CARA MENCEGAH & MELAWAN BULLYING",
-      subtitle: "Panduan Praktis Bagi Korban",
+      title: "CARA MENCEGAH & MELAWAN JIKA ANDA DI-BULLY",
+      subtitle: "Langkah Berani, Percaya Diri, dan Pengumpulan Bukti",
+      tag: "Panduan Korban",
       points: [
-        "Hadapi pelaku dengan berani, tenang, dan tatap mata dengan percaya diri.",
-        "Simpan dan amankan semua barang bukti (terutama tangkapan layar/rekaman pada kasus cyberbullying).",
-        "Jangan memendam sendiri; segera berbicara dan laporkan kepada Guru Piket, Wali Kelas, Guru BK, atau Orang Tua.",
-        "Berbaur dan jalin persahabatan dengan lingkaran teman-teman yang suportif dan positif."
+        "Hadapi pelaku dengan berani, tenang, dan tampilkan sikap percaya diri.",
+        "Simpan semua bukti yang bisa dilaporkan kepada penegak hukum atau guru (terutama rekaman/tangkapan layar cyberbullying).",
+        "Berani berbicara dan laporkan kejadian secepatnya ke guru BK, wali kelas, atau orang tua.",
+        "Berbaur dan jalin kedekatan dengan lingkaran teman-teman yang suportif dan dapat meningkatkan rasa percaya diri.",
+        "Tetap berpikir positif dan yakini bahwa dirimu berharga."
       ]
     },
     {
-      title: "JIKA ANDA MELIHAT BULLYING (PERAN SAKSI/BYSTANDER)",
-      subtitle: "Hentikan Pembiaran di Lingkungan Sekolah",
+      title: "JIKA ANDA MELIHAT BULLYING (PERAN BYSTANDER/SAKSI)",
+      subtitle: "Hentikan Sikap Pembiaran di Sekolah",
+      tag: "Panduan Saksi",
       points: [
-        "JANGAN DIAM! Membiarkan sama artinya dengan mendukung perundungan.",
-        "Jangan ikut menertawakan atau merekam aksi kekerasan untuk konten.",
-        "Leraikan dan damaikan situasi secara aman jika memungkinkan.",
-        "Dukung korban dengan mengajak menjauh dari kerumunan pelaku.",
-        "Segera laporkan detik itu juga kepada otoritas sekolah dan guru yang bertugas."
+        "JANGAN DIAM! Jangan pura-pura tidak melihat atau ikut menertawakan penderitaan korban.",
+        "Leraikan dan damaikan situasi bila aman untuk dilakukan.",
+        "Dukung dan rangkul korban agar tetap tenang dan tidak membalas dengan kekerasan fisik.",
+        "Ajak bicara orang terdekat pelaku agar memberikan perhatian dan pengertian.",
+        "Segera laporkan detik itu juga kepada pihak penegak aturan sekolah (Guru Piket, Wali Kelas, TPPK)."
       ]
     },
     {
-      title: "PENANGANAN SISWA PELAKU BULLYING",
-      subtitle: "Pendekatan Disiplin Positif & Restoratif",
+      title: "PENANGANAN TERHADAP SISWA PELAKU BULLYING",
+      subtitle: "Pendekatan Konseling Edukatif & Non-Menghakimi",
+      tag: "Penanganan Pelaku",
       points: [
-        "Segera ajak berbicara empat mata mengenai apa yang baru saja diperbuat.",
-        "Cari tahu motif dan akar masalah tanpa langsung menghakimi atau mempermalukan.",
-        "Posisikan diri sebagai pembimbing yang menolong menyadarkan kesalahan.",
-        "Tumbuhkan rasa empati dengan menempatkan diri pada posisi penderitaan korban.",
-        "Arahkan energi berlebih ke hal positif (olahraga, kepemimpinan OSIS, kesenian).",
-        "Terapkan konsekuensi mendidik yang konsisten sesuai tata tertib sekolah."
+        "Segera ajak berbicara empat mata secara pribadi mengenai apa yang telah dilakukannya.",
+        "Cari tahu motif dan penyebab mendasar siswa melakukan tindakan tersebut.",
+        "Posisikan diri untuk menolong menyadarkan perilakunya tanpa menghakimi atau mempermalukan di muka umum.",
+        "Ajarkan dan tanamkan rasa empati terhadap penderitaan sesama.",
+        "Bimbing siswa mengalihkan energi dan potensinya ke aktivitas positif (olahraga, musik, organisasi).",
+        "Tetapkan aturan sanksi dan konsekuensi mendidik yang konsisten sesuai tata tertib sekolah."
       ]
     },
     {
-      title: "PEMBEKALAN SELF HEALING UNTUK KORBAN (BAGIAN 1)",
-      subtitle: "Teknik Deep Breathing & Muscle Relaxation",
+      title: "PEMBEKALAN SELF HEALING: TEKNIK PERNAPASAN & OTOT",
+      subtitle: "Pemulihan Trauma & Relaksasi Mandiri Korban",
+      tag: "Self Healing",
       points: [
-        "Deep Breathing Exercises (Teknik Pernapasan 4-7-8): Tarik napas perlahan melalui hidung selama 4 detik, tahan napas di dada selama 7 detik, lalu hembuskan napas kuat melalui mulut selama 8 detik. Ulangi sebanyak 4 kali untuk meredakan kepanikan.",
-        "Progressive Muscle Relaxation: Fokus pada area bahu yang tegang, angkat kedua bahu ke arah telinga, tahan selama 5-10 detik, lalu rilekskan penuh secara perlahan."
+        "Deep Breathing Exercises (Teknik 4-7-8):",
+        "► Tarik napas perlahan melalui hidung selama 4 detik.",
+        "► Tahan napas di dalam rongga dada selama 7 detik.",
+        "► Buang napas dengan kuat dan lega melalui mulut selama 8 detik (ulangi sebanyak 4 kali putaran).",
+        "Progressive Muscle Relaxation:",
+        "► Fokus pada area pundak dan leher yang tegang.",
+        "► Angkat kedua bahu setinggi mungkin ke arah telinga.",
+        "► Tahan kontraksi selama 5-10 detik, lalu lepaskan dan rilekskan penuh secara perlahan."
       ]
     },
     {
-      title: "PEMBEKALAN SELF HEALING UNTUK KORBAN (BAGIAN 2)",
-      subtitle: "Guided Imagery & Landasan Rohani",
+      title: "PEMBEKALAN SELF HEALING: VISUALISASI & FIRMAN TUHAN",
+      subtitle: "Kedamaian Emosional & Landasan Spiritual Kristiani",
+      tag: "Self Healing Rohani",
       points: [
-        "Guided Imagery & Visualization: Duduk rileks, ciptakan gambaran mental tempat yang aman dan damai (alam, pantai, gunung), dan rasakan kenyamanan batin.",
-        "Penguatan Firman Tuhan (1 Yohanes 2:9): 'Barang siapa berkata bahwa ia berada di dalam terang, tetapi ia membenci saudaranya, ia berada di dalam kegelapan sampai sekarang.'",
-        "Prinsip Kasih Kristiani (Lukas 6:27-28): 'Kasihilah musuhmu, berbuatlah baik kepada orang yang membenci kamu; mintalah berkat bagi orang yang mengutuk kamu; berdoalah bagi orang yang mencaci kamu.'"
+        "Guided Imagery & Visualization: Ciptakan gambaran mental tempat yang tenang dan menyenangkan (alam perbukitan, suara ombak pantai). Libatkan panca indera untuk merasakan hawa sejuk dan kedamaian.",
+        "Kutipan Kitab Suci 1 Yohanes 2:9:",
+        "'Barang siapa berkata, bahwa ia berada di dalam terang, tetapi ia membenci saudaranya, ia berada di dalam kegelapan sampai sekarang.'",
+        "Kutipan Kitab Suci Lukas 6:27-28:",
+        "'Tetapi kepada kamu, yang mendengar Aku, Aku berkata: kasihilah musuhmu, berbuatlah baik kepada orang yang membenci kamu; mintalah berkat bagi orang yang mengutuk kamu; berdoalah bagi orang yang mencaci kamu.'"
       ]
     },
     {
-      title: "KESIMPULAN & PESAN KUNCI SOSIALISASI",
-      subtitle: "Sekolah adalah Zona Kasih Sayang & Aman",
+      title: "KESIMPULAN & PESAN KUNCI: SEKOLAH ZONA KASIH SAYANG",
+      subtitle: "Komitmen Bersama Menghapus Perundungan",
+      tag: "Penutup Presentasi",
       points: [
-        "Bagi Guru: Ajarkan komunikasi asertif, lakukan patroli keliling lingkungan sekolah, dan jalin kedekatan personal dengan siswa.",
-        "Bagi Orang Tua: Ajarkan kemandirian, latih anak berani berkata 'TIDAK' pada kekerasan, dan bangun komunikasi aktif dengan wali kelas.",
-        "Bagi Siswa: Jangan takut bersuara, tolak pemalakan uang, dan tolak segala bentuk ejekan.",
-        "Slogan Kebangsaan: SAY NO TO BULLYING! Anak Terlindungi, Indonesia Maju."
+        "Peran Guru & Sekolah: Ajarkan cara berkomunikasi asertif (tegas menolak perundungan dengan santun), aktif berpatroli memantau lingkungan sekolah, serta ciptakan ekosistem sekolah ramah anak yang hangat.",
+        "Peran Orang Tua: Latih anak mandiri, bangun keberanian anak berkata 'tidak' terhadap kejahatan, dan jalin komunikasi intensif dengan sekolah.",
+        "Peran Siswa: Berani menolak pemalakan uang, jangan takut melapor ke guru, dan jangan ragu berteriak meminta tolong.",
+        "Slogan Utama: SAY NO TO BULLYING! Anak Terlindungi, Indonesia Maju. Sekolah Adalah Zona Kasih Sayang."
       ]
     }
   ];
 
-  // SLIDE LENGKAP MATERI 2: MATERI BULLYING PADA ANAK REMAJA
+  // =========================================================================
+  // SLIDE LENGKAP MATERI 2: MATERI BULLYING PADA ANAK REMAJA (MESTIKA RETINA T)
+  // =========================================================================
   const slidesMateri2 = [
     {
       title: "BULLYING PADA ANAK REMAJA",
-      subtitle: "Kajian Komprehensif Fenomena, Dampak, dan Sekolah Ramah Anak",
-      speaker: "Mestika Retina T, M.Psi., Psikolog",
-      location: "SMPS Advent Batam Mas",
+      subtitle: "Kajian Fenomena, Landasan Regulasi Hukum, dan Gerakan Sekolah Ramah Anak",
+      tag: "Cover Slide",
       points: [
-        "Menelisik realitas perundungan di era transformasi digital remaja.",
-        "Penerapan instrumen pencegahan berlandaskan Undang-Undang Perlindungan Anak.",
-        "Langkah kolaboratif sekolah ramah anak lintas pemangku kepentingan."
+        "Narasumber: Mestika Retina T, M.Psi., Psikolog",
+        "Fokus Materi: Membedah dinamika psikologi remaja, ancaman kekerasan, dan strategi pencegahan komprehensif di lingkungan pendidikan.",
+        "Satuan Pendidikan: SMPS Advent Batam Mas"
       ]
     },
     {
-      title: "DEFINISI ILMIAH BULLYING",
-      subtitle: "Kajian Pustaka (Wicaksana, 2008)",
+      title: "DEFINISI ILMIAH BULLYING PUSTAKA",
+      subtitle: "Konsep Menurut Ahli Psikologi (Wicaksana, 2008)",
+      tag: "Kajian Teori",
       points: [
-        "Kekerasan fisik dan psikologis jangka panjang yang dilakukan seseorang atau kelompok terhadap seseorang yang tidak mampu mempertahankan dirinya.",
-        "Terdapat hasrat sadar untuk melukai, menakuti, atau membuat korban terus-menerus berada di bawah tekanan batin.",
-        "Bullying bukan sekadar perselisihan biasa, melainkan penyalahgunaan kuasa (abuse of power) antarteman sebaya."
+        "Definisi: Kekerasan fisik dan psikologis jangka panjang yang dilakukan oleh seseorang atau kelompok terhadap seseorang yang tidak mampu mempertahankan dirinya.",
+        "Unsur Kunci: Terdapat hasrat sadar untuk melukai, menakuti, menguasai, atau membuat korban berada dalam kondisi tertekan secara berkelanjutan.",
+        "Dikenal Sebagai 'Penindasan': Tindakan agresif terencana yang memanfaatkan dominasi senioritas, jumlah kelompok, atau superioritas fisik."
       ]
     },
     {
-      title: "FENOMENA GUNUNG ES PERUNDUNGAN DI INDONESIA",
-      subtitle: "Data dan Fakta Nasional",
+      title: "ADA APA DI SEKITAR ANAK DAN REMAJA KITA?",
+      subtitle: "5 Ancaman Krusial Degradasi Moral Generasi Muda",
+      tag: "Tantangan Remaja",
       points: [
-        "Kasus perundungan anak dan remaja di Indonesia ibarat fenomena gunung es: kasus yang terlaporkan hanya sebagian kecil di permukaan, sementara fakta di lapangan sangat masif dan mengakar.",
-        "Perundungan terwariskan antargenerasi (senioritas) sehingga sering kali luput dari pemantauan pihak sekolah dan orang tua.",
-        "Temuan LPAI: Kasus bullying terjadi bukan hanya di jenjang SMP/SMA, namun marak sejak anak usia dini (3-12 tahun)."
+        "Ketika dunia informasi sudah tanpa batas, benteng utama ada pada kendali diri remaja.",
+        "1. Kekerasan: Tawuran, intimidasi antargeng sekolah, dan tindak agresif fisik.",
+        "2. Narkoba: Ancaman peredaran zat adiktif perusak sel saraf dan masa depan.",
+        "3. Pornografi dan Tindakan Amoral: Paparan konten vulgar melalui gawai tanpa filter.",
+        "4. Bencana Sosial & Radikalisme: Paham intoleransi dan ujaran kebencian di media sosial.",
+        "5. Kejahatan Seksual Anak: Siklus pedofilia, predator daring, dan pelecehan siber."
       ]
     },
     {
-      title: "ANCAMAN DI SEKITAR DUNIA REMAJA SAAT INI",
-      subtitle: "Tantangan Moral & Media Digital",
-      points: [
-        "1. Kekerasan fisik dan pengeroyokan antargeng sebaya.",
-        "2. Narkoba dan zat adiktif yang merusak masa depan remaja.",
-        "3. Pornografi, konten amoral, dan penyimpangan seksual daring.",
-        "4. Bencana sosial, intoleransi, dan radikalisme digital.",
-        "5. Darurat Perlindungan Anak: Kejahatan siber yang menyasar kepolosan remaja."
-      ]
-    },
-    {
-      title: "LANDASAN HUKUM PERLINDUNGAN ANAK",
+      title: "LANDASAN HUKUM: UU PERLINDUNGAN ANAK",
       subtitle: "Undang-Undang Republik Indonesia Nomor 35 Tahun 2014",
+      tag: "Aspek Legalitas",
       points: [
-        "Pasal 76C UU 35/2014: 'Setiap orang dilarang menempatkan, membiarkan, melakukan, menyuruh melakukan, atau turut serta melakukan kekerasan terhadap anak.'",
-        "Pasal 54 UU 35/2014: 'Anak di dalam dan lingkungan satuan pendidikan wajib mendapatkan perlindungan dari tindak kekerasan fisik, psikis, kejahatan seksual, dan kejahatan lainnya yang dilakukan oleh pendidik, tenaga kependidikan, sesama peserta didik, dan/atau pihak lain.'"
+        "PASAL 76C UU 35/2014:",
+        "'Setiap orang dilarang menempatkan, membiarkan, melakukan, menyuruh melakukan, atau turut serta melakukan kekerasan terhadap anak.'",
+        "PASAL 54 UU 35/2014:",
+        "'Anak di dalam dan lingkungan satuan pendidikan wajib mendapatkan perlindungan dari tindak kekerasan fisik, psikis, kejahatan seksual, dan kejahatan lainnya yang dilakukan oleh pendidik, tenaga kependidikan, sesama peserta didik, dan atau pihak lain.'"
       ]
     },
     {
-      title: "DATA SURVEI KESEHATAN SEKOLAH (BALITBANG KEMKES)",
-      subtitle: "Korelasi Bullying Terhadap Risiko Fatalitas",
+      title: "DATA SURVEI KESEHATAN SEKOLAH (BALITBANG DEPKES)",
+      subtitle: "Korelasi Nyata Antara Perundungan dan Risiko Fatalitas Siswa",
+      tag: "Data Empiris",
       points: [
-        "Survei Berbasis Sekolah Pelajar SMP & SMA Nasional:",
-        "Prevalensi Pernah Di-Bully: Pelajar Laki-laki 24,1% dan Pelajar Perempuan 17,4% (Rata-rata total 20,6%).",
-        "Dampak Ekstrem: Pelajar yang pernah di-bully memiliki kecenderungan keinginan bunuh diri sebesar 5,2% (Perempuan 5,9% dan Laki-laki 4,3%).",
-        "Kesimpulan: Bullying adalah isu keselamatan hidup darurat yang harus ditangani segera."
+        "Hasil Survei Kesehatan Berbasis Sekolah Pelajar SMP dan SMA Nasional:",
+        "► Siswa Laki-Laki: 24,1% pernah di-bully di sekolah; 4,3% memiliki dorongan ingin bunuh diri (N=10.363).",
+        "► Siswa Perempuan: 17,4% pernah di-bully di sekolah; 5,9% memiliki dorongan ingin bunuh diri (N=10.977).",
+        "► Rata-rata Total Siswa: 20,6% pernah mengalami perundungan; 5,2% memikirkan keinginan bunuh diri.",
+        "Kesimpulan Darurat: Bullying berpotensi fatal merenggut nyawa anak jika tidak dicegah sedini mungkin."
       ]
     },
     {
-      title: "BENTUK-BENTUK PERUNDUNGAN DI SEKOLAH",
-      subtitle: "Klasifikasi Fisik, Verbal, dan Rasional",
+      title: "FENOMENA GUNUNG ES KASUS BULLYING DI INDONESIA",
+      subtitle: "Realitas Terselubung di Balik Data Permukaan",
+      tag: "Kondisi Nasional",
       points: [
-        "Fisik: Memukul, menendang, mengeroyok, menjambak, merampas bekal makanan, merusak tas/buku, dan pemerasan uang.",
-        "Verbal: Menertawakan kecacatan fisik, memanggil nama julukan menyakitkan, berteriak kencang mencaci, dan menyebarkan berita bohong.",
-        "Rasional/Sosial: Tidak membolehkan teman ikut bermain, mengucilkan dari kelompok belajar, dan melarang teman lain bergaul dengan korban."
+        "Kasus bullying pada anak dan remaja merupakan fenomena gunung es: kasus yang mencuat terlihat sedikit, namun faktanya sangat banyak, mengakar, dan terwariskan dari generasi ke generasi.",
+        "Kerap kurang terpantau maksimal oleh sekolah dan orang tua akibat ketakutan korban untuk bersuara.",
+        "Pandangan Keliru Masyarakat: Bullying dianggap hanya terjadi di tingkat SMP/SMA, padahal data LPAI membuktikan angka kekerasan sangat tinggi sejak usia anak 3-12 tahun."
       ]
     },
     {
-      title: "PRAKTIK BAIK: GERAKAN SEKOLAH RAMAH ANAK (SRA)",
-      subtitle: "Definisi & Kebijakan Multipihak",
+      title: "MACAM-MACAM BENTUK PERUNDUNGAN DI SEKOLAH",
+      subtitle: "Klasifikasi Bentuk Fisik, Verbal, dan Rasional",
+      tag: "Bentuk Kasus",
       points: [
-        "Definisi SRA: Satuan pendidikan yang aman, bersih, sehat, peduli dan berbudaya lingkungan hidup, serta mampu menjamin, memenuhi, dan menghargai hak perlindungan anak dari kekerasan dan diskriminasi.",
-        "Sinergi Kementerian & Lembaga: Sekolah Bebas Napza (BNN), Pangan Jajan Sehat (BPOM), Kantin Kejujuran (KPK/Kemdikbud), UKS Terpadu (Kemenkes/Kemenag), dan Sekolah Aman Bencana (BNPB)."
+        "Bentuk Fisik: Memukul, menendang, mengeroyok, menjambak, merampas bekal makanan, merusak barang, dan meminta uang paksa (pungli).",
+        "Bentuk Verbal: Menertawakan kecacatan fisik, memanggil nama julukan tidak pantas, mengancam, menggoda hingga marah, berteriak mencaci, dan menyebarkan berita bohong.",
+        "Bentuk Rasional/Sosial: Melarang teman ikut bermain, mengucilkan teman dari pergaulan, dan menolak mengajak teman belajar bersama."
       ]
     },
     {
-      title: "4 TAHAPAN PENERAPAN SEKOLAH RAMAH ANAK",
-      subtitle: "Permeneg PPPA Nomor 8 Tahun 2014",
+      title: "GERAKAN SEKOLAH RAMAH ANAK (SRA)",
+      subtitle: "Praktik Baik Kemitraan Multipihak di Indonesia",
+      tag: "Sekolah Ramah Anak",
       points: [
-        "Tahap 1 - Persiapan: Konsultasi bersama perwakilan anak, penyusunan komitmen kebijakan SRA tertulis, dan pembentukan Tim SRA/Satgas TPPK sekolah.",
-        "Tahap 2 - Perencanaan: Menyusun Rencana Aksi Tahunan dan mengintegrasikan program pencegahan kekerasan ke kurikulum.",
-        "Tahap 3 - Pelaksanaan: Melaksanakan aksi nyata dengan mengoptimalkan peran warga sekolah, orang tua, alumni, dan masyarakat sekitar.",
-        "Tahap 4 - Pemantauan, Evaluasi & Pelaporan: Monitoring rutin setiap bulan, evaluasi triwulan, dan pelaporan berkala ke Gugus Tugas Kota Layak Anak (KLA)."
+        "Definisi Resmi: Satuan pendidikan yang aman, bersih, sehat, peduli dan berbudaya lingkungan hidup, mampu menjamin, memenuhi, dan menghargai hak-hak anak dari kekerasan, diskriminasi, dan perlakuan salah lainnya.",
+        "Kolaborasi Program Nasional Lintas Kementerian:",
+        "► Pangan Jajan Sehat (BPOM) & Kantin Kejujuran (KPK & Kemendikbud).",
+        "► Sekolah Bebas Napza (BNN) & UKS Terpadu (Kemenkes, Kemenag, Kemendikbud, Kemendagri).",
+        "► Sekolah Aman Anti-Kekerasan (KPPPA) & Sekolah/Madrasah Aman Bencana (BNPB, KLHK)."
       ]
     },
     {
-      title: "SOLUSI KOMUNIKASI ASERTIF BAGI GURU & ORANG TUA",
-      subtitle: "Ketegasan Santun Tanpa Kekerasan",
+      title: "4 TAHAPAN PENERAPAN SEKOLAH RAMAH ANAK (SRA)",
+      subtitle: "Merujuk Permeneg PPPA Nomor 8 Tahun 2014",
+      tag: "Tahapan Implementasi",
       points: [
-        "Makna Sikap Asertif: Kemampuan mengekspresikan pikiran, perasaan, hak, dan batasan pribadi secara langsung, jujur, terhormat, tanpa rasa takut dan tanpa menyakiti orang lain.",
-        "Bagi Guru: Menjadi teladan komunikasi asertif di kelas, tidak sekadar mengajar tetapi aktif mengawasi titik rawan sekolah, dan menangani aduan tanpa menyalahkan korban.",
-        "Bagi Orang Tua: Membangun kelekatan emosional di rumah, mendengarkan curahan hati anak setiap hari, dan menjalin komunikasi intensif dengan pihak sekolah."
+        "1. Persiapan: Konsultasi dengan anak, penetapan kebijakan SRA tertulis, pembentukan Tim SRA / Satgas TPPK, dan identifikasi potensi kerawanan sekolah.",
+        "2. Perencanaan: Menyusun Rencana Aksi SRA Tahunan dan mengintegrasikan program anti-kekerasan, UKS, serta Adiwiyata.",
+        "3. Pelaksanaan: Melaksanakan aksi nyata dengan mengoptimalkan sumber daya pemerintah, yayasan, masyarakat, alumni, dan dunia usaha.",
+        "4. Pemantauan, Evaluasi & Pelaporan: Pemantauan rutin setiap bulan, evaluasi komprehensif setiap tiga bulan, dan laporan ke Gugus Tugas Kota Layak Anak (KLA)."
       ]
+    },
+    {
+      title: "SOLUSI GURU, SEKOLAH, ORANG TUA & SISWA",
+      subtitle: "Komunikasi Asertif & Ketegasan Tanpa Kekerasan",
+      tag: "Solusi Terintegrasi",
+      points: [
+        "Bagi Guru: Ajarkan komunikasi asertif (mampu mengekspresikan hak, pikiran, dan perasaan positif/negatif secara langsung, jujur, terhormat, tegas, tanpa menyakiti orang lain). Tidak hanya mengajar, tetapi aktif berkeliling memantau keadaan lingkungan.",
+        "Bagi Orang Tua: Ajarkan anak mandiri dan percaya diri, latih anak berani berkata 'tidak' terhadap kejahatan, dan jalin komunikasi erat dengan sekolah.",
+        "Bagi Siswa: Jangan beri uang kepada pihak yang memalak, jangan takut melapor, waspadai ajakan orang tak dikenal ke tempat sepi, dan jangan ragu berteriak meminta tolong.",
+        "Referensi Panduan: Wardhana, K. 'Panduan Melawan Bullying' • NO BULLYING! Bully Free Zone."
+      ]
+    }
+  ];
+
+  // DAFTAR BUKTI FISIK EVIDENCE BUTIR 12
+  const evidenceDocuments = [
+    {
+      id: "sk-harmoni-3tp",
+      code: "SK-HARMONI-3TP",
+      nomor: "No: 058 (2024) | No: 059 (2025) | No: 060 (2026)",
+      title: "SK Pembentukan Program Gerakan Kelas Harmoni & Satgas Anti Perundungan (3 Tahun Berturut-turut)",
+      badge: "SK Kebijakan Resmi",
+      status: "Tersedia 3 Dokumen Sah",
+      desc: "Surat Keputusan Kepala SMPS Advent Batam Mas tentang Program Gerakan Kelas Harmoni (Penyusunan Kesepakatan Kelas) untuk TP 2024/2025, TP 2025/2026, dan TP 2026/2027 guna menciptakan iklim belajar yang aman, tertib, dan bebas perundungan.",
+      docType: "sk-multi"
+    },
+    {
+      id: "sop-penanganan",
+      code: "SOP-PENANGANAN-01",
+      nomor: "Bab V Prosedur Penanganan Pelanggaran",
+      title: "Prosedur Penanganan Pelanggaran & Diagram Alur Eskalasi Penanganan Kasus",
+      badge: "SOP Prosedural",
+      status: "Terverifikasi Asesor",
+      desc: "Panduan berjenjang 6 tahap penanganan (Identifikasi, Klarifikasi & Dialog Empatik, Penetapan Kategori, Pembinaan, Pendokumentasian & Komunikasi Ortu, Pemantauan Tindak Lanjut).",
+      docType: "standard",
+      docSubtitle: "V. PROSEDUR PENANGANAN PELANGGARAN & DIAGRAM ALUR ESKALASI",
+      details: [
+        "5.1 Alur Umum: Identifikasi Perilaku → Klarifikasi & Dialog Empatik → Penetapan Kategori (Ringan/Sedang/Berat) → Pembinaan Sesuai Kategori → Pendokumentasian & Komunikasi Ortu → Pemantauan & Evaluasi Tindak Lanjut.",
+        "5.2 Prinsip Prosedural: Asas praduga tak bersalah, jaminan kerahasiaan identitas, proporsionalitas pembinaan mendidik, konsistensi penerapan adil, dan hak didampingi orang tua/wali kelas.",
+        "5.3 Diagram Alur Eskalasi: Kasus yang belum membaik dieskalasi secara terukur mengikuti kategori pembinaan yang berlaku."
+      ]
+    },
+    {
+      id: "tata-tertib",
+      code: "TATA-TERTIB-2026",
+      nomor: "Regulasi Disiplin Sekolah TP 2026/2027",
+      title: "Dokumen Tata Tertib SMPS Advent Batam Tahun Pelajaran 2026/2027",
+      badge: "Tata Tertib Siswa",
+      status: "Dokumen Sah Sekolah",
+      desc: "Sistem poin dan deskripsi peraturan kehadiran, upacara bendera, kerapian seragam sekolah, ketertiban proses belajar mengajar (KBM), serta larangan kekerasan fisik dan verbal.",
+      docType: "standard",
+      docSubtitle: "TATA TERTIB DAN SISTEM POIN KEDISIPLINAN SISWA",
+      details: [
+        "A. Kehadiran: Hadir setiap hari efektif belajar sebelum pukul 07.15 WIB.",
+        "B. Upacara Bendera: Kedisiplinan barisan dan kelengkapan atribut seragam lengkap.",
+        "C. Kerapian Pakaian: Seragam putih-biru, batik, pramuka, olahraga, pakaian melayu, dan pakaian chapel ibadah.",
+        "D & E. Ketertiban Belajar: Larangan mengganggu kelas, larangan pengoperasian gawai tanpa izin guru, serta sanksi tegas tindakan tidak sopan atau kekerasan antarsiswa."
+      ]
+    },
+    {
+      id: "program-sosialisasi",
+      code: "PROGRAM-EDUKASI-02",
+      nomor: "Kegiatan Preventif Siswa",
+      title: "Program Edukasi & Sosialisasi Berkala Anti-Bullying / Cyber Bullying",
+      badge: "Edukasi & Sosialisasi",
+      status: "Foto & Arsip Materi",
+      desc: "Materi edukasi interaktif fenomena gunung es bullying, deklarasi komitmen bersama di aula gereja sekolah, dan penandatanganan papan deklarasi ramah anak.",
+      docType: "gallery",
+      docSubtitle: "DOKUMENTASI FOTO KEGIATAN & VIDEO SOSIALISASI ANTI-PERUNDUNGAN",
+      youtubeUrl: "https://www.youtube.com/watch?v=hviOV49zohc",
+      youtubeEmbed: "https://www.youtube.com/embed/hviOV49zohc",
+      photos: [
+        {
+          title: "Penandatanganan Papan Deklarasi oleh Pendidik",
+          caption: "Pendidik dan pimpinan sekolah menandatangani komitmen deklarasi anti-perundungan di SMPS-SMAS Advent Batam Mas.",
+          src: "/akreditasi/foto-antibullying-02.jpeg",
+          fallback: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&auto=format&fit=crop&q=80"
+        },
+        {
+          title: "Seminar Anti-Bullying di Aula Gereja Sekolah",
+          caption: "Pelatihan psiko-edukasi pencegahan perundungan dan cyber bullying bersama Mestika Retina Tampubolon, M.Psi., Psikolog.",
+          src: "/akreditasi/guru&siswa-dalam seminar pelatihan anti bullying oleh Mestika Retina Tampubolon M.Psi.jpg",
+          fallback: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&auto=format&fit=crop&q=80"
+        },
+        {
+          title: "Penandatanganan Komitmen Seluruh Peserta Didik",
+          caption: "Peserta didik menandatangani Papan Deklarasi Sekolah Ramah Anak sebagai wujud saling menghormati dan menciptakan kelas yang aman.",
+          src: "/akreditasi/penandatanganan-siswa.jpg",
+          fallback: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&auto=format&fit=crop&q=80"
+        }
+      ]
+    },
+    {
+      id: "evaluasi-laporan",
+      code: "LAPORAN-EVALUASI-03",
+      nomor: "Bab VII Pedoman Disiplin Positif & 2 Modul Pelatihan",
+      title: "Dokumentasi, Pelaporan Berkala, dan Evaluasi Disiplin Positif",
+      badge: "Laporan & Evaluasi",
+      status: "Portofolio Lengkap",
+      desc: "Rekapitulasi pembinaan bulanan wali kelas, laporan evaluasi semester wakasek kesiswaan, peninjauan tahunan kepatuhan PTK, serta 2 modul materi slide PPT psiko-edukasi narasumber.",
+      docType: "materi-edukasi",
+      docSubtitle: "MODUL MATERI SLIDE PPT EDUKASI ANTI-BULLYING & SISTEM EVALUASI DISIPLIN POSITIF"
     }
   ];
 
@@ -474,7 +610,7 @@ export default function Butir12Page() {
                   <strong className="text-slate-900">NPSN:</strong> 70002994
                 </p>
                 <p>
-                  <strong className="text-slate-900">Fokus Verifikasi Butir 12:</strong> Pemeriksaan SK Satgas TPPK dan SK Program Gerakan Kelas Harmoni (3 TP), modul materi slide PPT pelatihan narasumber, dokumentasi foto/video, serta instrumen pelaporan evaluasi disiplin positif.
+                  <strong className="text-slate-900">Fokus Verifikasi Butir 12:</strong> Pemeriksaan SK Satgas TPPK dan SK Program Gerakan Kelas Harmoni (3 TP), modul materi slide PPT pelatihan narasumber psikolog, dokumentasi foto/video, serta instrumen pelaporan evaluasi disiplin positif.
                 </p>
               </div>
             </div>
@@ -512,7 +648,7 @@ export default function Butir12Page() {
       </section>
 
       {/* ========================================================================= */}
-      {/* MODAL POP-UP VIEWER DOKUMEN DENGAN SLIDE PPT VIEWER INTERAKTIF             */}
+      {/* MODAL POP-UP VIEWER DOKUMEN: SLIDE-SLIDE PPT 2 MATERI LENGKAP             */}
       {/* ========================================================================= */}
       {selectedDoc && (
         <div className="fixed inset-0 bg-black/85 z-50 flex items-center justify-center p-2 sm:p-5 backdrop-blur-xs animate-in fade-in duration-200">
@@ -666,7 +802,10 @@ export default function Butir12Page() {
                         {/* KONTEN UTAMA SLIDE */}
                         <div className="py-4 space-y-4">
                           <div>
-                            <h4 className="text-lg sm:text-2xl font-black text-amber-300 tracking-wide leading-tight">
+                            <span className="bg-amber-400/20 text-amber-300 text-[10px] font-bold px-2 py-0.5 rounded border border-amber-400/30 uppercase tracking-wider">
+                              {slidesMateri1[currentSlideIndex1].tag}
+                            </span>
+                            <h4 className="text-lg sm:text-2xl font-black text-amber-300 tracking-wide leading-tight mt-1.5">
                               {slidesMateri1[currentSlideIndex1].title}
                             </h4>
                             {slidesMateri1[currentSlideIndex1].subtitle && (
@@ -693,7 +832,7 @@ export default function Butir12Page() {
                         <div className="border-t border-slate-800 pt-3 flex items-center justify-between text-[10px] text-slate-400">
                           <span>Dokumen Asli Sosialisasi Siswa (34 Halaman PPT)</span>
                           <span className="font-bold text-amber-400">
-                            Halaman {currentSlideIndex1 + 1} / {slidesMateri1.length}
+                            Slide {currentSlideIndex1 + 1} / {slidesMateri1.length}
                           </span>
                         </div>
                       </div>
@@ -761,7 +900,10 @@ export default function Butir12Page() {
 
                         <div className="py-4 space-y-4">
                           <div>
-                            <h4 className="text-lg sm:text-2xl font-black text-emerald-300 tracking-wide leading-tight">
+                            <span className="bg-emerald-400/20 text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded border border-emerald-400/30 uppercase tracking-wider">
+                              {slidesMateri2[currentSlideIndex2].tag}
+                            </span>
+                            <h4 className="text-lg sm:text-2xl font-black text-emerald-300 tracking-wide leading-tight mt-1.5">
                               {slidesMateri2[currentSlideIndex2].title}
                             </h4>
                             {slidesMateri2[currentSlideIndex2].subtitle && (
@@ -786,7 +928,7 @@ export default function Butir12Page() {
                         <div className="border-t border-slate-800 pt-3 flex items-center justify-between text-[10px] text-slate-400">
                           <span>Dokumen Lengkap Sekolah Ramah Anak & Data Riset (38 Halaman PPT)</span>
                           <span className="font-bold text-emerald-400">
-                            Halaman {currentSlideIndex2 + 1} / {slidesMateri2.length}
+                            Slide {currentSlideIndex2 + 1} / {slidesMateri2.length}
                           </span>
                         </div>
                       </div>
