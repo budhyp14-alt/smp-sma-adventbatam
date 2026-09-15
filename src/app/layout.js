@@ -1,138 +1,22 @@
 import "./globals.css";
-import Link from "next/link";
+import Header from "../components/Header";
 
 export const metadata = {
-  title: "SMP - SMA Advent Batam",
-  description: "Website Resmi SMP dan SMA Advent Batam",
+  title: "SMP - SMA ADVENT BATAM",
+  description: "Official Website SMP & SMA Advent Batam - Excellence in Character & Knowledge",
 };
 
 export default function RootLayout({ children }) {
-  const navItems = [
-    { name: "HOME", href: "/" },
-    { name: "SCHOOL PROFILE", href: "/profile" },
-    { name: "NEWS", href: "/news" },
-    { name: "ANNOUNCEMENTS", href: "/announcements" },
-    { name: "AGENDA", href: "/agenda" },
-    { name: "ACTIVITIES", href: "/activities" },
-    { name: "FACILITIES", href: "/facilities" },
-    { name: "GALLERY", href: "/gallery" },
-    { name: "BIMBEL/ESKUL", href: "/bimbel-eskul" },
-    { name: "PPDB", href: "/ppdb" },
-    // LINK LIBRARY DIUBAH KE WEB PERPUS EKSTERNAL
-    { name: "LIBRARY", href: "https://e-perpus-batam-mas.vercel.app/" },
-  ];
-
   return (
-    <html lang="en">
-      <body className="bg-slate-100 text-slate-900 font-sans antialiased min-h-screen flex flex-col">
+    <html lang="id">
+      <body className="antialiased bg-[#F3EFE4] text-slate-900 min-h-screen flex flex-col">
+        {/* HEADER UTAMA BERISI NAVBAR LENGKAP & AKREDITASI */}
+        <Header />
         
-        <style dangerouslySetInnerHTML={{ __html: `
-          @keyframes spin-horizontal {
-            from { transform: perspective(1000px) rotateY(0deg); }
-            to { transform: perspective(1000px) rotateY(-360deg); }
-          }
-        `}} />
-
-        {/* Menu Navigasi Mendatar */}
-        <nav className="bg-red-900 text-white shadow-md">
-          <div className="max-w-7xl mx-auto px-2 sm:px-4">
-            <div className="flex items-center justify-start lg:justify-center overflow-x-auto py-1.5">
-              <div className="flex items-center space-x-1 sm:space-x-2 min-w-max py-1">
-                {navItems.map((item) => {
-                  // Cek apakah ini link eksternal (mengandung kata 'http')
-                  const isExternal = item.href.startsWith("http");
-
-                  // Jika eksternal, gunakan tag <a> biasa agar bisa meluncur keluar web di tab baru
-                  if (isExternal) {
-                    return (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        target="_blank" // Membuka web perpus di tab baru
-                        rel="noopener noreferrer"
-                        className="px-3 py-2 rounded-lg text-xs sm:text-[13px] font-bold tracking-wider hover:bg-red-800 hover:text-amber-300 transition-colors duration-200 whitespace-nowrap"
-                      >
-                        {item.name}
-                      </a>
-                    );
-                  }
-
-                  // Jika internal, gunakan fitur cepat <Link> dari Next.js
-                  return (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="px-3 py-2 rounded-lg text-xs sm:text-[13px] font-bold tracking-wider hover:bg-red-800 hover:text-amber-300 transition-colors duration-200 whitespace-nowrap"
-                    >
-                      {item.name}
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </nav>
-
-        {/* Header Identitas Sekolah */}
-        <header className="bg-white border-b border-slate-200">
-          <div className="max-w-7xl mx-auto px-4 py-2 flex flex-col lg:flex-row items-center justify-between gap-4">
-            
-            <div className="flex items-center space-x-3">
-              <img
-                src="/logo-OKE.png"
-                alt="Logo Adventist Education"
-                className="h-12 sm:h-16 w-auto object-contain shrink-0"
-                style={{ animation: "spin-horizontal 12s linear infinite" }}
-              />
-              <div className="flex flex-col justify-center">
-                <h1 className="text-xl sm:text-2xl font-black text-red-950 tracking-tight leading-none mb-1">
-                  SMP - SMA ADVENT BATAM
-                </h1>
-                {/* Teks Sub-Logo */}
-                <p className="text-xs text-slate-500 font-medium tracking-wide leading-none">
-                  Shaping a Generation of Character, Intelligence, and Integrity
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-4 sm:space-x-6">
-              <div className="flex items-center space-x-3 text-xs sm:text-sm font-semibold text-slate-600">
-                <span className="hidden sm:inline text-slate-400 mr-1">Follow Us:</span>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors flex items-center space-x-1">
-                  <span>📘 Facebook</span>
-                </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-pink-600 transition-colors flex items-center space-x-1">
-                  <span>📸 Instagram</span>
-                </a>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors flex items-center space-x-1">
-                  <span>▶️ YouTube</span>
-                </a>
-              </div>
-              <div className="hidden sm:block h-8 border-l border-slate-200"></div>
-              <div className="flex items-center space-x-2 bg-red-50 text-red-950 px-4 py-1.5 rounded-full border border-red-100 shadow-sm">
-                <span className="text-sm">📞</span>
-                <span className="text-sm sm:text-base font-extrabold tracking-wide">0778-363082</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Teks Berjalan & Tanggal */}
-          <div className="bg-amber-400 text-slate-900 font-bold text-xs sm:text-sm py-2 px-4 shadow-inner flex items-center border-b border-amber-500">
-            <span className="bg-slate-800 text-amber-400 text-[11px] font-bold px-2.5 py-0.5 rounded mr-2 whitespace-nowrap">
-              Tuesday, August 25, 2026
-            </span>
-            <span className="bg-red-900 text-white text-[11px] font-extrabold px-2.5 py-0.5 rounded mr-3 whitespace-nowrap tracking-wide">
-              LATEST UPDATES
-            </span>
-            <marquee className="w-full tracking-wide">
-              Welcome to the Official Website of SMP - SMA Advent Batam | Penerimaan Peserta Didik Baru (PPDB) Tahun Pelajaran 2026/2027 Telah Dibuka | Terwujudnya Pendidikan Berkarakter, Unggul, dan Berlandaskan Nilai-Nilai Kristiani.
-            </marquee>
-          </div>
-        </header>
-
-        {/* Konten Halaman */}
-        <div className="flex-1">{children}</div>
-
+        {/* HALAMAN KONTEN */}
+        <div className="flex-1 w-full">
+          {children}
+        </div>
       </body>
     </html>
   );
