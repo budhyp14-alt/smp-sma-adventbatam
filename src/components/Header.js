@@ -6,7 +6,8 @@ import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentDate, setCurrentDate] = useState("Tuesday, August 25, 2026");
+  const [isAkreditasiDropdown, setIsAkreditasiDropdown] = useState(false);
+  const [currentDate, setCurrentDate] = useState("Tuesday, September 15, 2026");
   const pathname = usePathname();
 
   // FORMAT TANGGAL RESMI
@@ -16,7 +17,7 @@ export default function Header() {
     setCurrentDate(today);
   }, []);
 
-  // DAFTAR LENGKAP MENU UTAMA DENGAN AKREDITASI DI PALING KANAN
+  // DAFTAR MENU UTAMA
   const navLinks = [
     { label: "HOME", href: "/" },
     { label: "SCHOOL PROFILE", href: "/profile" },
@@ -29,41 +30,78 @@ export default function Header() {
     { label: "BIMBEL/ESKUL", href: "/bimbel-eskul" },
     { label: "PPDB", href: "/ppdb" },
     { label: "LIBRARY", href: "/library" },
-    { label: "AKREDITASI", href: "/akreditasi" }, // Posisi paling kanan
   ];
 
   return (
     <header className="w-full font-sans shadow-md sticky top-0 z-50">
       
-      {/* 1. TOP NAVBAR MERAH MARUN (DERETAN MENU UTAMA) */}
+      {/* 1. TOP NAVBAR MERAH MARUN */}
       <nav className="w-full bg-[#8B0000] text-white">
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-11 sm:h-12 overflow-x-auto no-scrollbar">
+        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-11 sm:h-12 overflow-visible">
           
           {/* MENU DESKTOP */}
-          <div className="hidden lg:flex items-center space-x-3 xl:space-x-5 w-full justify-between">
-            {navLinks.map((item, idx) => {
-              const isActive = pathname === item.href;
-              const isAkreditasi = item.label === "AKREDITASI";
+          <div className="hidden lg:flex items-center space-x-3 xl:space-x-5 w-full justify-between overflow-visible">
+            <div className="flex items-center space-x-3 xl:space-x-5">
+              {navLinks.map((item, idx) => {
+                const isActive = pathname === item.href;
+                return (
+                  <Link
+                    key={idx}
+                    href={item.href}
+                    className={`text-[11px] xl:text-xs font-bold tracking-wider uppercase transition-colors whitespace-nowrap py-1 ${
+                      isActive
+                        ? "text-amber-300 underline underline-offset-4"
+                        : "text-white hover:text-amber-300"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </div>
 
-              return (
+            {/* MENU AKREDITASI DENGAN DROPDOWN SUBMENU DI PALING KANAN */}
+            <div 
+              className="relative group py-2"
+              onMouseEnter={() => setIsAkreditasiDropdown(true)}
+              onMouseLeave={() => setIsAkreditasiDropdown(false)}
+            >
+              <div className="flex items-center">
                 <Link
-                  key={idx}
-                  href={item.href}
-                  className={`text-[11px] xl:text-xs font-bold tracking-wider uppercase transition-colors whitespace-nowrap py-1 ${
-                    isAkreditasi
-                      ? "bg-amber-500 hover:bg-amber-400 text-slate-950 px-2.5 py-1 rounded shadow-sm"
-                      : isActive
-                      ? "text-amber-300 underline underline-offset-4"
-                      : "text-white hover:text-amber-300"
-                  }`}
+                  href="/akreditasi"
+                  className="bg-amber-500 hover:bg-amber-400 text-slate-950 px-3 py-1 rounded shadow-sm text-[11px] xl:text-xs font-black tracking-wider uppercase flex items-center gap-1 transition-all"
                 >
-                  {item.label}
+                  <span>AKREDITASI</span>
+                  <span className="text-[10px] transform group-hover:rotate-180 transition-transform duration-200">▼</span>
                 </Link>
-              );
-            })}
+              </div>
+
+              {/* DROPDOWN SUB MENU */}
+              <div 
+                className={`absolute right-0 top-full pt-1 w-52 transition-all duration-200 z-50 ${
+                  isAkreditasiDropdown ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2 pointer-events-none"
+                }`}
+              >
+                <div className="bg-white rounded-lg shadow-xl border border-slate-200 py-2 text-slate-800">
+                  <Link
+                    href="/akreditasi"
+                    className="block px-4 py-2 text-xs font-bold hover:bg-amber-50 hover:text-amber-900 border-b border-slate-100 transition-colors"
+                  >
+                    📋 Overview Akreditasi
+                  </Link>
+                  <Link
+                    href="/akreditasi/butir-12"
+                    className="block px-4 py-2 text-xs font-bold text-[#047857] hover:bg-emerald-50 hover:text-emerald-900 transition-colors"
+                  >
+                    📑 Butir 12
+                  </Link>
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          {/* LABEL & TOMBOL TOGGLE UNTUK TAMPILAN MOBILE */}
+          {/* TOGGLE MENU UNTUK TAMPILAN MOBILE */}
           <div className="flex lg:hidden items-center justify-between w-full">
             <span className="text-xs font-bold tracking-wider text-amber-300">
               MENU UTAMA
@@ -94,23 +132,36 @@ export default function Header() {
               key={idx}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className={`block text-xs font-bold py-1.5 px-2 rounded ${
-                item.label === "AKREDITASI"
-                  ? "bg-amber-500 text-slate-950 font-black"
-                  : "hover:bg-red-900 text-slate-100"
-              }`}
+              className="block text-xs font-bold py-1.5 px-2 rounded hover:bg-red-900 text-slate-100"
             >
               {item.label}
             </Link>
           ))}
+          
+          <div className="pt-2 border-t border-red-800/60">
+            <span className="text-[10px] text-amber-300 font-bold uppercase tracking-wider block px-2 mb-1">Akreditasi</span>
+            <Link
+              href="/akreditasi"
+              onClick={() => setIsOpen(false)}
+              className="block text-xs font-bold py-1.5 px-3 rounded bg-amber-500 text-slate-950 mb-1"
+            >
+              Overview Akreditasi
+            </Link>
+            <Link
+              href="/akreditasi/butir-12"
+              onClick={() => setIsOpen(false)}
+              className="block text-xs font-bold py-1.5 px-3 rounded bg-white text-emerald-900"
+            >
+              📑 Butir 12
+            </Link>
+          </div>
         </div>
       )}
 
-      {/* 2. MAIN HEADER PUTIH (LOGO, SLOGAN, SOSMED, & TELEPON) */}
+      {/* 2. MAIN HEADER PUTIH */}
       <div className="w-full bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 py-3 sm:py-4 flex flex-col md:flex-row items-center justify-between gap-4">
           
-          {/* SISI KIRI: LOGO & NAMA SEKOLAH */}
           <div className="flex items-center gap-3 sm:gap-4 text-center md:text-left">
             <Link href="/" className="shrink-0">
               <img 
@@ -131,7 +182,6 @@ export default function Header() {
             </div>
           </div>
 
-          {/* SISI KANAN: SOSMED & NOMOR TELEPON */}
           <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 sm:gap-6 text-xs text-slate-600">
             <div className="flex items-center gap-2 sm:gap-3">
               <span className="font-semibold text-slate-500 hidden sm:inline">Follow Us:</span>
