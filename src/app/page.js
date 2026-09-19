@@ -403,29 +403,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. DUA BLOK EDITORIAL */}
+      {/* 2. DUA BLOK EDITORIAL (YAYASAN & MANAJER) */}
       <section className="max-w-7xl mx-auto px-4 mb-8 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
-          {/* EDITORIAL KETUA YAYASAN */}
+          {/* EDITORIAL KETUA YAYASAN: DENGAN TEKNIK ABSOLUTE AGAR TINGGINYA SEJAJAR TEKS KANAN */}
           <div className="flex flex-col sm:flex-row gap-5 items-stretch">
-            <Link href="/editorial-yayasan/detail" className="w-full sm:w-[40%] min-h-[250px] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer bg-slate-200">
+            <Link href="/editorial-yayasan/detail" className="w-full sm:w-[40%] min-h-[280px] sm:min-h-0 relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer bg-slate-200">
               <img 
                 src="/ketua-ypab.webp" 
                 alt="Rima Melati Hutagalung - Chairman of the Foundation" 
-                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" 
+                className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" 
                 onError={(e) => {
                   e.currentTarget.onerror = null;
                   e.currentTarget.src = "/slider-1.jpg";
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-left">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-left pointer-events-none">
                 <p className="text-[#E5B55C] font-bold text-sm sm:text-base leading-tight mb-1 group-hover:text-amber-300 transition-colors">Rima Melati Hutagalung</p>
                 <p className="text-[#E5B55C] text-xs sm:text-sm">Chairman of the Foundation</p>
               </div>
             </Link>
-            <div className="w-full sm:w-[60%] flex flex-col h-full">
+            <div className="w-full sm:w-[60%] flex flex-col h-full py-1">
               <div className="flex items-center gap-2 mb-3">
                 <span className="bg-[#4D524F] text-white rounded-full w-7 h-7 flex items-center justify-center text-[10px] tracking-widest">•••</span>
                 <h2 className="font-bold text-lg text-[#4D524F]">Foundation Chairman's Editorial</h2>
@@ -448,25 +448,25 @@ export default function Home() {
             </div>
           </div>
 
-          {/* EDITORIAL MANAJER */}
+          {/* EDITORIAL MANAJER OPERASIONAL */}
           <div className="flex flex-col sm:flex-row gap-5 items-stretch">
-            <Link href="/editorial-manajer/detail" className="w-full sm:w-[40%] min-h-[250px] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer bg-slate-200">
+            <Link href="/editorial-manajer/detail" className="w-full sm:w-[40%] min-h-[280px] sm:min-h-0 relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer bg-slate-200">
               <img 
-                src="/manajer-operasional02.webp" 
+                src="/manajer-operasional01.webp" 
                 alt="Samuel Simatupang - Operations Manager" 
-                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" 
+                className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" 
                 onError={(e) => {
                   e.currentTarget.onerror = null;
                   e.currentTarget.src = "/slider-2.jpg";
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-left">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-left pointer-events-none">
                 <p className="text-[#E5B55C] font-bold text-sm sm:text-base leading-tight mb-1 group-hover:text-amber-300 transition-colors">Samuel Simatupang</p>
                 <p className="text-[#E5B55C] text-xs sm:text-sm">Operations Manager</p>
               </div>
             </Link>
-            <div className="w-full sm:w-[60%] flex flex-col h-full">
+            <div className="w-full sm:w-[60%] flex flex-col h-full py-1">
               <div className="flex items-center gap-2 mb-3">
                 <span className="bg-[#4D524F] text-white rounded-full w-7 h-7 flex items-center justify-center text-[10px] tracking-widest">•••</span>
                 <h2 className="font-bold text-lg text-[#4D524F]">Operations Manager's Editorial</h2>
@@ -496,17 +496,25 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 mb-12 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           
-          {/* EDITORIAL KEPALA SEKOLAH: DENGAN PENYETARAAN TINGGI (ITEMS-STRETCH) AGAR SEJAJAR TOMBOL READ MORE */}
+          {/* EDITORIAL KEPALA SEKOLAH: PENYETARAAN TINGGI (ITEMS-STRETCH) AGAR KOTAK FOTO PRESISI SEJAJAR TOMBOL BAWAH */}
           <div className="lg:col-span-2 flex flex-col md:flex-row gap-5 items-stretch">
-            <Link href="/editorial/detail" className="w-full md:w-[35%] lg:w-[30%] min-h-[300px] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer bg-slate-200">
-              <img src="/slider-3.jpg" alt="Tona Leon F. Situmorang" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-              <div className="absolute bottom-3 left-3 right-3 text-left">
+            <Link href="/editorial/detail" className="w-full md:w-[35%] lg:w-[30%] min-h-[300px] md:min-h-0 relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer bg-slate-200">
+              <img 
+                src="/KEPSEK.webp" 
+                alt="Tona Leon F. Situmorang" 
+                className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" 
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = "/slider-3.jpg";
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none"></div>
+              <div className="absolute bottom-3 left-3 right-3 text-left pointer-events-none">
                 <p className="text-[#E5B55C] font-bold text-xs sm:text-sm leading-tight mb-1 group-hover:text-amber-300 transition-colors">Tona Leon F. Situmorang, S.Pd.,MA.,ED.</p>
                 <p className="text-[#E5B55C] text-[10px] sm:text-xs">Principal</p>
               </div>
             </Link>
-            <div className="w-full md:w-[65%] lg:w-[70%] flex flex-col h-full">
+            <div className="w-full md:w-[65%] lg:w-[70%] flex flex-col h-full py-1">
               <div className="flex items-center gap-2 mb-3">
                 <span className="bg-[#4D524F] text-white rounded-full w-7 h-7 flex items-center justify-center text-[10px] tracking-widest">•••</span>
                 <h2 className="font-bold text-lg text-[#4D524F]">Principal's Editorial</h2>
