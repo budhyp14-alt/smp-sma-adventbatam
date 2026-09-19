@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isAkreditasiDropdown, setIsAkreditasiDropdown] = useState(false);
-  const [currentDate, setCurrentDate] = useState("Tuesday, September 15, 2026");
+  const [currentDate, setCurrentDate] = useState("Saturday, September 19, 2026");
   const pathname = usePathname();
 
   useEffect(() => {
@@ -16,8 +16,6 @@ export default function Header() {
     setCurrentDate(today);
   }, []);
 
-  // DAFTAR MENU UTAMA
-  // LIBRARY diarahkan langsung ke web perpustakaan di tab yang sama agar tombol 'Back' browser berfungsi normal
   const navLinks = [
     { label: "HOME", href: "/", isExternal: false },
     { label: "SCHOOL PROFILE", href: "/profile", isExternal: false },
@@ -35,9 +33,9 @@ export default function Header() {
   return (
     <header className="w-full font-sans shadow-md sticky top-0 z-50">
       
-      {/* ANIMASI PUTAR SEARAH JARUM JAM */}
+      {/* STYLE ANIMASI: PUTAR LOGO LEBIH LAMBAT (16s) & TEKS BERJALAN RUNNING (MARQUEE) */}
       <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes spinClockwise {
+        @keyframes spinClockwiseSlow {
           from {
             transform: perspective(800px) rotateY(0deg);
           }
@@ -45,12 +43,30 @@ export default function Header() {
             transform: perspective(800px) rotateY(360deg);
           }
         }
-        .logo-adventist-spin {
-          animation: spinClockwise 7s linear infinite;
+        .logo-adventist-spin-slow {
+          animation: spinClockwiseSlow 16s linear infinite;
           transform-style: preserve-3d;
           will-change: transform;
         }
-        .logo-adventist-spin:hover {
+        .logo-adventist-spin-slow:hover {
+          animation-play-state: paused;
+        }
+
+        @keyframes marqueeScroll {
+          0% {
+            transform: translateX(100%);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+        .ticker-marquee-track {
+          display: inline-block;
+          white-space: nowrap;
+          animation: marqueeScroll 25s linear infinite;
+          will-change: transform;
+        }
+        .ticker-marquee-track:hover {
           animation-play-state: paused;
         }
       `}} />
@@ -64,7 +80,6 @@ export default function Header() {
               {navLinks.map((item, idx) => {
                 const isActive = pathname === item.href;
 
-                // MENU EXTERNAL (LIBRARY) DI TAB YANG SAMA
                 if (item.isExternal) {
                   return (
                     <a
@@ -205,14 +220,14 @@ export default function Header() {
         </div>
       )}
 
-      {/* 2. MAIN HEADER PUTIH: LOGO MELAYANG */}
+      {/* 2. MAIN HEADER PUTIH: LOGO BERPUTAR LEBIH LAMBAT & MELAYANG */}
       <div className="w-full bg-white border-b border-slate-200 relative overflow-visible">
         <div className="max-w-7xl mx-auto px-4 h-16 sm:h-18 flex items-center justify-between gap-4 relative overflow-visible">
           
           <div className="flex items-center text-left relative overflow-visible">
             <div className="absolute -left-6 sm:-left-8 top-1/2 -translate-y-1/2 z-30 pointer-events-auto">
               <Link href="/" className="block cursor-pointer">
-                <div className="logo-adventist-spin w-32 h-32 sm:w-36 sm:h-36 flex items-center justify-center filter drop-shadow-md">
+                <div className="logo-adventist-spin-slow w-32 h-32 sm:w-36 sm:h-36 flex items-center justify-center filter drop-shadow-md">
                   <img 
                     src="/logo.png" 
                     alt="Logo Adventist Education" 
@@ -260,18 +275,25 @@ export default function Header() {
         </div>
       </div>
 
-      {/* 3. RUNNING TICKER KUNING EMAS */}
-      <div className="w-full bg-[#D97706] text-white relative z-10">
-        <div className="max-w-7xl mx-auto px-4 flex items-center h-8 text-[11px] sm:text-xs overflow-hidden">
-          <div className="bg-[#1e293b] text-white font-bold px-2 sm:px-3 py-1 mr-2 rounded text-[10px] sm:text-[11px] shrink-0">
+      {/* 3. RUNNING TICKER KUNING EMAS: TEKS BERGERAK DARI KANAN KE KIRI SECARA KONTINYU */}
+      <div className="w-full bg-[#D97706] text-white relative z-10 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 flex items-center h-8 text-[11px] sm:text-xs">
+          
+          <div className="bg-[#1e293b] text-white font-bold px-2 sm:px-3 py-1 mr-2 rounded text-[10px] sm:text-[11px] shrink-0 z-20 shadow-xs">
             {currentDate}
           </div>
-          <div className="bg-[#8B0000] text-white font-extrabold px-2 sm:px-3 py-1 mr-3 rounded text-[10px] sm:text-[11px] uppercase tracking-wider shrink-0">
+          
+          <div className="bg-[#8B0000] text-white font-extrabold px-2 sm:px-3 py-1 mr-3 rounded text-[10px] sm:text-[11px] uppercase tracking-wider shrink-0 z-20 shadow-xs">
             LATEST UPDATES
           </div>
-          <div className="truncate text-white font-semibold">
-            Selamat Datang di Website Resmi SMP - SMA Advent Batam. Informasi Pendaftaran Siswa Baru (PPDB) Tahun Ajaran 2026/2027 telah resmi dibuka.
+
+          {/* AREA TEKS BERJALAN OTOMATIS */}
+          <div className="flex-1 overflow-hidden relative">
+            <div className="ticker-marquee-track text-white font-semibold cursor-default">
+              Selamat Datang di Website Resmi SMP - SMA Advent Batam. Informasi Pendaftaran Siswa Baru (PPDB) Tahun Ajaran 2026/2027 telah resmi dibuka. Hubungi bagian tata usaha untuk informasi persyaratan dan beasiswa prestasi.
+            </div>
           </div>
+
         </div>
       </div>
 
