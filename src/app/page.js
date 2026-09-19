@@ -5,30 +5,28 @@ import Link from "next/link";
 import { announcementsData, agendaData } from "../data/schoolUpdates";
 
 export default function Home() {
-  // 1. DATA HERO SLIDER (FOTO SLIDER TELAH DIGANTI)
+  // 1. DATA HERO SLIDER (GAMBAR TELAH DIPERBARUI)
   const baseSlides = [
     {
-      src: "/slider-1.jpg",
+      src: "/slider5.webp", // Menggantikan slider-1.jpg
       tag: "CAMPUS ENVIRONMENT",
       title: "Gedung Pembelajaran Modern & Asri SMP-SMA Advent Batam",
       desc: "Lingkungan sekolah yang representatif, aman, dan kondusif untuk menunjang tumbuh kembang karakter serta akademik peserta didik."
     },
     {
-      // DIGANTI MENJADI SLIDER5.webp
-      src: "/SLIDER5.webp",
+      src: "/slider-2.jpg", // Diperbaiki agar gambar tampil normal kembali
       tag: "DIGITAL LEARNING & INNOVATION",
       title: "Pusat Pembelajaran Berbasis Teknologi & Literasi Digital",
       desc: "Mempersiapkan generasi masa depan yang cakap teknologi melalui fasilitas komputasi terintegrasi dan kurikulum adaptif."
     },
     {
-      // DIGANTI MENJADI SLIDER6.webp
-      src: "/SLIDER6.webp",
+      src: "/slider6.webp", // Menggantikan slider-3.jpg
       tag: "SPIRITUAL & CHARACTER BUILDING",
       title: "Pendidikan Holistik Berlandaskan Nilai-Nilai Kristiani",
       desc: "Membina hati dan budi pekerti luhur melalui persekutuan doa, kebaktian berkala, dan pembiasaan kasih dalam keseharian."
     },
     {
-      src: "/slider-1.jpg",
+      src: "/slider5.webp", // Menggantikan slider-1.jpg
       tag: "STUDENT TALENTS & CO-CURRICULAR",
       title: "Eksplorasi Bakat, Prestasi Atletik, dan Jiwa Kepemimpinan",
       desc: "Mewadahi antusiasme dan daya juang siswa melalui program ekstrakurikuler dinamis serta pembinaan prestasi berstandar nasional."
@@ -79,21 +77,21 @@ export default function Home() {
 
   // 3. DATA 15 GURU KREATIF
   const teachersList = [
-    { name: "Renita Pandiangan, S.Pd", role: "Guru Bhs. Ind.", img: "/slider-1.jpg" },
+    { name: "Renita Pandiangan, S.Pd", role: "Guru Bhs. Ind.", img: "/slider5.webp" },
     { name: "Herman, S.Pd", role: "Guru Conversation", img: "/slider-2.jpg" },
-    { name: "Kumar, S.Pd", role: "Guru Conversation", img: "/slider-3.jpg" },
-    { name: "Tiurma Febryanti, S.Pd", role: "Guru IPA Fisika", img: "/slider-1.jpg" },
+    { name: "Kumar, S.Pd", role: "Guru Conversation", img: "/slider6.webp" },
+    { name: "Tiurma Febryanti, S.Pd", role: "Guru IPA Fisika", img: "/slider5.webp" },
     { name: "Ir. Budhy Prasetyo", role: "Guru Informatika", img: "/slider-2.jpg" },
-    { name: "Asna Rumondang S., S.Pd.", role: "Guru", img: "/slider-3.jpg" },
-    { name: "Lourens Syahartian, S.Pd", role: "Guru Bhs. Inggris", img: "/slider-1.jpg" },
+    { name: "Asna Rumondang S., S.Pd.", role: "Guru", img: "/slider6.webp" },
+    { name: "Lourens Syahartian, S.Pd", role: "Guru Bhs. Inggris", img: "/slider5.webp" },
     { name: "Ernast Simanjuntak, S.Pd", role: "Guru Sosiologi", img: "/slider-2.jpg" },
-    { name: "Sarlen Naibaho, S.Pd., M.Pd.", role: "Guru IPS", img: "/slider-3.jpg" },
-    { name: "Endang Januar S., S.Kom", role: "Bendahara BOS", img: "/slider-1.jpg" },
+    { name: "Sarlen Naibaho, S.Pd., M.Pd.", role: "Guru IPS", img: "/slider6.webp" },
+    { name: "Endang Januar S., S.Kom", role: "Bendahara BOS", img: "/slider5.webp" },
     { name: "Celli Sihombing, S.Pd", role: "Guru IPA Kimia", img: "/slider-2.jpg" },
-    { name: "Mawar Indah Sinurat, S.Pd", role: "Guru IPA Biologi", img: "/slider-3.jpg" },
-    { name: "Drs. Andi Mulyono", role: "Guru Matematika", img: "/slider-1.jpg" },
+    { name: "Mawar Indah Sinurat, S.Pd", role: "Guru IPA Biologi", img: "/slider6.webp" },
+    { name: "Drs. Andi Mulyono", role: "Guru Matematika", img: "/slider5.webp" },
     { name: "Rini Wulandari, S.Pd", role: "Guru Sejarah", img: "/slider-2.jpg" },
-    { name: "Kevin Pratama, S.Or", role: "Guru Penjaskes", img: "/slider-3.jpg" }
+    { name: "Kevin Pratama, S.Or", role: "Guru Penjaskes", img: "/slider6.webp" }
   ];
 
   const CLONE_COUNT = 6;
@@ -110,7 +108,7 @@ export default function Home() {
   const baseActivities = [
     {
       id: "class-meeting-porseni",
-      src: "/slider-1.jpg",
+      src: "/slider5.webp",
       tag: "OLAHRAGA & PRESTASI",
       title: "Pekan Olahraga Antarkelas (Class Meeting)",
       desc: "Menjunjung sportivitas, kebugaran jasmani, dan daya juang tinggi antarsiswa."
@@ -124,14 +122,14 @@ export default function Home() {
     },
     {
       id: "praktikum-komputasi-sains-cbt",
-      src: "/slider-3.jpg",
+      src: "/slider6.webp",
       tag: "SAINS & TEKNOLOGI",
       title: "Praktikum Laboratorium Komputasi & CBT",
       desc: "Mengasah nalar analitis melalui simulasi pemrograman dan riset digital terpadu."
     },
     {
       id: "kebaktian-padang-bina-rohani",
-      src: "/slider-1.jpg",
+      src: "/slider5.webp",
       tag: "SPIRITUAL & IBADAH",
       title: "Kebaktian Padang & Bina Rohani Siswa",
       desc: "Menjalin kebersamaan serta memperdalam karakter takut akan Tuhan sejak dini."
@@ -272,7 +270,7 @@ export default function Home() {
       id: "ktt-g20-bali", 
       date: "Tuesday, 12 August 2025", 
       title: "KTT G20 Bali", 
-      img: "/slider-1.jpg" 
+      img: "/slider5.webp" 
     },
     { 
       id: "bab-1-badan-usaha-dalam-perekonomian", 
@@ -284,7 +282,7 @@ export default function Home() {
       id: "bab-1-informatika-dan-pembelajarannya", 
       date: "Monday, 11 August 2025", 
       title: "BAB 1 INFORMATIKA & PEMBELAJARANNYA", 
-      img: "/slider-3.jpg" 
+      img: "/slider6.webp" 
     }
   ];
 
@@ -294,7 +292,7 @@ export default function Home() {
       id: "pemanfaatan-ai-secara-kritis-dalam-pembelajaran",
       date: "Tuesday, 08 September 2026", 
       title: "Pemanfaatan AI secara Kritis dan Bertanggung Jawab dalam Pembelajaran Siswa", 
-      img: "/slider-1.jpg" 
+      img: "/slider5.webp" 
     },
     { 
       id: "membangun-integritas-dan-literasi-sains",
@@ -306,14 +304,14 @@ export default function Home() {
       id: "metode-komunikasi-efektif-guru-dan-murid",
       date: "Friday, 21 August 2026", 
       title: "Seni Mendengar: Kunci Membina Hubungan Harmonis Guru dan Remaja di Era Digital", 
-      img: "/slider-3.jpg" 
+      img: "/slider6.webp" 
     }
   ];
 
   const fasilitas = [
-    { title: "Ruang Laboratorium Bahasa", text: "Fasilitas audio visual interaktif untuk meningkatkan kecakapan percakapan bahasa asing peserta didik.", img: "/slider-1.jpg" },
+    { title: "Ruang Laboratorium Bahasa", text: "Fasilitas audio visual interaktif untuk meningkatkan kecakapan percakapan bahasa asing peserta didik.", img: "/slider5.webp" },
     { title: "Sarana Olahraga & Bela Diri", text: "Mendukung kebugaran fisik, sportivitas, dan disiplin siswa melalui berbagai cabang olahraga pilihan.", img: "/slider-2.jpg" },
-    { title: "Aula & Ruang Peribadatan", text: "Tempat persekutuan doa, renungan rohani harian, dan pembinaan karakter spiritual seluruh siswa.", img: "/slider-3.jpg" }
+    { title: "Aula & Ruang Peribadatan", text: "Tempat persekutuan doa, renungan rohani harian, dan pembinaan karakter spiritual seluruh siswa.", img: "/slider6.webp" }
   ];
 
   const activeDotIndex = (currentIndex - 1 + baseSlides.length) % baseSlides.length;
@@ -418,7 +416,7 @@ export default function Home() {
                 className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" 
                 onError={(e) => {
                   e.currentTarget.onerror = null;
-                  e.currentTarget.src = "/slider-1.jpg";
+                  e.currentTarget.src = "/slider5.webp";
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none"></div>
@@ -507,7 +505,7 @@ export default function Home() {
                 className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" 
                 onError={(e) => {
                   e.currentTarget.onerror = null;
-                  e.currentTarget.src = "/slider-3.jpg";
+                  e.currentTarget.src = "/slider6.webp";
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none"></div>
@@ -889,9 +887,14 @@ export default function Home() {
               Gallery
             </h3>
             <div className="grid grid-cols-3 gap-4 lg:gap-5 flex-1 content-between">
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
-                <div key={num} className="w-full aspect-[4/3] rounded-md overflow-hidden shadow-sm">
-                  <img src={`/slider-${(num % 3) + 1}.jpg`} alt={`Galeri ${num}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer" />
+              {/* Gambar placeholder galeri disesuaikan agar tidak broken */}
+              {[
+                "/slider5.webp", "/slider-2.jpg", "/slider6.webp",
+                "/slider-2.jpg", "/slider6.webp", "/slider5.webp",
+                "/slider6.webp", "/slider5.webp", "/slider-2.jpg"
+              ].map((imgSrc, idx) => (
+                <div key={idx} className="w-full aspect-[4/3] rounded-md overflow-hidden shadow-sm">
+                  <img src={imgSrc} alt={`Galeri ${idx + 1}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer" />
                 </div>
               ))}
             </div>
@@ -905,13 +908,17 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <h3 className="text-red-950 font-bold mb-4 text-lg">Video</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-            {[1, 2, 3].map((vid) => (
-              <div key={vid} className="aspect-video relative rounded-none overflow-hidden shadow-md group cursor-pointer">
-                <img src={`/slider-${vid}.jpg`} alt="Video" className="w-full h-full object-cover brightness-75 group-hover:brightness-50 transition-all" />
+            {[
+              { id: 1, img: "/slider5.webp" },
+              { id: 2, img: "/slider-2.jpg" },
+              { id: 3, img: "/slider6.webp" }
+            ].map((vid) => (
+              <div key={vid.id} className="aspect-video relative rounded-none overflow-hidden shadow-md group cursor-pointer">
+                <img src={vid.img} alt="Video" className="w-full h-full object-cover brightness-75 group-hover:brightness-50 transition-all" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="bg-red-600 text-white w-12 h-8 rounded-md flex items-center justify-center group-hover:bg-red-700 transition-colors">▶</div>
                 </div>
-                <div className="absolute top-2 left-2 right-2 text-white text-xs font-bold truncate drop-shadow-md">Video Dokumentasi {vid}</div>
+                <div className="absolute top-2 left-2 right-2 text-white text-xs font-bold truncate drop-shadow-md">Video Dokumentasi {vid.id}</div>
                 <div className="absolute bottom-2 right-2 text-white text-[10px] bg-black/60 px-2 py-0.5 rounded">Tonton di YouTube</div>
               </div>
             ))}
