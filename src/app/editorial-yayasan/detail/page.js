@@ -125,9 +125,9 @@ export default function DetailEditorialYayasan() {
                   }}
                 />
               </div>
-              {/* TEKS CAPTION FOTO PERSIS DI BAWAH FOTO */}
+              {/* TEKS CAPTION FOTO PERSIS DI BAWAH FOTO (TEGAK DAN BOLD) */}
               {currentArticle.caption && (
-                <figcaption className="text-[10px] sm:text-[11px] text-slate-500 italic mt-2.5 leading-relaxed text-justify px-1">
+                <figcaption className="text-[10px] sm:text-[11px] text-slate-700 font-bold mt-2.5 leading-relaxed text-justify px-1">
                   {currentArticle.caption}
                 </figcaption>
               )}
