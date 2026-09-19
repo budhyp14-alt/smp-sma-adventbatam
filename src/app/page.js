@@ -407,7 +407,7 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 mb-8 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
-          {/* EDITORIAL KETUA YAYASAN: MENGGUNAKAN /ketua-ypab.webp */}
+          {/* EDITORIAL KETUA YAYASAN */}
           <div className="flex flex-col sm:flex-row gap-5">
             <Link href="/editorial-yayasan/detail" className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer bg-slate-200">
               <img 
@@ -448,10 +448,18 @@ export default function Home() {
             </div>
           </div>
 
-          {/* EDITORIAL MANAJER */}
+          {/* EDITORIAL MANAJER (MENGGUNAKAN /manajer-operasional02.webp) */}
           <div className="flex flex-col sm:flex-row gap-5">
             <Link href="/editorial-manajer/detail" className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer bg-slate-200">
-              <img src="/slider-2.jpg" alt="Samuel Simatupang" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <img 
+                src="/manajer-operasional02.webp" 
+                alt="Samuel Simatupang - Operations Manager" 
+                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" 
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = "/slider-2.jpg";
+                }}
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4 text-left">
                 <p className="text-[#E5B55C] font-bold text-sm sm:text-base leading-tight mb-1 group-hover:text-amber-300 transition-colors">Samuel Simatupang</p>
