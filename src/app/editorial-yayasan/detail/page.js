@@ -77,7 +77,7 @@ export default function DetailEditorialYayasan() {
           <span>You are here :</span>
           <Link href="/" className="text-[#047857] hover:underline ml-1">🏠 Home</Link>
           <span>-</span>
-          <Link href="/editorial-yayasan" className="text-[#047857] hover:underline">Editorial Yayasan</Link>
+          <Link href="/editorial-yayasan" className="text-[#047857] hover:underline">Foundation Editorial</Link>
           <span>-</span>
           <span className="text-slate-500">Detail</span>
         </div>
@@ -93,7 +93,7 @@ export default function DetailEditorialYayasan() {
             {/* BADGE KATEGORI */}
             <div className="mb-3">
               <span className="bg-[#D97706] text-white text-[10px] sm:text-xs font-black px-3 py-1 rounded-md uppercase tracking-wider inline-block shadow-xs">
-                YAYASAN EDITORIAL
+                FOUNDATION EDITORIAL
               </span>
             </div>
 
@@ -164,13 +164,13 @@ export default function DetailEditorialYayasan() {
           <aside className="lg:col-span-4 space-y-6">
             <div className="bg-[#EFEAD8] p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-300/80">
               
-              {/* HEADER SIDEBAR */}
+              {/* HEADER SIDEBAR DALAM BAHASA INGGRIS */}
               <div className="flex items-center gap-2 pb-3 mb-5 border-b-2 border-[#8B0000]">
                 <span className="bg-[#8B0000] text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">
                   🏛
                 </span>
-                <h2 className="font-black text-sm sm:text-base text-slate-900 uppercase tracking-wide">
-                  Editorial Yayasan Terbaru
+                <h2 className="font-black text-sm sm:text-base text-[#001c38] uppercase tracking-wide">
+                  LATEST FOUNDATION EDITORIALS
                 </h2>
               </div>
 
