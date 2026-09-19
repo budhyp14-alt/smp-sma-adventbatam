@@ -407,9 +407,18 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 mb-8 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
+          {/* EDITORIAL KETUA YAYASAN: MENGGUNAKAN /ketua-ypab.webp */}
           <div className="flex flex-col sm:flex-row gap-5">
-            <Link href="/editorial-yayasan/detail" className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer">
-              <img src="/slider-1.jpg" alt="Rima Melati Hutagalung" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <Link href="/editorial-yayasan/detail" className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer bg-slate-200">
+              <img 
+                src="/ketua-ypab.webp" 
+                alt="Rima Melati Hutagalung - Chairman of the Foundation" 
+                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" 
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = "/slider-1.jpg";
+                }}
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4 text-left">
                 <p className="text-[#E5B55C] font-bold text-sm sm:text-base leading-tight mb-1 group-hover:text-amber-300 transition-colors">Rima Melati Hutagalung</p>
@@ -439,8 +448,9 @@ export default function Home() {
             </div>
           </div>
 
+          {/* EDITORIAL MANAJER */}
           <div className="flex flex-col sm:flex-row gap-5">
-            <Link href="/editorial-manajer/detail" className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer">
+            <Link href="/editorial-manajer/detail" className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer bg-slate-200">
               <img src="/slider-2.jpg" alt="Samuel Simatupang" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4 text-left">
@@ -479,7 +489,7 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           
           <div className="lg:col-span-2 flex flex-col md:flex-row gap-5 items-start">
-            <Link href="/editorial/detail" className="w-full md:w-[35%] lg:w-[30%] aspect-square relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer">
+            <Link href="/editorial/detail" className="w-full md:w-[35%] lg:w-[30%] aspect-square relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer bg-slate-200">
               <img src="/slider-3.jpg" alt="Tona Leon F. Situmorang" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
               <div className="absolute bottom-3 left-3 right-3 text-left">
@@ -750,23 +760,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================================================= */}
-      {/* 7. KEGIATAN (ACTIVITIES: HITBOX ABSOLUTE INSET-0, 100% BISA DIKLIK)        */}
-      {/* ========================================================================= */}
+      {/* 7. ACTIVITIES */}
       <section className="w-full bg-[#DCC690] py-10 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           
-          {/* ACTIVITIES */}
           <div className="flex flex-col h-full">
             <h3 className="flex items-center text-slate-800 font-bold mb-5 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm mr-2 pb-0.5">★</span> 
               Activities
             </h3>
             
-            {/* CONTAINER BINGKAI SLIDER DENGAN TINGGI PATEN */}
             <div className="w-full rounded-xl overflow-hidden shadow-md relative bg-slate-900 h-[280px] sm:h-[300px] group">
-              
-              {/* TRACK ACTIVITIES */}
               <div 
                 className="flex w-full h-full"
                 style={{ 
@@ -777,8 +781,6 @@ export default function Home() {
               >
                 {extendedActivities.map((act, idx) => (
                   <div key={idx} className="w-full h-full shrink-0 relative overflow-hidden">
-                    
-                    {/* LINK MENGISI 100% AREA DARI UJUNG KE UJUNG */}
                     <Link 
                       href={`/activities/detail?id=${act.id}`} 
                       className="absolute inset-0 z-10 block cursor-pointer"
@@ -790,7 +792,6 @@ export default function Home() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none"></div>
                       
-                      {/* LABEL & JUDUL KEGIATAN */}
                       <div className="absolute bottom-10 left-4 right-4 text-white text-left pointer-events-none">
                         <span className="bg-[#047857] text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wider shadow inline-block mb-1.5">
                           {act.tag}
@@ -803,12 +804,10 @@ export default function Home() {
                         </p>
                       </div>
                     </Link>
-
                   </div>
                 ))}
               </div>
 
-              {/* TOMBOL PREV (Z-20 AGAR TIDAK TERTUTUP LINK) */}
               <button 
                 onClick={handleActivityPrev}
                 className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/75 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition-all z-20 cursor-pointer shadow"
@@ -817,7 +816,6 @@ export default function Home() {
                 &#10094;
               </button>
 
-              {/* TOMBOL NEXT (Z-20 AGAR TIDAK TERTUTUP LINK) */}
               <button 
                 onClick={handleActivityNext}
                 className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/75 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition-all z-20 cursor-pointer shadow"
@@ -826,7 +824,6 @@ export default function Home() {
                 &#10095;
               </button>
 
-              {/* INDIKATOR DOT BULAT */}
               <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-1.5 z-20">
                 {baseActivities.map((_, idx) => (
                   <button
@@ -845,7 +842,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* FACILITIES */}
           <div className="flex flex-col h-full">
             <h3 className="flex items-center text-slate-800 font-bold mb-5 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center text-lg font-bold pb-0.5 mr-2">+</span> 
@@ -866,7 +862,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* GALLERY */}
           <div className="flex flex-col h-full">
             <h3 className="flex items-center text-slate-800 font-bold mb-5 text-xl">
               <span className="bg-slate-800 text-white rounded-full w-7 h-7 flex items-center justify-center p-1.5 mr-2">
