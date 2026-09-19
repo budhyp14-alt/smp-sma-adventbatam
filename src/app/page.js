@@ -5,7 +5,7 @@ import Link from "next/link";
 import { announcementsData, agendaData } from "../data/schoolUpdates";
 
 export default function Home() {
-  // 1. DATA HERO SLIDER
+  // 1. DATA HERO SLIDER (FOTO SLIDER TELAH DIGANTI)
   const baseSlides = [
     {
       src: "/slider-1.jpg",
@@ -14,13 +14,15 @@ export default function Home() {
       desc: "Lingkungan sekolah yang representatif, aman, dan kondusif untuk menunjang tumbuh kembang karakter serta akademik peserta didik."
     },
     {
-      src: "/slider-2.jpg",
+      // DIGANTI MENJADI SLIDER5.webp
+      src: "/SLIDER5.webp",
       tag: "DIGITAL LEARNING & INNOVATION",
       title: "Pusat Pembelajaran Berbasis Teknologi & Literasi Digital",
       desc: "Mempersiapkan generasi masa depan yang cakap teknologi melalui fasilitas komputasi terintegrasi dan kurikulum adaptif."
     },
     {
-      src: "/slider-3.jpg",
+      // DIGANTI MENJADI SLIDER6.webp
+      src: "/SLIDER6.webp",
       tag: "SPIRITUAL & CHARACTER BUILDING",
       title: "Pendidikan Holistik Berlandaskan Nilai-Nilai Kristiani",
       desc: "Membina hati dan budi pekerti luhur melalui persekutuan doa, kebaktian berkala, dan pembiasaan kasih dalam keseharian."
