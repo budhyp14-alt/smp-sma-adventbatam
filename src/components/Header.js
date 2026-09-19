@@ -30,10 +30,12 @@ export default function Header() {
     { label: "LIBRARY", href: "https://e-perpus-batam-mas.vercel.app/", isExternal: true },
   ];
 
+  const announcementText = "Selamat Datang di Website Resmi SMP - SMA Advent Batam. Informasi Pendaftaran Siswa Baru (PPDB) Tahun Ajaran 2026/2027 telah resmi dibuka. Hubungi bagian tata usaha untuk informasi persyaratan dan beasiswa prestasi.";
+
   return (
     <header className="w-full font-sans shadow-md sticky top-0 z-50">
       
-      {/* STYLE ANIMASI: PUTAR LOGO LEBIH LAMBAT (16s) & TEKS BERJALAN RUNNING (MARQUEE) */}
+      {/* STYLE ANIMASI: ROTASI LOGO LAMBAT & SEAMLESS INFINITE MARQUEE TANPA JEDA KOSONG */}
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes spinClockwiseSlow {
           from {
@@ -52,21 +54,21 @@ export default function Header() {
           animation-play-state: paused;
         }
 
-        @keyframes marqueeScroll {
+        @keyframes seamlessMarquee {
           0% {
-            transform: translateX(100%);
+            transform: translateX(0%);
           }
           100% {
-            transform: translateX(-100%);
+            transform: translateX(-50%);
           }
         }
-        .ticker-marquee-track {
-          display: inline-block;
-          white-space: nowrap;
-          animation: marqueeScroll 25s linear infinite;
+        .seamless-ticker-track {
+          display: flex;
+          width: max-content;
+          animation: seamlessMarquee 42s linear infinite;
           will-change: transform;
         }
-        .ticker-marquee-track:hover {
+        .seamless-ticker-track:hover {
           animation-play-state: paused;
         }
       `}} />
@@ -108,7 +110,7 @@ export default function Header() {
               })}
             </div>
 
-            {/* MENU AKREDITASI + SUBMENU BUTIR 12 */}
+            {/* MENU AKREDITASI */}
             <div 
               className="relative group py-2"
               onMouseEnter={() => setIsAkreditasiDropdown(true)}
@@ -220,7 +222,7 @@ export default function Header() {
         </div>
       )}
 
-      {/* 2. MAIN HEADER PUTIH: LOGO BERPUTAR LEBIH LAMBAT & MELAYANG */}
+      {/* 2. MAIN HEADER PUTIH */}
       <div className="w-full bg-white border-b border-slate-200 relative overflow-visible">
         <div className="max-w-7xl mx-auto px-4 h-16 sm:h-18 flex items-center justify-between gap-4 relative overflow-visible">
           
@@ -275,8 +277,8 @@ export default function Header() {
         </div>
       </div>
 
-      {/* 3. RUNNING TICKER KUNING EMAS: TEKS BERGERAK DARI KANAN KE KIRI SECARA KONTINYU */}
-      <div className="w-full bg-[#D97706] text-white relative z-10 overflow-hidden">
+      {/* 3. RUNNING TICKER KUNING EMAS: SEAMLESS BERLANJUT TANPA JEDA KOSONG & LEBIH LAMBAT */}
+      <div className="w-full bg-[#D97706] text-white relative z-10 overflow-hidden shadow-inner">
         <div className="max-w-7xl mx-auto px-4 flex items-center h-8 text-[11px] sm:text-xs">
           
           <div className="bg-[#1e293b] text-white font-bold px-2 sm:px-3 py-1 mr-2 rounded text-[10px] sm:text-[11px] shrink-0 z-20 shadow-xs">
@@ -287,10 +289,15 @@ export default function Header() {
             LATEST UPDATES
           </div>
 
-          {/* AREA TEKS BERJALAN OTOMATIS */}
+          {/* AREA TEKS BERJALAN KONTINYU SEAMLESS TANPA KOSONG */}
           <div className="flex-1 overflow-hidden relative">
-            <div className="ticker-marquee-track text-white font-semibold cursor-default">
-              Selamat Datang di Website Resmi SMP - SMA Advent Batam. Informasi Pendaftaran Siswa Baru (PPDB) Tahun Ajaran 2026/2027 telah resmi dibuka. Hubungi bagian tata usaha untuk informasi persyaratan dan beasiswa prestasi.
+            <div className="seamless-ticker-track text-white font-semibold cursor-default">
+              <span className="pr-16 inline-block">
+                {announcementText}
+              </span>
+              <span className="pr-16 inline-block">
+                {announcementText}
+              </span>
             </div>
           </div>
 
