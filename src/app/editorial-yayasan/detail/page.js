@@ -11,8 +11,9 @@ export default function DetailEditorialYayasan() {
       date: "08 September 2026",
       author: "Rima Melati Hutagalung (Chairman of the Foundation)",
       title: "Visi Jangka Panjang YPAB dalam Membangun Peradaban Pendidikan Unggul di Batam",
-      // MENGGUNAKAN FOTO BARU YANG DIUNGGAH KE FOLDER PUBLIC
       img: "/ketua tampil di penamatan smp-sma advent batam.webp",
+      // TEKS CAPTION FOTO
+      caption: "Foto: Ibu Rima Melati Hutagalung selaku Ketua Yayasan Pendidikan Advent Batam sedang menghadiri Perhelatan Akbar Penamatan Kelas IX dan Kelas XII SMP-SMA Advent Batam pada tanggal 25 Juni 2026. (dok. Istimewa)",
       lead: "Yayasan Pendidikan Advent Batam (YPAB) didirikan bukan semata-mata untuk mendirikan gedung sekolah atau menambah kuantitas lembaga pendidikan formal di Kepulauan Riau. Jauh melampaui itu, yayasan ini lahir dari panggilan iman dan tekad luhur untuk membangun peradaban manusia yang berkeadaban tinggi, bermoral mulia, dan memiliki kompetensi global.",
       paragraphs: [
         "Yayasan Pendidikan Advent Batam (YPAB) didirikan bukan semata-mata untuk mendirikan gedung sekolah atau menambah kuantitas lembaga pendidikan formal di Kepulauan Riau. Jauh melampaui itu, yayasan ini lahir dari panggilan iman dan tekad luhur untuk membangun peradaban manusia yang berkeadaban tinggi, bermoral mulia, dan memiliki kompetensi global. Kami meyakini bahwa investasi terbesar yang dapat diwariskan kepada peradaban adalah mendidik generasi muda agar mengenal kebenaran hakiki dan menguasai ilmu pengetahuan demi melayani kemanusiaan.",
@@ -26,6 +27,7 @@ export default function DetailEditorialYayasan() {
       author: "Rima Melati Hutagalung (Chairman of the Foundation)",
       title: "Komitmen Penguatan Karakter Kristiani dan Integritas Generasi Muda di Era Digital",
       img: "/slider-1.jpg",
+      caption: "Foto: Kegiatan ibadah dan bina rohani siswa di lingkungan sekolah. (dok. Istimewa)",
       lead: "Tantangan terbesar dunia pendidikan saat ini bukan sekadar mengejar capaian nilai akademik kognitif semata, melainkan bagaimana menanamkan fondasi moral dan ketakutan akan Tuhan di tengah derasnya arus globalisasi digital yang serba permisif.",
       paragraphs: [
         "Tantangan terbesar dunia pendidikan saat ini bukan sekadar mengejar capaian nilai akademik kognitif semata, melainkan bagaimana menanamkan fondasi moral dan ketakutan akan Tuhan di tengah derasnya arus globalisasi digital yang serba permisif. Tanpa fondasi spiritual yang tangguh, kecerdasan intelektual berisiko kehilangan arah kompas kebajikan.",
@@ -39,6 +41,7 @@ export default function DetailEditorialYayasan() {
       author: "Rima Melati Hutagalung (Chairman of the Foundation)",
       title: "Transformasi Infrastruktur dan Lingkungan Belajar yang Aman, Sehat, dan Berkelanjutan",
       img: "/slider-2.jpg",
+      caption: "Foto: Tinjauan fasilitas pembelajaran dan laboratorium baru di SMPS-SMAS Advent Batam Mas. (dok. Istimewa)",
       lead: "Penyediaan fasilitas pembelajaran yang representatif, aman secara fisik maupun psikis, serta adaptif terhadap perkembangan teknologi mutakhir merupakan tanggung jawab institusi yang terus kami wujudkan secara berkesinambungan.",
       paragraphs: [
         "Penyediaan fasilitas pembelajaran yang representatif, aman secara fisik maupun psikis, serta adaptif terhadap perkembangan teknologi mutakhir merupakan tanggung jawab institusi yang terus kami wujudkan secara berkesinambungan demi menjamin kualitas kegiatan belajar mengajar.",
@@ -52,6 +55,7 @@ export default function DetailEditorialYayasan() {
       author: "Rima Melati Hutagalung (Chairman of the Foundation)",
       title: "Sinergi Kemitraan Strategis antara Orang Tua dan Sekolah Menuju Keberhasilan Peserta Didik",
       img: "/slider-3.jpg",
+      caption: "Foto: Pertemuan komite sekolah dan orang tua murid bersama jajaran pendidik. (dok. Istimewa)",
       lead: "Pendidikan yang berdaya guna selalu berakar pada keselarasan arah pandang antara nilai-nilai yang ditumbuhkan di lingkungan keluarga dengan proses pembiasaan disiplin positif yang diterapkan di lingkungan sekolah.",
       paragraphs: [
         "Pendidikan yang berdaya guna selalu berakar pada keselarasan arah pandang antara nilai-nilai yang ditumbuhkan di lingkungan keluarga dengan proses pembiasaan disiplin positif yang diterapkan di lingkungan sekolah. Kolaborasi yang erat ini menjadi jembatan penguat pertumbuhan anak.",
@@ -108,18 +112,26 @@ export default function DetailEditorialYayasan() {
               </span>
             </div>
 
-            {/* FOTO UTAMA BERITA UTUH */}
-            <div className="w-full aspect-16/9 rounded-xl overflow-hidden shadow-sm mb-6 bg-slate-200">
-              <img
-                src={currentArticle.img}
-                alt={currentArticle.title}
-                className="w-full h-full object-cover object-top"
-                onError={(e) => {
-                  e.currentTarget.onerror = null;
-                  e.currentTarget.src = "/slider-1.jpg";
-                }}
-              />
-            </div>
+            {/* FOTO UTAMA BERITA UTUH BESERTA CAPTION */}
+            <figure className="mb-6">
+              <div className="w-full aspect-16/9 rounded-xl overflow-hidden shadow-sm bg-slate-200">
+                <img
+                  src={currentArticle.img}
+                  alt={currentArticle.title}
+                  className="w-full h-full object-cover object-top"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = "/slider-1.jpg";
+                  }}
+                />
+              </div>
+              {/* TEKS CAPTION FOTO PERSIS DI BAWAH FOTO */}
+              {currentArticle.caption && (
+                <figcaption className="text-[10px] sm:text-[11px] text-slate-500 italic mt-2.5 leading-relaxed text-justify px-1">
+                  {currentArticle.caption}
+                </figcaption>
+              )}
+            </figure>
 
             {/* PARAGRAF NASKAH BERITA LENGKAP */}
             <div className="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed text-justify">
