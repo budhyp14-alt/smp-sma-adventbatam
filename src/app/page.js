@@ -5,28 +5,28 @@ import Link from "next/link";
 import { announcementsData, agendaData } from "../data/schoolUpdates";
 
 export default function Home() {
-  // 1. DATA HERO SLIDER (GAMBAR TELAH DIPERBARUI)
+  // 1. DATA HERO SLIDER
   const baseSlides = [
     {
-      src: "/slider5.webp", // Menggantikan slider-1.jpg
+      src: "/slider5.webp", 
       tag: "CAMPUS ENVIRONMENT",
       title: "Gedung Pembelajaran Modern & Asri SMP-SMA Advent Batam",
       desc: "Lingkungan sekolah yang representatif, aman, dan kondusif untuk menunjang tumbuh kembang karakter serta akademik peserta didik."
     },
     {
-      src: "/slider-2.jpg", // Diperbaiki agar gambar tampil normal kembali
+      src: "/slider-2.jpg", 
       tag: "DIGITAL LEARNING & INNOVATION",
       title: "Pusat Pembelajaran Berbasis Teknologi & Literasi Digital",
       desc: "Mempersiapkan generasi masa depan yang cakap teknologi melalui fasilitas komputasi terintegrasi dan kurikulum adaptif."
     },
     {
-      src: "/slider6.webp", // Menggantikan slider-3.jpg
+      src: "/slider6.webp", 
       tag: "SPIRITUAL & CHARACTER BUILDING",
       title: "Pendidikan Holistik Berlandaskan Nilai-Nilai Kristiani",
       desc: "Membina hati dan budi pekerti luhur melalui persekutuan doa, kebaktian berkala, dan pembiasaan kasih dalam keseharian."
     },
     {
-      src: "/slider5.webp", // Menggantikan slider-1.jpg
+      src: "/slider5.webp", 
       tag: "STUDENT TALENTS & CO-CURRICULAR",
       title: "Eksplorasi Bakat, Prestasi Atletik, dan Jiwa Kepemimpinan",
       desc: "Mewadahi antusiasme dan daya juang siswa melalui program ekstrakurikuler dinamis serta pembinaan prestasi berstandar nasional."
@@ -448,11 +448,11 @@ export default function Home() {
             </div>
           </div>
 
-          {/* EDITORIAL MANAJER OPERASIONAL */}
+          {/* EDITORIAL MANAJER OPERASIONAL: FOTO DIGANTI MENJADI manajer-operasional02.webp */}
           <div className="flex flex-col sm:flex-row gap-5 items-stretch">
             <Link href="/editorial-manajer/detail" className="w-full sm:w-[40%] min-h-[280px] sm:min-h-0 relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer bg-slate-200">
               <img 
-                src="/manajer-operasional01.webp" 
+                src="/manajer-operasional02.webp" 
                 alt="Samuel Simatupang - Operations Manager" 
                 className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" 
                 onError={(e) => {
