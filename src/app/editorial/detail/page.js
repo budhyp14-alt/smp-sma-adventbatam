@@ -13,7 +13,8 @@ export default function DetailEditorialKepsek() {
       title: "Menyongsong Masa Depan Melalui Integrasi Ekosistem Digital di SMP-SMA Advent Batam",
       // MENGGUNAKAN FOTO BARU
       img: "/program-sekolah2025-2026.webp",
-      caption: "Foto: Pemaparan Program Strategis Sekolah Tahun Pelajaran 2025/2026 oleh Kepala Sekolah. (dok. Istimewa)",
+      // CAPTION DIPERBARUI SESUAI PERMINTAAN
+      caption: "Foto: Pemaparan Informasi Digital berupa Website Sekolah SMP-SMA Advent Batam sebagai salah satu Program Strategis Sekolah Tahun Pelajaran 2026/2027 oleh Kepala Sekolah dalam kegiatan Penerimaan Rapor Evaluasi Hasil Belajar Siswa Semester Genap Tahun Pelajaran 2025/2026. (dok. Istimewa)",
       lead: "Pendidikan sejati tidak sekadar mengisi pikiran dengan fakta, melainkan melatih budi pekerti untuk berinovasi. Menyambut era Society 5.0, SMP-SMA Advent Batam resmi meluncurkan integrasi platform digital sebagai pusat ekosistem pembelajaran modern.",
       paragraphs: [
         "Pendidikan sejati tidak sekadar mengisi pikiran dengan fakta, melainkan melatih budi pekerti untuk berinovasi. Menyambut era Society 5.0, SMP-SMA Advent Batam resmi meluncurkan integrasi platform digital sebagai pusat ekosistem pembelajaran modern. Langkah ini bukan sekadar mengikuti tren teknologi, melainkan komitmen institusi untuk memberikan layanan pendidikan yang transparan, cepat, dan terukur bagi siswa maupun orang tua.",
