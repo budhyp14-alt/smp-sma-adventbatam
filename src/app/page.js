@@ -408,8 +408,8 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
           {/* EDITORIAL KETUA YAYASAN */}
-          <div className="flex flex-col sm:flex-row gap-5">
-            <Link href="/editorial-yayasan/detail" className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer bg-slate-200">
+          <div className="flex flex-col sm:flex-row gap-5 items-stretch">
+            <Link href="/editorial-yayasan/detail" className="w-full sm:w-[40%] min-h-[250px] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer bg-slate-200">
               <img 
                 src="/ketua-ypab.webp" 
                 alt="Rima Melati Hutagalung - Chairman of the Foundation" 
@@ -425,7 +425,7 @@ export default function Home() {
                 <p className="text-[#E5B55C] text-xs sm:text-sm">Chairman of the Foundation</p>
               </div>
             </Link>
-            <div className="w-full sm:w-[60%] flex flex-col">
+            <div className="w-full sm:w-[60%] flex flex-col h-full">
               <div className="flex items-center gap-2 mb-3">
                 <span className="bg-[#4D524F] text-white rounded-full w-7 h-7 flex items-center justify-center text-[10px] tracking-widest">•••</span>
                 <h2 className="font-bold text-lg text-[#4D524F]">Foundation Chairman's Editorial</h2>
@@ -437,7 +437,7 @@ export default function Home() {
                 <p className="text-slate-600 text-[13px] sm:text-sm leading-relaxed text-justify line-clamp-6">Yayasan Pendidikan Advent Batam terus berkomitmen untuk memberikan standar pendidikan terbaik yang selaras dengan nilai-nilai moral dan spiritual bagi generasi masa depan...</p>
               </Link>
               
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-3 mt-auto">
                 <Link href="/editorial-yayasan/detail" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm inline-block transition-colors">
                   Read More
                 </Link>
@@ -448,9 +448,9 @@ export default function Home() {
             </div>
           </div>
 
-          {/* EDITORIAL MANAJER (MENGGUNAKAN /manajer-operasional02.webp) */}
-          <div className="flex flex-col sm:flex-row gap-5">
-            <Link href="/editorial-manajer/detail" className="w-full sm:w-[40%] aspect-[4/5] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer bg-slate-200">
+          {/* EDITORIAL MANAJER */}
+          <div className="flex flex-col sm:flex-row gap-5 items-stretch">
+            <Link href="/editorial-manajer/detail" className="w-full sm:w-[40%] min-h-[250px] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer bg-slate-200">
               <img 
                 src="/manajer-operasional02.webp" 
                 alt="Samuel Simatupang - Operations Manager" 
@@ -466,7 +466,7 @@ export default function Home() {
                 <p className="text-[#E5B55C] text-xs sm:text-sm">Operations Manager</p>
               </div>
             </Link>
-            <div className="w-full sm:w-[60%] flex flex-col">
+            <div className="w-full sm:w-[60%] flex flex-col h-full">
               <div className="flex items-center gap-2 mb-3">
                 <span className="bg-[#4D524F] text-white rounded-full w-7 h-7 flex items-center justify-center text-[10px] tracking-widest">•••</span>
                 <h2 className="font-bold text-lg text-[#4D524F]">Operations Manager's Editorial</h2>
@@ -478,7 +478,7 @@ export default function Home() {
                 <p className="text-slate-600 text-[13px] sm:text-sm leading-relaxed text-justify line-clamp-6">Pengembangan infrastruktur sekolah menjadi fokus utama kami tahun ini, untuk memastikan kegiatan belajar mengajar berjalan optimal dan nyaman bagi seluruh siswa...</p>
               </Link>
               
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-3 mt-auto">
                 <Link href="/editorial-manajer/detail" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2.5 px-6 rounded shadow-sm text-sm inline-block transition-colors">
                   Read More
                 </Link>
@@ -496,8 +496,9 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 mb-12 shrink-0">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           
-          <div className="lg:col-span-2 flex flex-col md:flex-row gap-5 items-start">
-            <Link href="/editorial/detail" className="w-full md:w-[35%] lg:w-[30%] aspect-square relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer bg-slate-200">
+          {/* EDITORIAL KEPALA SEKOLAH: DENGAN PENYETARAAN TINGGI (ITEMS-STRETCH) AGAR SEJAJAR TOMBOL READ MORE */}
+          <div className="lg:col-span-2 flex flex-col md:flex-row gap-5 items-stretch">
+            <Link href="/editorial/detail" className="w-full md:w-[35%] lg:w-[30%] min-h-[300px] relative rounded-xl overflow-hidden shadow-sm shrink-0 block group cursor-pointer bg-slate-200">
               <img src="/slider-3.jpg" alt="Tona Leon F. Situmorang" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
               <div className="absolute bottom-3 left-3 right-3 text-left">
@@ -517,7 +518,7 @@ export default function Home() {
                 <p className="text-slate-600 text-[13px] sm:text-sm leading-relaxed text-justify">Kepala Sekolah SMP & SMA Advent Batam, Bapak Tona Leon F. Situmorang, S.Pd., MA.Ed. menyambut dengan sukacita dan antusiasme tinggi atas selesainya pembuatan website resmi sekolah. Beliau tidak hanya mengucap syukur kepada Tuhan, tetapi juga menaruh harapan besar agar seluruh civitas akademika dapat mendayagunakan platform digital ini secara maksimal...</p>
               </Link>
               
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-3 mt-auto">
                 <Link href="/editorial/detail" className="bg-[#8B0000] hover:bg-red-800 text-white font-bold py-2 px-6 rounded shadow-sm text-sm inline-block transition-colors">
                   Read More
                 </Link>
