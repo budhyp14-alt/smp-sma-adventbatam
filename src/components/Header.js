@@ -30,7 +30,8 @@ export default function Header() {
     { label: "LIBRARY", href: "https://e-perpus-batam-mas.vercel.app/", isExternal: true },
   ];
 
-  const announcementText = "Selamat Datang di Website Resmi SMP - SMA Advent Batam. Informasi Pendaftaran Siswa Baru (PPDB) Tahun Ajaran 2026/2027 telah resmi dibuka. Hubungi bagian tata usaha untuk informasi persyaratan dan beasiswa prestasi.";
+  // RUNNING TEXT DALAM BAHASA INGGRIS
+  const announcementText = "Welcome to the Official Website of SMP - SMA Advent Batam. New Student Admissions (PPDB) for the 2026/2027 Academic Year are now officially open. Please contact our administration office for enrollment requirements and academic scholarship information.";
 
   return (
     <header className="w-full font-sans shadow-md sticky top-0 z-50">
@@ -277,7 +278,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* 3. RUNNING TICKER KUNING EMAS: SEAMLESS BERLANJUT TANPA JEDA KOSONG & LEBIH LAMBAT */}
+      {/* 3. RUNNING TICKER KUNING EMAS BERBAHASA INGGRIS */}
       <div className="w-full bg-[#D97706] text-white relative z-10 overflow-hidden shadow-inner">
         <div className="max-w-7xl mx-auto px-4 flex items-center h-8 text-[11px] sm:text-xs">
           
@@ -289,7 +290,7 @@ export default function Header() {
             LATEST UPDATES
           </div>
 
-          {/* AREA TEKS BERJALAN KONTINYU SEAMLESS TANPA KOSONG */}
+          {/* TEKS BERJALAN BAHASA INGGRIS SECARA BERLANJUT */}
           <div className="flex-1 overflow-hidden relative">
             <div className="seamless-ticker-track text-white font-semibold cursor-default">
               <span className="pr-16 inline-block">
